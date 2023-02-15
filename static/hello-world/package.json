@@ -1,0 +1,33 @@
+{
+  "name": "confluence-macro-custom-ui-static",
+  "version": "0.1.7",
+  "private": true,
+  "homepage": ".",
+  "dependencies": {
+    "@atlaskit/css-reset": "^6.0.1",
+    "@forge/bridge": "^2.5.1",
+    "mermaid": "^9.3.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

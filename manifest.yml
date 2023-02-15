@@ -1,17 +1,23 @@
 modules:
   macro:
     - key: mermaid-diagrams-viewer
-      function: main
+      resource: main
+      resolver:
+        function: resolver
       title: mermaid-diagrams-viewer
       description: Renders mermaid diagrams hosted in your source control system
   function:
-    - key: main
+    - key: resolver
       handler: index.run
       providers:
         auth:
           - bitbucket
 app:
   id: ari:cloud:ecosystem::app/23392b90-4271-4239-98ca-a3e96c663cbb
+
+resources:
+  - key: main
+    path: static/hello-world/build
 
 remotes:
   - key: bitbucket
