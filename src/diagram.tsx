@@ -7,7 +7,7 @@ const resolver = new Resolver();
 
 resolver.define('getFile', async (req) => {
   const config = req.context.extension.config as Config;
-  console.log(config);
+  console.log({ config });
 
   const fileUrl = config?.url?.replace('https://bitbucket.org', 'https://api.bitbucket.org/2.0/repositories');
 
