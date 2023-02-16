@@ -5,19 +5,18 @@ import SVG from 'react-inlinesvg';
 
 mermaid.mermaidAPI.initialize({ startOnLoad: false });
 
-function App() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+async function fetchSVG() {
+  const file = await invoke<string>('getFile', {});
+  const svg = await mermaid.mermaidAPI.renderAsync('test', file);
+  return svg;
+}
 
-  useEffect(async () => {
-    try {
-      const data = await invoke('getFile', {});
-      const svg = await mermaid.mermaidAPI.renderAsync('test', data);
-      setData(svg);
-    } catch (error) {
-      console.error(error);
-      setError(error.message)
-    }
+function App() {
+  const [data, setData] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchSVG().then(setData).catch(setError);
   }, []);
 
   const loadingMessage = !data && !error ? 'Loading...' : null;
