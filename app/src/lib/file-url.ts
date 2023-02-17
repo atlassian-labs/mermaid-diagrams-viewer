@@ -1,7 +1,7 @@
 import { FutureError } from './error';
 
-class InvalidUrlError extends FutureError {}
-class InvalidUrlOrigin extends FutureError {}
+export class InvalidUrlError extends FutureError {}
+export class InvalidUrlOrigin extends FutureError {}
 
 export function validateFileUrl(input: string) {
   let url: URL;
@@ -17,12 +17,13 @@ export function validateFileUrl(input: string) {
   }
 }
 
-/*
-  Takes URL of this format:
-    https://api.bitbucket.org/2.0/repositories/atlassian/diagrams/src/master/src/AccessNarrowing/ECORFC-131/filter-extensions.mmd
-  Returns URL of that format:
-    https://bitbucket.org/atlassian/diagrams/src/master/src/AccessNarrowing/ECORFC-131/filter-extensions.mmd
-*/
+/**
+ * Takes URL of this format:
+ *   https://api.bitbucket.org/2.0/repositories/atlassian/diagrams/src/master/src/AccessNarrowing/ECORFC-131/filter-extensions.mmd
+ *
+ * Returns URL of that format:
+ *   https://bitbucket.org/atlassian/diagrams/src/master/src/AccessNarrowing/ECORFC-131/filter-extensions.mmd
+ */
 export function convertFileUrl(input: string) {
   const apiUrl = input.replace(
     'https://bitbucket.org',
