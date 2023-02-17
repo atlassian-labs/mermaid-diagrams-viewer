@@ -2,6 +2,11 @@
   "name": "diagrams-viewer-custom-ui",
   "version": "0.1.7",
   "private": true,
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Daniel Hreben",
+    "email": "dhreben@atlassian.com"
+  },
   "homepage": ".",
   "dependencies": {
     "@atlaskit/css-reset": "^6.0.1",

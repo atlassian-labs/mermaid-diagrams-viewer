@@ -2,7 +2,11 @@
   "name": "diagrams-viewer",
   "version": "0.1.8",
   "private": true,
-  "license": "MIT",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Daniel Hreben",
+    "email": "dhreben@atlassian.com"
+  },
   "scripts": {
     "build": "tsc",
     "validate": "tsc --noEmit --project ./tsconfig.json",
