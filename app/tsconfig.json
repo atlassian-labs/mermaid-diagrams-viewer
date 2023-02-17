@@ -1,22 +1,27 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "ES2020",
+    "target": "ES2017",
     "sourceMap": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "lib": [
       "dom",
-      "ES2020"
+      "ES2017"
     ],
-    "types": ["node", "react"],
+    "types": [
+      "node",
+      "react"
+    ],
     "baseUrl": "./",
     "allowJs": false,
     "jsx": "react",
     "jsxFactory": "ForgeUI.createElement",
-    "outDir": "out",
+    "outDir": "./build/app",
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*"
+  ]
 }

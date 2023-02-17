@@ -9,6 +9,9 @@
     "lint": "./node_modules/.bin/eslint src/**/* || npm run --silent hook-errors",
     "hook-errors": "echo '\\x1b[31mThe build failed because a Forge UI hook is being used incorrectly. Forge UI hooks follow the same rules as React Hooks but have their own API definitions. See the Forge documentation for details on how to use Forge UI hooks.\n' && exit 1"
   },
+  "engines": {
+    "node": "12.x.x"
+  },
   "devDependencies": {
     "@types/node": "^12.12.63",
     "@types/react": "^17.0.38",

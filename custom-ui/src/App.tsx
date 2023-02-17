@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { invoke } from '@forge/bridge';
 import mermaid from 'mermaid';
 import SVG from 'react-inlinesvg';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 mermaid.mermaidAPI.initialize({ startOnLoad: false });
 
@@ -9,6 +10,14 @@ async function fetchSVG() {
   const file = await invoke<string>('getFile', {});
   const svg = await mermaid.mermaidAPI.renderAsync('test', file);
   return svg;
+}
+
+function renderDiagram(svg: string) {
+  return <TransformWrapper>
+    <TransformComponent wrapperStyle={{ width: 'auto' }} contentStyle={{ width: 'auto' }}>
+      <SVG src={svg} />
+    </TransformComponent>
+  </TransformWrapper>
 }
 
 function App() {
@@ -21,7 +30,7 @@ function App() {
 
   const loadingMessage = !data && !error ? 'Loading...' : null;
   const errorComponent = error;
-  const dataComponent = data ? <SVG src={data} /> : null;
+  const dataComponent = data ? renderDiagram(data) : null;
 
   return (
     <div>

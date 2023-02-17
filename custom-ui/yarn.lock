@@ -7940,6 +7940,11 @@ react-scripts@^5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-zoom-pan-pinch@^2.6.1:
+  version "2.6.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/react-zoom-pan-pinch/-/react-zoom-pan-pinch-2.6.1.tgz#5719fdd9515dc1f379a23350cbf99edd540b1281"
+  integrity sha512-4Cgdnn6OwN4DomY/E9NpAf0TyCtslEgwdYn96ZV/f5LKuw/FE3gcIBJiaKFmMGThDGV0yKN5mzO8noi34+UE4Q==
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"

@@ -11,7 +11,7 @@ resolver.define('getFile', async (req) => {
 
   const fileUrl = config?.url?.replace('https://bitbucket.org', 'https://api.bitbucket.org/2.0/repositories');
 
-  // const url = 'https://api.bitbucket.org/2.0/repositories/atlassian/diagrams/src/master/src/AccessNarrowing/ECORFC-131/filter-extensions.mmd';
+  // https://api.bitbucket.org/2.0/repositories/atlassian/diagrams/src/master/src/AccessNarrowing/ECORFC-131/filter-extensions.mmd
   // https://bitbucket.org/atlassian/diagrams/src/master/src/AccessNarrowing/ECORFC-131/filter-extensions.mmd
 
   const bitbucket = api.asUser().withProvider('bitbucket', 'bitbucket-api')

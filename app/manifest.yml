@@ -22,7 +22,7 @@ modules:
 
 resources:
   - key: custom-ui
-    path: custom-ui/build
+    path: build/custom-ui
 
 remotes:
   - key: bitbucket
