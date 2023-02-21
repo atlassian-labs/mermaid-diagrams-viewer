@@ -55,7 +55,7 @@ function App() {
   const [error, setError] = useState<ServerError | undefined>();
 
   return (
-    <div style={{ minHeight: '200px' }}>
+    <div style={{ minHeight: '150px' }}>
       <Loading loading={!file && !error} />
       <Diagram file={file} />
       <ErrorMessage error={error} />
