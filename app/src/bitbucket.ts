@@ -1,5 +1,5 @@
 import Resolver from '@forge/resolver';
-import api from '@forge/api';
+import api, { isForgePlatformError } from '@forge/api';
 import {
   convertFileUrl,
   InvalidUrlError,
@@ -65,6 +65,11 @@ resolver.define('getFile', async (req) => {
       data: diagram,
     };
   } catch (error: any) {
+    if (isForgePlatformError(error)) {
+      console.warn(error);
+      throw error;
+    }
+
     if (isInternalError(error)) {
       console.error(error);
     } else {
