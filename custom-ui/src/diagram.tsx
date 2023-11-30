@@ -5,10 +5,11 @@ import mermaid from 'mermaid';
 
 mermaid.mermaidAPI.initialize({ startOnLoad: false });
 
-export const Diagram: React.FunctionComponent<{ file?: string }> = ({
-  file,
-}) => {
-  if (!file) {
+export const Diagram: React.FunctionComponent<{
+  code?: string;
+  onError: CallableFunction;
+}> = ({ code, onError }) => {
+  if (!code) {
     return null;
   }
 
@@ -33,9 +34,14 @@ export const Diagram: React.FunctionComponent<{ file?: string }> = ({
   }, []);
 
   const svg = useMemo(() => {
-    const newSvg = mermaid.mermaidAPI.render('diagram' + Date.now(), file);
-    return newSvg;
-  }, [file, size]);
+    try {
+      const newSvg = mermaid.mermaidAPI.render('diagram' + Date.now(), code);
+      return newSvg;
+    } catch (error) {
+      onError(error);
+      return '';
+    }
+  }, [code, size]);
 
   return (
     <TransformWrapper>
