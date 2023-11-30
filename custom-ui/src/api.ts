@@ -30,7 +30,6 @@ export async function getCode() {
     {}
   );
 
-  console.log(response);
   const file = processResponse(response);
   return file;
 }

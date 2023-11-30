@@ -30,6 +30,11 @@ const DiagramConfig = () => {
         label="Select codeblock with mermaid diagram to render"
         name={CONFIG_FIELD}
       >
+        <Option
+          label={`Auto detect`}
+          value={undefined}
+          defaultSelected={config?.index === undefined}
+        />
         {codeBlocks.map((codeBlock, i) => {
           const trimmedCode =
             codeBlock.length > 35

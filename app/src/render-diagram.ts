@@ -1,7 +1,11 @@
 import { isForgePlatformError } from '@forge/api';
 import Resolver from '@forge/resolver';
 import { addErrorFormatter, formatError, isInternalError } from './lib/error';
-import { findCodeBlocks, getPageContent } from './lib/confluence';
+import {
+  findClosestCodeBlock,
+  findCodeBlocks,
+  getPageContent,
+} from './lib/confluence';
 import { Config } from './lib/config';
 
 const resolver = new Resolver();
@@ -12,14 +16,18 @@ addErrorFormatter(MissingDiagram, {
   code: 'DIAGRAM_IS_NOT_SELECTED',
 });
 
+function getIndexFromConfig(config: Config | undefined): number | undefined {
+  if (Number.isSafeInteger(config?.index)) {
+    return config?.index;
+  }
+  return undefined;
+}
+
 resolver.define('getCode', async (req) => {
   try {
-    const config = req.context.extension.config as Config | undefined;
-
-    if (config?.index === undefined) {
-      throw new MissingDiagram('No diagram selected');
-    }
-
+    const index = getIndexFromConfig(
+      req.context.extension.config as Config | undefined
+    );
     const isEditing = req.context.extension.isEditing as boolean;
 
     const adf = await getPageContent(
@@ -27,11 +35,29 @@ resolver.define('getCode', async (req) => {
       isEditing
     );
 
-    const codeBlock = findCodeBlocks(adf)[config.index];
+    if (index === undefined) {
+      const code = findClosestCodeBlock(
+        adf,
+        req.context.localId,
+        req.context.moduleKey
+      );
 
+      if (code === undefined) {
+        throw new MissingDiagram(
+          `Can't find codeblock to render automatically; Please select one in the macro settings`
+        );
+      }
+
+      return {
+        data: code,
+      };
+    }
+
+    const codeBlocks = findCodeBlocks(adf);
+    const codeBlock = codeBlocks[index];
     if (!codeBlock) {
       throw new MissingDiagram(
-        `Code block under with position ${config.index + 1} not found`
+        `Code block under with position ${index + 1} not found`
       );
     }
 
