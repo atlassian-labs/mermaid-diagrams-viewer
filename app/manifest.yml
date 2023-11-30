@@ -8,7 +8,7 @@ modules:
       resolver:
         function: render-diagram
       title: Mermaid diagram
-      description: Render mermaid diagram from a code block on a page
+      description: Render a Mermaid diagram from a code block on a page
       config:
         function: render-diagram-config
 
