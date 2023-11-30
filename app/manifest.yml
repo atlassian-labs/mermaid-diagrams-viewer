@@ -3,46 +3,24 @@ app:
 
 modules:
   macro:
-    - key: mermaid-diagrams-viewer-bitbucket
+    - key: mermaid-diagram
       resource: custom-ui
       resolver:
-        function: bitbucket-resolver
-      title: Diagrams viewer - Bitbucket
-      description: Renders mermaid diagrams from file on Bitbucket
+        function: render-diagram
+      title: Mermaid diagram
+      description: Render mermaid diagram from a code block on a page
       config:
-        function: config-bitbucket
-    - key: mermaid-diagrams-viewer-confluence
-      resource: custom-ui
-      resolver:
-        function: confluence-resolver
-      title: Diagrams viewer - Confluence
-      description: Renders mermaid diagrams code block on current page
-      config:
-        function: config-confluence
+        function: render-diagram-config
 
   function:
-    - key: bitbucket-resolver
-      handler: bitbucket.run
-      providers:
-        auth:
-          - bitbucket
-    - key: config-bitbucket
-      handler: config.bitbucket
-
-    - key: confluence-resolver
-      handler: confluence.run
-    - key: config-confluence
-      handler: config.confluence
+    - key: render-diagram
+      handler: render-diagram.run
+    - key: render-diagram-config
+      handler: render-diagram-config.run
 
 resources:
   - key: custom-ui
     path: build/custom-ui
-
-remotes:
-  - key: bitbucket
-    baseUrl: https://bitbucket.org
-  - key: bitbucket-api
-    baseUrl: https://api.bitbucket.org
 
 permissions:
   scopes:
@@ -50,37 +28,3 @@ permissions:
   content:
     styles:
       - 'unsafe-inline'
-  external:
-    fetch:
-      backend:
-        - https://bitbucket.org
-        - https://api.bitbucket.org
-
-providers:
-  auth:
-    - key: bitbucket
-      name: Bitbucket
-      scopes:
-        - repository
-        - snippet
-        - account
-      type: oauth2
-      clientId: paMEDYRZvXwGmwEWmD
-      remotes:
-        - bitbucket
-        - bitbucket-api
-      bearerMethod: authorization-header
-      actions:
-        authorization:
-          remote: bitbucket
-          path: /site/oauth2/authorize
-        exchange:
-          remote: bitbucket
-          path: /site/oauth2/access_token
-        retrieveProfile:
-          remote: bitbucket-api
-          path: /2.0/user
-          resolvers:
-            id: uuid
-            displayName: display_name
-            avatarUrl: links.avatar.href

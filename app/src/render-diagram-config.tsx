@@ -2,49 +2,26 @@ import ForgeUI, {
   MacroConfig,
   render,
   Select,
-  TextField,
   useEffect,
   useProductContext,
   useState,
   Option,
   useConfig,
 } from '@forge/ui';
-import api, { route } from '@forge/api';
 import { traverse } from '@atlaskit/adf-utils/traverse';
+import { getPageContent } from './lib/confluence';
+import { Config } from './lib/config';
 
-const BitbucketConfig = () => {
-  return (
-    <MacroConfig>
-      <TextField name="url" label="Bitbucket file URL" />
-    </MacroConfig>
-  );
-};
-
-export const bitbucket = render(<BitbucketConfig />);
-
-const ConfluenceConfig = () => {
+const DiagramConfig = () => {
   const [diagrams, setDiagrams] = useState<string[]>([]);
 
   const context = useProductContext();
-  const config = useConfig() as { diagram?: string } | undefined;
+  const config = useConfig() as Config | undefined;
 
   useEffect(async () => {
     const isEditing = true;
 
-    const pageResponse = await api
-      .asUser()
-      .requestConfluence(
-        route`/wiki/api/v2/pages/${context.contentId!}?body-format=atlas_doc_format&get-draft=${isEditing.toString()}`,
-        {
-          headers: {
-            Accept: 'application/json',
-          },
-        }
-      );
-
-    const pageResponseBody = await pageResponse.json();
-    const adf = JSON.parse(pageResponseBody.body.atlas_doc_format.value);
-    console.log(adf.content);
+    const adf = await getPageContent(context.contentId!, isEditing);
 
     const diagrams: string[] = [];
     const titleRegexp = /title\s+(.+)\n/i;
@@ -88,4 +65,4 @@ const ConfluenceConfig = () => {
   );
 };
 
-export const confluence = render(<ConfluenceConfig />);
+export const run = render(<DiagramConfig />);

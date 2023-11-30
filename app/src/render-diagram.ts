@@ -1,7 +1,9 @@
 import { traverse } from '@atlaskit/adf-utils/traverse';
-import api, { isForgePlatformError, route } from '@forge/api';
+import { isForgePlatformError } from '@forge/api';
 import Resolver from '@forge/resolver';
 import { addErrorFormatter, formatError, isInternalError } from './lib/error';
+import { getPageContent } from './lib/confluence';
+import { Config } from './lib/config';
 
 const resolver = new Resolver();
 
@@ -11,11 +13,9 @@ addErrorFormatter(MissingDiagram, {
   code: 'DIAGRAM_IS_NOT_SELECTED',
 });
 
-type Config = { diagram?: string } | undefined;
-
 resolver.define('getFile', async (req) => {
   try {
-    const config = req.context.extension.config as Config;
+    const config = req.context.extension.config as Config | undefined;
 
     if (!config?.diagram) {
       throw new MissingDiagram('No diagram selected');
@@ -23,22 +23,10 @@ resolver.define('getFile', async (req) => {
 
     const isEditing = req.context.extension.isEditing as boolean;
 
-    const pageResponse = await api
-      .asUser()
-      .requestConfluence(
-        route`/wiki/api/v2/pages/${
-          req.context.extension.content.id
-        }?body-format=atlas_doc_format&get-draft=${isEditing.toString()}`,
-        {
-          headers: {
-            Accept: 'application/json',
-          },
-        }
-      );
-
-    const pageResponseBody = await pageResponse.json();
-    const adf = JSON.parse(pageResponseBody.body.atlas_doc_format.value);
-    console.log(adf.content);
+    const adf = await getPageContent(
+      req.context.extension.content.id,
+      isEditing
+    );
 
     let data = '';
 
