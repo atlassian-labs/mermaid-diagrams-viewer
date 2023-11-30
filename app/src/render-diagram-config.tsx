@@ -9,7 +9,7 @@ import ForgeUI, {
   useConfig,
 } from '@forge/ui';
 import { findCodeBlocks, getPageContent } from './lib/confluence';
-import { Config } from './lib/config';
+import { Config, CONFIG_FIELD } from './lib/config';
 
 const DiagramConfig = () => {
   const [codeBlocks, setCodeBlocks] = useState<string[]>([]);
@@ -28,12 +28,17 @@ const DiagramConfig = () => {
     <MacroConfig>
       <Select
         label="Select codeblock with mermaid diagram to render"
-        name="index"
+        name={CONFIG_FIELD}
       >
         {codeBlocks.map((codeBlock, i) => {
+          const trimmedCode =
+            codeBlock.length > 35
+              ? `${codeBlock.substring(0, 35)}...`
+              : codeBlock;
+
           return (
             <Option
-              label={`${i + 1} - ${codeBlock.substring(0, 35)}...`}
+              label={`${i + 1} - ${trimmedCode}`}
               value={i}
               defaultSelected={config?.index === i}
             />

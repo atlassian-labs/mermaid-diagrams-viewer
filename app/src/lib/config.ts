@@ -1,1 +1,2 @@
-export type Config = { index?: number };
+export const CONFIG_FIELD = 'index';
+export type Config = { [CONFIG_FIELD]?: number };
