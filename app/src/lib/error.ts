@@ -1,5 +1,8 @@
 export class FutureError extends Error {
-  constructor(message: string, public options?: { cause: Error }) {
+  constructor(
+    message: string,
+    public options?: { cause: Error },
+  ) {
     super(message);
   }
 }
@@ -25,7 +28,7 @@ const errorMappings: Map<ErrorClass<any>, ErrorFormatter<any>> = new Map();
 
 export function addErrorFormatter<From>(
   from: ErrorClass<From>,
-  to: ErrorFormatter<From>
+  to: ErrorFormatter<From>,
 ) {
   if (errorMappings.has(from)) {
     throw new Error(`Error ${from.name} is already mapped`);
@@ -35,7 +38,7 @@ export function addErrorFormatter<From>(
 }
 
 function getErrorFormatter<Class>(
-  error: Error
+  error: Error,
 ): ErrorFormatter<Class> | undefined {
   const errorClass = error.constructor as ErrorClass<Class>;
   return errorMappings.get(errorClass);

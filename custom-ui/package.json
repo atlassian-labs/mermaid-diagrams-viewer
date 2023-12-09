@@ -13,7 +13,7 @@
     "@atlaskit/css-reset": "^6.0.1",
     "@atlaskit/icon": "^21.11.5",
     "@atlaskit/spinner": "^15.3.4",
-    "@forge/bridge": "^2.5.1",
+    "@forge/bridge": "^3.1.0",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.13.0",
     "@types/react": "^18.0.28",

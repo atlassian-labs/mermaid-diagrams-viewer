@@ -11,7 +11,7 @@ export async function getPageContent(pageId: string, isEditing: boolean) {
         headers: {
           Accept: 'application/json',
         },
-      }
+      },
     );
 
   const pageResponseBody = await pageResponse.json();
@@ -39,7 +39,7 @@ export function findCodeBlocks(adf: any) {
 export function findClosestCodeBlock(
   adf: any,
   localId: string,
-  moduleKey: string
+  moduleKey: string,
 ) {
   const extensions: string[] = [];
   const codeBlocks: string[] = [];

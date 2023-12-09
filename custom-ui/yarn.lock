@@ -1404,12 +1404,12 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@forge/bridge@^2.5.1":
-  version "2.5.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-2.5.1.tgz#c1bb182b39b6cfbb5abacd8354d748b72c546432"
-  integrity sha512-v0DMslmd472H/8Sg1cFyIgi8yuzQAJw25rdaC1kqkEN6PLEke3vBESdHyeXTepJJjg4pOZ5l7ZRJ+kqV/QEBHA==
+"@forge/bridge@^3.1.0":
+  version "3.1.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-3.1.0.tgz#92bce6a6d8592e16c552c97f4bf7dd26e14a8e41"
+  integrity sha512-zoAeEY49ktMeQdYKSogvrXQ1u44sbYFiLdg+aEwaLY/U+vMErxfIMzg3Fd0Z7cymyQEqyy7Z8yHsd6UpLnCYVQ==
   dependencies:
-    "@types/history" "^4.7.8"
+    "@types/history" "^4.7.11"
 
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
@@ -2267,7 +2267,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/history@^4.7.8":
+"@types/history@^4.7.11":
   version "4.7.11"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@types/history/-/history-4.7.11.tgz#56588b17ae8f50c53983a524fc3cc47437969d64"
   integrity sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==

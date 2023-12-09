@@ -1,0 +1,25 @@
+image: node:20
+
+pipelines:
+  default:
+    - parallel:
+        - step:
+            name: Build forge app
+            caches:
+              - node
+            script:
+              - pipe: atlassian/artifactory-sidekick:v1
+              - source .artifactory/activate.sh
+              - cd app
+              - yarn install
+              - yarn build
+        - step:
+            name: Build custom UI app
+            caches:
+              - node
+            script:
+              - pipe: atlassian/artifactory-sidekick:v1
+              - source .artifactory/activate.sh
+              - cd custom-ui
+              - yarn install
+              - yarn build
