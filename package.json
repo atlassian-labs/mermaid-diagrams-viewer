@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "workspaces": ["app", "custom-ui", "shared"],
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Daniel Hreben",
+    "email": "dhreben@atlassian.com"
+  },
+  "engines": {
+    "node": "18"
+  }
+}

@@ -1,20 +1,18 @@
 app:
   id: ari:cloud:ecosystem::app/23392b90-4271-4239-98ca-a3e96c663cbb
+  runtime:
+    name: nodejs18.x
 
 modules:
   macro:
     - key: mermaid-diagram
       resource: custom-ui
-      resolver:
-        function: render-diagram
       title: Mermaid diagram
       description: Render a Mermaid diagram from a code block on a page
       config:
         function: render-diagram-config
 
   function:
-    - key: render-diagram
-      handler: render-diagram.run
     - key: render-diagram-config
       handler: render-diagram-config.run
 

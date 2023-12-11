@@ -9,10 +9,6 @@ export const Diagram: React.FunctionComponent<{
   code?: string;
   onError: CallableFunction;
 }> = ({ code, onError }) => {
-  if (!code) {
-    return null;
-  }
-
   const [size, setSize] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -30,18 +26,24 @@ export const Diagram: React.FunctionComponent<{
     };
 
     window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  }, [size.height, size.width]);
 
   const svg = useMemo(() => {
     try {
+      if (!code) {
+        return '';
+      }
+
       const newSvg = mermaid.mermaidAPI.render('diagram' + Date.now(), code);
       return newSvg;
     } catch (error) {
       onError(error);
       return '';
     }
-  }, [code, size]);
+  }, [code, onError]);
 
   return (
     <TransformWrapper>

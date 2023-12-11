@@ -1,0 +1,11 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "private": true,
+  "directories": {
+    "lib": "./src"
+  },
+  "dependencies": {
+    "@atlaskit/adf-utils": "^19.0.13"
+  }
+}

@@ -1,30 +1,13 @@
 import { ADFEntity } from '@atlaskit/adf-utils/types';
 import { traverse } from '@atlaskit/adf-utils/traverse';
-import api, { route } from '@forge/api';
 
-export async function getPageContent(pageId: string, isEditing: boolean) {
-  const pageResponse = await api
-    .asUser()
-    .requestConfluence(
-      route`/wiki/api/v2/pages/${pageId}?body-format=atlas_doc_format&get-draft=${isEditing.toString()}`,
-      {
-        headers: {
-          Accept: 'application/json',
-        },
-      },
-    );
-
-  const pageResponseBody = await pageResponse.json();
-  const adf = JSON.parse(pageResponseBody.body.atlas_doc_format.value);
-
-  return adf;
-}
+export type { ADFEntity } from '@atlaskit/adf-utils/types';
 
 function getTextFromCodeBlock(node: ADFEntity) {
   return node.content?.[0]?.text?.trim() || '';
 }
 
-export function findCodeBlocks(adf: any) {
+export function findCodeBlocks(adf: ADFEntity) {
   const codeBlocks: string[] = [];
 
   traverse(adf, {
@@ -37,7 +20,7 @@ export function findCodeBlocks(adf: any) {
 }
 
 export function findClosestCodeBlock(
-  adf: any,
+  adf: ADFEntity,
   localId: string,
   moduleKey: string,
 ) {

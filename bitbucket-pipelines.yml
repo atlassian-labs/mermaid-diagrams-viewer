@@ -1,25 +1,111 @@
-image: node:20
+image: node:18
 
 pipelines:
-  default:
-    - parallel:
-        - step:
-            name: Build forge app
-            caches:
-              - node
-            script:
-              - pipe: atlassian/artifactory-sidekick:v1
-              - source .artifactory/activate.sh
-              - cd app
-              - yarn install
-              - yarn build
-        - step:
-            name: Build custom UI app
-            caches:
-              - node
-            script:
-              - pipe: atlassian/artifactory-sidekick:v1
-              - source .artifactory/activate.sh
-              - cd custom-ui
-              - yarn install
-              - yarn build
+  definitions:
+    steps:
+      - step: &build-forge-app
+          name: Build forge app
+          caches:
+            - node
+          script:
+            - pipe: atlassian/artifactory-sidekick:v1
+            - source .artifactory/activate.sh
+            - yarn install --frozen-lockfile
+            - cd app
+            - yarn build
+            - yarn lint
+            # - yarn test
+      - step: &build-custom-ui
+          name: Build custom UI app
+          caches:
+            - node
+          script:
+            - pipe: atlassian/artifactory-sidekick:v1
+            - source .artifactory/activate.sh
+            - yarn install --frozen-lockfile
+            - cd custom-ui
+            - yarn build
+            - yarn lint
+            # - yarn test
+          artifacts: # defining the artifacts to be passed to each future step.
+            - app/build/**
+      - step: &lint-forge-app
+          name: Forge lint
+          description: Run forge lint and fail if warnings are found
+          caches:
+            - node
+          script:
+            - npm install --global @forge/cli
+            - forge settings set usage-analytics true
+            - pipe: atlassian/artifactory-sidekick:v1
+            - source .artifactory/activate.sh
+            - yarn install --frozen-lockfile
+            - cd app
+            - |
+              output=$(forge lint 2>&1)
+
+              echo "$output"
+
+              if echo "$output" | grep -iq "Warning:"; then
+                echo ""
+                echo "⚠️ Found warnings, forcing build failure"
+                exit 1
+              fi
+      - step: &deploy-to-development
+          name: Deploy to Development
+          trigger: manual
+          deployment: Development
+          caches:
+            - node
+          script:
+            - npm install -g @forge/cli
+            - forge settings set usage-analytics true
+            - pipe: atlassian/artifactory-sidekick:v1
+            - source .artifactory/activate.sh
+            - yarn install --frozen-lockfile
+            - cd app
+            - forge deploy
+            - forge install --upgrade --site dhreben2.atlassian.net --product confluence --non-interactive --environment development
+
+  pull-requests:
+    '**':
+      - parallel:
+          - step: *build-forge-app
+          - step: *build-custom-ui
+      - step: *lint-forge-app
+      - step: *deploy-to-development
+
+  branches:
+    main:
+      - parallel:
+          - step: *build-forge-app
+          - step: *build-custom-ui
+      - step: *lint-forge-app
+      - step:
+          name: Deploy to Staging
+          deployment: Staging
+          caches:
+            - node
+          script:
+            - npm install -g @forge/cli
+            - forge settings set usage-analytics true
+            - pipe: atlassian/artifactory-sidekick:v1
+            - source .artifactory/activate.sh
+            - yarn install --frozen-lockfile
+            - cd app
+            - forge deploy -e staging
+            - forge install --upgrade --site dhreben2.atlassian.net --product confluence --non-interactive -e staging
+      - step:
+          name: Deploy to Production
+          deployment: Production
+          trigger: manual
+          caches:
+            - node
+          script:
+            - npm install -g @forge/cli
+            - forge settings set usage-analytics true
+            - pipe: atlassian/artifactory-sidekick:v1
+            - source .artifactory/activate.sh
+            - yarn install --frozen-lockfile
+            - cd app
+            - forge deploy -e production

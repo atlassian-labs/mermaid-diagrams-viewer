@@ -1,15 +1,7 @@
 {
-  "name": "diagrams-viewer",
-  "version": "0.1.8",
+  "name": "app",
+  "version": "1.0.0",
   "private": true,
-  "license": "UNLICENSED",
-  "author": {
-    "name": "Daniel Hreben",
-    "email": "dhreben@atlassian.com"
-  },
-  "engines": {
-    "node": "20"
-  },
   "scripts": {
     "build": "tsc",
     "validate": "tsc --noEmit --project ./tsconfig.json",
@@ -29,9 +21,8 @@
     "typescript": "^5.3.2"
   },
   "dependencies": {
-    "@atlaskit/adf-utils": "^19.0.13",
     "@forge/api": "^2.21.0",
-    "@forge/resolver": "^1.5.23",
-    "@forge/ui": "1.10.0"
+    "@forge/ui": "1.10.0",
+    "shared": "1.0.0"
   }
 }

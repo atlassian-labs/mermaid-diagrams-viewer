@@ -39,14 +39,15 @@ const Loading: React.FunctionComponent<{ loading?: boolean }> = (props) => {
 };
 
 function App() {
-  const [file, setFile] = useState<string | undefined>();
+  const [code, setCode] = useState<string | undefined>();
 
   useEffect(() => {
     getCode()
-      .then(setFile)
+      .then(setCode)
       .catch((error) => {
         if (error instanceof ServerError) {
-          return setError(error);
+          setError(error);
+          return;
         }
         throw error;
       });
@@ -54,14 +55,14 @@ function App() {
 
   const [error, setError] = useState<ServerError | undefined>();
 
-  const onError = (error: any) => {
+  const onError = (error: ServerError) => {
     setError(error);
   };
 
   return (
     <div style={{ minHeight: '150px' }}>
-      <Loading loading={!file && !error} />
-      <Diagram code={file} onError={onError} />
+      <Loading loading={!code && !error} />
+      <Diagram code={code} onError={onError} />
       <ErrorMessage error={error} />
     </div>
   );

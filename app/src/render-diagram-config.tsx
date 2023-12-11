@@ -8,8 +8,25 @@ import ForgeUI, {
   Option,
   useConfig,
 } from '@forge/ui';
-import { findCodeBlocks, getPageContent } from './lib/confluence';
-import { Config, CONFIG_FIELD } from './lib/config';
+import api, { route } from '@forge/api';
+import { findCodeBlocks } from 'shared/src/confluence';
+import { Config, CONFIG_FIELD } from 'shared/src/config';
+
+async function getPageContent(pageId: string, isEditing: boolean) {
+  const pageResponse = await api
+    .asUser()
+    .requestConfluence(
+      route`/wiki/api/v2/pages/${pageId}?body-format=atlas_doc_format&get-draft=${isEditing.toString()}`,
+      {
+        headers: {
+          Accept: 'application/json',
+        },
+      },
+    );
+
+  const pageResponseBody = await pageResponse.json();
+  return JSON.parse(pageResponseBody.body.atlas_doc_format.value);
+}
 
 const DiagramConfig = () => {
   const [codeBlocks, setCodeBlocks] = useState<string[]>([]);

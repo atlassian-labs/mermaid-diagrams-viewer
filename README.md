@@ -1,19 +1,18 @@
 # Diagrams Viewer
-Renders mermaid diagrams from files hosted at Bitbucket as SVGs in Confluence
-# Development
-It's a forge app with custom ui
-### Building custom-ui part
-```sh
-cd custom-ui
-yarn
-yarn build
-```
 
-### Building the rest of the app
-```sh
-cd custom-ui
-yarn
-# Generated js files actually will not be used by forge CLI, but helps ensuring correctness
-yarn build
-```
+Forge app which renders mermaid diagrams from code block at confluence page.
+See [Marketplace listing](https://marketplace.atlassian.com/apps/1232887/mermaid-diagrams-viewer?tab=overview&hosting=cloud) for details.
 
+## Development
+
+It's a forge app with custom ui. Yarn workspaces used to manage dependencies and make `shared` code available for both custom ui and forge parts.
+
+```bash
+yarn # install dependencies
+
+cd custom-ui
+yarn build # generate static files
+
+cd app
+yarn deploy
+```
