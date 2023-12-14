@@ -49,6 +49,16 @@ function App() {
           setError(error);
           return;
         }
+
+        // eslint-disable-next-line no-console
+        console.error(error);
+
+        setError(
+          new ServerError(
+            'Oops! Something went wrong! Please refresh the page.',
+            'UNKNOWN_ERROR',
+          ),
+        );
         throw error;
       });
   }, []);

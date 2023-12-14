@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020
+  },
+  "plugins": [
+    "react-hooks"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/strict-type-checked",
+    "plugin:react-hooks/recommended",
+    "@atlassian/eslint-config-xen"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "react-hooks/rules-of-hooks": "error"
+  }
+}

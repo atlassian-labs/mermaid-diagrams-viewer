@@ -20,9 +20,8 @@ export const Diagram: React.FunctionComponent<{
         height: window.innerHeight,
         width: window.innerWidth,
       };
-      if (newSize.height !== size.height || newSize.width !== size.width) {
-        setSize(newSize);
-      }
+
+      setSize(newSize);
     };
 
     window.addEventListener('resize', onResize);
@@ -32,11 +31,11 @@ export const Diagram: React.FunctionComponent<{
   }, [size.height, size.width]);
 
   const svg = useMemo(() => {
-    try {
-      if (!code) {
-        return '';
-      }
+    if (!code) {
+      return '';
+    }
 
+    try {
       const newSvg = mermaid.mermaidAPI.render('diagram' + Date.now(), code);
       return newSvg;
     } catch (error) {
@@ -48,8 +47,9 @@ export const Diagram: React.FunctionComponent<{
   return (
     <TransformWrapper>
       <TransformComponent
-        wrapperStyle={{ width: 'auto' }}
-        contentStyle={{ width: 'auto' }}
+        contentStyle={{
+          width: size.width,
+        }}
       >
         <SVG src={svg} />
       </TransformComponent>

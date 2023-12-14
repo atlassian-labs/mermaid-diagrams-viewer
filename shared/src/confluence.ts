@@ -3,6 +3,10 @@ import { traverse } from '@atlaskit/adf-utils/traverse';
 
 export type { ADFEntity } from '@atlaskit/adf-utils/types';
 
+export interface PageResponseBody {
+  body: { atlas_doc_format: { value: string } };
+}
+
 function getTextFromCodeBlock(node: ADFEntity) {
   return node.content?.[0]?.text?.trim() || '';
 }
@@ -19,21 +23,30 @@ export function findCodeBlocks(adf: ADFEntity) {
   return codeBlocks;
 }
 
-export function findClosestCodeBlock(
-  adf: ADFEntity,
-  localId: string,
-  moduleKey: string,
-) {
+type Attrs = {
+  extensionKey?: string;
+  parameters?: {
+    localId?: string;
+  };
+};
+
+export function autoMapMacroToCodeBlock(adf: ADFEntity, moduleKey: string) {
   const extensions: string[] = [];
   const codeBlocks: string[] = [];
 
   traverse(adf, {
-    extension: (node) => {
-      if (!node?.attrs?.extensionKey.endsWith(moduleKey)) {
+    extension: (node: { attrs?: Attrs }) => {
+      const extensionKey = node.attrs?.extensionKey;
+      if (!extensionKey?.endsWith(moduleKey)) {
         return;
       }
 
-      extensions.push(node?.attrs?.parameters.localId);
+      const localId = node.attrs?.parameters?.localId;
+      if (!localId) {
+        // TODO: throw error?
+        return;
+      }
+      extensions.push(localId);
     },
     codeBlock: (node) => {
       codeBlocks.push(getTextFromCodeBlock(node));
@@ -48,5 +61,5 @@ export function findClosestCodeBlock(
     map.set(extension, codeBlock);
   }
 
-  return map.get(localId);
+  return map;
 }

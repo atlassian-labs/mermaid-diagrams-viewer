@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "validate": "tsc --noEmit --project ./tsconfig.json",
-    "lint": "eslint src/**/* || npm run --silent hook-errors",
-    "hook-errors": "echo '\\x1b[31mThe build failed because a Forge UI hook is being used incorrectly. Forge UI hooks follow the same rules as React Hooks but have their own API definitions. See the Forge documentation for details on how to use Forge UI hooks.\n' && exit 1"
+    "lint": "eslint src/**/* --report-unused-disable-directives --max-warnings 0"
   },
   "devDependencies": {
     "@atlassian/eslint-config-xen": "^2.4.0",

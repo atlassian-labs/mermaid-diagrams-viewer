@@ -9,10 +9,17 @@ import ForgeUI, {
   useConfig,
 } from '@forge/ui';
 import api, { route } from '@forge/api';
-import { findCodeBlocks } from 'shared/src/confluence';
+import {
+  ADFEntity,
+  PageResponseBody,
+  findCodeBlocks,
+} from 'shared/src/confluence';
 import { Config, CONFIG_FIELD } from 'shared/src/config';
 
-async function getPageContent(pageId: string, isEditing: boolean) {
+async function getPageContent(
+  pageId: string,
+  isEditing: boolean,
+): Promise<ADFEntity> {
   const pageResponse = await api
     .asUser()
     .requestConfluence(
@@ -24,22 +31,31 @@ async function getPageContent(pageId: string, isEditing: boolean) {
       },
     );
 
-  const pageResponseBody = await pageResponse.json();
-  return JSON.parse(pageResponseBody.body.atlas_doc_format.value);
+  const pageResponseBody = (await pageResponse.json()) as PageResponseBody;
+  const adf = JSON.parse(
+    pageResponseBody.body.atlas_doc_format.value,
+  ) as ADFEntity;
+
+  return adf;
 }
 
 const DiagramConfig = () => {
   const [codeBlocks, setCodeBlocks] = useState<string[]>([]);
 
-  const context = useProductContext();
+  const { contentId } = useProductContext();
   const config = useConfig() as Config | undefined;
 
+  if (!contentId) {
+    throw new Error('Content ID is not defined');
+  }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     const isEditing = true;
 
-    const adf = await getPageContent(context.contentId!, isEditing);
+    const adf = await getPageContent(contentId, isEditing);
     setCodeBlocks(findCodeBlocks(adf));
-  }, []);
+  }, [contentId]);
 
   return (
     <MacroConfig>

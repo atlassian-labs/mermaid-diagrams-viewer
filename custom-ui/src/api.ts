@@ -2,7 +2,8 @@ import { requestConfluence, view } from '@forge/bridge';
 import { Config } from 'shared/src/config';
 import {
   ADFEntity,
-  findClosestCodeBlock,
+  PageResponseBody,
+  autoMapMacroToCodeBlock,
   findCodeBlocks,
 } from 'shared/src/confluence';
 export class ServerError extends Error {
@@ -18,10 +19,6 @@ interface Extension {
   isEditing: boolean;
   config: Config | undefined;
   content: { id: string };
-}
-
-interface PageResponseBody {
-  body: { atlas_doc_format: { value: string } };
 }
 
 async function getPageContent(
@@ -45,16 +42,25 @@ async function getPageContent(
   return adf;
 }
 
-export async function getCode() {
+export async function getCode(_retryCount: number = 0) {
   const context = await view.getContext();
   const extension = context.extension as Extension;
 
   const index = getIndexFromConfig(extension.config);
-
   const adf = await getPageContent(extension.content.id, extension.isEditing);
 
   if (index === undefined) {
-    const code = findClosestCodeBlock(adf, context.localId, context.moduleKey);
+    const macroToCodeBlockMap = autoMapMacroToCodeBlock(adf, context.moduleKey);
+
+    if (!macroToCodeBlockMap.has(context.localId) && _retryCount < 10) {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      return getCode(_retryCount + 1);
+    }
+
+    const code = macroToCodeBlockMap.get(context.localId);
+    if (code) {
+      return code;
+    }
 
     if (code === undefined) {
       throw new ServerError(
