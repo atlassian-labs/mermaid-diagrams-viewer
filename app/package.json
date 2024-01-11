@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@forge/api": "^2.21.0",
-    "@forge/ui": "1.10.2",
+    "@forge/ui": "1.10.3",
     "shared": "1.0.0"
   }
 }

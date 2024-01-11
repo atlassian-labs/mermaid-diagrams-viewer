@@ -804,14 +804,14 @@
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/storage/-/storage-1.5.13.tgz#e94551f7cc34d66e850254ad8e126b7b1846a96a"
   integrity sha512-V9BSggOxeu/r0LMHLwLTndvTkxwn57UAF4Q6zQ+huJ0Q6UGKjuo7eBtw4JTH4bQFPrAqj1Kh64ebtK6F3naN+w==
 
-"@forge/ui@1.10.2":
-  version "1.10.2"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/ui/-/ui-1.10.2.tgz#62b2a0dfce1d4a0958e8813e36f3625cb87630ba"
-  integrity sha512-Ey0nuqyKWm8EfEvwE+GISJPI8+HqZOBiSnimXen0JlCRGt0SmGV013vnzPzg6hIMjwe8WHyn1XDzpgzzbctrPA==
+"@forge/ui@1.10.3":
+  version "1.10.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/ui/-/ui-1.10.3.tgz#5f3dc51df5666c7d55edf90d7ef1f51ccdaf458f"
+  integrity sha512-pH7TKE0M9U/bbEVGOhKVTasAulNBiKEDjhPTK7GK9Q3XPY9xLSbzwoH7hQtnbibypfpFjmHBOG7ALXsvDuBozw==
   dependencies:
     "@types/jest" "^29.5.11"
     "@types/node" "14.18.63"
-    "@types/react" "^18.2.39"
+    "@types/react" "^18.2.46"
     fast-json-stable-stringify "^2.1.0"
     sha.js "^2.4.11"
     tslib "^2.6.2"
@@ -1435,7 +1435,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^18.2.37", "@types/react@^18.2.39":
+"@types/react@*", "@types/react@^18.2.37", "@types/react@^18.2.39", "@types/react@^18.2.46":
   version "18.2.47"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@types/react/-/react-18.2.47.tgz#85074b27ab563df01fbc3f68dc64bf7050b0af40"
   integrity sha512-xquNkkOirwyCgoClNk85BjP+aqnIS+ckAJ8i37gAbDs14jfW/J23f2GItAf33oiUPQnqNMALiFeoM9Y5mbjpVQ==
