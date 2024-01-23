@@ -5621,10 +5621,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vite-plugin-singlefile@^0.13.5:
-  version "0.13.5"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/vite-plugin-singlefile/-/vite-plugin-singlefile-0.13.5.tgz#9465dbb0b06afb2a73600a50fcce4b51c8d10999"
-  integrity sha512-y/aRGh8qHmw2f1IhaI/C6PJAaov47ESYDvUv1am1YHMhpY+19B5k5Odp8P+tgs+zhfvak6QB1ykrALQErEAo7g==
+vite-plugin-singlefile@^1.0.0:
+  version "1.0.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/vite-plugin-singlefile/-/vite-plugin-singlefile-1.0.0.tgz#e69032ff6539f691b29ca80b06293c609a2158dc"
+  integrity sha512-iVAxl0t7gndQrznI4kI14hqAGxhVL7FQndeTdvTIH5/CbwpR2asgD3XSTsd7iWC83YTCmwAmsHIQvKdIdnHu7w==
   dependencies:
     micromatch "^4.0.5"
 
