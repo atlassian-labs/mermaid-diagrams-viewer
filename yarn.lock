@@ -4931,17 +4931,17 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-from-dom@^0.6.2:
-  version "0.6.2"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/react-from-dom/-/react-from-dom-0.6.2.tgz#9da903a508c91c013b55afcd59348b8b0a39bdb4"
-  integrity sha512-qvWWTL/4xw4k/Dywd41RBpLQUSq97csuv15qrxN+izNeLYlD9wn5W8LspbfYe5CWbaSdkZ72BsaYBPQf2x4VbQ==
+react-from-dom@^0.7.2:
+  version "0.7.2"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/react-from-dom/-/react-from-dom-0.7.2.tgz#791dcd2407ece4e943f954ce48986583a6286919"
+  integrity sha512-mu7bTd7euJ5SUpfrtTIQMt9dMXNT5WUW3dWOzOQKI2xgLbtrPKmGH4/vJO72FY9BUYu55Rz3/OY/rADD65632Q==
 
 react-inlinesvg@^4.0.0:
-  version "4.1.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/react-inlinesvg/-/react-inlinesvg-4.1.0.tgz#5afc978f8a43e9a94aabb1fa4a5cd21a18fbe14f"
-  integrity sha512-S7kSE6ldKVpumEYTNXmCs4pAKoDzklP6TklI8oBx23fw8/+VBwO5X0M7/Ii0weieO1DqElUJg5EI8cq7zo5oPg==
+  version "4.1.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/react-inlinesvg/-/react-inlinesvg-4.1.3.tgz#671f083fd78934ec58afa5128460252dcae61177"
+  integrity sha512-p1+wkr1UQZyLw/3bdpnHO3v3tMNVWyxWnAEY6ML/Ql9ldDYTBTy6HqAyNl7u3au925XPffLMiXKnQrqZeJAldw==
   dependencies:
-    react-from-dom "^0.6.2"
+    react-from-dom "^0.7.2"
 
 react-is@^16.7.0:
   version "16.13.1"
