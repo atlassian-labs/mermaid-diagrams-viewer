@@ -4959,9 +4959,9 @@ react-refresh@^0.14.0:
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
 react-zoom-pan-pinch@^3.0.0:
-  version "3.3.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.3.0.tgz#873648438c5244d89fcc2127614046928429cbe0"
-  integrity sha512-vy1h8aenDzXye+HRqANZaSA8IPHoqOiuDPFBkswoyPUH8uMfsmbeH6gFI4r4BhEJa0xIlcA+FbvhidRWKGUrOg==
+  version "3.4.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.4.3.tgz#10027dcf8ca997783414f43f84413fc00458d76b"
+  integrity sha512-x5MFlfAx2D6NTpZu8OISqc2nYn4p+YEaM1p21w7S/VE1wbVzK8vRzTo9Bj1ydufa649MuP7JBRM3vvj1RftFZw==
 
 react@^18.2.0:
   version "18.2.0"
