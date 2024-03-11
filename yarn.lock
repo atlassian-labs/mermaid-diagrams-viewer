@@ -127,11 +127,11 @@
     prosemirror-view "1.31.6"
 
 "@atlaskit/icon@^22.0.0":
-  version "22.0.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/icon/-/icon-22.0.0.tgz#f267fe623827eb4ddf3b1632756049d04d19a8b7"
-  integrity sha512-90sfTQ7O6vehzNY8Qm2SCufwmQQ3A5Pw40yHBEHD5XeiJ0BaGY8fmzxx16JcqLxiUfyDlxml3rsKD++XzksOHg==
+  version "22.1.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/icon/-/icon-22.1.1.tgz#6efd7489257e84e89eb65d4a4dd696c69b1fe84c"
+  integrity sha512-Au2xcpGAF8BPSjsOetc665co3hY8gPW+NuBB0FdMKqi4+riCi5/JE6hLuEF79cB8U24CKKt+ZgIjy8kg8DNvug==
   dependencies:
-    "@atlaskit/tokens" "^1.28.0"
+    "@atlaskit/tokens" "^1.38.0"
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
 
@@ -203,7 +203,7 @@
     "@atlaskit/tokens" "^1.25.0"
     "@babel/runtime" "^7.0.0"
 
-"@atlaskit/tokens@^1.25.0", "@atlaskit/tokens@^1.28.0", "@atlaskit/tokens@^1.29.0":
+"@atlaskit/tokens@^1.25.0", "@atlaskit/tokens@^1.29.0":
   version "1.29.2"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-1.29.2.tgz#0f909d5315c002bcda6349039d11c544c0c23351"
   integrity sha512-gxJSfvpDPmVDPt76swB1GFPhrAlKcKnmKtyP/I18amBbvvW3dmcPWJn94f1e78Aax363ozfcmGbsYj/NK3bZ6A==
@@ -227,7 +227,7 @@
     "@babel/types" "^7.20.0"
     bind-event-listener "^2.1.1"
 
-"@atlaskit/tokens@^1.32.0", "@atlaskit/tokens@^1.39.0":
+"@atlaskit/tokens@^1.32.0", "@atlaskit/tokens@^1.38.0", "@atlaskit/tokens@^1.39.0":
   version "1.39.1"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-1.39.1.tgz#67658be23609ec1d4c5482c1c953094945dcbff5"
   integrity sha512-sU5HpX1ys2MsDfJdTSrJFI24IcKcuxJEPuu9GLyyfXE5NV/H3SgKHqzLhTaZbWfqXuhtxPP+qkUmaWkdaRUHTQ==
