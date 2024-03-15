@@ -29,12 +29,13 @@
     memoize-one "^6.0.0"
 
 "@atlaskit/adf-utils@^19.0.13":
-  version "19.0.21"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/adf-utils/-/adf-utils-19.0.21.tgz#275327bf0ed7d4da6c2b67017bdd6699f72b0519"
-  integrity sha512-g4R4dQTpQIQlVcCsAHK3gwkDS4K8GCmMSr47Ly5PYdlodouJzlbNjBxS25ppv1N/144aAqBZy8UGMLuD8wZutg==
+  version "19.0.22"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/adf-utils/-/adf-utils-19.0.22.tgz#48b85b50a963f3475e99d4ea0a2a0658f993e320"
+  integrity sha512-ZPlZbn1HoqdEsQE/gvejGAyk/fv8VB8r89+9sXX0Yt0BmK45kGMdkCHyA+h2sWmJVMkVPy9A5suZAOSKYRz5Kg==
   dependencies:
     "@atlaskit/adf-schema" "^35.5.2"
     "@atlaskit/codemod-utils" "^4.2.0"
+    "@atlaskit/platform-feature-flags" "^0.2.0"
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/analytics-next-stable-react-context@1.0.1":
