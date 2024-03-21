@@ -19,6 +19,8 @@ modules:
 resources:
   - key: custom-ui
     path: build/custom-ui
+    tunnel:
+      port: 5173
 
 permissions:
   scopes:

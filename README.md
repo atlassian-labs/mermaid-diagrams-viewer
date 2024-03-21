@@ -10,6 +10,20 @@ Details:
 
 It's a forge app with custom ui. Yarn workspaces used to manage dependencies and make `shared` code available for both custom ui and forge parts.
 
+### Running locally
+
+```bash
+yarn # install dependencies
+
+cd custom-ui
+yarn dev # start vite dev server
+
+cd app
+forge tunnel # start forge funnel which will execute lambdas locally and proxy static files to vite dev server
+```
+
+### Deploying locally
+
 ```bash
 yarn # install dependencies
 
@@ -17,5 +31,5 @@ cd custom-ui
 yarn build # generate static files
 
 cd app
-yarn deploy
+forge deploy # deploy to dev environment
 ```

@@ -57,7 +57,7 @@ function useMermaidRenderSVG(code: string, colorMode: 'light' | 'dark') {
   const [error, setError] = useState<Error>();
 
   useEffect(() => {
-    mermaid.mermaidAPI.initialize({
+    mermaid.initialize({
       startOnLoad: false,
       theme: colorMode,
       darkMode: colorMode === 'dark',
@@ -74,10 +74,7 @@ function useMermaidRenderSVG(code: string, colorMode: 'light' | 'dark') {
       }
 
       try {
-        const { svg } = await mermaid.mermaidAPI.render(
-          'diagram' + Date.now(),
-          code,
-        );
+        const { svg } = await mermaid.render('diagram' + Date.now(), code);
         setSvg(svg);
       } catch (error) {
         setError(error as Error);
