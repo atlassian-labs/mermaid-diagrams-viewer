@@ -3,7 +3,31 @@ import SVG from 'react-inlinesvg';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 // eslint-disable-next-line node/no-missing-import
 import mermaid from 'mermaid';
+import { Modal, view } from '@forge/bridge';
+import { Box, xcss } from '@atlaskit/primitives';
 import '@fortawesome/fontawesome-free/css/all.css';
+
+const modal = new Modal({
+  size: 'max',
+  context: {
+    modalOpen: true,
+  },
+});
+
+function openDialog() {
+  void modal.open();
+}
+
+const boxStyles = xcss({
+  borderStyle: 'solid',
+  borderRadius: 'border.radius',
+  borderWidth: 'border.width',
+  borderColor: 'color.border.disabled',
+
+  ':hover': {
+    borderColor: 'color.border',
+  },
+});
 
 export const Diagram: React.FunctionComponent<{
   code: string;
@@ -16,6 +40,18 @@ export const Diagram: React.FunctionComponent<{
   });
 
   const { svg, error } = useMermaidRenderSVG(code, colorMode);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  useEffect(() => {
+    const detectIfIsInTheDialog = async () => {
+      const context = await view.getContext();
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+      const modalIsOpen: boolean = context.extension.modal?.modalOpen;
+      setModalIsOpen(modalIsOpen);
+    };
+
+    void detectIfIsInTheDialog();
+  }, []);
 
   useEffect(() => {
     if (error) {
@@ -39,17 +75,41 @@ export const Diagram: React.FunctionComponent<{
     };
   }, [size.height, size.width]);
 
+  const styles = {
+    display: 'flex',
+    justifyContent: 'center',
+    width: size.width,
+  };
+
+  if (modalIsOpen) {
+    return (
+      <TransformWrapper>
+        {() => (
+          <>
+            <TransformComponent>
+              <SVG
+                src={svg}
+                style={{
+                  height: size.height * 0.95,
+                  width: size.width,
+                }}
+              />
+            </TransformComponent>
+          </>
+        )}
+      </TransformWrapper>
+    );
+  }
+
   return (
-    <TransformWrapper>
-      <TransformComponent
-        contentStyle={{
-          width: size.width,
-          justifyContent: 'center',
-        }}
-      >
-        <SVG src={svg} />
-      </TransformComponent>
-    </TransformWrapper>
+    <Box
+      padding="space.400"
+      backgroundColor="color.background.neutral.subtle"
+      xcss={boxStyles}
+      style={styles}
+    >
+      <SVG src={svg} onClick={openDialog} />
+    </Box>
   );
 };
 
