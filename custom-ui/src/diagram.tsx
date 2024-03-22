@@ -3,6 +3,7 @@ import SVG from 'react-inlinesvg';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 // eslint-disable-next-line node/no-missing-import
 import mermaid from 'mermaid';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 export const Diagram: React.FunctionComponent<{
   code: string;
