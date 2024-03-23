@@ -8,36 +8,9 @@ import ForgeUI, {
   Option,
   useConfig,
 } from '@forge/ui';
-import api, { route } from '@forge/api';
-import {
-  ADFEntity,
-  PageResponseBody,
-  findCodeBlocks,
-} from 'shared/src/confluence';
+import { findCodeBlocks } from 'shared/src/confluence';
 import { Config, CONFIG_FIELD } from 'shared/src/config';
-
-async function getPageContent(
-  pageId: string,
-  isEditing: boolean,
-): Promise<ADFEntity> {
-  const pageResponse = await api
-    .asUser()
-    .requestConfluence(
-      route`/wiki/api/v2/pages/${pageId}?body-format=atlas_doc_format&get-draft=${isEditing.toString()}`,
-      {
-        headers: {
-          Accept: 'application/json',
-        },
-      },
-    );
-
-  const pageResponseBody = (await pageResponse.json()) as PageResponseBody;
-  const adf = JSON.parse(
-    pageResponseBody.body.atlas_doc_format.value,
-  ) as ADFEntity;
-
-  return adf;
-}
+import { getPageContent } from './api';
 
 const DiagramConfig = () => {
   const [codeBlocks, setCodeBlocks] = useState<string[]>([]);
