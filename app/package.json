@@ -7,7 +7,7 @@
     "lint": "eslint src/**/* --report-unused-disable-directives --max-warnings 0"
   },
   "devDependencies": {
-    "@atlassian/eslint-config-xen": "^2.4.0",
+    "@atlassian/eslint-config-xen": "^3.0.0",
     "@types/node": "^20.10.1",
     "@types/react": "^18.2.39",
     "@typescript-eslint/parser": "^6.13.1",

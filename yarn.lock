@@ -279,14 +279,14 @@
     "@babel/types" "^7.20.0"
     bind-event-listener "^2.1.1"
 
-"@atlassian/eslint-config-xen@^2.4.0":
-  version "2.4.0"
-  resolved "https://packages.atlassian.com/api/npm/atlassian-npm/@atlassian/eslint-config-xen/-/@atlassian/eslint-config-xen-2.4.0.tgz#ab52402adc08f779594ccc3e0b7b0e9310679e6b"
-  integrity sha512-TOBXDZOeL0M7r6Bvf7B/byM0MCtsetpiXLoZq/oTuW8WINHbQzWfZLNcpvwJJOYvYqVSxs6JZe+l65Jg6T85gw==
+"@atlassian/eslint-config-xen@^3.0.0":
+  version "3.0.1"
+  resolved "https://packages.atlassian.com/api/npm/atlassian-npm/@atlassian/eslint-config-xen/-/@atlassian/eslint-config-xen-3.0.1.tgz#534c043cceb9ab376264942e23d452b96966d7e3"
+  integrity sha512-sT1vKIZ4QRMght8oUwl96aku+lvA6yJ35ARAFwmAiqrlVc+uvZQ/9rsLJMzBSbSVhHb/rgtVWkWMhwc5wZy1ag==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^6.9.0"
     "@typescript-eslint/parser" "^6.4.1"
-    eslint "^8.52.0"
+    eslint "^8.57.0"
     eslint-config-prettier "^8.5.0"
     eslint-plugin-filenames "^1.3.2"
     eslint-plugin-jest "^26.8.2"
@@ -3013,7 +3013,7 @@ eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4.1, eslint-visitor-keys@^3.4
   resolved "https://packages.atlassian.com/api/npm/npm-remote/eslint-visitor-keys/-/eslint-visitor-keys-3.4.3.tgz#0cd72fe8550e3c2eae156a96a4dddcd1c8ac5800"
   integrity sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag==
 
-eslint@^8.52.0, eslint@^8.53.0, eslint@^8.54.0:
+eslint@^8.53.0, eslint@^8.54.0, eslint@^8.57.0:
   version "8.57.0"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/eslint/-/eslint-8.57.0.tgz#c786a6fd0e0b68941aaf624596fb987089195668"
   integrity sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==
