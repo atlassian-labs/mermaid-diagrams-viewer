@@ -232,9 +232,9 @@
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/tokens@^1.31.0", "@atlaskit/tokens@^1.42.0", "@atlaskit/tokens@^1.43.0", "@atlaskit/tokens@^1.45.0":
-  version "1.45.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-1.45.1.tgz#5b2b4dbf1790aa87208be3227ef33b74a740209c"
-  integrity sha512-jEVGVFw142D22naeIxZFVQ0IBkynYLstGk5pjh8Yh21itXXHbP7Kx8LwguKJNCYVd59Rpt4uvNRx8EUR/tuNOg==
+  version "1.53.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-1.53.0.tgz#76f196a243b390baf1f639d25cab8485515670a3"
+  integrity sha512-gBQf8Mw5bp79/mSedYc4ifS/DyyBpbQKfr7JeT0+MBENyX1HBg58cviMEz+vxOTzkfwjV5SBMEhsUdJsRqiQXQ==
   dependencies:
     "@atlaskit/ds-lib" "^2.3.0"
     "@atlaskit/platform-feature-flags" "^0.2.0"
