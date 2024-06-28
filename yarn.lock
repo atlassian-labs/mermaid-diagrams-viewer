@@ -868,9 +868,9 @@
   integrity sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==
 
 "@forge/api@^3.0.0":
-  version "3.7.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-3.7.0.tgz#e52e440873e4040a43f151ad573325b127b94622"
-  integrity sha512-27NEYEllSlvl8og3CxWlbSPV++fJasF8o+VZzxNaUofwod36K1BlWFzRmhNrYfjyDzNOzfmyWQirZeXzrteFRQ==
+  version "3.7.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-3.7.1.tgz#1995ea4e9c9ac3efdf24555a8a9717433d71bc43"
+  integrity sha512-kKOUeQ6vuzpenAGWRRng2wJr0Y4d0dMIJBKzy4INJc6jno4f2Z8r9hy0vzw5DsEzJ/ZFGfcmD7scnM6jyhbv0Q==
   dependencies:
     "@forge/auth" "0.0.5"
     "@forge/egress" "1.2.13"
