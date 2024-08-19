@@ -4983,9 +4983,9 @@ react-uid@^2.2.0:
     tslib "^2.0.0"
 
 react-zoom-pan-pinch@^3.0.0:
-  version "3.4.4"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.4.4.tgz#5450b027dbf9f161773cde71b061423ff1109328"
-  integrity sha512-lGTu7D9lQpYEQ6sH+NSlLA7gicgKRW8j+D/4HO1AbSV2POvKRFzdWQ8eI0r3xmOsl4dYQcY+teV6MhULeg1xBw==
+  version "3.6.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.6.1.tgz#fb68b879b66f029f1f89986810fc2e0ac34fa48a"
+  integrity sha512-SdPqdk7QDSV7u/WulkFOi+cnza8rEZ0XX4ZpeH7vx3UZEg7DoyuAy3MCmm+BWv/idPQL2Oe73VoC0EhfCN+sZQ==
 
 react@^18.2.0:
   version "18.3.1"
