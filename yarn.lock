@@ -15,10 +15,10 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@atlaskit/adf-schema@^39.0.3":
-  version "39.0.3"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/adf-schema/-/adf-schema-39.0.3.tgz#dc133ba0ae4d03d5cb930929a708926363a23c8a"
-  integrity sha512-StsmVYK0GTYpGPrOXPe3GeOhsPf5VVa2sTwFEUmgEg5RBQwnUqkK6kTjYK9AyrhItTIWjhBJFyDKNjiA3cNmWA==
+"@atlaskit/adf-schema@^40.8.1":
+  version "40.8.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/adf-schema/-/adf-schema-40.8.1.tgz#7e2094ab97056ad67850ca1c1bfb09a1073c20f5"
+  integrity sha512-Kja0s97kmStt7hoJ9+Xsn9WVE+3/pkLiGzJy8F0df0VoR5X3L/K0S5fm3ZhOfk/U2ekpFK6nE/CR7nMPLdPQTQ==
   dependencies:
     "@atlaskit/editor-prosemirror" "*"
     "@atlaskit/platform-feature-flags" "^0.2.0"
@@ -28,11 +28,11 @@
     memoize-one "^6.0.0"
 
 "@atlaskit/adf-utils@^19.0.13":
-  version "19.4.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/adf-utils/-/adf-utils-19.4.1.tgz#e363b94e76ae6f76ae01b4edec6d34cff85d2c01"
-  integrity sha512-kuStZj/mpeRgsfz1YFrQjVTMSQNqqLpxejieHltcwK77NGb7Lb8fgXRykiAnNW1BFqGR1IVVJg3w2NqErAnCCg==
+  version "19.8.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/adf-utils/-/adf-utils-19.8.0.tgz#6ad9022dec1e503e5ad5a6947516de6af19acec3"
+  integrity sha512-opLsI+1xI6Oi0fQeGM8PjW+toFMc+UIals10wEqkkF9sFF3RZy/YIbtKUa2OVNroc07hJlaz/69s9HD9be273A==
   dependencies:
-    "@atlaskit/adf-schema" "^39.0.3"
+    "@atlaskit/adf-schema" "^40.8.1"
     "@atlaskit/codemod-utils" "^4.2.0"
     "@babel/runtime" "^7.0.0"
 
