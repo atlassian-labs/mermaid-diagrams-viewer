@@ -132,6 +132,16 @@
     "@babel/runtime" "^7.0.0"
     bind-event-listener "^3.0.0"
 
+"@atlaskit/ds-lib@^2.5.0":
+  version "2.5.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/ds-lib/-/ds-lib-2.5.0.tgz#c90404053e1f671231ede830fa203a70a414e1f7"
+  integrity sha512-HtTyNW2oNcOBhi92Y+QQ4pL7pCU6mTuKVbIUk7cwbxSVUL3XnaUT2hzODhHdDuzumw+DYo0B9z0IB4tZuAc6Iw==
+  dependencies:
+    "@atlaskit/platform-feature-flags" "^0.3.0"
+    "@babel/runtime" "^7.0.0"
+    bind-event-listener "^3.0.0"
+    react-uid "^2.2.0"
+
 "@atlaskit/editor-prosemirror@*":
   version "2.0.3"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/editor-prosemirror/-/editor-prosemirror-2.0.3.tgz#3719c6643564d6ea36213900536e4e1d436b43ff"
@@ -259,11 +269,11 @@
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/tokens@^1.31.0", "@atlaskit/tokens@^1.42.0", "@atlaskit/tokens@^1.43.0", "@atlaskit/tokens@^1.51.0", "@atlaskit/tokens@^1.53.0":
-  version "1.55.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-1.55.0.tgz#3df0fb38324c522f6298178d3b7dd20e489f9d83"
-  integrity sha512-h9pOIZezo1cP6doW1wtpo/NkUoEznUIHufOBvhLRdmwfGe/w9qlGeewvdF3o6Se4gsPO/Yn7WHy6Bhom+LdKgg==
+  version "1.59.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-1.59.0.tgz#cc485f7be5d529029c3c47c2a8bdcbf6fa356f9d"
+  integrity sha512-3kPo2c3RbZjuf4jBPR6zbIo5O24UvTn8+SEp0pP6jzzwpnGTFTaqpsMgcuxxqMH+w/5sKjZgDfnt3z0TKcnp/Q==
   dependencies:
-    "@atlaskit/ds-lib" "^2.3.0"
+    "@atlaskit/ds-lib" "^2.5.0"
     "@atlaskit/platform-feature-flags" "^0.3.0"
     "@babel/runtime" "^7.0.0"
     "@babel/traverse" "^7.23.2"
@@ -277,18 +287,6 @@
   dependencies:
     "@atlaskit/ds-lib" "^2.3.0"
     "@atlaskit/platform-feature-flags" "^0.2.0"
-    "@babel/runtime" "^7.0.0"
-    "@babel/traverse" "^7.23.2"
-    "@babel/types" "^7.20.0"
-    bind-event-listener "^3.0.0"
-
-"@atlaskit/tokens@^1.58.0":
-  version "1.58.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-1.58.0.tgz#6af7c95c0504c585fcb68396d0a7b5af6a6c8f5b"
-  integrity sha512-bDp5/I2+NMlMPb5EwBvfamBWiHgKWl/Zbo2hocIhGDt7WB0enyeG9/VYd231T+5zMhGX1oQ+BWkAHN+K7aKGgw==
-  dependencies:
-    "@atlaskit/ds-lib" "^2.4.0"
-    "@atlaskit/platform-feature-flags" "^0.3.0"
     "@babel/runtime" "^7.0.0"
     "@babel/traverse" "^7.23.2"
     "@babel/types" "^7.20.0"
