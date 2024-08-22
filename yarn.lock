@@ -3081,9 +3081,9 @@ eslint-plugin-react-hooks@^4.2.0, eslint-plugin-react-hooks@^4.6.0:
   integrity sha512-QzliNJq4GinDBcD8gPB5v0wh6g8q3SUi6EFF0x8N/BL9PoVs0atuGc47ozMRyOWAKdwaZ5OnbOEa3WR+dSGKuQ==
 
 eslint-plugin-react-refresh@^0.4.4:
-  version "0.4.9"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/eslint-plugin-react-refresh/-/eslint-plugin-react-refresh-0.4.9.tgz#bf870372b353b12e1e6fb7fc41b282d9cbc8d93d"
-  integrity sha512-QK49YrBAo5CLNLseZ7sZgvgTy21E6NEw22eZqc4teZfH8pxV3yXc9XXOYfUI6JNpw7mfHNkAeWtBxrTyykB6HA==
+  version "0.4.10"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/eslint-plugin-react-refresh/-/eslint-plugin-react-refresh-0.4.10.tgz#1fb514897ee3bdc37ac34446fa5f02b1ce9c7d3f"
+  integrity sha512-I39s6G9We7ZxbCRxTTM5XX4KJV2cfWhFbHF4kTuL0ygdEVdQXtCNGqUQ43sBOCbTC/N6dEZXoQKFHr8gp1VHrQ==
 
 eslint-plugin-simple-import-sort@^7.0.0:
   version "7.0.0"
