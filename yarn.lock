@@ -191,12 +191,12 @@
     prosemirror-view "1.31.6"
 
 "@atlaskit/icon@^22.0.0":
-  version "22.24.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/icon/-/icon-22.24.1.tgz#cbd9a1adfeb28d077d47029cf83fe8886d0936db"
-  integrity sha512-4Gw2xNsbVt+BTsVFnDBPw1YDcebWYA1bSDW1snZvGQw/XCrG1bw3bWQZFWIhKN51hYhPajf+JdMxmCH+YVFe5A==
+  version "22.24.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/icon/-/icon-22.24.3.tgz#6e8993caec930b7dd43b540c52d7afeb83dce857"
+  integrity sha512-B3ZmrB4Qq9EdFruY5L2G1oKDqRst6xCabcoVJVN0zCB+esSGHM0AJVPB/+XEDHSOEYu17vRfc3cAVSOXY+w1Mg==
   dependencies:
     "@atlaskit/platform-feature-flags" "^0.3.0"
-    "@atlaskit/tokens" "^2.0.0"
+    "@atlaskit/tokens" "^2.2.0"
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
 
@@ -331,6 +331,18 @@
   integrity sha512-U8lAjJmAE6JVTuH7N3Dvb/O5iB0VsAktyxfKKM0XrsDfK3iB6LH+ug5EF9OwUdqyQTLkUhc0sqe7kFhgqfDotg==
   dependencies:
     "@atlaskit/ds-lib" "^3.0.0"
+    "@atlaskit/platform-feature-flags" "^0.3.0"
+    "@babel/runtime" "^7.0.0"
+    "@babel/traverse" "^7.23.2"
+    "@babel/types" "^7.20.0"
+    bind-event-listener "^3.0.0"
+
+"@atlaskit/tokens@^2.2.0":
+  version "2.2.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-2.2.0.tgz#e696eba9589ac38a43cb142ccd76b1f09649fbbd"
+  integrity sha512-MaK+MRzLbh9YjGAjzzYifYIjjqd3ZloW2+p9eBskQGkGWleRJXbj+7mcwEbD9v8OLWYzLgKpfINi/1BHylEv3g==
+  dependencies:
+    "@atlaskit/ds-lib" "^3.1.0"
     "@atlaskit/platform-feature-flags" "^0.3.0"
     "@babel/runtime" "^7.0.0"
     "@babel/traverse" "^7.23.2"
