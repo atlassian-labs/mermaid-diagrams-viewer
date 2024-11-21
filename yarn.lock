@@ -259,12 +259,12 @@
     tiny-invariant "^1.2.0"
 
 "@atlaskit/spinner@^16.0.0":
-  version "16.3.2"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/spinner/-/spinner-16.3.2.tgz#1c8b46c152139e397367f36d2ea610eda015c263"
-  integrity sha512-uzhqnClu8II5GdbvM9RwQ9BSnMlxReIqTZaDNFxss3ev8Li+k2SJG7I1rleU2x84QkFVQFiMj/NuXsb+BxEJoQ==
+  version "16.3.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/spinner/-/spinner-16.3.3.tgz#14fc8246f1e1ae280d52e2fc0727905c0718cf02"
+  integrity sha512-x3kJG4LLz0KyIt1agvHY3sHw/7zTJ3QG/vOpJ8imPRZwvECDoVN7rgl+lyluWqvGulsBoK7TDlo0TMcTUVwiqA==
   dependencies:
     "@atlaskit/interaction-context" "^2.1.0"
-    "@atlaskit/theme" "^13.0.0"
+    "@atlaskit/theme" "^14.0.0"
     "@atlaskit/tokens" "^2.0.0"
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
