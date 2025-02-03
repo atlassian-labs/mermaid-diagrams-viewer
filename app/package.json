@@ -19,7 +19,7 @@
     "typescript": "^5.3.2"
   },
   "dependencies": {
-    "@forge/api": "^3.0.0",
+    "@forge/api": "^4.2.0",
     "@forge/ui": "1.11.1",
     "shared": "1.0.0"
   }
