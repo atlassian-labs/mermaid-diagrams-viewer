@@ -70,13 +70,13 @@
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/banner@^12.0.10":
-  version "12.5.4"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/banner/-/banner-12.5.4.tgz#5849bbd79560b956bd7619dc996796187af36c0b"
-  integrity sha512-jS5ianZCm2rQt0Gw3wu4l5jTt6p+GiO/l5Z1PaidgP0/AhFzB+qAWFoHnVNFuah9HjojKDsGw121ovd81578vA==
+  version "12.7.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/banner/-/banner-12.7.3.tgz#bd1027cdba7006f804d0f31e54ca70746f59b70f"
+  integrity sha512-AIWlUN3yNbUTDUkrEaSCr7ndhiX0vHpBlvtsXQ1MGkfrAQ8Bhua1lnEvOnHCbLF5JNGFv8WU3r/yCbjVsqsh9A==
   dependencies:
-    "@atlaskit/primitives" "^13.0.0"
-    "@atlaskit/theme" "^14.0.0"
-    "@atlaskit/tokens" "^2.0.0"
+    "@atlaskit/primitives" "^13.5.0"
+    "@atlaskit/theme" "^16.0.0"
+    "@atlaskit/tokens" "^3.3.0"
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
 
@@ -195,7 +195,7 @@
     "@atlaskit/feature-gate-js-client" "^4.25.0"
     "@babel/runtime" "^7.0.0"
 
-"@atlaskit/primitives@^13.0.0":
+"@atlaskit/primitives@^13.0.0", "@atlaskit/primitives@^13.5.0":
   version "13.6.0"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/primitives/-/primitives-13.6.0.tgz#9b6780bd6579965769f9a1cb779d1ce285f14593"
   integrity sha512-7BK554M8uZk3oJPYzew5JY6h2FrP16puxBjqiKITMZBs4VrrpIgUPEj6Efrypodgh2cjap5WdtkTM4Ur+WdiKw==
@@ -233,6 +233,16 @@
     "@atlaskit/codemod-utils" "^4.2.0"
     "@atlaskit/ds-lib" "^3.1.0"
     "@atlaskit/tokens" "^2.0.0"
+    "@babel/runtime" "^7.0.0"
+
+"@atlaskit/theme@^16.0.0":
+  version "16.0.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/theme/-/theme-16.0.0.tgz#0466ef0a4d12913d61457ff9257f2f81bbcc1ec4"
+  integrity sha512-GIxzHsdGQWlfv1XfhqpdPe911rq5IZ7a/RJDjHcdRSzm40N+0gYOk1Mg3F/QFVeK6ZeQOutrNJ/sD8CerHn3SA==
+  dependencies:
+    "@atlaskit/codemod-utils" "^4.2.0"
+    "@atlaskit/ds-lib" "^3.5.0"
+    "@atlaskit/tokens" "^3.3.0"
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/tokens@^2.0.0", "@atlaskit/tokens@^2.4.0":
