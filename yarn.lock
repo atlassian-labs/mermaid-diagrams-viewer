@@ -237,16 +237,17 @@
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.2"
 
-"@atlaskit/banner@^12.0.10":
-  version "12.7.3"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/banner/-/banner-12.7.3.tgz#bd1027cdba7006f804d0f31e54ca70746f59b70f"
-  integrity sha512-AIWlUN3yNbUTDUkrEaSCr7ndhiX0vHpBlvtsXQ1MGkfrAQ8Bhua1lnEvOnHCbLF5JNGFv8WU3r/yCbjVsqsh9A==
+"@atlaskit/banner@^14.0.0":
+  version "14.0.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/banner/-/banner-14.0.0.tgz#389ed576fa2395f9ae82da7aec68e9bfe790198b"
+  integrity sha512-1i7FovOX0d9PV8W0cREVAt/A/tlPxVnbS+nH8auUQDm2RRrQWu9p1gsCqcZoE5TdernCBXiwPHG6ZkHvH6flVw==
   dependencies:
-    "@atlaskit/primitives" "^13.5.0"
-    "@atlaskit/theme" "^16.0.0"
-    "@atlaskit/tokens" "^3.3.0"
+    "@atlaskit/css" "^0.10.0"
+    "@atlaskit/primitives" "^14.1.0"
+    "@atlaskit/theme" "^18.0.0"
+    "@atlaskit/tokens" "^4.3.0"
     "@babel/runtime" "^7.0.0"
-    "@emotion/react" "^11.7.1"
+    "@compiled/react" "^0.18.2"
 
 "@atlaskit/blanket@^14.2.0":
   version "14.2.0"
