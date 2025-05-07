@@ -4610,9 +4610,9 @@
     undici-types "~6.19.2"
 
 "@types/node@^20.10.1":
-  version "20.17.23"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@types/node/-/node-20.17.23.tgz#d228a57bbab954f763a883e495bacea8264efcd5"
-  integrity sha512-8PCGZ1ZJbEZuYNTMqywO+Sj4vSKjSjT6Ua+6RFOYlEvIvKQABPtrNkoVSLSKDb4obYcMhspVKmsw8Cm10NFRUg==
+  version "20.17.43"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@types/node/-/node-20.17.43.tgz#66e6923e8e5a56317866c7813dc2b555c158332a"
+  integrity sha512-DnDEcDUnVAUYSa7U03QvrXbj1MZj00xoyi/a3lRGkR/c7BFUnqv+OY9EUphMqXUKdZJEOmuzu2mm+LmCisnPow==
   dependencies:
     undici-types "~6.19.2"
 
