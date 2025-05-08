@@ -4611,9 +4611,9 @@
     undici-types "~6.19.2"
 
 "@types/node@^20.10.1":
-  version "20.17.43"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@types/node/-/node-20.17.43.tgz#66e6923e8e5a56317866c7813dc2b555c158332a"
-  integrity sha512-DnDEcDUnVAUYSa7U03QvrXbj1MZj00xoyi/a3lRGkR/c7BFUnqv+OY9EUphMqXUKdZJEOmuzu2mm+LmCisnPow==
+  version "20.17.45"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@types/node/-/node-20.17.45.tgz#a50a51a7da7b7bddecd90851bc0173b51db00724"
+  integrity sha512-vO9+E1smq+149wsmmLdM8SKVW7gRzLjfo0mU7kiykhV6rL+GEUhUmW7VywJNSxJHQzt9QBIHEo+3SG4MrFTqbA==
   dependencies:
     undici-types "~6.19.2"
 
