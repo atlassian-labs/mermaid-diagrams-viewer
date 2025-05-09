@@ -57,7 +57,7 @@ export async function getCode() {
     const codeBlock = codeBlocks[index];
     if (!codeBlock) {
       throw new ServerError(
-        `Code block under with position ${index + 1} not found`,
+        `Code block under with position ${String(index + 1)} not found`,
         'DIAGRAM_IS_NOT_SELECTED',
       );
     }

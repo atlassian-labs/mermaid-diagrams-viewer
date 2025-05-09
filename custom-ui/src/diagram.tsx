@@ -138,7 +138,10 @@ function useMermaidRenderSVG(code: string, colorMode: 'light' | 'dark') {
       }
 
       try {
-        const { svg } = await mermaid.render('diagram' + Date.now(), code);
+        const { svg } = await mermaid.render(
+          'diagram' + String(Date.now()),
+          code,
+        );
         setSvg(svg);
       } catch (error) {
         setError(error as Error);

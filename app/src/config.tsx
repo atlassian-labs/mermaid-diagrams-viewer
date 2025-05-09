@@ -76,7 +76,7 @@ const DiagramConfig = () => {
       const trimmedCode =
         codeBlock.length > 35 ? `${codeBlock.substring(0, 35)}...` : codeBlock;
       return {
-        label: `${index + 1}. ${trimmedCode}`,
+        label: `${String(index + 1)}. ${trimmedCode}`,
         value: index,
       };
     }),

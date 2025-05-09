@@ -46,7 +46,7 @@ function App() {
   useEffect(() => {
     void getCode()
       .then(setCode)
-      .catch((error) => {
+      .catch((error: unknown) => {
         if (error instanceof ServerError) {
           setError(error);
           return;
