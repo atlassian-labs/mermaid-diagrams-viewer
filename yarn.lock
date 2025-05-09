@@ -3900,18 +3900,25 @@
     "@types/history" "^4.7.11"
 
 "@forge/bridge@^4.4.1":
-  version "4.4.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-4.4.1.tgz#802f04ca974dabf568663454a1c1d6427a395646"
-  integrity sha512-jtAFTuT+cnsrrmqk5ErzJUbm1e5UXwzxG0Gg2SGwcoU6/kA9fyPbNkKYtq8hYWrzx1KrFk+NsJ7dQMKsHfcl0Q==
+  version "4.5.2"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-4.5.2.tgz#747ce9bb944d46dc7a4e2ba683f22c6a560847b2"
+  integrity sha512-U/26PFvpHf3x2DiJHrbOFz7qwypznVjplXnCtFTuhsuLVNxM9hJcjN7FtPeRyTuVEPcpSwdlH+zUwc4ls+VeRw==
   dependencies:
     "@atlaskit/tokens" "^1.58.0"
-    "@forge/i18n" "0.0.3"
+    "@forge/i18n" "0.0.5"
     "@types/history" "^4.7.11"
 
 "@forge/i18n@0.0.3":
   version "0.0.3"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/i18n/-/i18n-0.0.3.tgz#d8104b12d5e072c90cf42cd88ab92b768d98415b"
   integrity sha512-QBNEVVwD0C1iWZUQZalHJ2XGuLTVT+rU0BHKZw5z1xScFAVeDtQR+qmO/F4T/LKarDq2I6NWrq3j6p969pG4Yg==
+  dependencies:
+    lodash "^4.17.21"
+
+"@forge/i18n@0.0.5":
+  version "0.0.5"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/i18n/-/i18n-0.0.5.tgz#44ec3c441b0d8b2b3ac5bb3aaccb2a038412dcb6"
+  integrity sha512-G4M8NTXbNR5HzpYNFQMczypUuxoItdtAMQmwIgUkzE2osrjPRKhFx/VniMGnnXoowgmDLoaMtMcllvxcm/YnVA==
   dependencies:
     lodash "^4.17.21"
 
