@@ -13,7 +13,7 @@
     "@atlaskit/banner": "^14.0.0",
     "@atlaskit/css-reset": "^6.0.1",
     "@atlaskit/icon": "^26.0.0",
-    "@atlaskit/primitives": "^13.0.0",
+    "@atlaskit/primitives": "^14.0.0",
     "@atlaskit/spinner": "^16.0.0",
     "@atlaskit/tokens": "^2.0.0",
     "@forge/bridge": "^3.1.0",
