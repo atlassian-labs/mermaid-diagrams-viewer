@@ -3918,14 +3918,14 @@
   dependencies:
     tslib "^2.6.2"
 
-"@forge/bridge@^3.1.0":
+"@forge/bridge@^3.5.0":
   version "3.5.0"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-3.5.0.tgz#3c32691406f674624ece9f7055f61e3a1cbc2df3"
   integrity sha512-g7XoM50giYsRNU5nJQthOzmtvO4qxyhIC2jklYCOiCntWCee79gAzxareeNNmEggXGXqoDUZpa20ipTk+bryFA==
   dependencies:
     "@types/history" "^4.7.11"
 
-"@forge/bridge@^4.4.1":
+"@forge/bridge@^4.4.1", "@forge/bridge@^4.5.2":
   version "4.5.2"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-4.5.2.tgz#747ce9bb944d46dc7a4e2ba683f22c6a560847b2"
   integrity sha512-U/26PFvpHf3x2DiJHrbOFz7qwypznVjplXnCtFTuhsuLVNxM9hJcjN7FtPeRyTuVEPcpSwdlH+zUwc4ls+VeRw==
