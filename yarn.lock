@@ -3254,7 +3254,7 @@
     "@babel/runtime" "^7.0.0"
     raf-schd "^4.0.3"
 
-"@atlassian/eslint-config-xen@^3.0.0":
+"@atlassian/eslint-config-xen@^3.0.2":
   version "3.0.2"
   resolved "https://packages.atlassian.com/api/npm/atlassian-npm/@atlassian/eslint-config-xen/-/@atlassian/eslint-config-xen-3.0.2.tgz#a3832afb6060b44de8c05a46dc818c9955b9e9a4"
   integrity sha512-L1Mx6ILHgnQ/P/ZQDaRdqjHm5rBq0mikQ23pAOxpsTCDM4GFgh59fTAaEJdp22LIACp6HqJBX+R91rRDdAJ3OA==
@@ -4984,7 +4984,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@^6.10.0":
+"@typescript-eslint/eslint-plugin@^6.21.0":
   version "6.21.0"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@typescript-eslint/eslint-plugin/-/eslint-plugin-6.21.0.tgz#30830c1ca81fd5f3c2714e524c4303e0194f9cd3"
   integrity sha512-oy9+hTPCUFpngkEZUSzbf9MxI65wbKFoQYsgPdILTfbUldp5ovUuphZVe4i30emU9M/kP+T64Di0mxl7dSw3MA==
@@ -5016,7 +5016,7 @@
     natural-compare "^1.4.0"
     ts-api-utils "^1.3.0"
 
-"@typescript-eslint/parser@^6.10.0", "@typescript-eslint/parser@^6.13.1":
+"@typescript-eslint/parser@^6.21.0":
   version "6.21.0"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@typescript-eslint/parser/-/parser-6.21.0.tgz#af8fcf66feee2edc86bc5d1cf45e33b0630bf35b"
   integrity sha512-tbsV1jPne5CkFQCgPBcDOt30ItF7aJoZL997JSF7MhGQqOeT3svWRYxiqlfA5RUdlHN6Fi+EI9bxqbdyAUZjYQ==
@@ -6327,7 +6327,7 @@ eslint-plugin-prettier@^4.0.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-prettier@^5.0.1:
+eslint-plugin-prettier@^5.4.0:
   version "5.4.0"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/eslint-plugin-prettier/-/eslint-plugin-prettier-5.4.0.tgz#54d4748904e58eaf1ffe26c4bffa4986ca7f952b"
   integrity sha512-BvQOvUhkVQM1i63iMETK9Hjud9QhqBnbtT1Zc642p9ynzBuCe5pybkOnvqZIBypXmMlsGcnU4HZ8sCTPfpAexA==
@@ -6335,12 +6335,12 @@ eslint-plugin-prettier@^5.0.1:
     prettier-linter-helpers "^1.0.0"
     synckit "^0.11.0"
 
-eslint-plugin-react-hooks@^4.2.0, eslint-plugin-react-hooks@^4.6.0:
+eslint-plugin-react-hooks@^4.6.2:
   version "4.6.2"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.6.2.tgz#c829eb06c0e6f484b3fbb85a97e57784f328c596"
   integrity sha512-QzliNJq4GinDBcD8gPB5v0wh6g8q3SUi6EFF0x8N/BL9PoVs0atuGc47ozMRyOWAKdwaZ5OnbOEa3WR+dSGKuQ==
 
-eslint-plugin-react-refresh@^0.4.4:
+eslint-plugin-react-refresh@^0.4.20:
   version "0.4.20"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/eslint-plugin-react-refresh/-/eslint-plugin-react-refresh-0.4.20.tgz#3bbfb5c8637e28d19ce3443686445e502ecd18ba"
   integrity sha512-XpbHQ2q5gUF8BGOX4dHe+71qoirYMhApEPZ7sfhF/dNnOF1UXnCMGZf79SFTBO7Bz5YEIT4TMieSlJBWhP9WBA==
@@ -6380,7 +6380,7 @@ eslint-visitor-keys@^4.2.0:
   resolved "https://packages.atlassian.com/api/npm/npm-remote/eslint-visitor-keys/-/eslint-visitor-keys-4.2.0.tgz#687bacb2af884fcdda8a6e7d65c606f46a14cd45"
   integrity sha512-UyLnSehNt62FFhSwjZlHmeokpRK59rcz29j+F1/aDgbkbRTk7wIc9XzdoasMUbRNKDM0qQt/+BJ4BrpFeABemw==
 
-eslint@^8.53.0, eslint@^8.54.0, eslint@^8.57.0:
+eslint@^8.57.0, eslint@^8.57.1:
   version "8.57.1"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/eslint/-/eslint-8.57.1.tgz#7df109654aba7e3bbe5c8eae533c5e461d3c6ca9"
   integrity sha512-ypowyDxpVSYpkXr9WPv2PAZCtNip1Mv5KTW0SCurXv/9iOpcrH9PaqUElksqEB6pChqHGDRCFTyrZlGhnLNGiA==
@@ -8290,7 +8290,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^3.1.0:
+prettier@^3.5.3:
   version "3.5.3"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/prettier/-/prettier-3.5.3.tgz#4fc2ce0d657e7a02e602549f053b239cb7dfe1b5"
   integrity sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==
