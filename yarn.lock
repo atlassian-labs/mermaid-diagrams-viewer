@@ -58,7 +58,7 @@
     linkify-it "^2.0.3"
     memoize-one "^6.0.0"
 
-"@atlaskit/adf-utils@^19.0.13", "@atlaskit/adf-utils@^19.12.0", "@atlaskit/adf-utils@^19.18.0", "@atlaskit/adf-utils@^19.19.0":
+"@atlaskit/adf-utils@^19.12.0", "@atlaskit/adf-utils@^19.18.0", "@atlaskit/adf-utils@^19.19.0":
   version "19.19.0"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/adf-utils/-/adf-utils-19.19.0.tgz#ec234905eb81098b522f0f98ebbe4faf48f34adc"
   integrity sha512-rc9eseT3WrqxRjQt7fMlzokLznBobvoEWSTrrOmKunRuOlAlbWmHSf0VHqDJIGNWlZkcL69b5H35l/570V47LA==
@@ -260,7 +260,7 @@
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.2"
 
-"@atlaskit/banner@^14.0.0":
+"@atlaskit/banner@^14.0.2":
   version "14.0.2"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/banner/-/banner-14.0.2.tgz#05dd22b3f9f9cdbf121b377907a7f79cf77be1c5"
   integrity sha512-ZmNBe2ymwdD/GiyjOxGGlU0O3vibg8FN5FZAWdm0q+HIR+tEo0F2xo3RDfu2zJmVQBqYHxoMOrp16SBXNmBueQ==
@@ -2312,10 +2312,10 @@
     bind-event-listener "^3.0.0"
     tiny-invariant "^1.2.0"
 
-"@atlaskit/primitives@^14.0.0", "@atlaskit/primitives@^14.1.0", "@atlaskit/primitives@^14.2.0":
-  version "14.7.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/primitives/-/primitives-14.7.1.tgz#dfad24d5a38141c84ad675b6075fab1c0ed53bae"
-  integrity sha512-fTMgvu0PxxPx2euQh2adGb9baSzoTUftluPvDwfCaToDZXDP8zqGby/cG7Pyrl0P6LRC7PNMBfiO1TVzeq6FuQ==
+"@atlaskit/primitives@^14.0.0", "@atlaskit/primitives@^14.1.0", "@atlaskit/primitives@^14.2.0", "@atlaskit/primitives@^14.7.3":
+  version "14.7.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/primitives/-/primitives-14.7.3.tgz#73457a593b7797030dd0f68c415cc83a277a75dd"
+  integrity sha512-be5aJuF5u8BY9f83oJhdy50b+m9TtaVEJ8FgV2IS4qKetuv/NgZT13RMbw9Y3JNLtzSxKXXxN5N3rV0ORbxmqg==
   dependencies:
     "@atlaskit/analytics-next" "^11.0.0"
     "@atlaskit/app-provider" "^2.1.0"
@@ -3094,7 +3094,7 @@
     "@babel/types" "^7.20.0"
     bind-event-listener "^3.0.0"
 
-"@atlaskit/tokens@^4.0.0", "@atlaskit/tokens@^4.2.0", "@atlaskit/tokens@^4.3.0", "@atlaskit/tokens@^4.5.0", "@atlaskit/tokens@^4.7.0", "@atlaskit/tokens@^4.8.0":
+"@atlaskit/tokens@^4.0.0", "@atlaskit/tokens@^4.2.0", "@atlaskit/tokens@^4.3.0", "@atlaskit/tokens@^4.5.0", "@atlaskit/tokens@^4.7.0", "@atlaskit/tokens@^4.8.0", "@atlaskit/tokens@^4.8.2":
   version "4.8.2"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-4.8.2.tgz#eb28d1b73dbc9cc6a3ef5e4d676ede5a2d35952f"
   integrity sha512-QW6zBUqAIjYakXJzn9ribEslwVLuCqrnWDGfxFdiSH92ylLyCZgtiuPG7dnG+KHvmVddtVXxlp4m3un9qX/Czw==
