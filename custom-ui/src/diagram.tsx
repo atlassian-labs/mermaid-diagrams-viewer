@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import SVG from 'react-inlinesvg';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
-// eslint-disable-next-line node/no-missing-import
 import mermaid from 'mermaid';
 import { Modal, view } from '@forge/bridge';
 import { Box, xcss } from '@atlaskit/primitives';
@@ -32,7 +31,7 @@ const boxStyles = xcss({
 export const Diagram: React.FunctionComponent<{
   code: string;
   colorMode: 'light' | 'dark';
-  onError: CallableFunction;
+  onError: (error: Error) => void;
 }> = ({ code, colorMode, onError }) => {
   const [size, setSize] = useState({
     height: window.innerHeight,

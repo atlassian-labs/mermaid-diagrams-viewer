@@ -22,9 +22,9 @@ function autoMapMacroToCodeBlock(adf: ADFEntity, moduleKey: string) {
 
       const localId = node.attrs?.parameters?.localId;
       if (!localId) {
-        console.warn(`No localId found for extension with key ${extensionKey}`);
-        // TODO: throw error?
-        return;
+        throw new Error(
+          `No localId found for extension with key ${extensionKey}`,
+        );
       }
       extensions.push(localId);
     },
@@ -36,9 +36,11 @@ function autoMapMacroToCodeBlock(adf: ADFEntity, moduleKey: string) {
   const map = new Map<string, string>();
 
   while (extensions.length > 0) {
-    const extension = extensions.shift()!;
-    const codeBlock = codeBlocks.shift()!;
-    map.set(extension, codeBlock);
+    const extension = extensions.shift();
+    const codeBlock = codeBlocks.shift();
+    if (extension && codeBlock) {
+      map.set(extension, codeBlock);
+    }
   }
 
   return map;

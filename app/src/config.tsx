@@ -20,7 +20,7 @@ const useSubmit = () => {
     try {
       await view.submit(payload);
       setError(false);
-    } catch (error) {
+    } catch {
       setError(true);
     }
   };

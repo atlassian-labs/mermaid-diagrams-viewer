@@ -43,7 +43,7 @@ const Loading: React.FunctionComponent<{ loading?: boolean }> = () => {
 
 function App() {
   const [code, setCode] = useState<string>();
-  const [error, setError] = useState<AppError | undefined>();
+  const [error, setError] = useState<AppError | Error | undefined>();
   const { colorMode } = useThemeObserver();
 
   useEffect(() => {
@@ -75,7 +75,7 @@ function App() {
       });
   }, []);
 
-  const onError = (error: AppError) => {
+  const onError = (error: Error) => {
     setError(error);
   };
 

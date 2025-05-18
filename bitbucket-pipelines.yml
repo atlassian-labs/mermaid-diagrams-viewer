@@ -13,7 +13,6 @@ pipelines:
             - yarn install --frozen-lockfile
             - cd app
             - yarn build
-            - yarn lint
             # - yarn test
       - step: &build-custom-ui
           name: Build custom UI app
@@ -25,7 +24,6 @@ pipelines:
             - yarn install --frozen-lockfile
             - cd custom-ui
             - yarn build
-            - yarn lint
             # - yarn test
           artifacts: # defining the artifacts to be passed to each future step.
             - app/build/**
@@ -40,6 +38,7 @@ pipelines:
             - pipe: atlassian/artifactory-sidekick:v1
             - source .artifactory/activate.sh
             - yarn install --frozen-lockfile
+            - yarn lint
             - cd app
             - |
               output=$(forge lint 2>&1)
