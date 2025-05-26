@@ -8,7 +8,7 @@
   "devDependencies": {
     "@atlassian/eslint-config-xen": "^5.0.1",
     "@types/node": "^20.17.49",
-    "@types/react": "^19.1.4",
+    "@types/react": "^19.1.5",
     "@typescript-eslint/parser": "^8.32.1",
     "eslint": "^9.27.0",
     "eslint-plugin-prettier": "^5.4.0",
@@ -21,7 +21,7 @@
     "@atlaskit/adf-utils": "^19.19.0",
     "@forge/api": "^5.2.0",
     "@forge/bridge": "^4.5.2",
-    "@forge/react": "^10.11.1",
+    "@forge/react": "^11.2.1",
     "react": "19.1.0",
     "shared": "1.0.0"
   }
