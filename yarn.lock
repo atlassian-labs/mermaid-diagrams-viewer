@@ -884,10 +884,10 @@
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
 
-"@atlaskit/icon@^26.0.0", "@atlaskit/icon@^26.1.0", "@atlaskit/icon@^26.2.0":
-  version "26.2.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/icon/-/icon-26.2.0.tgz#6328d1b246e3918fac93bc2642fb189efcc2d1b9"
-  integrity sha512-QpaBVtxjOsw7NBXi2dgGw1SAx9SL+L2JMdMThWqAe6OcAiYZczat7fmXTlnjFQ5L4Qd772JhYWCeO0LOqOuA8A==
+"@atlaskit/icon@^26.0.0", "@atlaskit/icon@^26.1.0", "@atlaskit/icon@^26.4.0":
+  version "26.4.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/icon/-/icon-26.4.0.tgz#f53b780c9deff8ec051c102ea049d7b82a07ca0d"
+  integrity sha512-C/+Ulu/86fES5lnFJBNVrsSAFOCi5Idm4s6H2Qe2TGRoumPqkmRHPyC9byZdaVedcyqY4bcnTlCf99psxwLDZA==
   dependencies:
     "@atlaskit/platform-feature-flags" "^1.1.0"
     "@atlaskit/tokens" "^4.9.0"
@@ -1877,10 +1877,10 @@
     bind-event-listener "^3.0.0"
     raf-schd "^4.0.3"
 
-"@atlaskit/primitives@^14.1.0", "@atlaskit/primitives@^14.2.0", "@atlaskit/primitives@^14.4.0", "@atlaskit/primitives@^14.6.0", "@atlaskit/primitives@^14.7.0", "@atlaskit/primitives@^14.8.0":
-  version "14.8.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/primitives/-/primitives-14.8.0.tgz#0c58a2fbe6876bf0636b6e2c9fb9ada1cd26e9f8"
-  integrity sha512-bntZBT8kdhwuPPwV1wmyzoalXhzGOCpNI+/6Z30gYjT89zj4pWyHQUg6Vi9kdZjeJNDWrYyipAjLQqu/RKbHWg==
+"@atlaskit/primitives@^14.1.0", "@atlaskit/primitives@^14.2.0", "@atlaskit/primitives@^14.4.0", "@atlaskit/primitives@^14.6.0", "@atlaskit/primitives@^14.7.0", "@atlaskit/primitives@^14.8.0", "@atlaskit/primitives@^14.8.1":
+  version "14.8.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/primitives/-/primitives-14.8.1.tgz#1cae251542f40b9fce2684545fc8beb65d6d7150"
+  integrity sha512-A24+9rvBJpdtDL3EIl4aucRKk+XKWOO1r8Vj16G2voiKOaB7oWVXmpfvoNOAPqrHDQVUe9zN0VZ8JzdVUoTC7Q==
   dependencies:
     "@atlaskit/analytics-next" "^11.0.0"
     "@atlaskit/app-provider" "^2.2.0"
@@ -2502,10 +2502,10 @@
     "@babel/types" "^7.20.0"
     bind-event-listener "^3.0.0"
 
-"@atlaskit/tokens@^4.0.0", "@atlaskit/tokens@^4.3.0", "@atlaskit/tokens@^4.5.0", "@atlaskit/tokens@^4.7.0", "@atlaskit/tokens@^4.8.0", "@atlaskit/tokens@^4.9.0":
-  version "4.9.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-4.9.0.tgz#e969f3f2d631bffec700e14103be043964f5ecc7"
-  integrity sha512-Pabyg7ZZjAUzCaPWLwJWzkniN7J6rAKGjfkJH3gNy1KGoyHp31iRwRJ2wZIBY1rCj5iu9GTFlSfabn4HHQZdEw==
+"@atlaskit/tokens@^4.0.0", "@atlaskit/tokens@^4.3.0", "@atlaskit/tokens@^4.5.0", "@atlaskit/tokens@^4.7.0", "@atlaskit/tokens@^4.8.0", "@atlaskit/tokens@^4.9.0", "@atlaskit/tokens@^4.9.1":
+  version "4.9.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-4.9.1.tgz#b067dff37774692b263cce76121a32454e11859f"
+  integrity sha512-f8BvV+ZAi+0NV7xZzO12Fe4C/sPSXKaalwYOuO9tIjOeaR3ot6vY//rDGP/rKCC+HBsY6GoLcIsBs3UnERxyGQ==
   dependencies:
     "@atlaskit/ds-lib" "^4.0.0"
     "@atlaskit/platform-feature-flags" "^1.1.0"
