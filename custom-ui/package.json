@@ -15,7 +15,7 @@
     "@atlaskit/primitives": "^14.8.0",
     "@atlaskit/spinner": "^18.0.4",
     "@atlaskit/tokens": "^4.9.0",
-    "@forge/bridge": "^4.5.2",
+    "@forge/bridge": "^4.5.3",
     "@fortawesome/fontawesome-free": "^6.7.2",
     "mermaid": "^11.6.0",
     "react": "^19.1.0",

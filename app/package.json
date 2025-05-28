@@ -19,9 +19,9 @@
   },
   "dependencies": {
     "@atlaskit/adf-utils": "^19.20.0",
-    "@forge/api": "^5.2.0",
-    "@forge/bridge": "^4.5.2",
-    "@forge/react": "^11.2.1",
+    "@forge/api": "^5.2.1",
+    "@forge/bridge": "^4.5.3",
+    "@forge/react": "^11.2.2",
     "react": "19.1.0",
     "shared": "1.0.0"
   }

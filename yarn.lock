@@ -3589,58 +3589,58 @@
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@floating-ui/utils/-/utils-0.2.9.tgz#50dea3616bc8191fb8e112283b49eaff03e78429"
   integrity sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==
 
-"@forge/api@^5.2.0":
-  version "5.2.0"
-  resolved "https://packages.atlassian.com/api/npm/atlassian-npm/@forge/api/-/@forge/api-5.2.0.tgz#b17c10abcf054b90331ae3bf384d9d5a6b687401"
-  integrity sha512-Kc0qzqccviRqC0Nj0pFhzEi7G6duQRicYUERLy6IwR0ETBGJx6VCFqHbKRKT8ZxpEhTSBp9NItLuV7ayBXGBew==
+"@forge/api@^5.2.1":
+  version "5.2.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-5.2.1.tgz#6fd2c1fdbb5b9993046d3b06c19bb2e2c5e7fcba"
+  integrity sha512-IX8W5uxpr/WKZeJX4aJWq8gwliK9mmshLapjk9JjQEEoYgiY6J722+LQRFxA/iWU3IcrNb1vL+3C+nC2viriMQ==
   dependencies:
-    "@forge/auth" "0.0.7"
-    "@forge/egress" "1.4.0"
-    "@forge/i18n" "0.0.5"
-    "@forge/storage" "1.8.0"
-    "@forge/util" "1.4.8"
+    "@forge/auth" "0.0.8"
+    "@forge/egress" "1.4.1"
+    "@forge/i18n" "0.0.6"
+    "@forge/storage" "1.8.1"
+    "@forge/util" "1.4.9"
     headers-utils "^3.0.2"
 
-"@forge/auth@0.0.7":
-  version "0.0.7"
-  resolved "https://packages.atlassian.com/api/npm/atlassian-npm/@forge/auth/-/@forge/auth-0.0.7.tgz#b66115c9736f2d2041e983862d5de69836397cb5"
-  integrity sha512-9wzbl7FoaTZsVXuBI6F4O9TWRucpM76WILKoimGSK/1n6JMiai0QHBmBJLAon8jO/MmTJSHPxLE48UjR+J2s7Q==
+"@forge/auth@0.0.8":
+  version "0.0.8"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/auth/-/auth-0.0.8.tgz#2ed447d1bd70e6f16fa8cfd92d4884ed467831b7"
+  integrity sha512-nsI81rMYJz9qXSWrKiK6/ph0QIjwEUrBlUa6P/2+s8Gwwur/U82SDux3A25o4rbsqLdqWdpOTi/iRSKL1zUZfQ==
   dependencies:
     tslib "^2.6.2"
 
-"@forge/bridge@^4.5.2":
-  version "4.5.2"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-4.5.2.tgz#747ce9bb944d46dc7a4e2ba683f22c6a560847b2"
-  integrity sha512-U/26PFvpHf3x2DiJHrbOFz7qwypznVjplXnCtFTuhsuLVNxM9hJcjN7FtPeRyTuVEPcpSwdlH+zUwc4ls+VeRw==
+"@forge/bridge@^4.5.3":
+  version "4.5.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-4.5.3.tgz#65ff0c73412e6208ccb325259ebe3c8dabb090f2"
+  integrity sha512-vc0tcKphj4bWCTDT6T8Jvi5UHzy9AvUzCP4dGre7rXxWZa2n8AnNPLCbvJwddjCLNm1oGLe3jq3FMrDFhkl5kw==
   dependencies:
     "@atlaskit/tokens" "^1.58.0"
-    "@forge/i18n" "0.0.5"
+    "@forge/i18n" "0.0.6"
     "@types/history" "^4.7.11"
 
-"@forge/egress@1.4.0":
-  version "1.4.0"
-  resolved "https://packages.atlassian.com/api/npm/atlassian-npm/@forge/egress/-/@forge/egress-1.4.0.tgz#b4bd01c25b0813096370d1d2b9abd582d828fcf6"
-  integrity sha512-7Jrjq6kgF32yI4kqSmXz6z6ac9zOyrEn3NEq4jDUZ2eAq/qn0UugE/+9t7MlEd1jsz94hY9utezwjqkRc1qKwQ==
+"@forge/egress@1.4.1":
+  version "1.4.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/egress/-/egress-1.4.1.tgz#514e6000e93a2e200bc743042e04e9d74a4c3921"
+  integrity sha512-RUHQBsIc3IkQKT46cKSmqHzTfwh7pBbgzXtfGwN14ztcu+1xUqCf71f/LJvq3m4jdymtrQXHE5C8BN0yRGwRKg==
   dependencies:
     minimatch "^9.0.3"
 
-"@forge/i18n@0.0.5":
-  version "0.0.5"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/i18n/-/i18n-0.0.5.tgz#44ec3c441b0d8b2b3ac5bb3aaccb2a038412dcb6"
-  integrity sha512-G4M8NTXbNR5HzpYNFQMczypUuxoItdtAMQmwIgUkzE2osrjPRKhFx/VniMGnnXoowgmDLoaMtMcllvxcm/YnVA==
+"@forge/i18n@0.0.6":
+  version "0.0.6"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/i18n/-/i18n-0.0.6.tgz#0da192ade29dacce338e4dd1f924dc60a06b92ad"
+  integrity sha512-iIK0SxWwMUHp8ThYiBU+Cq/ty1Ng1dGEr+apWbh6SwbxaXWR8MGRr91AFj3BLLAiC6FXYprIBclgI8tRf0DxmA==
   dependencies:
     lodash "^4.17.21"
 
-"@forge/react@^11.2.1":
-  version "11.2.1"
-  resolved "https://packages.atlassian.com/api/npm/atlassian-npm/@forge/react/-/@forge/react-11.2.1.tgz#ede767310c67aa31164f2e12e7b4d03ef9d56a72"
-  integrity sha512-ZGdMpcV08PVRtuF68lsu42kvEGyD60FMJsOOkMaSJqDiA8V64pZBHZIsBb9iW5WsxOxlSm0n6hZ6DbWWB1EK/g==
+"@forge/react@^11.2.2":
+  version "11.2.2"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/react/-/react-11.2.2.tgz#cb52e541e50d5bb1b3482ff2d26e457cec4d827b"
+  integrity sha512-o6XpaljCBncTGk2FdMZTuCTm6mT1IyfmXY+llSK/k/6aj5Vg4XPRRb6ln2BtazRmqUQRQZLqg0EhZ2Ss3f14Ng==
   dependencies:
     "@atlaskit/adf-schema" "^48.0.0"
     "@atlaskit/adf-utils" "^19.19.0"
     "@atlaskit/forge-react-types" "^0.41.14"
-    "@forge/bridge" "^4.5.2"
-    "@forge/i18n" "0.0.5"
+    "@forge/bridge" "^4.5.3"
+    "@forge/i18n" "0.0.6"
     "@types/react-reconciler" "^0.28.8"
     lodash "^4.17.21"
     react "^18.2.0"
@@ -3649,15 +3649,15 @@
     react-test-renderer "^18.2.0"
     uuid "^9.0.1"
 
-"@forge/storage@1.8.0":
-  version "1.8.0"
-  resolved "https://packages.atlassian.com/api/npm/atlassian-npm/@forge/storage/-/@forge/storage-1.8.0.tgz#20bc3901c42aa9c366581b145bd62dd0dee16552"
-  integrity sha512-xDHyrXKZ10r99vXsWmuD7+AUFWrptyAi8HFk+97froly6MDKT4V1zgV/0eV8fOCVKz9GX+HiGZNTnCjzpGqKxA==
+"@forge/storage@1.8.1":
+  version "1.8.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/storage/-/storage-1.8.1.tgz#dbf2c782188d4ffbd5bfbb0da1740e0bfd528c36"
+  integrity sha512-wPssW7sIuoM6aN3xHtO5MFU3bJ/i3mJ1Yo8U10qMegKC0kO+KDe6JE/GTOjoPc0JqtCPCiTnT9OgxFUXzwIElQ==
 
-"@forge/util@1.4.8":
-  version "1.4.8"
-  resolved "https://packages.atlassian.com/api/npm/atlassian-npm/@forge/util/-/@forge/util-1.4.8.tgz#bd089b358b34ad639d3ef8139adecec197555146"
-  integrity sha512-5D3E2W6j4VzNet2X98It8GRfOJFAkAI/eyCz1VFOX2BzYBMFofuyHr4/PDDpan/I6MnYtSdamlC8P7Q/B3OJDg==
+"@forge/util@1.4.9":
+  version "1.4.9"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/util/-/util-1.4.9.tgz#157aa1af66395ffcd7468c9970aa5e3a5c80fa54"
+  integrity sha512-ZLSXBRnIo/KRk3PKz7tb1YSywSHZCTY2JvG9OoU+qx1zU/rDPSP1K+72iBU7lK0x99eAraA5qEpZwPWaUIbBTw==
 
 "@formatjs/ecma402-abstract@1.11.4":
   version "1.11.4"
