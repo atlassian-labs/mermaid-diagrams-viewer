@@ -4777,10 +4777,10 @@
   dependencies:
     undici-types "~6.19.2"
 
-"@types/node@^20.17.50":
-  version "20.17.50"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@types/node/-/node-20.17.50.tgz#d2640af991fc839ba746f799516fc6a4e47ebe50"
-  integrity sha512-Mxiq0ULv/zo1OzOhwPqOA13I81CV/W3nvd3ChtQZRT5Cwz3cr0FKo/wMSsbTqL3EXpaBAEQhva2B8ByRkOIh9A==
+"@types/node@^20.17.52":
+  version "20.17.52"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@types/node/-/node-20.17.52.tgz#0cf582371f88529c61f384fcd57a21b797c56c6e"
+  integrity sha512-2aj++KfxubvW/Lc0YyXE3OEW7Es8TWn1MsRzYgcOGyTNQxi0L8rxQUCZ7ZbyOBWZQD5I63PV9egZWMsapVaklg==
   dependencies:
     undici-types "~6.19.2"
 
