@@ -7,7 +7,7 @@
     "email": "dhreben@atlassian.com"
   },
   "engines": {
-    "node": "20"
+    "node": "22"
   },
   "scripts": {
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0"

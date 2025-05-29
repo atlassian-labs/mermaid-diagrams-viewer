@@ -1,7 +1,7 @@
 app:
   id: ari:cloud:ecosystem::app/23392b90-4271-4239-98ca-a3e96c663cbb
   runtime:
-    name: nodejs20.x
+    name: nodejs22.x
 
 modules:
   macro:

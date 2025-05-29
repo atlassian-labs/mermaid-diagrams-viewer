@@ -1,4 +1,4 @@
-image: node:20.19.2
+image: node:22.16.0
 
 pipelines:
   definitions:
