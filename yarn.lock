@@ -344,13 +344,11 @@
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.3"
 
-"@atlaskit/css-reset@^7.3.0":
-  version "7.3.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/css-reset/-/css-reset-7.3.0.tgz#a36726ac48bf7d19426d3ca4205bea26e29e20d4"
-  integrity sha512-tOic9RiHzsUhvnSEZUlnTJcl9BNZ+Z/gps2AcZ1mgjn6ohIR/pkFdqb9upnYGYLAcgjBrkP1iLhRZ9GCk2xGRQ==
+"@atlaskit/css-reset@^7.3.1":
+  version "7.3.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/css-reset/-/css-reset-7.3.1.tgz#50045821a603e11faf21bc3c6fc1f52db4b47f9a"
+  integrity sha512-vJDylSnSClDW2hYdGwXyA5XKyE/QVDd6otY/4vr9li7IGAbmXVkQm9557wxfI2rpsDjLMVAk+wFysitzwWL6dg==
   dependencies:
-    "@atlaskit/link" "^3.2.0"
-    "@atlaskit/platform-feature-flags" "^1.1.0"
     "@atlaskit/theme" "^18.0.0"
     "@atlaskit/tokens" "^4.9.0"
     "@babel/runtime" "^7.0.0"
@@ -1877,10 +1875,10 @@
     bind-event-listener "^3.0.0"
     raf-schd "^4.0.3"
 
-"@atlaskit/primitives@^14.1.0", "@atlaskit/primitives@^14.2.0", "@atlaskit/primitives@^14.4.0", "@atlaskit/primitives@^14.6.0", "@atlaskit/primitives@^14.7.0", "@atlaskit/primitives@^14.8.0", "@atlaskit/primitives@^14.8.1":
-  version "14.8.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/primitives/-/primitives-14.8.1.tgz#1cae251542f40b9fce2684545fc8beb65d6d7150"
-  integrity sha512-A24+9rvBJpdtDL3EIl4aucRKk+XKWOO1r8Vj16G2voiKOaB7oWVXmpfvoNOAPqrHDQVUe9zN0VZ8JzdVUoTC7Q==
+"@atlaskit/primitives@^14.1.0", "@atlaskit/primitives@^14.2.0", "@atlaskit/primitives@^14.4.0", "@atlaskit/primitives@^14.6.0", "@atlaskit/primitives@^14.7.0", "@atlaskit/primitives@^14.8.0", "@atlaskit/primitives@^14.8.2":
+  version "14.8.2"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/primitives/-/primitives-14.8.2.tgz#12474fda0b5e6536305fe82c9cfcb27c3f5928fe"
+  integrity sha512-XZmjEMeYXpCR64A26oqs8qRtrVBKey6PYPDRP5AinMKGUWz/1Un4dLO5kgdcvK9jjlYAemnAWJv6GhpFQRfwNQ==
   dependencies:
     "@atlaskit/analytics-next" "^11.0.0"
     "@atlaskit/app-provider" "^2.2.0"
