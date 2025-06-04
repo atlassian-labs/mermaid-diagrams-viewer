@@ -9,11 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@atlaskit/banner": "^14.0.2",
-    "@atlaskit/css-reset": "^7.3.1",
-    "@atlaskit/icon": "^26.4.0",
-    "@atlaskit/primitives": "^14.8.2",
-    "@atlaskit/spinner": "^18.0.4",
+    "@atlaskit/banner": "^14.0.3",
+    "@atlaskit/css-reset": "^7.3.2",
+    "@atlaskit/icon": "^26.4.1",
+    "@atlaskit/primitives": "^14.8.3",
+    "@atlaskit/spinner": "^18.0.5",
     "@atlaskit/tokens": "^5.0.0",
     "@forge/bridge": "^4.5.3",
     "@fortawesome/fontawesome-free": "^6.7.2",

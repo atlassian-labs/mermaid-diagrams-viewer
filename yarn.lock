@@ -101,10 +101,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@atlaskit/analytics-next@^11.0.0":
-  version "11.0.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/analytics-next/-/analytics-next-11.0.0.tgz#928feb558fe9b7637b8507cf4d5e205caac709e4"
-  integrity sha512-ekts8cC3nBc3ye1ivsDQXLyWCQSlMN0uKTuspVa9ppydt8r8qvJHyI/ACX3DS5uRH/du0f2mZuhdrvdBibr0yQ==
+"@atlaskit/analytics-next@^11.0.0", "@atlaskit/analytics-next@^11.1.0":
+  version "11.1.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/analytics-next/-/analytics-next-11.1.0.tgz#d57b5c776cf2959519af82e43b9323f5ff944b48"
+  integrity sha512-ul6hR3PHLlNRaxm0Q7LcUauLSY3S7YQ29lid4Cx3qBLUFs5J82N/nzyRG6gkgXH8ZAVbddGHWapKwrhn8RWD9w==
   dependencies:
     "@atlaskit/analytics-next-stable-react-context" "1.0.1"
     "@atlaskit/platform-feature-flags" "^1.1.0"
@@ -193,15 +193,15 @@
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.2"
 
-"@atlaskit/banner@^14.0.2":
-  version "14.0.2"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/banner/-/banner-14.0.2.tgz#05dd22b3f9f9cdbf121b377907a7f79cf77be1c5"
-  integrity sha512-ZmNBe2ymwdD/GiyjOxGGlU0O3vibg8FN5FZAWdm0q+HIR+tEo0F2xo3RDfu2zJmVQBqYHxoMOrp16SBXNmBueQ==
+"@atlaskit/banner@^14.0.3":
+  version "14.0.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/banner/-/banner-14.0.3.tgz#8e6584b514806a5c7d664f40cf7cf2d74f6e4cfb"
+  integrity sha512-1ZDD6tBx4QdifQmR5N5eVEGtMt06EL7qQdDZbWpATMFnIVt7oNfp1RO6vci+ABmbaPHlDQOKBd8ogEJpJg//xg==
   dependencies:
     "@atlaskit/css" "^0.10.0"
-    "@atlaskit/primitives" "^14.2.0"
+    "@atlaskit/primitives" "^14.8.0"
     "@atlaskit/theme" "^18.0.0"
-    "@atlaskit/tokens" "^4.5.0"
+    "@atlaskit/tokens" "^5.0.0"
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.3"
 
@@ -344,13 +344,13 @@
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.3"
 
-"@atlaskit/css-reset@^7.3.1":
-  version "7.3.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/css-reset/-/css-reset-7.3.1.tgz#50045821a603e11faf21bc3c6fc1f52db4b47f9a"
-  integrity sha512-vJDylSnSClDW2hYdGwXyA5XKyE/QVDd6otY/4vr9li7IGAbmXVkQm9557wxfI2rpsDjLMVAk+wFysitzwWL6dg==
+"@atlaskit/css-reset@^7.3.2":
+  version "7.3.2"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/css-reset/-/css-reset-7.3.2.tgz#45f3ec60aaef6ee218ab3d4f38506effbd2d5f54"
+  integrity sha512-c5IWgyeuN2nyvUPBchaxFz2c37WrL7WDbD/u2zyXqFoksHYUeCr8Ffcqexy88onmMClzN+cqQLekxdb35RGUnw==
   dependencies:
     "@atlaskit/theme" "^18.0.0"
-    "@atlaskit/tokens" "^4.9.0"
+    "@atlaskit/tokens" "^5.0.0"
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/css@^0.10.0":
@@ -882,13 +882,13 @@
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
 
-"@atlaskit/icon@^26.0.0", "@atlaskit/icon@^26.1.0", "@atlaskit/icon@^26.4.0":
-  version "26.4.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/icon/-/icon-26.4.0.tgz#f53b780c9deff8ec051c102ea049d7b82a07ca0d"
-  integrity sha512-C/+Ulu/86fES5lnFJBNVrsSAFOCi5Idm4s6H2Qe2TGRoumPqkmRHPyC9byZdaVedcyqY4bcnTlCf99psxwLDZA==
+"@atlaskit/icon@^26.0.0", "@atlaskit/icon@^26.1.0", "@atlaskit/icon@^26.4.1":
+  version "26.4.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/icon/-/icon-26.4.1.tgz#71f339d55ecf4a1093debf6d88d277512e26b4b8"
+  integrity sha512-JyLx9LYF8rYNzcyXUCMDvLqRXtjlzHoIUV7tjFA38TTBR39KFCfqnyes5fMs+u75mBbHnXAnZV+G8cArmbVotQ==
   dependencies:
     "@atlaskit/platform-feature-flags" "^1.1.0"
-    "@atlaskit/tokens" "^4.9.0"
+    "@atlaskit/tokens" "^5.0.0"
     "@babel/register" "^7.25.9"
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.3"
@@ -1875,17 +1875,17 @@
     bind-event-listener "^3.0.0"
     raf-schd "^4.0.3"
 
-"@atlaskit/primitives@^14.1.0", "@atlaskit/primitives@^14.2.0", "@atlaskit/primitives@^14.4.0", "@atlaskit/primitives@^14.6.0", "@atlaskit/primitives@^14.7.0", "@atlaskit/primitives@^14.8.0", "@atlaskit/primitives@^14.8.2":
-  version "14.8.2"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/primitives/-/primitives-14.8.2.tgz#12474fda0b5e6536305fe82c9cfcb27c3f5928fe"
-  integrity sha512-XZmjEMeYXpCR64A26oqs8qRtrVBKey6PYPDRP5AinMKGUWz/1Un4dLO5kgdcvK9jjlYAemnAWJv6GhpFQRfwNQ==
+"@atlaskit/primitives@^14.1.0", "@atlaskit/primitives@^14.4.0", "@atlaskit/primitives@^14.6.0", "@atlaskit/primitives@^14.7.0", "@atlaskit/primitives@^14.8.0", "@atlaskit/primitives@^14.8.3":
+  version "14.8.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/primitives/-/primitives-14.8.3.tgz#1f52a929c290637d673b39a3560479df37c14ba3"
+  integrity sha512-EZFba15haQRc2O7QSZ0kUmm9rAeLZ5hVIbaNloR9I9djM5fO6t5uTwXniHHSsZhJCvU5JBO8numAAaIIlOlITg==
   dependencies:
-    "@atlaskit/analytics-next" "^11.0.0"
+    "@atlaskit/analytics-next" "^11.1.0"
     "@atlaskit/app-provider" "^2.2.0"
     "@atlaskit/css" "^0.10.0"
     "@atlaskit/ds-lib" "^4.0.0"
     "@atlaskit/interaction-context" "^3.0.0"
-    "@atlaskit/tokens" "^4.9.0"
+    "@atlaskit/tokens" "^5.0.0"
     "@atlaskit/visually-hidden" "^3.0.0"
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.3"
@@ -2247,14 +2247,14 @@
     react-intl-next "npm:react-intl@^5.18.1"
     uuid "^3.1.0"
 
-"@atlaskit/spinner@^18.0.0", "@atlaskit/spinner@^18.0.4":
-  version "18.0.4"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/spinner/-/spinner-18.0.4.tgz#d8cf78db263db602292b5b0dcefab940b3eb1239"
-  integrity sha512-Z595HvUiL8BkKk7YT7hgE0VNA7UAUMUEsuxa/Vfy3z7BGJxkZ1yXpqJoorn73cNGfVIpX6j52du3VJHii/y86A==
+"@atlaskit/spinner@^18.0.0", "@atlaskit/spinner@^18.0.5":
+  version "18.0.5"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/spinner/-/spinner-18.0.5.tgz#d50a2b3adab57da97e4cc15c1dcc76c0209923a2"
+  integrity sha512-h/PUqLQfT5VU8hylEnIc0zOhNotYNV1FBv5aqAF8DuukRPr7OLBEGeveLI/HYBVIxL8fhX5pOmL0juXjFw23Aw==
   dependencies:
     "@atlaskit/interaction-context" "^3.0.0"
     "@atlaskit/theme" "^18.0.0"
-    "@atlaskit/tokens" "^4.8.0"
+    "@atlaskit/tokens" "^5.0.0"
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.3"
 
