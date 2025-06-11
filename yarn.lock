@@ -3642,10 +3642,10 @@
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@floating-ui/utils/-/utils-0.2.9.tgz#50dea3616bc8191fb8e112283b49eaff03e78429"
   integrity sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==
 
-"@forge/api@^5.2.1":
-  version "5.2.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-5.2.1.tgz#6fd2c1fdbb5b9993046d3b06c19bb2e2c5e7fcba"
-  integrity sha512-IX8W5uxpr/WKZeJX4aJWq8gwliK9mmshLapjk9JjQEEoYgiY6J722+LQRFxA/iWU3IcrNb1vL+3C+nC2viriMQ==
+"@forge/api@^5.3.0":
+  version "5.3.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-5.3.0.tgz#3c4f63d1a2b3355caa776dec4a89e53bc86842bd"
+  integrity sha512-ebrmGpBV/E8vjpQYNFTxzKDzT78ub2UMYQua0Z7ullcRPUBAO5f644qm/IKb7za36d0ci1e+9jM85w6puA1nTw==
   dependencies:
     "@forge/auth" "0.0.8"
     "@forge/egress" "1.4.1"
@@ -3660,15 +3660,6 @@
   integrity sha512-nsI81rMYJz9qXSWrKiK6/ph0QIjwEUrBlUa6P/2+s8Gwwur/U82SDux3A25o4rbsqLdqWdpOTi/iRSKL1zUZfQ==
   dependencies:
     tslib "^2.6.2"
-
-"@forge/bridge@^4.5.3":
-  version "4.5.3"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-4.5.3.tgz#65ff0c73412e6208ccb325259ebe3c8dabb090f2"
-  integrity sha512-vc0tcKphj4bWCTDT6T8Jvi5UHzy9AvUzCP4dGre7rXxWZa2n8AnNPLCbvJwddjCLNm1oGLe3jq3FMrDFhkl5kw==
-  dependencies:
-    "@atlaskit/tokens" "^1.58.0"
-    "@forge/i18n" "0.0.6"
-    "@types/history" "^4.7.11"
 
 "@forge/bridge@^5.0.0":
   version "5.0.0"
@@ -3693,15 +3684,15 @@
   dependencies:
     lodash "^4.17.21"
 
-"@forge/react@^11.2.2":
-  version "11.2.2"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/react/-/react-11.2.2.tgz#cb52e541e50d5bb1b3482ff2d26e457cec4d827b"
-  integrity sha512-o6XpaljCBncTGk2FdMZTuCTm6mT1IyfmXY+llSK/k/6aj5Vg4XPRRb6ln2BtazRmqUQRQZLqg0EhZ2Ss3f14Ng==
+"@forge/react@^11.2.3":
+  version "11.2.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/react/-/react-11.2.3.tgz#29cfe9c658ee039813f3a08c5aa43f2e91182a13"
+  integrity sha512-qDVGnbCHCgZ71kafk/Lv2v/FOKpFCrZUXLggvgr2otOJdHKfFsSCHqhTnz30HlhXjru5p+8oB2Nhs7AJksAahw==
   dependencies:
     "@atlaskit/adf-schema" "^48.0.0"
     "@atlaskit/adf-utils" "^19.19.0"
     "@atlaskit/forge-react-types" "^0.41.14"
-    "@forge/bridge" "^4.5.3"
+    "@forge/bridge" "^5.0.0"
     "@forge/i18n" "0.0.6"
     "@types/react-reconciler" "^0.28.8"
     lodash "^4.17.21"
