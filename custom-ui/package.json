@@ -11,7 +11,7 @@
   "dependencies": {
     "@atlaskit/banner": "^14.0.3",
     "@atlaskit/css-reset": "^7.3.2",
-    "@atlaskit/icon": "^26.4.1",
+    "@atlaskit/icon": "^27.0.0",
     "@atlaskit/primitives": "^14.8.4",
     "@atlaskit/spinner": "^18.0.5",
     "@atlaskit/tokens": "^5.2.1",
