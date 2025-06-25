@@ -3682,10 +3682,10 @@
   dependencies:
     tslib "^2.6.2"
 
-"@forge/bridge@^5.0.0":
-  version "5.0.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-5.0.0.tgz#f8877df6e8a686f537585ffc66f4dc371b1917f0"
-  integrity sha512-v3c2YJtfxoqJ340LEUAbdBr2nsDR6bD0RQF+hXs/0EK9CHlPMA/ejdcXROV0bJ3JtTzHN3A6qBXSkB+Y04HC7A==
+"@forge/bridge@^5.1.0":
+  version "5.1.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-5.1.0.tgz#ba3042022d2537721bcc29a4d9bdc79b06de1ed1"
+  integrity sha512-GVW3nh24TIWCmE3KLco53+237OFdEDQLpjqWdnebvztDw2mWKu9WrxDnRSOSCtiDcnwxRusPPmtUTyRlC7Q6ng==
   dependencies:
     "@atlaskit/tokens" "^1.58.0"
     "@forge/i18n" "0.0.6"
@@ -3705,15 +3705,15 @@
   dependencies:
     lodash "^4.17.21"
 
-"@forge/react@^11.2.3":
-  version "11.2.3"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/react/-/react-11.2.3.tgz#29cfe9c658ee039813f3a08c5aa43f2e91182a13"
-  integrity sha512-qDVGnbCHCgZ71kafk/Lv2v/FOKpFCrZUXLggvgr2otOJdHKfFsSCHqhTnz30HlhXjru5p+8oB2Nhs7AJksAahw==
+"@forge/react@^11.2.4":
+  version "11.2.4"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/react/-/react-11.2.4.tgz#29f8e360b58113c99afb26475d33e9d9cafd0d4c"
+  integrity sha512-685v9fS9hQB/+9UPzdMvo51uvVL1iYpDY8KD35yOrJZaEJjqjYYLg6JPSlAIP/BPc5hJEfPjS9o72rYTn4dtVg==
   dependencies:
     "@atlaskit/adf-schema" "^48.0.0"
     "@atlaskit/adf-utils" "^19.19.0"
     "@atlaskit/forge-react-types" "^0.41.14"
-    "@forge/bridge" "^5.0.0"
+    "@forge/bridge" "^5.1.0"
     "@forge/i18n" "0.0.6"
     "@types/react-reconciler" "^0.28.8"
     lodash "^4.17.21"
