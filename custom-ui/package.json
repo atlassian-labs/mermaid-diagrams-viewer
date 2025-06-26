@@ -17,7 +17,7 @@
     "@atlaskit/tokens": "^5.4.1",
     "@forge/bridge": "^5.1.0",
     "@fortawesome/fontawesome-free": "^6.7.2",
-    "mermaid": "^11.6.0",
+    "mermaid": "^11.7.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-inlinesvg": "^4.2.0",
