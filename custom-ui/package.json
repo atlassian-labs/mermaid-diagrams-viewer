@@ -9,10 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@atlaskit/banner": "^14.0.4",
+    "@atlaskit/banner": "^14.0.5",
     "@atlaskit/css-reset": "^7.3.2",
     "@atlaskit/icon": "^27.2.0",
-    "@atlaskit/primitives": "^14.9.0",
+    "@atlaskit/primitives": "^14.10.0",
     "@atlaskit/spinner": "^18.0.5",
     "@atlaskit/tokens": "^5.4.1",
     "@forge/bridge": "^5.1.0",
