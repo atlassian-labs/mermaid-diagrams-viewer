@@ -10,7 +10,7 @@
     "@types/node": "^22.15.34",
     "@types/react": "^19.1.8",
     "@typescript-eslint/parser": "^8.35.1",
-    "eslint": "^9.30.0",
+    "eslint": "^9.30.1",
     "eslint-plugin-prettier": "^5.5.1",
     "eslint-plugin-react-hooks": "^5.2.0",
     "jest": "^30.0.3",
