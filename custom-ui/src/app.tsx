@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '@atlaskit/banner';
-import WarningIcon from '@atlaskit/icon/glyph/warning';
+import WarningIcon from '@atlaskit/icon/core/status-warning';
 import Spinner from '@atlaskit/spinner';
 import { Diagram } from './diagram';
 import { token, useThemeObserver } from '@atlaskit/tokens';
@@ -19,10 +19,7 @@ const ErrorMessage: React.FunctionComponent<{ error?: Error }> = (props) => {
   const msg = `Error while loading diagram: ${props.error.message}`;
 
   return (
-    <Banner
-      appearance="warning"
-      icon={<WarningIcon label="" secondaryColor="inherit" />}
-    >
+    <Banner appearance="warning" icon={<WarningIcon label="" />}>
       {msg}
     </Banner>
   );
