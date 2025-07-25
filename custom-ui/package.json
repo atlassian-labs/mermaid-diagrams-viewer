@@ -11,10 +11,10 @@
   "dependencies": {
     "@atlaskit/banner": "^14.0.7",
     "@atlaskit/css-reset": "^7.3.3",
-    "@atlaskit/icon": "^27.6.0",
-    "@atlaskit/primitives": "^14.10.1",
+    "@atlaskit/icon": "^27.6.1",
+    "@atlaskit/primitives": "^14.10.2",
     "@atlaskit/spinner": "^18.0.6",
-    "@atlaskit/tokens": "^5.6.0",
+    "@atlaskit/tokens": "^5.6.1",
     "@forge/bridge": "^5.2.0",
     "@fortawesome/fontawesome-free": "^7.0.0",
     "mermaid": "^11.9.0",
