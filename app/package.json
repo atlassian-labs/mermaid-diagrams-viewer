@@ -22,7 +22,7 @@
     "@forge/api": "^6.0.2",
     "@forge/bridge": "^5.2.0",
     "@forge/react": "^11.2.6",
-    "react": "19.1.0",
+    "react": "19.1.1",
     "shared": "1.0.0"
   }
 }
