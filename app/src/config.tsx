@@ -14,7 +14,7 @@ import { findCodeBlocks } from 'shared/src/confluence/code-blocks';
 const useSubmit = () => {
   const [error, setError] = useState<boolean>();
 
-  const submit = async (fields: Config | undefined) => {
+  const submit = async (fields: Config) => {
     const payload = { config: fields };
 
     try {
@@ -34,7 +34,7 @@ const useSubmit = () => {
 const DiagramConfig = () => {
   const { submit } = useSubmit();
 
-  const [config, setConfig] = useState<Config | undefined>(undefined);
+  const [config, setConfig] = useState<Config>({});
   const [contentId, setContentId] = useState<string | undefined>(undefined);
 
   const [codeBlocks, setCodeBlocks] = useState<string[]>([]);
@@ -44,11 +44,11 @@ const DiagramConfig = () => {
       const context = await view.getContext();
 
       const extension = context.extension as {
-        config: Config;
+        config: Config | undefined;
         content: { id: string };
       };
 
-      const config = extension.config;
+      const config = extension.config || {};
       const contentId = extension.content.id;
 
       setConfig(config);
@@ -84,7 +84,7 @@ const DiagramConfig = () => {
   ];
 
   const defaultValue =
-    config?.index === undefined ? options[0] : options[config.index + 1];
+    config.index === undefined ? options[0] : options[config.index + 1];
 
   return (
     <Stack space="space.200">
