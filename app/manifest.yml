@@ -19,13 +19,6 @@ modules:
         viewportSize: small
         render: native
         title: Mermaid diagram configuration
-      # TODO
-      # adfExport:
-      #   function: diagram-export
-
-  function:
-    - key: diagram-export
-      handler: diagram-export.run
 
 resources:
   - key: custom-ui
