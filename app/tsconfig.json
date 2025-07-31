@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "ES2017",
+    "target": "ES2022",
     "sourceMap": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "lib": [
       "dom",
-      "ES2017"
+      "ES2022"
     ],
     "types": [
       "node",

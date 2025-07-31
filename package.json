@@ -1,6 +1,7 @@
 {
   "private": true,
   "workspaces": ["app", "custom-ui", "shared"],
+  "type": "module",
   "license": "UNLICENSED",
   "author": {
     "name": "Daniel Hreben",
