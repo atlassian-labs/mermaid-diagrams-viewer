@@ -3205,7 +3205,7 @@
     "@types/babel__core" "^7.20.5"
     react-refresh "^0.17.0"
 
-"@vitest/coverage-v8@^2.1.8", "@vitest/coverage-v8@^2.1.9":
+"@vitest/coverage-v8@^2.1.9":
   version "2.1.9"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@vitest/coverage-v8/-/coverage-v8-2.1.9.tgz"
   integrity sha512-Z2cOr0ksM00MpEfyVE8KXIYPEcBFxdbLSs56L8PO0QQMxt/6bDj45uQfxoc96v05KW3clk7vvgP0qfDit9DmfQ==
@@ -7371,7 +7371,7 @@ vite@^5.0.0:
   optionalDependencies:
     fsevents "~2.3.3"
 
-vitest@^2.1.8, vitest@^2.1.9:
+vitest@^2.1.9:
   version "2.1.9"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/vitest/-/vitest-2.1.9.tgz"
   integrity sha512-MSmPM9REYqDGBI8439mA4mWhV5sKmDlBKWIYbA3lRb2PTHACE0mgKwA8yQ2xq9vxDTuk4iPrECBAEW2aoFXY0Q==
