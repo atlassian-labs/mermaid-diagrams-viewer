@@ -2385,9 +2385,9 @@
     picocolors "1.1.1"
     pretty-format "^27.0.2"
 
-"@testing-library/jest-dom@^6.5.0":
+"@testing-library/jest-dom@^6.6.4":
   version "6.6.4"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@testing-library/jest-dom/-/jest-dom-6.6.4.tgz"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@testing-library/jest-dom/-/jest-dom-6.6.4.tgz#577a1761768bda5458c42241add3b1570c34d39c"
   integrity sha512-xDXgLjVunjHqczScfkCJ9iyjdNOVHvvCdqHSSxwM9L0l/wHkTRum67SDc020uAlCoqktJplgO2AAQeLP1wgqDQ==
   dependencies:
     "@adobe/css-tools" "^4.4.0"
@@ -2407,9 +2407,9 @@
     "@testing-library/dom" "^10.0.0"
     "@types/react-dom" "^18.0.0"
 
-"@testing-library/user-event@^14.5.2":
+"@testing-library/user-event@^14.6.1":
   version "14.6.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@testing-library/user-event/-/user-event-14.6.1.tgz"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@testing-library/user-event/-/user-event-14.6.1.tgz#13e09a32d7a8b7060fe38304788ebf4197cd2149"
   integrity sha512-vq7fv0rnt+QTXgPxr5Hjc210p6YKq2kmdziLgnsZGgLJ9e6VAShx1pACLuRjd/AS/sr7phAR58OIIpf0LlmQNw==
 
 "@tybys/wasm-util@^0.10.0":
