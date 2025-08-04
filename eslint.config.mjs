@@ -20,6 +20,7 @@ export default tseslint.config(
     rules: {
       'no-console': 'warn',
       'react-hooks/rules-of-hooks': 'error',
+      'jest/no-deprecated-functions': 'off',
     },
   },
   {
