@@ -1644,13 +1644,13 @@
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@floating-ui/utils/-/utils-0.2.9.tgz"
   integrity sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==
 
-"@forge/api@^6.0.2":
-  version "6.0.2"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-6.0.2.tgz"
-  integrity sha512-4E0OUcHod82uL4aVS0djRgHNJtMoWCn/t1qFY5KKEMiYd8o4jgzroCeIkW8kJBHW1diD+7R6ueIFUzxA/RF7oQ==
+"@forge/api@^6.0.3":
+  version "6.0.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-6.0.3.tgz#5de0e18fd5ff66d6b3fc06fb3c4f4634f29c6ecf"
+  integrity sha512-WpuT3GlmZD+OZGVIdMFhG46KejwH0cvJGVgjhm8cPtR/tqg1h/9XQLBq4MAA6k3ui3zIPorM0RF4ovEXcpqoHw==
   dependencies:
     "@forge/auth" "0.0.8"
-    "@forge/egress" "2.0.1"
+    "@forge/egress" "2.0.2"
     "@forge/i18n" "0.0.7"
     "@forge/storage" "2.0.2"
     headers-utils "^3.0.2"
@@ -1671,10 +1671,10 @@
     "@forge/i18n" "0.0.7"
     "@types/history" "^4.7.11"
 
-"@forge/egress@2.0.1":
-  version "2.0.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/egress/-/egress-2.0.1.tgz"
-  integrity sha512-kOvVFBxX1PQs7+YzWdb7xoEKTQdkpsH4kg480IRsPfjuTIIvvuBy8niZy1Zk8VNStMiKvC6zsVt6T8iNtHlFqQ==
+"@forge/egress@2.0.2":
+  version "2.0.2"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/egress/-/egress-2.0.2.tgz#71a57057e4fd66d2dade04464b72a021ac54c511"
+  integrity sha512-EiSOkveXOxjmsIldaNjcYTuAwMKYV6u8MQlLN1RBcYk33KO0Owb6E2cce7byY7NgeVmQr/wABqoIjsnZNannYw==
   dependencies:
     minimatch "^9.0.5"
 
