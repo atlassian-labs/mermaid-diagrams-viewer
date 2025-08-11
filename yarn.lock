@@ -68,10 +68,10 @@
     linkify-it "^2.0.3"
     memoize-one "^6.0.0"
 
-"@atlaskit/adf-utils@^19.19.0", "@atlaskit/adf-utils@^19.20.3":
-  version "19.20.3"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/adf-utils/-/adf-utils-19.20.3.tgz#e59dbe255f9b5ec451346758544efd9bb151cc9b"
-  integrity sha512-8llKDkDFnSsdcBLyvwOf7LBhBSJZdjpxolpgrqkbTk6wrLoPYTHzv6LCpNOtWzzNiCu7YGcqhKjge8vCbT9pzw==
+"@atlaskit/adf-utils@^19.19.0", "@atlaskit/adf-utils@^19.21.0":
+  version "19.21.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/adf-utils/-/adf-utils-19.21.0.tgz#e625a702fe0184bc4adf3eebfcadaed48d51a61f"
+  integrity sha512-A+eEZdtQPzRF84A+t5Omy1ft9Mzaeb4MORxB9W7tDRwro3pU/cKwv76kH6u/eJxZ+EEYpnBQurBsUmpc29LGRQ==
   dependencies:
     "@atlaskit/adf-schema" "^50.2.0"
     "@babel/runtime" "^7.0.0"
@@ -443,10 +443,10 @@
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.3"
 
-"@atlaskit/icon@^27.3.0", "@atlaskit/icon@^27.5.0", "@atlaskit/icon@^27.9.2":
-  version "27.9.2"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/icon/-/icon-27.9.2.tgz#a6e88b39d485c1a0513845cefdec5d3b0011a331"
-  integrity sha512-CU8NcMpE8hASHNa2juyhPGo00vWuYtGxaufFPANJZv5RKGbudlgVgGC/vnS798rrIgPJ0Bgepa4z3/LVyUaCbA==
+"@atlaskit/icon@^27.11.0", "@atlaskit/icon@^27.3.0", "@atlaskit/icon@^27.5.0":
+  version "27.11.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/icon/-/icon-27.11.0.tgz#ecaceea12f7a2fe55d171e314ed8c9d070b88b9e"
+  integrity sha512-gNlzFTXF8I5UrxEpG3OjWMke+G208sEf5ln3LlEYruLQIQeo8hdhv0hZSrpxkFfBHMwl2beKIoHiS4RW35mGaA==
   dependencies:
     "@atlaskit/platform-feature-flags" "^1.1.0"
     "@atlaskit/tokens" "^6.0.0"
