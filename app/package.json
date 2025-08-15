@@ -9,7 +9,8 @@
   },
   "devDependencies": {
     "@atlassian/eslint-config-xen": "^5.0.1",
-    "@testing-library/react": "^15.0.7",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.17.1",
     "@types/react": "^18.3.23",
