@@ -25,7 +25,7 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@atlaskit/adf-utils": "^19.21.2",
+    "@atlaskit/adf-utils": "^19.21.3",
     "@forge/api": "^6.1.0",
     "@forge/bridge": "^5.3.0",
     "@forge/react": "^11.2.7",
