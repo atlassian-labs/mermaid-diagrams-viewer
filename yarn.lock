@@ -1727,15 +1727,15 @@
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@floating-ui/utils/-/utils-0.2.9.tgz"
   integrity sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==
 
-"@forge/api@^6.1.2":
-  version "6.1.2"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-6.1.2.tgz#68c389498079921b997e75e345c0263cee96a901"
-  integrity sha512-kWTjvzVDdWuQkhct2iu1l5wcMYB3C2kxjgCw9B9L7f4ZhIhxKKzJV7VzyoNLGwFHdVL47fsW/oZItPSVkG6YJw==
+"@forge/api@^6.1.3":
+  version "6.1.3"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-6.1.3.tgz#ea56c468d5f72c5855f041503dcabff2935367b3"
+  integrity sha512-lEVws4ItZLHUGSkAx83SLZ5KOmWMuZzLO4SELgNoyrzXejPJdgBPcv766u26S/EsOv1R92JN06QQu9hnR1EzTQ==
   dependencies:
     "@forge/auth" "0.0.8"
     "@forge/egress" "2.0.3"
     "@forge/i18n" "0.0.7"
-    "@forge/manifest" "^10.6.0"
+    "@forge/manifest" "^10.6.1"
     "@forge/storage" "2.0.2"
     headers-utils "^3.0.2"
     minimatch "^9.0.5"
@@ -1771,10 +1771,10 @@
   dependencies:
     lodash "^4.17.21"
 
-"@forge/manifest@^10.6.0":
-  version "10.6.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/manifest/-/manifest-10.6.0.tgz#634a6730600f8179380e5f59a849877f21ff3c2f"
-  integrity sha512-U12Db4f9veXs2KnwuqMXR6c/tIDhpFPspIpdf4rUf05tiW8ova1s3ByX/SIPKYCkNCiwPjE0su8Rf7MBsME+dw==
+"@forge/manifest@^10.6.1":
+  version "10.6.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/manifest/-/manifest-10.6.1.tgz#85990264ac9f1b6ecfc6696c4056a30f8bccef2a"
+  integrity sha512-5TITQiARz+RMMkZgljpGzp559/dVR0CEanWFsBXWKksGGi4s6iVGQPT+AZt0TB+3s7MSWMrfEApQM7f/Fagp4A==
   dependencies:
     "@forge/i18n" "0.0.7"
     "@sentry/node" "7.106.0"
@@ -1786,10 +1786,10 @@
     mime-types "^2.1.35"
     yaml "^2.3.4"
 
-"@forge/react@^11.3.0":
-  version "11.3.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/react/-/react-11.3.0.tgz#a59a0861305cb7d11dc839b5e272f28258f00170"
-  integrity sha512-ngit3Yr/C3m+78WTJDgcliDO+CMvH46NNhrV2dk5xbtNiFkq/Lp4XcOWKEJ4bBCOIkOyv6sLg702UsEZnZHKgQ==
+"@forge/react@^11.4.0":
+  version "11.4.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/react/-/react-11.4.0.tgz#6357303241ace3c725755867e5155d0eda9b169d"
+  integrity sha512-i6fIRCRROyzwqe83+SaDnMVcPVFBUiyH9Q8n85Zb/q5Hf6pITkcT6FVPz/HxvnWhVKxFO09CyTNkMVOjmj9Ezg==
   dependencies:
     "@atlaskit/adf-schema" "^48.0.0"
     "@atlaskit/adf-utils" "^19.19.0"
