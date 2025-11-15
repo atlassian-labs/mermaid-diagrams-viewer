@@ -83,6 +83,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test, build-forge-app, build-custom-ui]
     environment: development
+    concurrency: development
     env:
       FORGE_ENVIRONMENT: development
       FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
@@ -129,6 +130,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test, build-forge-app, build-custom-ui]
     environment: staging
+    concurrency: staging
     env:
       FORGE_ENVIRONMENT: staging
       FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
@@ -175,6 +177,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy-staging
     environment: production
+    concurrency: production
     env:
       FORGE_ENVIRONMENT: production
       FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
