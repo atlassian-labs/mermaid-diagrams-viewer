@@ -10,6 +10,14 @@
   "postUpdateOptions": ["yarnDedupeHighest"],
   "packageRules": [
     {
+      "groupName": "Lint",
+      "matchPackageNames": ["prettier", "*eslint*"]
+    },
+    {
+      "groupName": "Typescript",
+      "matchPackageNames": ["typescript"]
+    },
+    {
       "groupName": "Forge",
       "matchPackageNames": ["@forge/*"]
     },
@@ -25,17 +33,10 @@
       "groupName": "React",
       "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"]
     },
-    {
-      "groupName": "Typescript",
-      "matchPackageNames": ["typescript"]
-    },
+
     {
       "groupName": "Vite",
       "matchPackageNames": ["vite", "@vitejs/*"]
-    },
-    {
-      "groupName": "Lint",
-      "matchPackageNames": ["prettier", "eslint*", "@typescript-eslint/*"]
     }
   ]
 }
