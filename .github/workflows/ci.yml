@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Run yarn lint
+        run: yarn lint
+
       - name: Run tests with coverage
         run: yarn test --coverage
 
@@ -74,42 +77,23 @@ jobs:
           name: custom-ui-build
           path: app/build/
 
-  lint:
-    name: Forge lint
-    runs-on: ubuntu-latest
-    needs: [test, build-forge-app, build-custom-ui]
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'yarn'
-
-      - name: Install Forge CLI
-        run: npm install --global @forge/cli
-
-      - name: Configure Forge
-        run: forge settings set usage-analytics true
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Run yarn lint
-        run: yarn lint
-
-      - name: Run forge lint
-        run: .github/workflows/forge-lint.sh
-
   deploy-development:
     name: Deploy to Development
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: lint
+    needs: [test, build-forge-app, build-custom-ui]
     environment: development
+    env:
+      FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
+      FORGE_API_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: custom-ui-build
+          path: app/build/
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -125,6 +109,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Run forge lint
+        run: .github/workflows/forge-lint.sh
 
       - name: Deploy to development
         run: |
@@ -136,10 +123,19 @@ jobs:
     name: Deploy to Staging
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: lint
+    needs: [test, build-forge-app, build-custom-ui]
     environment: staging
+    env:
+      FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
+      FORGE_API_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: custom-ui-build
+          path: app/build/
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -155,6 +151,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Run forge lint
+        run: .github/workflows/forge-lint.sh
 
       - name: Deploy to staging
         run: |
@@ -168,8 +167,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy-staging
     environment: production
+    env:
+      FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
+      FORGE_API_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: custom-ui-build
+          path: app/build/
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -185,6 +193,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Run forge lint
+        run: .github/workflows/forge-lint.sh
 
       - name: Deploy to production
         run: |

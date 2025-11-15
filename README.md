@@ -4,7 +4,7 @@ Forge app which renders mermaid diagrams from code block at confluence page.
 Details:
 
 * [Marketplace listing](https://marketplace.atlassian.com/apps/1232887/mermaid-diagrams-viewer?tab=overview&hosting=cloud)
-* [Loom demo](https://www.loom.com/share/9e172ada65e7423c9616ecf8c4116e45?sid=8495c3f4-63b6-4a7f-b66f-da76dc2425e6)
+* [Youtube demo](https://youtu.be/FwUpc4kd1M4?si=0Odab7ntS5PFSD0z)
 
 ## Development
 
@@ -42,7 +42,7 @@ yarn test
 
 # Run tests for a specific workspace
 cd custom-ui && yarn test
-cd app && yarn test  
+cd app && yarn test
 cd shared && yarn test
 
 # Run tests with coverage
