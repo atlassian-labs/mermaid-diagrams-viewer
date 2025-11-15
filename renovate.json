@@ -19,7 +19,7 @@
     },
     {
       "groupName": "Atlassian",
-      "matchPackageNames": ["@atlassian/**"],
+      "matchPackageNames": ["@atlassian/**"]
     },
     {
       "groupName": "React",
