@@ -1,0 +1,201 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: '22.21.1'
+
+jobs:
+  test:
+    name: Run All Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run tests with coverage
+        run: yarn test --coverage
+
+  build-forge-app:
+    name: Build forge app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build forge app
+        run: |
+          cd app
+          yarn build
+
+  build-custom-ui:
+    name: Build custom UI app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build custom UI
+        run: |
+          cd custom-ui
+          yarn build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: custom-ui-build
+          path: app/build/
+
+  lint:
+    name: Forge lint
+    runs-on: ubuntu-latest
+    needs: [test, build-forge-app, build-custom-ui]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install Forge CLI
+        run: npm install --global @forge/cli
+
+      - name: Configure Forge
+        run: forge settings set usage-analytics true
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run yarn lint
+        run: yarn lint
+
+      - name: Run forge lint
+        run: |
+          cd app
+          output=$(forge lint 2>&1)
+          echo "$output"
+
+          if echo "$output" | grep -iq "Warning:"; then
+            echo ""
+            echo "⚠️ Found warnings, forcing build failure"
+            exit 1
+          fi
+
+  deploy-development:
+    name: Deploy to Development
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    needs: lint
+    environment: development
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install Forge CLI
+        run: npm install -g @forge/cli
+
+      - name: Configure Forge
+        run: forge settings set usage-analytics true
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Deploy to development
+        run: |
+          cd app
+          forge deploy
+          forge install --upgrade --site dhreben2.atlassian.net --product confluence --non-interactive --environment development
+
+  deploy-staging:
+    name: Deploy to Staging
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: lint
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install Forge CLI
+        run: npm install -g @forge/cli
+
+      - name: Configure Forge
+        run: forge settings set usage-analytics true
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Deploy to staging
+        run: |
+          cd app
+          forge deploy -e staging
+          forge install --upgrade --site dhreben2.atlassian.net --product confluence --non-interactive -e staging
+
+  deploy-production:
+    name: Deploy to Production
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: lint
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install Forge CLI
+        run: npm install -g @forge/cli
+
+      - name: Configure Forge
+        run: forge settings set usage-analytics true
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Deploy to production
+        run: |
+          cd app
+          forge deploy -e production
