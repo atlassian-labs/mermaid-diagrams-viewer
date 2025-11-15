@@ -6,9 +6,6 @@ on:
     branches:
       - main
 
-env:
-  NODE_VERSION: '22.21.1'
-
 jobs:
   test:
     name: Run All Tests
@@ -19,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: 'package.json'
           cache: 'yarn'
 
       - name: Install dependencies
@@ -40,7 +37,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: 'package.json'
           cache: 'yarn'
 
       - name: Install dependencies
@@ -60,7 +57,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: 'package.json'
           cache: 'yarn'
 
       - name: Install dependencies
@@ -101,7 +98,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: 'package.json'
           cache: 'yarn'
 
       - name: Install Forge CLI
@@ -148,7 +145,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: 'package.json'
           cache: 'yarn'
 
       - name: Install Forge CLI
@@ -195,7 +192,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: 'package.json'
           cache: 'yarn'
 
       - name: Install Forge CLI
