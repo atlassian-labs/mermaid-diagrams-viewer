@@ -115,12 +115,12 @@ jobs:
       - name: Run forge lint
         run: .github/workflows/forge-lint.sh
 
-      - name: Deploy to development
+      - name: Deploy
         run: |
           cd app
           forge deploy -e $FORGE_ENVIRONMENT
 
-      - name: Install to development
+      - name: Install
         run: .github/workflows/forge-install.sh
 
   deploy-staging:
@@ -161,12 +161,12 @@ jobs:
       - name: Run forge lint
         run: .github/workflows/forge-lint.sh
 
-      - name: Deploy to staging
+      - name: Deploy
         run: |
           cd app
           forge deploy -e $FORGE_ENVIRONMENT
 
-      - name: Install to staging
+      - name: Install
         run: .github/workflows/forge-install.sh
 
   deploy-production:
@@ -207,10 +207,10 @@ jobs:
       - name: Run forge lint
         run: .github/workflows/forge-lint.sh
 
-      - name: Deploy to production
+      - name: Deploy
         run: |
           cd app
           forge deploy -e $FORGE_ENVIRONMENT
 
-      - name: Install to production
+      - name: Install
         run: .github/workflows/forge-install.sh
