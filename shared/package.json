@@ -10,7 +10,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@atlaskit/adf-utils": "^19.25.2",
+    "@atlaskit/adf-utils": "^19.26.0",
     "@forge/api": "^6.1.5",
     "@forge/bridge": "^5.7.0"
   },
