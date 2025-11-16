@@ -1,12 +1,14 @@
 import { defineConfig } from 'eslint/config';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { FlatCompat } from '@eslint/eslintrc';
 import { includeIgnoreFile } from '@eslint/compat';
 import eslint from '@eslint/js';
 import pluginJest from 'eslint-plugin-jest';
 import reactHooks from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
+import nodePlugin from 'eslint-plugin-n';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+
 import {
   projectStructureParser,
   projectStructurePlugin,
@@ -15,8 +17,6 @@ import {
 const gitignorePath = fileURLToPath(
   new URL('.gitignore', import.meta.url),
 );
-
-const compat = new FlatCompat();
 
 const workspaceStructure = [
   { name: "*" },
@@ -79,13 +79,13 @@ export default defineConfig(
       ]
     }
   },
-  compat.extends('plugin:n/recommended'),
+  nodePlugin.configs['flat/recommended-script'],
   pluginJest.configs['flat/recommended'],
   tseslint.configs.recommended.map(config => ({
     files: ['**/*.ts', '**/*.tsx'],
     ...config,
   })),
-  compat.extends('plugin:prettier/recommended'),
+  eslintPluginPrettierRecommended,
   {
     settings: {
       node: {
@@ -167,10 +167,8 @@ export default defineConfig(
       },
     },
   },
-  defineConfig([
-    includeIgnoreFile(gitignorePath),
-    {
-      ignores: ['eslint.config.mts']
-    }
-  ]),
+  includeIgnoreFile(gitignorePath),
+  {
+    ignores: ['eslint.config.mts']
+  }
 );
