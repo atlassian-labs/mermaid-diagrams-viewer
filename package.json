@@ -44,7 +44,8 @@
   },
   "scripts": {
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "test": "yarn workspaces run test"
+    "test": "yarn workspaces run test",
+    "build": "yarn workspaces run build"
   },
   "packageManager": "yarn@1.22.22"
 }

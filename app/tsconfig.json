@@ -1,4 +1,5 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES2022",
@@ -18,7 +19,6 @@
     "allowJs": false,
     "jsx": "react",
     "outDir": "./build/app",
-    "strict": true,
     "skipLibCheck": true
   }
 }
