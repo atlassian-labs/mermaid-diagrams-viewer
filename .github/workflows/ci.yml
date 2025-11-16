@@ -79,7 +79,8 @@ jobs:
     if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: [test, build-forge-app, build-custom-ui]
-    environment: development
+    environment: 
+      name: development
     concurrency: development
     env:
       FORGE_ENVIRONMENT: development
@@ -125,7 +126,7 @@ jobs:
     name: Deploy to Staging
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: [test, build-forge-app, build-custom-ui]
+    needs: [test, build-forge-app, build-custom-ui, deploy-development]
     environment: staging
     concurrency: staging
     env:

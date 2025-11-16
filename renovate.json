@@ -8,6 +8,9 @@
   "rangeStrategy": "bump",
   "timezone": "Australia/Sydney",
   "postUpdateOptions": ["yarnDedupeHighest"],
+  "automerge": true,
+  "automergeType": "pr",
+  "automergeStrategy": "squash",
   "packageRules": [
     {
       "groupName": "Lint",
