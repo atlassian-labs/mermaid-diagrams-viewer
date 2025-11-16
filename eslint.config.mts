@@ -2,45 +2,90 @@ import { defineConfig } from 'eslint/config';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FlatCompat } from '@eslint/eslintrc';
-import { includeIgnoreFile, fixupPluginRules } from '@eslint/compat';
+import { includeIgnoreFile } from '@eslint/compat';
 import eslint from '@eslint/js';
-import pluginFilenames from 'eslint-plugin-filenames';
 import pluginJest from 'eslint-plugin-jest';
 import reactHooks from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
-
+import {
+  projectStructureParser,
+  projectStructurePlugin,
+} from "eslint-plugin-project-structure";
 
 const gitignorePath = fileURLToPath(
   new URL('.gitignore', import.meta.url),
 );
 
 const compat = new FlatCompat();
-// https://github.com/selaux/eslint-plugin-filenames/issues/54
-pluginFilenames.rules['match-regex'].schema = [
-  {
-    type: ['string', 'null'],
-  },
-  {
-    type: ['boolean', 'null'],
-  },
-];
 
-export default tseslint.config(
+const workspaceStructure = [
+  { name: "*" },
+  {
+    name: "src",
+    children: [
+      {
+        name: "__tests__",
+        children: [{ name: "*{kebab-case}.test.(ts|tsx)" }]
+      },
+      { name: "*{kebab-case}.(ts|tsx)" },
+      {
+        name: "*",  // Allows nested folders like 'confluence'
+        children: [
+          {
+            name: "*",  // api-client, code-blocks, etc.
+            children: [
+              {
+                name: "__tests__",
+                children: [{ name: "*.test.(ts|tsx)" }]
+              },
+              { name: "*" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
+
+export default defineConfig(
   eslint.configs.recommended,
   tseslint.configs.strictTypeChecked,
-  reactHooks.configs['recommended-latest'],
+  reactHooks.configs.flat['recommended-latest'],
   {
+    languageOptions: { parser: projectStructureParser },
     plugins: {
-      filenames: fixupPluginRules(pluginFilenames),
+      "project-structure": projectStructurePlugin,
     },
+    rules: {
+      "project-structure/folder-structure": [
+        "error",
+        {
+          structure: [
+            { name: "*" },
+            {
+              name: "app",
+              children: workspaceStructure
+            },
+            {
+              name: "custom-ui",
+              children: workspaceStructure
+            },
+            {
+              name: "shared",
+              children: workspaceStructure
+            }
+          ]
+        }
+      ]
+    }
   },
-  ...(compat.extends('plugin:n/recommended')),
+  compat.extends('plugin:n/recommended'),
   pluginJest.configs['flat/recommended'],
-  ...(tseslint.configs.recommended.map(config => ({
+  tseslint.configs.recommended.map(config => ({
     files: ['**/*.ts', '**/*.tsx'],
     ...config,
-  }))),
-  ...(compat.extends('plugin:prettier/recommended')),
+  })),
+  compat.extends('plugin:prettier/recommended'),
   {
     settings: {
       node: {
@@ -77,7 +122,6 @@ export default tseslint.config(
           patterns: ['**/out/**', '**/dist/**'],
         },
       ],
-      'filenames/match-regex': ['error', '^[0-9a-z-.]+$'],
     },
   },
   {
@@ -126,7 +170,7 @@ export default tseslint.config(
   defineConfig([
     includeIgnoreFile(gitignorePath),
     {
-      ignores: ['eslint.config.mjs']
+      ignores: ['eslint.config.mts']
     }
   ]),
 );
