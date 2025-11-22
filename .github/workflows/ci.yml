@@ -76,7 +76,7 @@ jobs:
 
   deploy-development:
     name: Deploy to Development
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: [test, build-forge-app, build-custom-ui]
     environment: 
