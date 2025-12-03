@@ -19,15 +19,15 @@
     "@forge/bridge": "^5.9.1",
     "@fortawesome/fontawesome-free": "^7.1.0",
     "mermaid": "^11.12.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
     "react-inlinesvg": "^4.2.0",
     "react-zoom-pan-pinch": "^3.7.0",
     "shared": "1.0.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",
-    "@types/react-dom": "^18.3.7",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "vite": "^7.2.4",
