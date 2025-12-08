@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@atlaskit/adf-utils": "^19.26.2",
-    "@forge/api": "^6.4.0",
-    "@forge/bridge": "^5.9.1"
+    "@forge/api": "^6.4.1",
+    "@forge/bridge": "^5.10.0"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^3.2.4",

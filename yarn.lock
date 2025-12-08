@@ -1673,15 +1673,15 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.10.tgz#a2a1e3812d14525f725d011a73eceb41fef5bc1c"
   integrity sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==
 
-"@forge/api@^6.4.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@forge/api/-/api-6.4.0.tgz#c126863b7c09a0f28e3e9a45236de7f6d4efeeb9"
-  integrity sha512-RmigUlyy07+iR+FJQIKx7cJl4Pljc9WxQm59c6bsLAeN4rwTLiqAI3+07X8SInhkLYJBb+Eh3auKVUscR6lfdw==
+"@forge/api@^6.4.1":
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/@forge/api/-/api-6.4.1.tgz#545b12edab70c0f9b61d239c597b7bf6be8a8e24"
+  integrity sha512-aaM0wFWHGGuXqjBTIt5/N6BqUGAl2MkhE1ohlDvEEPH/B+BpfeJXjbwIEaJzhymEFOfVcKiUf5r86GXSz51f7A==
   dependencies:
     "@forge/auth" "0.0.9"
     "@forge/egress" "2.3.0"
     "@forge/i18n" "0.0.7"
-    "@forge/manifest" "^11.2.0"
+    "@forge/manifest" "^11.3.0"
     "@forge/storage" "2.0.3"
     headers-utils "^3.0.2"
     minimatch "^9.0.5"
@@ -1693,15 +1693,16 @@
   dependencies:
     tslib "^2.6.2"
 
-"@forge/bridge@^5.9.1":
-  version "5.9.1"
-  resolved "https://registry.yarnpkg.com/@forge/bridge/-/bridge-5.9.1.tgz#389b29f1e84591c0cc2c3abd7a39d17303183136"
-  integrity sha512-2oLSOURu3C5kfzkDmO/DwKU0dG8sRVU1fAexGJJV73hx3AjzmPPLM1IDxERkyQuf2xR1AeOIX8FWQnI0wf+tlQ==
+"@forge/bridge@^5.10.0":
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/@forge/bridge/-/bridge-5.10.0.tgz#4d86d8cd48fa516db87404ad1846dad44a7032ef"
+  integrity sha512-PG1DDMj5VqT8dWjH2fKGtKKESX88/q4TQbMKD4/RUSgLMSAXTHbEXAMyroUBb7hzF/dpzNbdf0uZ8LdIC0FTuA==
   dependencies:
     "@atlaskit/adf-schema" "^48.0.0"
     "@atlaskit/tokens" "^1.58.0"
+    "@forge/egress" "^2.3.0-next.0"
     "@forge/i18n" "0.0.7"
-    "@forge/manifest" "11.2.0"
+    "@forge/manifest" "11.3.0"
     "@forge/resolver" "1.7.1"
     "@statsig/js-client" "3.18.2"
     "@types/history" "^4.7.11"
@@ -1709,7 +1710,7 @@
     iframe-resizer "^4.4.5"
     uuid "^9.0.1"
 
-"@forge/egress@2.3.0":
+"@forge/egress@2.3.0", "@forge/egress@^2.3.0-next.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@forge/egress/-/egress-2.3.0.tgz#54211bb726f2835785726e83b9d6e62238a9596c"
   integrity sha512-JkJLiVGDsA/8zp3YHC11bSQgGQHNpnAMhQmBDBOw1dn2HGmGCSPhNpXOkwyN/gwwx0KhElpGEaDDwfK6XomjNw==
@@ -1721,10 +1722,10 @@
   dependencies:
     lodash "^4.17.21"
 
-"@forge/manifest@11.2.0", "@forge/manifest@^11.2.0":
-  version "11.2.0"
-  resolved "https://registry.yarnpkg.com/@forge/manifest/-/manifest-11.2.0.tgz#c83b16aed6adc11c7b1841b6f5b495e1e8520875"
-  integrity sha512-LTCi4+ie763BA6TWdej6LhIPv4vRWvGLN2gINXhvI7WwYuQRGZ0nBC3EXIvJ2zk39GUIkX8TTF0PS37/eBTBnw==
+"@forge/manifest@11.3.0", "@forge/manifest@^11.3.0":
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/@forge/manifest/-/manifest-11.3.0.tgz#9def189c3a32ad69a9414fba0d1a017931fdd74a"
+  integrity sha512-aGysKt8tuzs/u99+5utYG03oq5aZvpKEDo4C6e689gV60WrrymeIThJbGkB2kYbMerbJpc1jfltijT0Zj+hMDg==
   dependencies:
     "@forge/i18n" "0.0.7"
     "@sentry/node" "7.106.0"
@@ -1736,15 +1737,15 @@
     mime-types "^2.1.35"
     yaml "^2.3.4"
 
-"@forge/react@^11.8.1":
-  version "11.8.1"
-  resolved "https://registry.yarnpkg.com/@forge/react/-/react-11.8.1.tgz#134310a4581d94fe03adedb574d1f80fa8ae7339"
-  integrity sha512-xsHTn866WkTb4WqnW7Qg9jAJXO++cfERYxK3QFXhmqtAYSQnpfFp/NsjxOYPjybCKWIJcVNw8FlMTmNfdok+yg==
+"@forge/react@^11.8.2":
+  version "11.8.2"
+  resolved "https://registry.yarnpkg.com/@forge/react/-/react-11.8.2.tgz#b8f1bd834c8e6d440ae514a4fe2d6a95a86c618a"
+  integrity sha512-4LyE9OPzylnL3qNWo7NHP9KxdX02Df1i5pmnTHpZ5zZlIpu/GqKQSvNa+9RakNLJH+1iT96F7qJYU7OLZjFTKw==
   dependencies:
     "@atlaskit/adf-schema" "^48.0.0"
     "@atlaskit/adf-utils" "^19.19.0"
     "@atlaskit/forge-react-types" "^0.48.0"
-    "@forge/bridge" "^5.9.1"
+    "@forge/bridge" "^5.10.0"
     "@forge/i18n" "0.0.7"
     "@types/react" "^18.2.64"
     "@types/react-reconciler" "^0.28.8"
