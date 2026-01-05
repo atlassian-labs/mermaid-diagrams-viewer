@@ -1749,15 +1749,15 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.10.tgz#a2a1e3812d14525f725d011a73eceb41fef5bc1c"
   integrity sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==
 
-"@forge/api@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@forge/api/-/api-6.4.2.tgz#13dbed3487800b45f00e1a103c78c33ae506cfde"
-  integrity sha512-WlEa0i4giN2wxtY1wuLDF3nX6RNOC+WKwcQ4Xxji8ge5UcpgngKHr6HP7yEGrXwKb5PL2CT/2yTIt7G2ur2ggg==
+"@forge/api@^6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@forge/api/-/api-6.4.3.tgz#3acdc37ef7eee1fd796854a2968b4c59e28cca36"
+  integrity sha512-xwmJ+SWBur5LcxJ3dnN7Is4OidO4VV7lzPWkBhW73DtPQ8OLnMQqhi1W4dcQVeKwxDNoyVeoCDH+zdNg+3ZVrw==
   dependencies:
     "@forge/auth" "0.0.9"
     "@forge/egress" "2.3.1"
     "@forge/i18n" "0.0.7"
-    "@forge/manifest" "^11.3.1"
+    "@forge/manifest" "^11.3.2"
     "@forge/storage" "2.0.3"
     headers-utils "^3.0.2"
 
@@ -1768,16 +1768,16 @@
   dependencies:
     tslib "^2.6.2"
 
-"@forge/bridge@^5.10.1":
-  version "5.10.1"
-  resolved "https://registry.yarnpkg.com/@forge/bridge/-/bridge-5.10.1.tgz#37588f1dab4cf80891655a858ea45d4c7f1ec906"
-  integrity sha512-2CmkJf4ZUp7Z11ySToGC4GOTrj0VTI/n65BWE2gbj8i/DL38gSu5VBQEAVdMU7Ijq4ub5pGE4Q/c5UZ/yoOMUg==
+"@forge/bridge@^5.10.2":
+  version "5.10.2"
+  resolved "https://registry.yarnpkg.com/@forge/bridge/-/bridge-5.10.2.tgz#0a119d36f2cc3907e4588d68fe66d081f5183661"
+  integrity sha512-TaIACSn0cL09jW4+Dz2x2Ij63Bv/SxmQX7lfOYUabkQRVCydE4QTg5yme9FIWBetEmUEggZwE94Yss7Tnfx8Rw==
   dependencies:
     "@atlaskit/adf-schema" "^48.0.0"
     "@atlaskit/tokens" "^1.58.0"
     "@forge/egress" "^2.3.1"
     "@forge/i18n" "0.0.7"
-    "@forge/manifest" "11.3.1"
+    "@forge/manifest" "11.3.2"
     "@forge/resolver" "1.7.1"
     "@statsig/js-client" "3.18.2"
     "@types/history" "^4.7.11"
@@ -1797,10 +1797,10 @@
   dependencies:
     lodash "^4.17.21"
 
-"@forge/manifest@11.3.1", "@forge/manifest@^11.3.1":
-  version "11.3.1"
-  resolved "https://registry.yarnpkg.com/@forge/manifest/-/manifest-11.3.1.tgz#60a65bd4699d57e434aee52a578a6503149e50b0"
-  integrity sha512-52hoUtE7Wlz9OOplm+NCpai7dkQTR0eoQff/gN6OIE8Tg28w4Y2B/bmaBYaovQNY8lzaOv8jh0VkMNJbFi90FA==
+"@forge/manifest@11.3.2", "@forge/manifest@^11.3.2":
+  version "11.3.2"
+  resolved "https://registry.yarnpkg.com/@forge/manifest/-/manifest-11.3.2.tgz#1af385566fa3dd7b0c7ca2719a42e8aaef492c90"
+  integrity sha512-TcUubVXxSPR0dvhc22wVdD0smvSlflqOAPYP8d8isyeXv6A4pVyCJAPH/HagHVu53Sv5TZjWL3P8mSkPq+kfqg==
   dependencies:
     "@forge/i18n" "0.0.7"
     "@sentry/node" "7.106.0"
@@ -1812,20 +1812,20 @@
     mime-types "^2.1.35"
     yaml "^2.3.4"
 
-"@forge/react@^11.9.0":
-  version "11.9.0"
-  resolved "https://registry.yarnpkg.com/@forge/react/-/react-11.9.0.tgz#43a53dd75eda2aacc9d0897093ccb02b1609c7cb"
-  integrity sha512-jD1V2dxFeRDQFzpDhcIInzBCtG2gb2+Xtua+CjdD5OmF0yl402qTOE6ySaMeCehNF8rEd+pLVL4iray8B5s9pA==
+"@forge/react@^11.9.1":
+  version "11.9.1"
+  resolved "https://registry.yarnpkg.com/@forge/react/-/react-11.9.1.tgz#e6f5c863d4d66c74e898cc7bebf360a7b26cb4c1"
+  integrity sha512-l2NBY+JQq6Xbp8tbq4nRZF9+KT5zYhL2d73tZ5P1k4uASY6VPM7HiX+P//Bucm16jX7AkWJYdOeE3og7ZK+auw==
   dependencies:
     "@atlaskit/adf-schema" "^48.0.0"
     "@atlaskit/adf-utils" "^19.19.0"
     "@atlaskit/forge-react-types" "^0.48.0"
-    "@forge/bridge" "^5.10.1"
+    "@forge/bridge" "^5.10.2"
+    "@forge/egress" "^2.3.1"
     "@forge/i18n" "0.0.7"
     "@types/react" "^18.2.64"
     "@types/react-reconciler" "^0.28.8"
     lodash "^4.17.21"
-    minimatch "^9.0.5"
     react "^18.2.0"
     react-hook-form "7.65.0"
     react-reconciler "^0.29.0"
@@ -4881,7 +4881,7 @@ minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^9.0.4, minimatch@^9.0.5:
+minimatch@^9.0.4:
   version "9.0.5"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.5.tgz#d74f9dd6b57d83d8e98cfb82133b03978bc929e5"
   integrity sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==
