@@ -13,6 +13,7 @@ vi.mock('mermaid', () => ({
   default: {
     initialize: vi.fn(),
     render: vi.fn(),
+    registerLayoutLoaders: vi.fn(),
   },
 }));
 
