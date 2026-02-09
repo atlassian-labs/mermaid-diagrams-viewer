@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import SVG from 'react-inlinesvg';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import mermaid from 'mermaid';
+import elkLayouts from '@mermaid-js/layout-elk';
 import { Modal, view } from '@forge/bridge';
+
+mermaid.registerLayoutLoaders(elkLayouts);
 import { Box, xcss } from '@atlaskit/primitives';
 import '@fortawesome/fontawesome-free/css/all.css';
 

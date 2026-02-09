@@ -41,7 +41,12 @@ vi.mock('mermaid', () => ({
   default: {
     initialize: vi.fn(),
     render: vi.fn().mockResolvedValue({ svg: '<svg></svg>' }),
+    registerLayoutLoaders: vi.fn(),
   },
+}));
+
+vi.mock('@mermaid-js/layout-elk', () => ({
+  default: {},
 }));
 
 // Mock @forge/bridge
