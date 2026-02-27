@@ -39,6 +39,46 @@ describe('code-blocks', () => {
       expect(result).toEqual(['graph TD\n  A --> B']);
     });
 
+    it('should extract text from mermaid code blocks that start with a directive line', () => {
+      mockTraverse.mockImplementation((adf, visitor) => {
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [
+              {
+                type: 'text',
+                text: '%%{init: {"theme": "dark"}}%%\ngraph TD\n  A --> B',
+              },
+            ],
+          },
+          {},
+          0,
+          0,
+        );
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [
+              {
+                type: 'text',
+                text: '%% a comment\nflowchart LR\n  A --> B',
+              },
+            ],
+          },
+          {},
+          0,
+          0,
+        );
+        return adf;
+      });
+
+      const result = findCodeBlocks({ type: 'doc', content: [] });
+      expect(result).toEqual([
+        '%%{init: {"theme": "dark"}}%%\ngraph TD\n  A --> B',
+        '%% a comment\nflowchart LR\n  A --> B',
+      ]);
+    });
+
     it('should extract text from single-line mermaid code blocks with a semicolon after the diagram type', () => {
       mockTraverse.mockImplementation((adf, visitor) => {
         visitor.codeBlock(
