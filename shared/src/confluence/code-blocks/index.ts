@@ -5,6 +5,50 @@ import { Context } from '../../context';
 import { getIndexFromConfig } from '../../config';
 import { AppError } from '../../app-error';
 
+export const MERMAID_DIAGRAM_TYPES = [
+  'graph',
+  'flowchart',
+  'sequenceDiagram',
+  'classDiagram',
+  'stateDiagram-v2',
+  'stateDiagram',
+  'erDiagram',
+  'journey',
+  'gantt',
+  'pie',
+  'gitGraph',
+  'mindmap',
+  'timeline',
+  'xychart-beta',
+  'block-beta',
+  'quadrantChart',
+  'requirementDiagram',
+  'C4Context',
+  'C4Container',
+  'C4Component',
+  'C4Dynamic',
+  'C4Deployment',
+  'sankey-beta',
+  'zenuml',
+  'packet-beta',
+  'architecture-beta',
+  'kanban',
+] as const;
+
+const MERMAID_DIAGRAM_PATTERN = new RegExp(
+  `^(${MERMAID_DIAGRAM_TYPES.join('|')})(\\s|$)`,
+  'i',
+);
+
+function isMermaidCodeBlock(node: ADFEntity): boolean {
+  if ((node.attrs?.language as string | undefined)?.toLowerCase() === 'mermaid') {
+    return true;
+  }
+  const text = node.content?.[0]?.text?.trim() ?? '';
+  const firstLine = text.split('\n')[0];
+  return MERMAID_DIAGRAM_PATTERN.test(firstLine);
+}
+
 function getTextFromCodeBlock(node: ADFEntity) {
   return node.content?.[0]?.text?.trim() || '';
 }
@@ -28,8 +72,10 @@ function autoMapMacroToCodeBlock(adf: ADFEntity, moduleKey: string) {
       }
       extensions.push(localId);
     },
-    codeBlock: (node) => {
-      codeBlocks.push(getTextFromCodeBlock(node));
+    codeBlock: (node: ADFEntity) => {
+      if (isMermaidCodeBlock(node)) {
+        codeBlocks.push(getTextFromCodeBlock(node));
+      }
     },
   });
 
@@ -51,8 +97,10 @@ export function findCodeBlocks(adf: ADFEntity) {
   const codeBlocks: string[] = [];
 
   traverse(adf, {
-    codeBlock: (node) => {
-      codeBlocks.push(getTextFromCodeBlock(node));
+    codeBlock: (node: ADFEntity) => {
+      if (isMermaidCodeBlock(node)) {
+        codeBlocks.push(getTextFromCodeBlock(node));
+      }
     },
   });
 

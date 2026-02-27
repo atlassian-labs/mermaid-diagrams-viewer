@@ -1,5 +1,9 @@
 import { traverse } from '@atlaskit/adf-utils/traverse';
-import { findCodeBlocks, getCodeFromCorrespondingBlock } from '../index';
+import {
+  findCodeBlocks,
+  getCodeFromCorrespondingBlock,
+  MERMAID_DIAGRAM_TYPES,
+} from '../index';
 import { Context } from '../../../context';
 import { AppError } from '../../../app-error';
 import { vi, describe, it, expect } from 'vitest';
@@ -17,7 +21,7 @@ describe('code-blocks', () => {
       expect(result).toEqual([]);
     });
 
-    it('should extract text from code blocks', () => {
+    it('should extract text from code blocks that start with a mermaid diagram type', () => {
       mockTraverse.mockImplementation((adf, visitor) => {
         visitor.codeBlock(
           {
@@ -35,14 +39,120 @@ describe('code-blocks', () => {
       expect(result).toEqual(['graph TD\n  A --> B']);
     });
 
-    it('should handle code blocks with empty content', () => {
+    it('should filter out code blocks that do not contain a mermaid diagram type', () => {
+      mockTraverse.mockImplementation((adf, visitor) => {
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [{ type: 'text', text: 'const x = 1;' }],
+          },
+          {},
+          0,
+          0,
+        );
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [{ type: 'text', text: 'SELECT * FROM table' }],
+          },
+          {},
+          0,
+          0,
+        );
+        return adf;
+      });
+
+      const result = findCodeBlocks({ type: 'doc', content: [] });
+      expect(result).toEqual([]);
+    });
+
+    it('should include code blocks with mermaid language attribute regardless of content', () => {
+      mockTraverse.mockImplementation((adf, visitor) => {
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            attrs: { language: 'mermaid' },
+            content: [{ type: 'text', text: 'graph TD\n  A --> B' }],
+          },
+          {},
+          0,
+          0,
+        );
+        return adf;
+      });
+
+      const result = findCodeBlocks({ type: 'doc', content: [] });
+      expect(result).toEqual(['graph TD\n  A --> B']);
+    });
+
+    it('should filter out code blocks with empty content', () => {
       mockTraverse.mockImplementation((adf, visitor) => {
         visitor.codeBlock({ type: 'codeBlock', content: [] }, {}, 0, 0);
         return adf;
       });
 
       const result = findCodeBlocks({ type: 'doc', content: [] });
-      expect(result).toEqual(['']);
+      expect(result).toEqual([]);
+    });
+
+    it('should recognise all supported MERMAID_DIAGRAM_TYPES', () => {
+      const results: string[] = [];
+
+      for (const diagramType of MERMAID_DIAGRAM_TYPES) {
+        mockTraverse.mockImplementation((adf, visitor) => {
+          visitor.codeBlock(
+            {
+              type: 'codeBlock',
+              content: [{ type: 'text', text: `${diagramType}\n  A --> B` }],
+            },
+            {},
+            0,
+            0,
+          );
+          return adf;
+        });
+
+        const result = findCodeBlocks({ type: 'doc', content: [] });
+        results.push(...result);
+      }
+
+      expect(results).toHaveLength(MERMAID_DIAGRAM_TYPES.length);
+    });
+
+    it('should keep only mermaid blocks when mixed with non-mermaid blocks', () => {
+      mockTraverse.mockImplementation((adf, visitor) => {
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [{ type: 'text', text: 'const x = 1;' }],
+          },
+          {},
+          0,
+          0,
+        );
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [{ type: 'text', text: 'flowchart LR\n  A --> B' }],
+          },
+          {},
+          0,
+          0,
+        );
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [{ type: 'text', text: 'not mermaid content' }],
+          },
+          {},
+          0,
+          0,
+        );
+        return adf;
+      });
+
+      const result = findCodeBlocks({ type: 'doc', content: [] });
+      expect(result).toEqual(['flowchart LR\n  A --> B']);
     });
   });
 
@@ -116,7 +226,7 @@ describe('code-blocks', () => {
         visitor.codeBlock(
           {
             type: 'codeBlock',
-            content: [{ type: 'text', text: 'first block' }],
+            content: [{ type: 'text', text: 'graph TD\n  A --> B' }],
           },
           {},
           0,
@@ -125,7 +235,7 @@ describe('code-blocks', () => {
         visitor.codeBlock(
           {
             type: 'codeBlock',
-            content: [{ type: 'text', text: 'second block' }],
+            content: [{ type: 'text', text: 'flowchart LR\n  C --> D' }],
           },
           {},
           0,
@@ -134,7 +244,7 @@ describe('code-blocks', () => {
         visitor.codeBlock(
           {
             type: 'codeBlock',
-            content: [{ type: 'text', text: 'third block' }],
+            content: [{ type: 'text', text: 'sequenceDiagram\n  A->>B: msg' }],
           },
           {},
           0,
@@ -147,7 +257,7 @@ describe('code-blocks', () => {
         contextWithIndex,
         mockGetPageContent,
       );
-      expect(result).toBe('second block');
+      expect(result).toBe('flowchart LR\n  C --> D');
     });
 
     it('should throw AppError when code block index not found', async () => {
@@ -165,7 +275,7 @@ describe('code-blocks', () => {
         visitor.codeBlock(
           {
             type: 'codeBlock',
-            content: [{ type: 'text', text: 'only block' }],
+            content: [{ type: 'text', text: 'graph TD\n  A --> B' }],
           },
           {},
           0,
