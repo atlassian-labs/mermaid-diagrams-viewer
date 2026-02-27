@@ -39,6 +39,29 @@ describe('code-blocks', () => {
       expect(result).toEqual(['graph TD\n  A --> B']);
     });
 
+    it('should extract text from single-line mermaid code blocks with a semicolon after the diagram type', () => {
+      mockTraverse.mockImplementation((adf, visitor) => {
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [
+              {
+                type: 'text',
+                text: 'sequenceDiagram; Alice->>Bob: Hello',
+              },
+            ],
+          },
+          {},
+          0,
+          0,
+        );
+        return adf;
+      });
+
+      const result = findCodeBlocks({ type: 'doc', content: [] });
+      expect(result).toEqual(['sequenceDiagram; Alice->>Bob: Hello']);
+    });
+
     it('should filter out code blocks that do not contain a mermaid diagram type', () => {
       mockTraverse.mockImplementation((adf, visitor) => {
         visitor.codeBlock(

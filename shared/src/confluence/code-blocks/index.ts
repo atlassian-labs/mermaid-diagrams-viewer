@@ -36,7 +36,7 @@ export const MERMAID_DIAGRAM_TYPES = [
 ] as const;
 
 const MERMAID_DIAGRAM_PATTERN = new RegExp(
-  `^(${MERMAID_DIAGRAM_TYPES.join('|')})(\\s|$)`,
+  `^(${MERMAID_DIAGRAM_TYPES.join('|')})(\\s|$|;)`,
   'i',
 );
 
