@@ -374,6 +374,59 @@ describe('code-blocks', () => {
       expect(result).toBe('flowchart LR\n  C --> D');
     });
 
+    it('should return empty string when configured index points to an empty mermaid code block', async () => {
+      // A block with attrs.language="mermaid" but no body is valid (passes the
+      // fast-path in isMermaidCodeBlock) and should return '' rather than throwing.
+      const contextWithIndex = {
+        ...mockContext,
+        extension: {
+          ...mockContext.extension,
+          config: { index: 1 },
+        },
+      };
+
+      mockGetPageContent.mockResolvedValue({ type: 'doc', content: [] });
+
+      mockTraverse.mockImplementation((adf, visitor) => {
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [{ type: 'text', text: 'graph TD\n  A --> B' }],
+          },
+          {},
+          0,
+          0,
+        );
+        // Empty block included via language="mermaid" fast-path
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            attrs: { language: 'mermaid' },
+            content: [],
+          },
+          {},
+          0,
+          0,
+        );
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [{ type: 'text', text: 'sequenceDiagram\n  A->>B: msg' }],
+          },
+          {},
+          0,
+          0,
+        );
+        return adf;
+      });
+
+      const result = await getCodeFromCorrespondingBlock(
+        contextWithIndex,
+        mockGetPageContent,
+      );
+      expect(result).toBe('');
+    });
+
     it('should throw AppError when code block index not found', async () => {
       const contextWithIndex = {
         ...mockContext,

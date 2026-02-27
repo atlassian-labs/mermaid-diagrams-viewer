@@ -172,7 +172,7 @@ export async function getCodeFromCorrespondingBlock(
 
     const codeBlocks = findCodeBlocks(adf);
     const codeBlock = codeBlocks[index];
-    if (!codeBlock) {
+    if (codeBlock === undefined) {
       throw new AppError(
         `Code block under with position ${String(index + 1)} not found`,
         'DIAGRAM_IS_NOT_SELECTED',
