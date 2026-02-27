@@ -45,8 +45,23 @@ function isMermaidCodeBlock(node: ADFEntity): boolean {
     return true;
   }
   const text = node.content?.[0]?.text?.trim() ?? '';
-  const firstLine = text.split('\n')[0];
-  return MERMAID_DIAGRAM_PATTERN.test(firstLine);
+  const lines = text.split('\n');
+
+  // Find the first non-empty, non-directive/comment line to detect the diagram type.
+  // Mermaid diagrams may start with directives (%%{init: ...}%%) or comments (%% ...)
+  // before the actual diagram keyword, so those lines are skipped.
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line) {
+      continue;
+    }
+    if (line.startsWith('%%')) {
+      continue;
+    }
+    return MERMAID_DIAGRAM_PATTERN.test(line);
+  }
+
+  return false;
 }
 
 function getTextFromCodeBlock(node: ADFEntity) {
@@ -93,6 +108,11 @@ function autoMapMacroToCodeBlock(adf: ADFEntity, moduleKey: string) {
   return map;
 }
 
+// NOTE: this function now returns only Mermaid code blocks, so the returned
+// array's indices are consistent with the config UI (which also uses this
+// function to populate the dropdown). Previously-saved config.index values
+// that were based on the unfiltered block list may point to a different block
+// after this change; affected macros will need to be reconfigured once.
 export function findCodeBlocks(adf: ADFEntity) {
   const codeBlocks: string[] = [];
 

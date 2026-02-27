@@ -6,7 +6,7 @@ import {
 } from '../index';
 import { Context } from '../../../context';
 import { AppError } from '../../../app-error';
-import { vi, describe, it, expect } from 'vitest';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 
 // Mock dependencies
 vi.mock('@atlaskit/adf-utils/traverse');
