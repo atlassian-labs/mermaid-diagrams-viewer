@@ -239,6 +239,55 @@ describe('code-blocks', () => {
       mockTraverse.mockClear();
     });
 
+    it('should skip non-mermaid code blocks when auto-mapping extensions to code blocks', async () => {
+      // Extension is followed first by a non-mermaid block (JS), then a mermaid block.
+      // The non-mermaid block should be filtered out, so the extension maps to the
+      // mermaid block.
+      const expectedCode = 'graph TD\n  A --> B';
+
+      mockGetPageContent.mockResolvedValue({ type: 'doc', content: [] });
+
+      mockTraverse.mockImplementation((adf, visitor) => {
+        visitor.extension(
+          {
+            type: 'extension',
+            attrs: {
+              extensionKey: 'some-app-mermaid-diagrams-for-confluence',
+              parameters: { localId: 'local-123' },
+            },
+          },
+          {},
+          0,
+          0,
+        );
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [{ type: 'text', text: 'const x = 1;' }],
+          },
+          {},
+          0,
+          0,
+        );
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [{ type: 'text', text: expectedCode }],
+          },
+          {},
+          0,
+          0,
+        );
+        return adf;
+      });
+
+      const result = await getCodeFromCorrespondingBlock(
+        mockContext,
+        mockGetPageContent,
+      );
+      expect(result).toBe(expectedCode);
+    });
+
     it('should return code from auto-mapped macro when no index configured', async () => {
       const expectedCode = 'graph TD\n  A --> B';
 
