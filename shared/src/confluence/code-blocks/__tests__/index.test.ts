@@ -130,12 +130,14 @@ describe('code-blocks', () => {
     });
 
     it('should include code blocks with mermaid language attribute regardless of content', () => {
+      // Use non-mermaid body so only the language attribute triggers inclusion,
+      // ensuring the attrs.language === 'mermaid' fast-path is actually exercised.
       mockTraverse.mockImplementation((adf, visitor) => {
         visitor.codeBlock(
           {
             type: 'codeBlock',
             attrs: { language: 'mermaid' },
-            content: [{ type: 'text', text: 'graph TD\n  A --> B' }],
+            content: [{ type: 'text', text: 'const x = 1;' }],
           },
           {},
           0,
@@ -145,7 +147,7 @@ describe('code-blocks', () => {
       });
 
       const result = findCodeBlocks({ type: 'doc', content: [] });
-      expect(result).toEqual(['graph TD\n  A --> B']);
+      expect(result).toEqual(['const x = 1;']);
     });
 
     it('should filter out code blocks with empty content', () => {
