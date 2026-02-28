@@ -49,6 +49,6 @@
   },
   "packageManager": "yarn@1.22.22",
   "resolutions": {
-    "react-hook-form": "7.54.2"
+    "react-hook-form": "7.71.2"
   }
 }
