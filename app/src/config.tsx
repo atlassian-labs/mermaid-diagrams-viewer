@@ -9,7 +9,10 @@ import ForgeReconciler, {
 import { view } from '@forge/bridge';
 import { Config, CONFIG_FIELD } from 'shared/src/config';
 import { getPageContent } from 'shared/src/confluence/api-client/browser';
-import { findCodeBlocks } from 'shared/src/confluence/code-blocks';
+import {
+  findCodeBlocks,
+  looksLikeMermaid,
+} from 'shared/src/confluence/code-blocks';
 
 export const useSubmit = () => {
   const [error, setError] = useState<boolean>();
@@ -76,8 +79,9 @@ export const DiagramConfig = () => {
     ...codeBlocks.map((codeBlock, index) => {
       const trimmedCode =
         codeBlock.length > 35 ? `${codeBlock.substring(0, 35)}...` : codeBlock;
+      const indicator = looksLikeMermaid(codeBlock) ? ' [mermaid]' : '';
       return {
-        label: `${String(index + 1)}. ${trimmedCode}`,
+        label: `${String(index + 1)}. ${trimmedCode}${indicator}`,
         value: index,
       };
     }),

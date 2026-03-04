@@ -1,51 +1,21 @@
 import { ADFEntity } from '@atlaskit/adf-utils/types';
 import { traverse } from '@atlaskit/adf-utils/traverse';
+import mermaid from 'mermaid';
 import { GetPageContent } from '../api-client/types';
 import { Context } from '../../context';
 import { getIndexFromConfig } from '../../config';
 import { AppError } from '../../app-error';
 
-export const MERMAID_DIAGRAM_TYPES = [
-  'graph',
-  'flowchart',
-  'sequenceDiagram',
-  'classDiagram',
-  'stateDiagram-v2',
-  'stateDiagram',
-  'erDiagram',
-  'journey',
-  'gantt',
-  'pie',
-  'gitGraph',
-  'mindmap',
-  'timeline',
-  'xychart-beta',
-  'block-beta',
-  'quadrantChart',
-  'requirementDiagram',
-  'C4Context',
-  'C4Container',
-  'C4Component',
-  'C4Dynamic',
-  'C4Deployment',
-  'sankey-beta',
-  'zenuml',
-  'packet-beta',
-  'architecture-beta',
-  'kanban',
-] as const;
-
+const registeredTypes = mermaid
+  .getRegisteredDiagramsMetadata()
+  .map((d) => d.id);
 const MERMAID_DIAGRAM_PATTERN = new RegExp(
-  `^(${MERMAID_DIAGRAM_TYPES.join('|')})(\\s|$|;)`,
+  `^(${registeredTypes.join('|')})(\\s|$|;)`,
   'i',
 );
 
-function isMermaidCodeBlock(node: ADFEntity): boolean {
-  if ((node.attrs?.language as string | undefined)?.toLowerCase() === 'mermaid') {
-    return true;
-  }
-  const text = node.content?.[0]?.text?.trim() ?? '';
-  const lines = text.split('\n');
+export function looksLikeMermaid(code: string): boolean {
+  const lines = code.trim().split('\n');
 
   // Find the first non-empty, non-directive/comment line to detect the diagram type.
   // Mermaid diagrams may start with directives (%%{init: ...}%%) or comments (%% ...)
@@ -62,6 +32,19 @@ function isMermaidCodeBlock(node: ADFEntity): boolean {
   }
 
   return false;
+}
+
+function isMermaidCodeBlock(node: ADFEntity): boolean {
+  // Confluence's native editor does not expose a "mermaid" language attribute, but
+  // programmatic publishing via Atlassian MCP converts ```mermaid fenced code blocks
+  // in Markdown to codeBlock nodes with attrs.language = "mermaid".
+  if (
+    (node.attrs?.language as string | undefined)?.toLowerCase() === 'mermaid'
+  ) {
+    return true;
+  }
+  const text = node.content?.[0]?.text?.trim() ?? '';
+  return looksLikeMermaid(text);
 }
 
 function getTextFromCodeBlock(node: ADFEntity) {
@@ -108,19 +91,12 @@ function autoMapMacroToCodeBlock(adf: ADFEntity, moduleKey: string) {
   return map;
 }
 
-// NOTE: this function now returns only Mermaid code blocks, so the returned
-// array's indices are consistent with the config UI (which also uses this
-// function to populate the dropdown). Previously-saved config.index values
-// that were based on the unfiltered block list may point to a different block
-// after this change; affected macros will need to be reconfigured once.
 export function findCodeBlocks(adf: ADFEntity) {
   const codeBlocks: string[] = [];
 
   traverse(adf, {
     codeBlock: (node: ADFEntity) => {
-      if (isMermaidCodeBlock(node)) {
-        codeBlocks.push(getTextFromCodeBlock(node));
-      }
+      codeBlocks.push(getTextFromCodeBlock(node));
     },
   });
 
@@ -171,7 +147,7 @@ export async function getCodeFromCorrespondingBlock(
     }
 
     const codeBlocks = findCodeBlocks(adf);
-    const codeBlock = codeBlocks[index];
+    const codeBlock = codeBlocks.at(index);
     if (codeBlock === undefined) {
       throw new AppError(
         `Code block under with position ${String(index + 1)} not found`,
