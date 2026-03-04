@@ -22,9 +22,11 @@ describe('config', () => {
       expect(getIndexFromConfig({ [CONFIG_FIELD]: 42 })).toBe(42);
     });
 
-    it('should return the index when config index is negative safe integer', () => {
-      expect(getIndexFromConfig({ [CONFIG_FIELD]: -1 })).toBe(-1);
-      expect(getIndexFromConfig({ [CONFIG_FIELD]: -42 })).toBe(-42);
+    it('should return undefined when config index is a negative integer', () => {
+      // Negative indices are rejected: Array.at(-1) would silently resolve to the
+      // last element instead of throwing, which could render an unintended diagram.
+      expect(getIndexFromConfig({ [CONFIG_FIELD]: -1 })).toBeUndefined();
+      expect(getIndexFromConfig({ [CONFIG_FIELD]: -42 })).toBeUndefined();
     });
   });
 
