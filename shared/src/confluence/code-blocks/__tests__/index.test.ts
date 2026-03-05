@@ -64,6 +64,16 @@ describe('code-blocks', () => {
       expect(looksLikeMermaid('const x = 1;')).toBe(false);
       expect(looksLikeMermaid('SELECT * FROM table')).toBe(false);
     });
+
+    it('should skip empty lines between directives and the diagram keyword', () => {
+      // Empty line appears after a %% directive (trim() removes leading whitespace
+      // so empty lines must follow a non-empty line to be exercised mid-loop)
+      expect(looksLikeMermaid('%% comment\n\ngraph TD\n  A --> B')).toBe(true);
+    });
+
+    it('should return false when all lines are directives with no diagram keyword', () => {
+      expect(looksLikeMermaid('%%{init: {"theme": "dark"}}%%\n%% comment only')).toBe(false);
+    });
   });
 
   describe('findCodeBlocks', () => {
@@ -234,6 +244,16 @@ describe('code-blocks', () => {
           {
             type: 'codeBlock',
             content: [{ type: 'text', text: 'const x = 1;' }],
+          },
+          {},
+          0,
+          0,
+        );
+        // Block with no text property — exercises the undefined-text branch in isMermaidCodeBlock
+        visitor.codeBlock(
+          {
+            type: 'codeBlock',
+            content: [{ type: 'text' }],
           },
           {},
           0,

@@ -5,7 +5,7 @@ export function getIndexFromConfig(
   config: Config | undefined,
 ): number | undefined {
   const index = config?.index;
-  if (Number.isSafeInteger(index) && index >= 0) {
+  if (typeof index === 'number' && Number.isSafeInteger(index) && index >= 0) {
     return index;
   }
   return undefined;
