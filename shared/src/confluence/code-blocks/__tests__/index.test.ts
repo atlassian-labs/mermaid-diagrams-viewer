@@ -98,7 +98,7 @@ describe('code-blocks', () => {
       expect(() => looksLikeMermaid('graph TD')).toThrow(unexpectedError);
     });
 
-    it('should return true for real-world diagram types from diagrams_to_be_tested', () => {
+    it('should return true for real-world diagram examples including classDiagram, flowchart, graph, and sequenceDiagram', () => {
       // classDiagram
       expect(
         looksLikeMermaid(
