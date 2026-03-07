@@ -1749,15 +1749,15 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.10.tgz#a2a1e3812d14525f725d011a73eceb41fef5bc1c"
   integrity sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==
 
-"@forge/api@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@forge/api/-/api-6.4.2.tgz#13dbed3487800b45f00e1a103c78c33ae506cfde"
-  integrity sha512-WlEa0i4giN2wxtY1wuLDF3nX6RNOC+WKwcQ4Xxji8ge5UcpgngKHr6HP7yEGrXwKb5PL2CT/2yTIt7G2ur2ggg==
+"@forge/api@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@forge/api/-/api-7.1.0.tgz#089920b56cbdba02dbd64c01b506be350df19a24"
+  integrity sha512-r6T5lauONwtAstGbOhlxxNzxGwHtL13DxNmrl7EJuV3Ash6WBE1fgBlQtvyyR8Bcsd6lxZVWVXg5/Gjzl+tdJw==
   dependencies:
     "@forge/auth" "0.0.9"
     "@forge/egress" "2.3.1"
     "@forge/i18n" "0.0.7"
-    "@forge/manifest" "^11.3.1"
+    "@forge/manifest" "^12.2.0"
     "@forge/storage" "2.0.3"
     headers-utils "^3.0.2"
 
@@ -1797,10 +1797,25 @@
   dependencies:
     lodash "^4.17.21"
 
-"@forge/manifest@11.3.1", "@forge/manifest@^11.3.1":
+"@forge/manifest@11.3.1":
   version "11.3.1"
   resolved "https://registry.yarnpkg.com/@forge/manifest/-/manifest-11.3.1.tgz#60a65bd4699d57e434aee52a578a6503149e50b0"
   integrity sha512-52hoUtE7Wlz9OOplm+NCpai7dkQTR0eoQff/gN6OIE8Tg28w4Y2B/bmaBYaovQNY8lzaOv8jh0VkMNJbFi90FA==
+  dependencies:
+    "@forge/i18n" "0.0.7"
+    "@sentry/node" "7.106.0"
+    ajv "^8.12.0"
+    ajv-formats "2.1.1"
+    cheerio "^1.1.0"
+    glob "^11.1.0"
+    lodash "^4.17.21"
+    mime-types "^2.1.35"
+    yaml "^2.3.4"
+
+"@forge/manifest@^12.2.0":
+  version "12.2.0"
+  resolved "https://registry.yarnpkg.com/@forge/manifest/-/manifest-12.2.0.tgz#546e265d0d90c116ad2386f9e2dc61b579199cc3"
+  integrity sha512-gsBH8iVsL7S/OXhW0rCpK7AZ34zYUwLqidYvirkc5iRyy+QXrJLA5Use91HrbVbXfAM2ntjtvijUL2C0LH/ufA==
   dependencies:
     "@forge/i18n" "0.0.7"
     "@sentry/node" "7.106.0"
