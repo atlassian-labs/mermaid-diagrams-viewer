@@ -6,32 +6,13 @@ import { Context } from '../../context';
 import { getIndexFromConfig } from '../../config';
 import { AppError } from '../../app-error';
 
-const registeredTypes = mermaid
-  .getRegisteredDiagramsMetadata()
-  .map((d) => d.id);
-const MERMAID_DIAGRAM_PATTERN = new RegExp(
-  `^(${registeredTypes.join('|')})(\\s|$|;)`,
-  'i',
-);
-
 export function looksLikeMermaid(code: string): boolean {
-  const lines = code.trim().split('\n');
-
-  // Find the first non-empty, non-directive/comment line to detect the diagram type.
-  // Mermaid diagrams may start with directives (%%{init: ...}%%) or comments (%% ...)
-  // before the actual diagram keyword, so those lines are skipped.
-  for (const rawLine of lines) {
-    const line = rawLine.trim();
-    if (!line) {
-      continue;
-    }
-    if (line.startsWith('%%')) {
-      continue;
-    }
-    return MERMAID_DIAGRAM_PATTERN.test(line);
+  try {
+    mermaid.detectType(code);
+    return true;
+  } catch {
+    return false;
   }
-
-  return false;
 }
 
 function isMermaidCodeBlock(node: ADFEntity): boolean {

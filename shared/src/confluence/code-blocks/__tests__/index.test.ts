@@ -1,5 +1,4 @@
 import { traverse } from '@atlaskit/adf-utils/traverse';
-import mermaid from 'mermaid';
 import {
   findCodeBlocks,
   getCodeFromCorrespondingBlock,
@@ -13,36 +12,50 @@ import { vi, describe, it, expect, beforeEach } from 'vitest';
 vi.mock('@atlaskit/adf-utils/traverse');
 const mockTraverse = vi.mocked(traverse);
 
+const MERMAID_KEYWORDS = [
+  'graph',
+  'flowchart',
+  'sequenceDiagram',
+  'classDiagram',
+  'stateDiagram-v2',
+  'stateDiagram',
+  'erDiagram',
+  'journey',
+  'gantt',
+  'pie',
+  'gitGraph',
+  'mindmap',
+  'timeline',
+];
+
 vi.mock('mermaid', () => ({
   default: {
-    getRegisteredDiagramsMetadata: () => [
-      { id: 'graph' },
-      { id: 'flowchart' },
-      { id: 'sequenceDiagram' },
-      { id: 'classDiagram' },
-      { id: 'stateDiagram-v2' },
-      { id: 'stateDiagram' },
-      { id: 'erDiagram' },
-      { id: 'journey' },
-      { id: 'gantt' },
-      { id: 'pie' },
-      { id: 'gitGraph' },
-      { id: 'mindmap' },
-      { id: 'timeline' },
-    ],
+    detectType: (code: string) => {
+      const firstLine = code
+        .trim()
+        .split('\n')
+        .find((l) => l.trim() && !l.trim().startsWith('%%'))
+        ?.trim();
+      const match = MERMAID_KEYWORDS.find(
+        (kw) =>
+          firstLine === kw ||
+          firstLine?.startsWith(kw + ' ') ||
+          firstLine?.startsWith(kw + ';') ||
+          firstLine?.startsWith(kw + '\n'),
+      );
+      if (match) return match;
+      throw new Error('No diagram type detected');
+    },
   },
 }));
 
 describe('code-blocks', () => {
   describe('looksLikeMermaid', () => {
     it('should recognise all supported diagram types', () => {
-      const registeredTypes = mermaid
-        .getRegisteredDiagramsMetadata()
-        .map((d) => d.id);
-      for (const type of registeredTypes) {
+      for (const type of MERMAID_KEYWORDS) {
         expect(looksLikeMermaid(`${type}\n  A --> B`)).toBe(true);
       }
-      expect(registeredTypes.length).toBeGreaterThan(0);
+      expect(MERMAID_KEYWORDS.length).toBeGreaterThan(0);
     });
 
     it('should return true for diagrams preceded by %% directives/comments', () => {
@@ -66,8 +79,6 @@ describe('code-blocks', () => {
     });
 
     it('should skip empty lines between directives and the diagram keyword', () => {
-      // Empty line appears after a %% directive (trim() removes leading whitespace
-      // so empty lines must follow a non-empty line to be exercised mid-loop)
       expect(looksLikeMermaid('%% comment\n\ngraph TD\n  A --> B')).toBe(true);
     });
 
@@ -75,6 +86,43 @@ describe('code-blocks', () => {
       expect(
         looksLikeMermaid('%%{init: {"theme": "dark"}}%%\n%% comment only'),
       ).toBe(false);
+    });
+
+    it('should return true for real-world diagram types from diagrams_to_be_tested', () => {
+      // classDiagram
+      expect(
+        looksLikeMermaid(
+          'classDiagram\n    Animal <|-- Duck\n    Animal : +int age',
+        ),
+      ).toBe(true);
+
+      // flowchart TD
+      expect(
+        looksLikeMermaid(
+          'flowchart TD\n    A[Christmas] -->|Get money| B(Go shopping)',
+        ),
+      ).toBe(true);
+
+      // sequenceDiagram
+      expect(
+        looksLikeMermaid(
+          'sequenceDiagram\n    actor User\n    User->>+FE: loadPage(pageAri)',
+        ),
+      ).toBe(true);
+
+      // graph TB (alias for flowchart)
+      expect(
+        looksLikeMermaid(
+          'graph TB\n    node_1["Question...??"]\n    node_1 -->|Yes| node_1_end_a',
+        ),
+      ).toBe(true);
+
+      // flowchart with no direction keyword
+      expect(
+        looksLikeMermaid(
+          'flowchart\n\n    user["User fa:fa-user"]\n    user -->|accesses| system',
+        ),
+      ).toBe(true);
     });
   });
 
