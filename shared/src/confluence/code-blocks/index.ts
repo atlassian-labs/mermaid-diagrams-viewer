@@ -1,9 +1,51 @@
 import { ADFEntity } from '@atlaskit/adf-utils/types';
 import { traverse } from '@atlaskit/adf-utils/traverse';
+import mermaid from 'mermaid';
 import { GetPageContent } from '../api-client/types';
 import { Context } from '../../context';
 import { getIndexFromConfig } from '../../config';
 import { AppError } from '../../app-error';
+
+const registeredTypes = mermaid
+  .getRegisteredDiagramsMetadata()
+  .map((d) => d.id);
+const MERMAID_DIAGRAM_PATTERN = new RegExp(
+  `^(${registeredTypes.join('|')})(\\s|$|;)`,
+  'i',
+);
+
+export function looksLikeMermaid(code: string): boolean {
+  const lines = code.trim().split('\n');
+
+  // Find the first non-empty, non-directive/comment line to detect the diagram type.
+  // Mermaid diagrams may start with directives (%%{init: ...}%%) or comments (%% ...)
+  // before the actual diagram keyword, so those lines are skipped.
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line) {
+      continue;
+    }
+    if (line.startsWith('%%')) {
+      continue;
+    }
+    return MERMAID_DIAGRAM_PATTERN.test(line);
+  }
+
+  return false;
+}
+
+function isMermaidCodeBlock(node: ADFEntity): boolean {
+  // Confluence's native editor does not expose a "mermaid" language attribute, but
+  // programmatic publishing via Atlassian MCP converts ```mermaid fenced code blocks
+  // in Markdown to codeBlock nodes with attrs.language = "mermaid".
+  if (
+    (node.attrs?.language as string | undefined)?.toLowerCase() === 'mermaid'
+  ) {
+    return true;
+  }
+  const text = node.content?.[0]?.text?.trim() ?? '';
+  return looksLikeMermaid(text);
+}
 
 function getTextFromCodeBlock(node: ADFEntity) {
   return node.content?.[0]?.text?.trim() || '';
@@ -28,8 +70,10 @@ function autoMapMacroToCodeBlock(adf: ADFEntity, moduleKey: string) {
       }
       extensions.push(localId);
     },
-    codeBlock: (node) => {
-      codeBlocks.push(getTextFromCodeBlock(node));
+    codeBlock: (node: ADFEntity) => {
+      if (isMermaidCodeBlock(node)) {
+        codeBlocks.push(getTextFromCodeBlock(node));
+      }
     },
   });
 
@@ -51,7 +95,7 @@ export function findCodeBlocks(adf: ADFEntity) {
   const codeBlocks: string[] = [];
 
   traverse(adf, {
-    codeBlock: (node) => {
+    codeBlock: (node: ADFEntity) => {
       codeBlocks.push(getTextFromCodeBlock(node));
     },
   });
@@ -103,8 +147,8 @@ export async function getCodeFromCorrespondingBlock(
     }
 
     const codeBlocks = findCodeBlocks(adf);
-    const codeBlock = codeBlocks[index];
-    if (!codeBlock) {
+    const codeBlock = codeBlocks.at(index);
+    if (codeBlock === undefined) {
       throw new AppError(
         `Code block under with position ${String(index + 1)} not found`,
         'DIAGRAM_IS_NOT_SELECTED',

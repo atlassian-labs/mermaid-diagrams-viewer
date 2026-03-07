@@ -16,6 +16,7 @@ const mockView = {
 
 const mockGetPageContent = vi.fn();
 const mockFindCodeBlocks = vi.fn();
+const mockLooksLikeMermaid = vi.fn().mockReturnValue(false);
 
 vi.mock('@forge/bridge', () => ({
   view: mockView,
@@ -27,6 +28,7 @@ vi.mock('shared/src/confluence/api-client/browser', () => ({
 
 vi.mock('shared/src/confluence/code-blocks', () => ({
   findCodeBlocks: mockFindCodeBlocks,
+  looksLikeMermaid: mockLooksLikeMermaid,
 }));
 
 vi.mock('shared/src/config', () => ({

@@ -15,6 +15,7 @@ vi.mock('@forge/bridge', () => ({
 // Mock shared modules
 const mockGetPageContent = vi.fn();
 const mockFindCodeBlocks = vi.fn();
+const mockLooksLikeMermaid = vi.fn().mockReturnValue(false);
 
 vi.mock('shared/src/confluence/api-client/browser', () => ({
   getPageContent: mockGetPageContent,
@@ -22,6 +23,7 @@ vi.mock('shared/src/confluence/api-client/browser', () => ({
 
 vi.mock('shared/src/confluence/code-blocks', () => ({
   findCodeBlocks: mockFindCodeBlocks,
+  looksLikeMermaid: mockLooksLikeMermaid,
 }));
 
 vi.mock('shared/src/config', () => ({
@@ -199,6 +201,7 @@ describe('DiagramConfig Component', () => {
       'graph TD; A --> B',
       'graph LR; C --> D',
     ]);
+    mockLooksLikeMermaid.mockReturnValue(false);
   });
 
   it('should render with config data', async () => {
@@ -295,6 +298,20 @@ describe('DiagramConfig Component', () => {
       expect(options[0].textContent).toBe('Auto detect');
       expect(options[1].textContent).toBe('1. graph TD; A --> B');
       expect(options[2].textContent).toBe('2. graph LR; C --> D');
+    });
+  });
+
+  it('should show [mermaid] indicator for mermaid code blocks', async () => {
+    mockLooksLikeMermaid.mockReturnValue(true);
+    const { DiagramConfig } = await import('../config');
+
+    render(<DiagramConfig />);
+
+    await waitFor(() => {
+      const select = screen.getByTestId('forge-select');
+      const options = select.querySelectorAll('option');
+      expect(options[1].textContent).toBe('1. graph TD; A --> B [mermaid]');
+      expect(options[2].textContent).toBe('2. graph LR; C --> D [mermaid]');
     });
   });
 

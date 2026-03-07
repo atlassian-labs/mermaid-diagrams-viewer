@@ -4,8 +4,9 @@ export type Config = { [CONFIG_FIELD]?: number };
 export function getIndexFromConfig(
   config: Config | undefined,
 ): number | undefined {
-  if (Number.isSafeInteger(config?.index)) {
-    return config?.index;
+  const index = config?.index;
+  if (typeof index === 'number' && Number.isSafeInteger(index) && index >= 0) {
+    return index;
   }
   return undefined;
 }
