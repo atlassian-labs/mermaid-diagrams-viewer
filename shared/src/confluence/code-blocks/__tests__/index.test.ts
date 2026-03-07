@@ -72,7 +72,9 @@ describe('code-blocks', () => {
     });
 
     it('should return false when all lines are directives with no diagram keyword', () => {
-      expect(looksLikeMermaid('%%{init: {"theme": "dark"}}%%\n%% comment only')).toBe(false);
+      expect(
+        looksLikeMermaid('%%{init: {"theme": "dark"}}%%\n%% comment only'),
+      ).toBe(false);
     });
   });
 
