@@ -40,11 +40,12 @@ vi.mock('mermaid', () => ({
         (kw) =>
           firstLine === kw ||
           firstLine?.startsWith(kw + ' ') ||
-          firstLine?.startsWith(kw + ';') ||
-          firstLine?.startsWith(kw + '\n'),
+          firstLine?.startsWith(kw + ';'),
       );
       if (match) return match;
-      throw new Error('No diagram type detected');
+      const err = new Error('No diagram type detected');
+      err.name = 'UnknownDiagramError';
+      throw err;
     },
   },
 }));
@@ -86,6 +87,15 @@ describe('code-blocks', () => {
       expect(
         looksLikeMermaid('%%{init: {"theme": "dark"}}%%\n%% comment only'),
       ).toBe(false);
+    });
+
+    it('should rethrow errors that are not UnknownDiagramError', async () => {
+      const mermaidMock = (await import('mermaid')).default;
+      const unexpectedError = new Error('Internal mermaid failure');
+      vi.spyOn(mermaidMock, 'detectType').mockImplementationOnce(() => {
+        throw unexpectedError;
+      });
+      expect(() => looksLikeMermaid('graph TD')).toThrow(unexpectedError);
     });
 
     it('should return true for real-world diagram types from diagrams_to_be_tested', () => {

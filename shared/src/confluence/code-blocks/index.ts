@@ -10,8 +10,11 @@ export function looksLikeMermaid(code: string): boolean {
   try {
     mermaid.detectType(code);
     return true;
-  } catch {
-    return false;
+  } catch (error) {
+    if (error instanceof Error && error.name === 'UnknownDiagramError') {
+      return false;
+    }
+    throw error;
   }
 }
 
