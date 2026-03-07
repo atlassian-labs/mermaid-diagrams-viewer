@@ -50,6 +50,6 @@
   "packageManager": "yarn@1.22.22",
   "resolutions": {
     "react-hook-form": "7.54.2",
-    "@types/d3-dispatch": "3.0.5"
+    "@types/d3-dispatch": "3.0.7"
   }
 }
