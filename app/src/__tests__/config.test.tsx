@@ -98,6 +98,9 @@ vi.mock('@forge/react', () => {
     Stack: ({ children }: { children: React.ReactNode }) => (
       <div data-testid="forge-stack">{children}</div>
     ),
+    Text: ({ children }: { children: React.ReactNode }) => (
+      <span data-testid="forge-text">{children}</span>
+    ),
   };
 });
 
@@ -296,8 +299,8 @@ describe('DiagramConfig Component', () => {
       const options = select.querySelectorAll('option');
       expect(options).toHaveLength(3);
       expect(options[0].textContent).toBe('Auto detect');
-      expect(options[1].textContent).toBe('1. graph TD; A --> B');
-      expect(options[2].textContent).toBe('2. graph LR; C --> D');
+      expect(options[1].textContent).toBe('1. ⛌ graph TD; A --> B');
+      expect(options[2].textContent).toBe('2. ⛌ graph LR; C --> D');
     });
   });
 
@@ -310,8 +313,8 @@ describe('DiagramConfig Component', () => {
     await waitFor(() => {
       const select = screen.getByTestId('forge-select');
       const options = select.querySelectorAll('option');
-      expect(options[1].textContent).toBe('1. graph TD; A --> B [mermaid]');
-      expect(options[2].textContent).toBe('2. graph LR; C --> D [mermaid]');
+      expect(options[1].textContent).toBe('1. ✓  graph TD; A --> B');
+      expect(options[2].textContent).toBe('2. ✓  graph LR; C --> D');
     });
   });
 
@@ -328,7 +331,7 @@ describe('DiagramConfig Component', () => {
       const select = screen.getByTestId('forge-select');
       const options = select.querySelectorAll('option');
       expect(options[1].textContent).toBe(
-        '1. graph TD; A --> B --> C --> D --> E...',
+        '1. ⛌ graph TD; A --> B --> C --> D --> E...',
       );
     });
   });

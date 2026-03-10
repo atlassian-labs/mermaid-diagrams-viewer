@@ -30,6 +30,7 @@ const MERMAID_KEYWORDS = [
 
 vi.mock('mermaid', () => ({
   default: {
+    initialize: () => {},
     detectType: (code: string) => {
       const firstLine = code
         .trim()
