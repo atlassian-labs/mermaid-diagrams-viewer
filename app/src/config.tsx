@@ -5,6 +5,7 @@ import ForgeReconciler, {
   Label,
   Select,
   Stack,
+  Text,
 } from '@forge/react';
 import { view } from '@forge/bridge';
 import { Config, CONFIG_FIELD } from 'shared/src/config';
@@ -79,9 +80,9 @@ export const DiagramConfig = () => {
     ...codeBlocks.map((codeBlock, index) => {
       const trimmedCode =
         codeBlock.length > 35 ? `${codeBlock.substring(0, 35)}...` : codeBlock;
-      const indicator = looksLikeMermaid(codeBlock) ? ' [mermaid]' : '';
+      const indicator = looksLikeMermaid(codeBlock) ? '✓ ' : '⛌';
       return {
-        label: `${String(index + 1)}. ${trimmedCode}${indicator}`,
+        label: `${String(index + 1)}. ${indicator} ${trimmedCode}`,
         value: index,
       };
     }),
@@ -111,7 +112,10 @@ export const DiagramConfig = () => {
       <HelperMessage>
         Nearest diagram is picked by default (Auto detect option)
       </HelperMessage>
-
+      <HelperMessage>
+        <Text>✓ - recognized as mermaid diagram</Text>
+        <Text>⛌ - not recognized as mermaid diagram</Text>
+      </HelperMessage>
       <Button appearance="primary" onClick={() => void submit(config)}>
         Submit
       </Button>
