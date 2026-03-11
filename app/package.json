@@ -12,7 +12,7 @@
     "@testing-library/react": "^16.3.2"
   },
   "dependencies": {
-    "@atlaskit/adf-utils": "^19.27.6",
+    "@atlaskit/adf-utils": "^19.27.7",
     "@forge/api": "^7.1.0",
     "@forge/bridge": "^5.14.0",
     "@forge/react": "^11.13.0",

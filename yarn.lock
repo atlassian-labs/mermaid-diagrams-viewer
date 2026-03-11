@@ -81,14 +81,14 @@
     linkify-it "^3.0.3"
     memoize-one "^6.0.0"
 
-"@atlaskit/adf-utils@^19.19.0", "@atlaskit/adf-utils@^19.27.6":
-  version "19.27.6"
-  resolved "https://registry.yarnpkg.com/@atlaskit/adf-utils/-/adf-utils-19.27.6.tgz#0645971a7cb94c204eaaa544b44740a375ecfa0e"
-  integrity sha512-0o9emGYt4vM5CeKXTv8f5v8EkEZZiUeHfUH5YNQiiRO99y/v3cXbgHacfgzIgcPaKQIFzkByDCnnBpA9BmKfHg==
+"@atlaskit/adf-utils@^19.19.0", "@atlaskit/adf-utils@^19.27.7":
+  version "19.27.7"
+  resolved "https://registry.yarnpkg.com/@atlaskit/adf-utils/-/adf-utils-19.27.7.tgz#40718cc4e9064e633f2e816f8dadcd4eaf026b5f"
+  integrity sha512-L0C2CN0rowT9TBi0cpCBC3YJoCkq2EP+eUju4PaFycBP6dfzloNaBH/a+xJq5lgsq+/zj4Y9ZjLgUMlOqc9XCQ==
   dependencies:
     "@atlaskit/adf-schema" "^52.2.0"
     "@atlaskit/platform-feature-flags" "^1.1.0"
-    "@atlaskit/tmp-editor-statsig" "^35.0.0"
+    "@atlaskit/tmp-editor-statsig" "^35.5.0"
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/analytics-next-stable-react-context@1.0.1":
@@ -1149,10 +1149,10 @@
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.6"
 
-"@atlaskit/tmp-editor-statsig@^35.0.0":
-  version "35.3.0"
-  resolved "https://registry.yarnpkg.com/@atlaskit/tmp-editor-statsig/-/tmp-editor-statsig-35.3.0.tgz#2f47b030dce881dbf31a30322a2f142638ff1f4d"
-  integrity sha512-aKtfQ3xSaxrjpmwCpNwEScppqkSuRzJtGUhZQCcC6RX0k9ggX0nsTBujmXSFPJMdVNTObzwY7WkopE+mHThNKA==
+"@atlaskit/tmp-editor-statsig@^35.0.0", "@atlaskit/tmp-editor-statsig@^35.5.0":
+  version "35.5.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/tmp-editor-statsig/-/tmp-editor-statsig-35.5.0.tgz#70e59ce292c3a425f743d01af38e20c25bf0adf5"
+  integrity sha512-bXzmgiC+XMX0/vOsvkAZQ9zJ3b0E1Lqsxec5zg1d2AX4JcFs6CY81TyHs/qw4OT5rWtu3NkZNM8ONqRA3CPFxg==
   dependencies:
     "@atlaskit/feature-gate-js-client" "^5.5.0"
     "@atlaskit/react-ufo" "^5.4.0"
