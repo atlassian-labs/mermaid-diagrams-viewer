@@ -116,7 +116,7 @@ describe('App Component', () => {
     });
   });
 
-  it('shows loading spinner initially', () => {
+  it('shows loading spinner initially', async () => {
     act(() => {
       render(<App />);
     });
@@ -124,6 +124,11 @@ describe('App Component', () => {
     // Should show loading initially before data loads
     const app = document.body.firstChild;
     expect(app).toBeDefined();
+
+    // Wait for async operations to complete to avoid act warnings
+    await waitFor(() => {
+      expect(screen.getByTestId('diagram')).toBeDefined();
+    });
   });
 
   it('handles AppError from getCodeFromCorrespondingBlock', async () => {

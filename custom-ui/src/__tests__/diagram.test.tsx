@@ -19,9 +19,11 @@ vi.mock('mermaid', () => ({
 
 // Mock @forge/bridge
 vi.mock('@forge/bridge', () => ({
-  Modal: vi.fn().mockImplementation(() => ({
-    open: vi.fn(),
-  })),
+  Modal: vi.fn().mockImplementation(function () {
+    return {
+      open: vi.fn(),
+    };
+  }),
   view: {
     getContext: vi.fn().mockResolvedValue({
       extension: {
@@ -88,7 +90,9 @@ describe('Diagram Component', () => {
   });
 
   it('should render diagram with valid mermaid code', async () => {
-    render(<Diagram {...defaultProps} />);
+    act(() => {
+      render(<Diagram {...defaultProps} />);
+    });
 
     await waitFor(() => {
       expect(mockMermaid.render).toHaveBeenCalledWith(
@@ -127,7 +131,9 @@ describe('Diagram Component', () => {
       productType: 'confluence',
     });
 
-    render(<Diagram {...defaultProps} />);
+    act(() => {
+      render(<Diagram {...defaultProps} />);
+    });
 
     // Use findBy for elements that appear after async modal detection
     const transformWrapper = await screen.findByTestId('transform-wrapper');
@@ -138,7 +144,9 @@ describe('Diagram Component', () => {
   });
 
   it('should initialize mermaid with correct theme', async () => {
-    render(<Diagram {...defaultProps} />);
+    act(() => {
+      render(<Diagram {...defaultProps} />);
+    });
 
     expect(mockMermaid.initialize).toHaveBeenCalledWith({
       startOnLoad: false,
@@ -152,7 +160,7 @@ describe('Diagram Component', () => {
     await screen.findByTestId('svg-component');
   });
 
-  it('should initialize mermaid with dark theme', () => {
+  it('should initialize mermaid with dark theme', async () => {
     act(() => {
       render(<Diagram {...defaultProps} colorMode="dark" />);
     });
@@ -164,13 +172,18 @@ describe('Diagram Component', () => {
       securityLevel: 'antiscript',
       themeVariables: expect.objectContaining({ darkMode: true }) as unknown,
     });
+
+    // Wait for async operations to complete
+    await screen.findByTestId('svg-component');
   });
 
   it('should handle mermaid render errors', async () => {
     const error = new Error('Mermaid render error');
     mockMermaid.render.mockRejectedValueOnce(error);
 
-    render(<Diagram {...defaultProps} />);
+    act(() => {
+      render(<Diagram {...defaultProps} />);
+    });
 
     await waitFor(() => {
       expect(defaultProps.onError).toHaveBeenCalledWith(error);
@@ -178,7 +191,10 @@ describe('Diagram Component', () => {
   });
 
   it('should re-render when code changes', async () => {
-    const { rerender } = render(<Diagram {...defaultProps} />);
+    let component: ReturnType<typeof render>;
+    act(() => {
+      component = render(<Diagram {...defaultProps} />);
+    });
 
     await waitFor(() => {
       expect(mockMermaid.render).toHaveBeenCalledWith(
@@ -188,7 +204,9 @@ describe('Diagram Component', () => {
     });
 
     const newCode = 'graph LR\n  C --> D';
-    rerender(<Diagram {...defaultProps} code={newCode} />);
+    act(() => {
+      component.rerender(<Diagram {...defaultProps} code={newCode} />);
+    });
 
     await waitFor(() => {
       expect(mockMermaid.render).toHaveBeenCalledWith(
@@ -198,7 +216,7 @@ describe('Diagram Component', () => {
     });
   });
 
-  it('should re-render when color mode changes', () => {
+  it('should re-render when color mode changes', async () => {
     let component: ReturnType<typeof render>;
     act(() => {
       component = render(<Diagram {...defaultProps} />);
@@ -208,6 +226,8 @@ describe('Diagram Component', () => {
       expect.objectContaining({ theme: 'default' }),
     );
 
+    await screen.findByTestId('svg-component');
+
     act(() => {
       component.rerender(<Diagram {...defaultProps} colorMode="dark" />);
     });
@@ -215,20 +235,27 @@ describe('Diagram Component', () => {
     expect(mockMermaid.initialize).toHaveBeenCalledWith(
       expect.objectContaining({ theme: 'dark' }),
     );
+
+    await screen.findByTestId('svg-component');
   });
 
   it('should handle window resize events', () => {
     const addEventListenerSpy = vi.spyOn(window, 'addEventListener');
     const removeEventListenerSpy = vi.spyOn(window, 'removeEventListener');
 
-    const { unmount } = render(<Diagram {...defaultProps} />);
+    let component: ReturnType<typeof render>;
+    act(() => {
+      component = render(<Diagram {...defaultProps} />);
+    });
 
     expect(addEventListenerSpy).toHaveBeenCalledWith(
       'resize',
       expect.any(Function),
     );
 
-    unmount();
+    act(() => {
+      component.unmount();
+    });
 
     expect(removeEventListenerSpy).toHaveBeenCalledWith(
       'resize',
@@ -239,20 +266,27 @@ describe('Diagram Component', () => {
     removeEventListenerSpy.mockRestore();
   });
 
-  it('should handle empty code gracefully', () => {
+  it('should handle empty code gracefully', async () => {
     act(() => {
       render(<Diagram {...defaultProps} code="" />);
     });
 
     // Should not render with empty code
     expect(mockMermaid.render).not.toHaveBeenCalled();
+
+    // Wait for any async operations to complete
+    await waitFor(() => {
+      expect(screen.getByTestId('svg-component')).toBeDefined();
+    });
   });
 
   it('should handle mermaid render errors', async () => {
     const renderError = new Error('Invalid syntax');
     mockMermaid.render.mockRejectedValue(renderError);
 
-    render(<Diagram {...defaultProps} code="invalid code" />);
+    act(() => {
+      render(<Diagram {...defaultProps} code="invalid code" />);
+    });
 
     // Wait for the error handler to be called
     await waitFor(() => {
@@ -261,7 +295,9 @@ describe('Diagram Component', () => {
   });
 
   it('should call modal.open when SVG is clicked', async () => {
-    render(<Diagram {...defaultProps} />);
+    act(() => {
+      render(<Diagram {...defaultProps} />);
+    });
 
     // Wait for SVG to render
     await waitFor(() => {
