@@ -13,7 +13,7 @@
   "dependencies": {
     "@atlaskit/adf-utils": "^19.27.6",
     "@forge/api": "^7.1.0",
-    "@forge/bridge": "^5.10.1",
+    "@forge/bridge": "^5.14.0",
     "mermaid": "^11.13.0"
   },
   "devDependencies": {
