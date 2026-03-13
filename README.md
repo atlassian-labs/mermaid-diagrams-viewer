@@ -35,13 +35,13 @@ This is a Forge app. Install it from the [Atlassian Marketplace](https://marketp
 Clone the repository and install dependencies:
 
 ```bash
+cd custom-ui
 yarn # install dependencies
 ```
 
-The project uses Yarn workspaces to manage dependencies across three packages:
-- `app` - The Forge app backend
-- `custom-ui` - The React UI for rendering diagrams
-- `shared` - Shared code between app and custom-ui
+The project has two directories:
+- `custom-ui` - The React UI for rendering diagrams (all JS tooling lives here)
+- `app` - The Forge app manifest and build output
 
 ### Running Locally
 
@@ -52,11 +52,12 @@ yarn dev # starts vite dev server on port 5173
 
 # Terminal 2: Start the Forge tunnel
 cd app
-forge tunnel # proxies requests to local dev server and executes lambdas locally
+forge tunnel # proxies requests to local dev server
 ```
 
 Then install the app on your Confluence instance using:
 ```bash
+cd app
 forge install --upgrade
 ```
 
@@ -75,25 +76,20 @@ forge install --upgrade
 
 ## Tests
 
-Run tests across all workspaces:
-
 ```bash
+cd custom-ui
+
 # Run all tests
 yarn test
 
 # Run tests with coverage
 yarn test --coverage
-
-# Run tests for a specific workspace
-cd custom-ui && yarn test
-cd app && yarn test
-cd shared && yarn test
 ```
 
 ## Development Guidelines
 
-- **Linting:** Run `yarn lint` to check code style
-- **Node Version:** Latest node LTS is required
+- **Linting:** Run `yarn lint` from the `custom-ui` directory to check code style
+- **Node Version:** See `.nvmrc` or the `engines` field in `custom-ui/package.json`
 - **Package Manager:** Yarn v1
 
 ## Contributions
