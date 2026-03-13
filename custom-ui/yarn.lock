@@ -359,7 +359,7 @@
     "@atlaskit/theme" "^22.0.0"
     "@babel/runtime" "^7.0.0"
 
-"@atlaskit/primitives@^16.0.0":
+"@atlaskit/primitives@^16.4.4":
   version "16.4.4"
   resolved "https://registry.yarnpkg.com/@atlaskit/primitives/-/primitives-16.4.4.tgz#39f9fcdca683bda6c4c8a1dfc0718bb8e3919f9f"
   integrity sha512-snZZYVjmULSRo+hTZ5y41LhhUESeZ7DO6iX3KjmnpdTRqH3CKSIpQPz0OGq+5v4P9ITQg+rBf68A5Pb03U4Ajw==
@@ -538,7 +538,7 @@
     "@babel/types" "^7.20.0"
     bind-event-listener "^3.0.0"
 
-"@atlaskit/tokens@^8.0.0", "@atlaskit/tokens@^8.6.0":
+"@atlaskit/tokens@^8.6.0", "@atlaskit/tokens@^8.6.1":
   version "8.6.1"
   resolved "https://registry.yarnpkg.com/@atlaskit/tokens/-/tokens-8.6.1.tgz#2bf08e6175ff5c1a3e8da401d1fb0be1c87376e5"
   integrity sha512-Ka+XXo3rKm3PXdXqSmx7A4MRmOHvd5TeKJb8aO5jUgsehnvPk85QhEeFeYT/D62dorJjA+CvE/wBpvZkT4OqnA==
