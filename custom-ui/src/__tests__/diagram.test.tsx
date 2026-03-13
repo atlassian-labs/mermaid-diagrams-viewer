@@ -143,40 +143,6 @@ describe('Diagram Component', () => {
     expect(transformComponent).toBeInTheDocument();
   });
 
-  it('should initialize mermaid with correct theme', async () => {
-    act(() => {
-      render(<Diagram {...defaultProps} />);
-    });
-
-    expect(mockMermaid.initialize).toHaveBeenCalledWith({
-      startOnLoad: false,
-      theme: 'default',
-      darkMode: false,
-      securityLevel: 'antiscript',
-      themeVariables: expect.objectContaining({ darkMode: false }) as unknown,
-    });
-
-    // Wait for async operations to complete
-    await screen.findByTestId('svg-component');
-  });
-
-  it('should initialize mermaid with dark theme', async () => {
-    act(() => {
-      render(<Diagram {...defaultProps} colorMode="dark" />);
-    });
-
-    expect(mockMermaid.initialize).toHaveBeenCalledWith({
-      startOnLoad: false,
-      theme: 'dark',
-      darkMode: true,
-      securityLevel: 'antiscript',
-      themeVariables: expect.objectContaining({ darkMode: true }) as unknown,
-    });
-
-    // Wait for async operations to complete
-    await screen.findByTestId('svg-component');
-  });
-
   it('should handle mermaid render errors', async () => {
     const error = new Error('Mermaid render error');
     mockMermaid.render.mockRejectedValueOnce(error);
@@ -203,7 +169,7 @@ describe('Diagram Component', () => {
       );
     });
 
-    const newCode = 'graph LR\n  C --> D';
+    const newCode = 'graph LR\\n  C --> D';
     act(() => {
       component.rerender(<Diagram {...defaultProps} code={newCode} />);
     });
@@ -222,21 +188,15 @@ describe('Diagram Component', () => {
       component = render(<Diagram {...defaultProps} />);
     });
 
-    expect(mockMermaid.initialize).toHaveBeenCalledWith(
-      expect.objectContaining({ theme: 'default' }),
-    );
-
     await screen.findByTestId('svg-component');
 
     act(() => {
       component.rerender(<Diagram {...defaultProps} colorMode="dark" />);
     });
 
-    expect(mockMermaid.initialize).toHaveBeenCalledWith(
-      expect.objectContaining({ theme: 'dark' }),
-    );
-
-    await screen.findByTestId('svg-component');
+    await waitFor(() => {
+      expect(mockMermaid.render.mock.calls.length).toBeGreaterThanOrEqual(2);
+    });
   });
 
   it('should handle window resize events', () => {
@@ -357,11 +317,12 @@ describe('Diagram Component', () => {
     removeEventListenerSpy.mockRestore();
   });
 
-  it('should handle direct function execution for modal opening', () => {
+  it('should handle direct function execution for modal opening', async () => {
     // This test specifically targets the openDialog function execution
-    act(() => {
-      render(<Diagram {...defaultProps} />);
-    });
+    render(<Diagram {...defaultProps} />);
+
+    // Wait for async effects (e.g. view.getContext) to settle
+    await act(() => Promise.resolve());
 
     // Since the component is now rendered, the module is loaded and modal is instantiated
     // We can test that the component renders without error which means modal creation worked

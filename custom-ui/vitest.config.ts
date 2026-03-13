@@ -1,18 +1,11 @@
-import { defineConfig, mergeConfig } from 'vite';
-import { defineConfig as defineVitestConfig } from 'vitest/config';
+import { defineConfig, mergeConfig } from 'vitest/config';
+import { defineConfig as defineViteConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-
-const viteConfig = defineConfig({
+const viteConfig = defineViteConfig({
   plugins: [react()],
-  resolve: {
-    alias: {
-      shared: path.resolve(__dirname, '../shared'),
-    },
-  },
 });
 
-const vitestConfig = defineVitestConfig({
+const vitestConfig = defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',

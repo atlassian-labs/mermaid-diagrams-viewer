@@ -1,27 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '@atlaskit/banner';
-import WarningIcon from '@atlaskit/icon/core/status-warning';
 import Spinner from '@atlaskit/spinner';
 import { Diagram } from './diagram';
-import { token, useThemeObserver } from '@atlaskit/tokens';
+import { token } from '@atlaskit/tokens';
 import { view } from '@forge/bridge';
-import { Context } from 'shared/src/context';
-import { AppError } from 'shared/src/app-error';
-import { getCodeFromCorrespondingBlock } from 'shared/src/confluence/code-blocks';
-import { getPageContent } from 'shared/src/confluence/api-client/browser';
-
-void view.theme.enable();
+import { Context } from './context';
+import { AppError } from './app-error';
+import { getCodeFromCorrespondingBlock } from './confluence/code-blocks';
+import { getPageContent } from './confluence/api-client/browser';
 
 const ErrorMessage: React.FunctionComponent<{ error?: Error }> = (props) => {
   if (!props.error) {
     return null;
   }
-  const msg = `Error while loading diagram: ${props.error.message}`;
-
   return (
-    <Banner appearance="warning" icon={<WarningIcon label="" />}>
-      {msg}
-    </Banner>
+    <div
+      role="alert"
+      style={{
+        borderStyle: 'solid',
+        borderRadius: 'var(--ds-radius-small, 3px)',
+        borderWidth: 'var(--ds-border-width, 1px)',
+        borderColor: 'var(--ds-border-disabled, #091E4224)',
+        overflow: 'hidden',
+      }}
+    >
+      <Banner appearance="warning" icon={<span>{'\u26A0'}</span>}>
+        Error while loading diagram
+      </Banner>
+      <p
+        style={{
+          margin: `${token('space.150', '12px')} ${token('space.200', '16px')}`,
+          fontSize: '14px',
+          color: token('color.text.subtle', '#44546F'),
+        }}
+      >
+        {props.error.message}
+      </p>
+    </div>
   );
 };
 
@@ -38,10 +53,9 @@ const Loading: React.FunctionComponent<{ loading?: boolean }> = () => {
   );
 };
 
-function App() {
+function App({ colorMode }: { colorMode: 'light' | 'dark' }) {
   const [code, setCode] = useState<string>();
   const [error, setError] = useState<AppError | Error | undefined>();
-  const { colorMode } = useThemeObserver();
 
   useEffect(() => {
     void view
@@ -84,7 +98,7 @@ function App() {
       }}
     >
       {code === undefined && error === undefined ? <Loading /> : null}
-      {code !== undefined && colorMode ? (
+      {code !== undefined ? (
         <Diagram code={code} colorMode={colorMode} onError={onError} />
       ) : null}
       <ErrorMessage error={error} />

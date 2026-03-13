@@ -1,7 +1,7 @@
 app:
   id: ari:cloud:ecosystem::app/23392b90-4271-4239-98ca-a3e96c663cbb
   runtime:
-    name: nodejs22.x
+    name: nodejs24.x
 
 modules:
   macro:
@@ -16,9 +16,8 @@ modules:
         - visuals
         - development
       config:
-        resource: macro-config
+        resource: custom-ui
         viewportSize: small
-        render: native
         title: Mermaid diagram configuration
 
 resources:
@@ -26,8 +25,6 @@ resources:
     path: build/custom-ui
     tunnel:
       port: 5173
-  - key: macro-config
-    path: src/config.tsx
   - key: icons
     path: icons
 

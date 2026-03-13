@@ -1,10 +1,14 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["esnext"],
     "composite": true,
     "skipLibCheck": true,
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "module": "esnext",
+    "strict": true,
+    "noEmit": false
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "eslint.config.mts"]
 }

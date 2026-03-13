@@ -3,9 +3,9 @@ import {
   findCodeBlocks,
   getCodeFromCorrespondingBlock,
   looksLikeMermaid,
-} from '../index';
-import { Context } from '../../../context';
-import { AppError } from '../../../app-error';
+} from '../confluence/code-blocks/index';
+import { Context } from '../context';
+import { AppError } from '../app-error';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 
 // Mock dependencies
@@ -962,7 +962,7 @@ describe('code-blocks', () => {
         expect(error).toBeInstanceOf(AppError);
         const appError = error as AppError;
         expect(appError.message).toBe(
-          `Can't find codeblock to render automatically; Please select one in the macro settings`,
+          `Can't find codeblock to render automatically; Please select one in the macro settings.`,
         );
         expect(appError.code).toBe('DIAGRAM_IS_NOT_SELECTED');
       }

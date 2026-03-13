@@ -2,11 +2,7 @@ import { useEffect, useState } from 'react';
 import SVG from 'react-inlinesvg';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import mermaid from 'mermaid';
-import elkLayouts from '@mermaid-js/layout-elk';
 import { Modal, view } from '@forge/bridge';
-
-mermaid.registerLayoutLoaders(elkLayouts);
-import { Box, xcss } from '@atlaskit/primitives';
 import '@fortawesome/fontawesome-free/css/all.css';
 
 const modal = new Modal({
@@ -20,16 +16,13 @@ function openDialog() {
   void modal.open();
 }
 
-const boxStyles = xcss({
+const boxStyle: React.CSSProperties = {
   borderStyle: 'solid',
-  borderRadius: 'border.radius',
-  borderWidth: 'border.width',
-  borderColor: 'color.border.disabled',
-
-  ':hover': {
-    borderColor: 'color.border',
-  },
-});
+  borderRadius: 'var(--ds-radius-small, 3px)',
+  borderWidth: 'var(--ds-border-width, 1px)',
+  borderColor: 'var(--ds-border-disabled, #091E4224)',
+  backgroundColor: 'var(--ds-background-neutral-subtle, transparent)',
+};
 
 export const Diagram: React.FunctionComponent<{
   code: string;
@@ -82,7 +75,8 @@ export const Diagram: React.FunctionComponent<{
   const styles = {
     display: 'flex',
     justifyContent: 'center',
-    width: size.width,
+    width: '100%',
+    boxSizing: 'border-box' as const,
   };
 
   if (modalIsOpen) {
@@ -106,39 +100,15 @@ export const Diagram: React.FunctionComponent<{
   }
 
   return (
-    <Box
-      padding="space.400"
-      backgroundColor="color.background.neutral.subtle"
-      xcss={boxStyles}
-      style={styles}
-    >
+    <div style={{ ...boxStyle, ...styles }}>
       <SVG src={svg} onClick={openDialog} />
-    </Box>
+    </div>
   );
 };
 
 function useMermaidRenderSVG(code: string, colorMode: 'light' | 'dark') {
   const [svg, setSvg] = useState<string>('');
   const [error, setError] = useState<Error>();
-
-  useEffect(() => {
-    const [theme, darkMode] = (
-      {
-        light: ['default', false],
-        dark: ['dark', true],
-      } as const
-    )[colorMode];
-
-    mermaid.initialize({
-      startOnLoad: false,
-      theme,
-      darkMode,
-      themeVariables: {
-        darkMode,
-      },
-      securityLevel: 'antiscript', // allows usage of HTML tags, except <script>
-    });
-  }, [colorMode]);
 
   useEffect(() => {
     const run = async () => {

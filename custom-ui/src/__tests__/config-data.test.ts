@@ -1,4 +1,5 @@
-import { getIndexFromConfig, CONFIG_FIELD } from '../config';
+import { getIndexFromConfig, CONFIG_FIELD } from '../config-data';
+import { describe, it, expect } from 'vitest';
 
 describe('config', () => {
   describe('getIndexFromConfig', () => {

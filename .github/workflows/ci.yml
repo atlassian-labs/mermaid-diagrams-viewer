@@ -19,40 +19,24 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version-file: 'package.json'
+          node-version-file: '.nvmrc'
           cache: 'yarn'
+          cache-dependency-path: 'custom-ui/yarn.lock'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+        working-directory: custom-ui
 
       - name: Run yarn lint
         run: yarn lint
+        working-directory: custom-ui
 
       - name: Run tests with coverage
         run: yarn test --coverage
-
-  build-forge-app:
-    name: Build forge app
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: 'package.json'
-          cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Build forge app
-        run: |
-          cd app
-          yarn build
+        working-directory: custom-ui
 
   build-custom-ui:
-    name: Build custom UI app
+    name: Build custom UI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -60,16 +44,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version-file: 'package.json'
+          node-version-file: '.nvmrc'
           cache: 'yarn'
+          cache-dependency-path: 'custom-ui/yarn.lock'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+        working-directory: custom-ui
 
       - name: Build custom UI
-        run: |
-          cd custom-ui
-          yarn build
+        run: yarn build
+        working-directory: custom-ui
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
@@ -81,7 +66,7 @@ jobs:
     name: Deploy to Development
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: [test, build-forge-app, build-custom-ui]
+    needs: [test, build-custom-ui]
     environment:
       name: development
     concurrency:
@@ -101,20 +86,11 @@ jobs:
           name: custom-ui-build
           path: app/build/
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: 'package.json'
-          cache: 'yarn'
-
       - name: Install Forge CLI
         run: npm install -g @forge/cli
 
       - name: Configure Forge
         run: forge settings set usage-analytics true
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
 
       - name: Run forge lint
         run: .github/workflows/forge-lint.sh
@@ -131,7 +107,7 @@ jobs:
     name: Deploy to Staging
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: [test, build-forge-app, build-custom-ui, deploy-development]
+    needs: [test, build-custom-ui, deploy-development]
     environment: staging
     concurrency:
       group: staging
@@ -150,20 +126,11 @@ jobs:
           name: custom-ui-build
           path: app/build/
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: 'package.json'
-          cache: 'yarn'
-
       - name: Install Forge CLI
         run: npm install -g @forge/cli
 
       - name: Configure Forge
         run: forge settings set usage-analytics true
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
 
       - name: Run forge lint
         run: .github/workflows/forge-lint.sh
@@ -199,20 +166,11 @@ jobs:
           name: custom-ui-build
           path: app/build/
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: 'package.json'
-          cache: 'yarn'
-
       - name: Install Forge CLI
         run: npm install -g @forge/cli
 
       - name: Configure Forge
         run: forge settings set usage-analytics true
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
 
       - name: Run forge lint
         run: .github/workflows/forge-lint.sh
