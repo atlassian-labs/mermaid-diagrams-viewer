@@ -1,12 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ForgeReconciler, {
-  Button,
-  HelperMessage,
-  Label,
-  Select,
-  Stack,
-  Text,
-} from '@forge/react';
 import { view } from '@forge/bridge';
 import { Config, CONFIG_FIELD } from 'shared/src/config';
 import { getPageContent } from 'shared/src/confluence/api-client/browser';
@@ -14,6 +6,14 @@ import {
   findCodeBlocks,
   looksLikeMermaid,
 } from 'shared/src/confluence/code-blocks';
+import Button from '@atlaskit/button/new';
+import Select, { type ValueType } from '@atlaskit/select';
+import { token } from '@atlaskit/tokens';
+
+interface SelectOption {
+  label: string;
+  value: number | undefined;
+}
 
 export const useSubmit = () => {
   const [error, setError] = useState<boolean>();
@@ -36,11 +36,10 @@ export const useSubmit = () => {
 };
 
 export const DiagramConfig = () => {
-  const { submit } = useSubmit();
+  const { submit, error } = useSubmit();
 
   const [config, setConfig] = useState<Config>({});
   const [contentId, setContentId] = useState<string | undefined>(undefined);
-
   const [codeBlocks, setCodeBlocks] = useState<string[]>([]);
 
   useEffect(() => {
@@ -52,11 +51,11 @@ export const DiagramConfig = () => {
         content: { id: string };
       };
 
-      const config = extension.config || {};
-      const contentId = extension.content.id;
+      const fetchedConfig = extension.config ?? {};
+      const fetchedContentId = extension.content.id;
 
-      setConfig(config);
-      setContentId(contentId);
+      setConfig(fetchedConfig);
+      setContentId(fetchedContentId);
     };
     void fetchConfig();
   }, []);
@@ -68,14 +67,13 @@ export const DiagramConfig = () => {
       }
 
       const isEditing = true;
-
       const adf = await getPageContent(contentId, isEditing);
       setCodeBlocks(findCodeBlocks(adf));
     };
     void fetchCodeBlocks();
   }, [contentId]);
 
-  const options = [
+  const options: SelectOption[] = [
     { label: 'Auto detect', value: undefined },
     ...codeBlocks.map((codeBlock, index) => {
       const trimmedCode =
@@ -91,40 +89,64 @@ export const DiagramConfig = () => {
   const defaultValue =
     config.index === undefined ? options[0] : options[config.index + 1];
 
+  const containerStyle: React.CSSProperties = {
+    padding: token('space.200', '16px'),
+    display: 'flex',
+    flexDirection: 'column',
+    gap: token('space.200', '16px'),
+  };
+
+  const labelStyle: React.CSSProperties = {
+    fontSize: '12px',
+    fontWeight: 600,
+    color: token('color.text.subtle', '#626F86'),
+  };
+
+  const helperStyle: React.CSSProperties = {
+    fontSize: '12px',
+    color: token('color.text.subtlest', '#8590A2'),
+  };
+
+  const errorStyle: React.CSSProperties = {
+    fontSize: '12px',
+    color: token('color.text.danger', '#AE2A19'),
+  };
+
   return (
-    <Stack space="space.200">
-      <Label labelFor="diagram">
-        Select codeblock with mermaid diagram to render
-      </Label>
-      <Select
-        inputId="diagram"
-        value={defaultValue}
-        options={options}
-        isClearable={false}
-        isMulti={false}
-        isRequired={true}
-        onChange={({ value }: { value: number | undefined }) => {
-          setConfig({
-            [CONFIG_FIELD]: value,
-          });
-        }}
-      />
-      <HelperMessage>
-        Nearest diagram is picked by default (Auto detect option)
-      </HelperMessage>
-      <HelperMessage>
-        <Text>✓ - recognized as mermaid diagram</Text>
-        <Text>⛌ - not recognized as mermaid diagram</Text>
-      </HelperMessage>
+    <div style={containerStyle}>
+      <div>
+        <label htmlFor="diagram" style={labelStyle}>
+          Select codeblock with mermaid diagram to render
+        </label>
+        <Select<SelectOption>
+          inputId="diagram"
+          value={defaultValue}
+          options={options}
+          isClearable={false}
+          isMulti={false}
+          isRequired={true}
+          onChange={(option: ValueType<SelectOption>) => {
+            if (option && !Array.isArray(option)) {
+              setConfig({
+                [CONFIG_FIELD]: option.value,
+              });
+            }
+          }}
+        />
+      </div>
+      <div style={helperStyle}>
+        <p>Nearest diagram is picked by default (Auto detect option)</p>
+        <p>✓ - recognized as mermaid diagram</p>
+        <p>⛌ - not recognized as mermaid diagram</p>
+      </div>
+      {error === true && (
+        <p style={errorStyle}>
+          Failed to save configuration. Please try again.
+        </p>
+      )}
       <Button appearance="primary" onClick={() => void submit(config)}>
         Submit
       </Button>
-    </Stack>
+    </div>
   );
 };
-
-ForgeReconciler.render(
-  <React.StrictMode>
-    <DiagramConfig />
-  </React.StrictMode>,
-);

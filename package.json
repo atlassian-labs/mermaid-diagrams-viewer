@@ -1,7 +1,6 @@
 {
   "private": true,
   "workspaces": [
-    "app",
     "custom-ui",
     "shared"
   ],

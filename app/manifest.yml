@@ -16,9 +16,8 @@ modules:
         - visuals
         - development
       config:
-        resource: macro-config
+        resource: custom-ui
         viewportSize: small
-        render: native
         title: Mermaid diagram configuration
 
 resources:
@@ -26,8 +25,6 @@ resources:
     path: build/custom-ui
     tunnel:
       port: 5173
-  - key: macro-config
-    path: src/config.tsx
   - key: icons
     path: icons
 
