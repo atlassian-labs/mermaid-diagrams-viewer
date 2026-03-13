@@ -10,6 +10,7 @@ import { token } from '@atlaskit/tokens';
 interface SelectOption {
   label: string;
   value: number | undefined;
+  isValid?: boolean;
 }
 
 export const useSubmit = () => {
@@ -73,10 +74,11 @@ export const DiagramConfig = () => {
   const options: SelectOption[] = [
     { label: 'Auto detect', value: undefined },
     ...codeBlocks.map((codeBlock, index) => {
-      const indicator = looksLikeMermaid(codeBlock) ? '✓ ' : '⛌';
+      const isValid = looksLikeMermaid(codeBlock);
       return {
-        label: `${String(index + 1)}. ${indicator} ${codeBlock}`,
+        label: `${String(index + 1)}. ${codeBlock}`,
         value: index,
+        isValid,
       };
     }),
   ];
@@ -89,6 +91,8 @@ export const DiagramConfig = () => {
     display: 'flex',
     flexDirection: 'column',
     gap: token('space.200', '16px'),
+    minHeight: '100vh',
+    boxSizing: 'border-box',
   };
 
   const labelStyle: React.CSSProperties = {
@@ -110,6 +114,7 @@ export const DiagramConfig = () => {
   const buttonRowStyle: React.CSSProperties = {
     display: 'flex',
     gap: token('space.100', '8px'),
+    marginTop: 'auto',
   };
 
   return (
@@ -132,6 +137,12 @@ export const DiagramConfig = () => {
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
+                fontFamily:
+                  option.value !== undefined ? 'monospace' : undefined,
+                color:
+                  option.isValid === false
+                    ? token('color.text.subtlest', '#8590A2')
+                    : undefined,
               }}
               title={option.label}
             >
@@ -148,9 +159,12 @@ export const DiagramConfig = () => {
         />
       </div>
       <div style={helperStyle}>
-        <p>Nearest diagram is picked by default (Auto detect option)</p>
-        <p>✓ - recognized as mermaid diagram</p>
-        <p>⛌ - not recognized as mermaid diagram</p>
+        <span style={{ display: 'block' }}>
+          Nearest diagram is picked by default (Auto detect option).
+        </span>
+        <span style={{ display: 'block' }}>
+          Grayed out options are not recognized as mermaid diagrams.
+        </span>
       </div>
       {error === true && (
         <p style={errorStyle}>
