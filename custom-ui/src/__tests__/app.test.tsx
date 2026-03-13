@@ -140,9 +140,8 @@ describe('App Component', () => {
     });
 
     await waitFor(() => {
-      expect(
-        screen.getByText(/Error while loading diagram: Test error/),
-      ).toBeDefined();
+      expect(screen.getByText(/Error while loading diagram/)).toBeDefined();
+      expect(screen.getByText(/Test error/)).toBeDefined();
     });
   });
 
@@ -187,9 +186,8 @@ describe('App Component', () => {
     });
 
     await waitFor(() => {
-      expect(
-        screen.getByText(/Error while loading diagram: Diagram render error/),
-      ).toBeDefined();
+      expect(screen.getByText(/Error while loading diagram/)).toBeDefined();
+      expect(screen.getByText(/Diagram render error/)).toBeDefined();
     });
   });
 

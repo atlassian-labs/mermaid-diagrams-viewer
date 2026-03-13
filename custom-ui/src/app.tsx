@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '@atlaskit/banner';
-import WarningIcon from '@atlaskit/icon/core/status-warning';
 import Spinner from '@atlaskit/spinner';
 import { Diagram } from './diagram';
 import { token, useThemeObserver } from '@atlaskit/tokens';
@@ -16,12 +15,30 @@ const ErrorMessage: React.FunctionComponent<{ error?: Error }> = (props) => {
   if (!props.error) {
     return null;
   }
-  const msg = `Error while loading diagram: ${props.error.message}`;
-
   return (
-    <Banner appearance="warning" icon={<WarningIcon label="" />}>
-      {msg}
-    </Banner>
+    <div
+      role="alert"
+      style={{
+        borderStyle: 'solid',
+        borderRadius: 'var(--ds-radius-small, 3px)',
+        borderWidth: 'var(--ds-border-width, 1px)',
+        borderColor: 'var(--ds-border-disabled, #091E4224)',
+        overflow: 'hidden',
+      }}
+    >
+      <Banner appearance="warning" icon={<span>{'\u26A0'}</span>}>
+        Error while loading diagram
+      </Banner>
+      <p
+        style={{
+          margin: `${token('space.150', '12px')} ${token('space.200', '16px')}`,
+          fontSize: '14px',
+          color: token('color.text.subtle', '#44546F'),
+        }}
+      >
+        {props.error.message}
+      </p>
+    </div>
   );
 };
 

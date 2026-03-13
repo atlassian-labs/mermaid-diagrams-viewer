@@ -127,7 +127,7 @@ export async function getCodeFromCorrespondingBlock(
 
       if (code === undefined) {
         throw new AppError(
-          `Can't find codeblock to render automatically; Please select one in the macro settings`,
+          `Can't find codeblock to render automatically; Please select one in the macro settings.`,
           'DIAGRAM_IS_NOT_SELECTED',
         );
       }

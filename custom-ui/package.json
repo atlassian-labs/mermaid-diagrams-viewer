@@ -24,7 +24,6 @@
     "@atlaskit/banner": "^14.0.25",
     "@atlaskit/button": "^23.10.0",
     "@atlaskit/css-reset": "^7.3.13",
-    "@atlaskit/icon": "^29.0.0",
     "@atlaskit/primitives": "^16.0.0",
     "@atlaskit/select": "^21.7.8",
     "@atlaskit/spinner": "^19.0.11",

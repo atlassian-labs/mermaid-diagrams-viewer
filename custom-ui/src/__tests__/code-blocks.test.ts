@@ -962,7 +962,7 @@ describe('code-blocks', () => {
         expect(error).toBeInstanceOf(AppError);
         const appError = error as AppError;
         expect(appError.message).toBe(
-          `Can't find codeblock to render automatically; Please select one in the macro settings`,
+          `Can't find codeblock to render automatically; Please select one in the macro settings.`,
         );
         expect(appError.code).toBe('DIAGRAM_IS_NOT_SELECTED');
       }

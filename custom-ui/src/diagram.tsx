@@ -78,7 +78,8 @@ export const Diagram: React.FunctionComponent<{
   const styles = {
     display: 'flex',
     justifyContent: 'center',
-    width: size.width,
+    width: '100%',
+    boxSizing: 'border-box' as const,
   };
 
   if (modalIsOpen) {
