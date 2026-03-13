@@ -199,7 +199,7 @@ describe('App Component', () => {
           colorMode: 'light',
           onError: expect.any(Function) as (error: Error) => void,
         },
-        {},
+        undefined,
       );
     });
   });
