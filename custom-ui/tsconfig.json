@@ -1,19 +1,23 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": false,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
     "useDefineForClassFields": true,
     "skipLibCheck": true,
-
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
-    /* Path mapping */
     "baseUrl": ".",
+    "esModuleInterop": true,
+    "types": ["vitest/globals"]
   },
   "include": ["src", "vitest.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

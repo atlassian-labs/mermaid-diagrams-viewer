@@ -12,40 +12,32 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import {
   projectStructureParser,
   projectStructurePlugin,
-} from "eslint-plugin-project-structure";
+} from 'eslint-plugin-project-structure';
 
-const gitignorePath = fileURLToPath(
-  new URL('.gitignore', import.meta.url),
-);
+const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url));
 
-const workspaceStructure = [
-  { name: "*" },
+const srcStructure = [
   {
-    name: "src",
+    name: '__tests__',
+    children: [{ name: '*{kebab-case}.test.(ts|tsx)' }],
+  },
+  { name: '*{kebab-case}.(ts|tsx)' },
+  {
+    name: '*', // Allows nested folders like 'confluence'
     children: [
       {
-        name: "__tests__",
-        children: [{ name: "*{kebab-case}.test.(ts|tsx)" }]
-      },
-      { name: "*{kebab-case}.(ts|tsx)" },
-      {
-        name: "*",  // Allows nested folders like 'confluence'
+        name: '*', // api-client, code-blocks, etc.
         children: [
           {
-            name: "*",  // api-client, code-blocks, etc.
-            children: [
-              {
-                name: "__tests__",
-                children: [{ name: "*.test.(ts|tsx)" }]
-              },
-              { name: "*" }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+            name: '__tests__',
+            children: [{ name: '*.test.(ts|tsx)' }],
+          },
+          { name: '*' },
+        ],
+      },
+    ],
+  },
+];
 
 export default defineConfig(
   eslint.configs.recommended,
@@ -54,34 +46,26 @@ export default defineConfig(
   {
     languageOptions: { parser: projectStructureParser },
     plugins: {
-      "project-structure": projectStructurePlugin,
+      'project-structure': projectStructurePlugin,
     },
     rules: {
-      "project-structure/folder-structure": [
-        "error",
+      'project-structure/folder-structure': [
+        'error',
         {
           structure: [
-            { name: "*" },
+            { name: '*' },
             {
-              name: "app",
-              children: workspaceStructure
+              name: 'src',
+              children: srcStructure,
             },
-            {
-              name: "custom-ui",
-              children: workspaceStructure
-            },
-            {
-              name: "shared",
-              children: workspaceStructure
-            }
-          ]
-        }
-      ]
-    }
+          ],
+        },
+      ],
+    },
   },
   nodePlugin.configs['flat/recommended-script'],
   pluginJest.configs['flat/recommended'],
-  tseslint.configs.recommended.map(config => ({
+  tseslint.configs.recommended.map((config) => ({
     files: ['**/*.ts', '**/*.tsx'],
     ...config,
   })),
@@ -169,6 +153,6 @@ export default defineConfig(
   },
   includeIgnoreFile(gitignorePath),
   {
-    ignores: ['eslint.config.mts']
-  }
+    ignores: ['eslint.config.mts'],
+  },
 );
