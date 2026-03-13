@@ -169,7 +169,7 @@ describe('Diagram Component', () => {
       );
     });
 
-    const newCode = 'graph LR\n  C --> D';
+    const newCode = 'graph LR\\n  C --> D';
     act(() => {
       component.rerender(<Diagram {...defaultProps} code={newCode} />);
     });
@@ -317,11 +317,12 @@ describe('Diagram Component', () => {
     removeEventListenerSpy.mockRestore();
   });
 
-  it('should handle direct function execution for modal opening', () => {
+  it('should handle direct function execution for modal opening', async () => {
     // This test specifically targets the openDialog function execution
-    act(() => {
-      render(<Diagram {...defaultProps} />);
-    });
+    render(<Diagram {...defaultProps} />);
+
+    // Wait for async effects (e.g. view.getContext) to settle
+    await act(() => Promise.resolve());
 
     // Since the component is now rendered, the module is loaded and modal is instantiated
     // We can test that the component renders without error which means modal creation worked
