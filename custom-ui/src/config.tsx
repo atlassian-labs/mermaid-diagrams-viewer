@@ -109,6 +109,11 @@ export const DiagramConfig = () => {
     color: token('color.text.danger', '#AE2A19'),
   };
 
+  const buttonRowStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: token('space.100', '8px'),
+  };
+
   return (
     <div style={containerStyle}>
       <div>
@@ -141,9 +146,14 @@ export const DiagramConfig = () => {
           Failed to save configuration. Please try again.
         </p>
       )}
-      <Button appearance="primary" onClick={() => void submit(config)}>
-        Submit
-      </Button>
+      <div style={buttonRowStyle}>
+        <Button appearance="primary" onClick={() => void submit(config)}>
+          Submit
+        </Button>
+        <Button appearance="subtle" onClick={() => void view.close()}>
+          Cancel
+        </Button>
+      </div>
     </div>
   );
 };

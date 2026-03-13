@@ -19,6 +19,7 @@ const {
   mockView: {
     getContext: vi.fn(),
     submit: vi.fn(),
+    close: vi.fn(),
   },
   mockGetPageContent: vi.fn(),
   mockFindCodeBlocks: vi.fn(),
@@ -197,6 +198,22 @@ describe('DiagramConfig', () => {
       expect(mockView.submit).toHaveBeenCalledWith({
         config: { index: undefined },
       });
+    });
+  });
+
+  it('should call view.close when Cancel is clicked', async () => {
+    mockView.close.mockResolvedValue(undefined);
+
+    render(<DiagramConfig />);
+
+    await waitFor(() => {
+      expect(screen.getByText('Cancel')).toBeDefined();
+    });
+
+    fireEvent.click(screen.getByText('Cancel'));
+
+    await waitFor(() => {
+      expect(mockView.close).toHaveBeenCalledWith();
     });
   });
 
