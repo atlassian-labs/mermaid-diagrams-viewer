@@ -299,6 +299,15 @@
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.6"
 
+"@atlaskit/css@^0.18.0":
+  version "0.18.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/css/-/css-0.18.1.tgz#eb060f6e2902fffb855fec3ac6132c78f576bc9e"
+  integrity sha512-zEk/OyFy6Ebx/6Z59h/rBmrXUu3cCMm35UfI984iKsF5WrkZS79Jd1FoIb2sgGIwAV1ZZbJKFcuOyzeRG3vhVQ==
+  dependencies:
+    "@atlaskit/tokens" "^8.6.0"
+    "@babel/runtime" "^7.0.0"
+    "@compiled/react" "^0.18.6"
+
 "@atlaskit/css@^0.19.0":
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/@atlaskit/css/-/css-0.19.0.tgz#696042e7ab3e374433abdf5ba4a6b5bcd5dd7a8e"
@@ -488,18 +497,6 @@
   dependencies:
     "@atlaskit/icon" "^32.0.0"
     "@babel/runtime" "^7.0.0"
-
-"@atlaskit/icon@^28.5.4":
-  version "28.5.4"
-  resolved "https://registry.yarnpkg.com/@atlaskit/icon/-/icon-28.5.4.tgz#42d824d40778e499ddc304584033757f28818267"
-  integrity sha512-EQdV0sq7OBlcwhCy3ZX7dUzW5imJ7lpxQLiS7MUn0D0h/gOEMGrGULQNWJS21JDDaeDVYSQkejqPnurscYdPTA==
-  dependencies:
-    "@atlaskit/platform-feature-flags" "^1.1.0"
-    "@atlaskit/tile" "^1.0.0"
-    "@atlaskit/tokens" "^8.0.0"
-    "@babel/register" "^7.25.9"
-    "@babel/runtime" "^7.0.0"
-    "@compiled/react" "^0.18.6"
 
 "@atlaskit/icon@^29.0.0":
   version "29.0.0"
@@ -828,18 +825,17 @@
     bind-event-listener "^3.0.0"
     raf-schd "^4.0.3"
 
-"@atlaskit/primitives@^15.0.1":
-  version "15.0.1"
-  resolved "https://registry.yarnpkg.com/@atlaskit/primitives/-/primitives-15.0.1.tgz#f7cdf19dfd56283c352eca825b1bb97504a2d517"
-  integrity sha512-r8IeIeEwJpFa2rtguAgTETDUSt3JUdnVRfGRaCBtQ16WfFkvqgSQh7E4oH53YiDIbtbbfokyguOyPXn4MRV+dQ==
+"@atlaskit/primitives@^16.0.0":
+  version "16.4.4"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/primitives/-/primitives-16.4.4.tgz#39f9fcdca683bda6c4c8a1dfc0718bb8e3919f9f"
+  integrity sha512-snZZYVjmULSRo+hTZ5y41LhhUESeZ7DO6iX3KjmnpdTRqH3CKSIpQPz0OGq+5v4P9ITQg+rBf68A5Pb03U4Ajw==
   dependencies:
     "@atlaskit/analytics-next" "^11.1.0"
     "@atlaskit/app-provider" "^3.2.0"
-    "@atlaskit/css" "^0.15.0"
-    "@atlaskit/ds-lib" "^5.1.0"
+    "@atlaskit/css" "^0.18.0"
+    "@atlaskit/ds-lib" "^5.3.0"
     "@atlaskit/interaction-context" "^3.1.0"
-    "@atlaskit/platform-feature-flags" "^1.1.0"
-    "@atlaskit/tokens" "^7.0.0"
+    "@atlaskit/tokens" "^8.6.0"
     "@atlaskit/visually-hidden" "^3.0.0"
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.6"
@@ -1201,34 +1197,22 @@
     "@babel/types" "^7.20.0"
     bind-event-listener "^3.0.0"
 
-"@atlaskit/tokens@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@atlaskit/tokens/-/tokens-6.5.0.tgz#37fadb2a86334a23a1f998754558b3c3a71c3d06"
-  integrity sha512-JQU5nic5v8B2NBs6Sy3H1gxBvNq4zUygbx2Ssntf1RghBBWnnYZa1eaF2HpqjeFOJ5JNNgs70ukPT1VcqI1RYw==
-  dependencies:
-    "@atlaskit/ds-lib" "^5.1.0"
-    "@atlaskit/platform-feature-flags" "^1.1.0"
-    "@babel/runtime" "^7.0.0"
-    "@babel/traverse" "^7.23.2"
-    "@babel/types" "^7.20.0"
-    bind-event-listener "^3.0.0"
-
-"@atlaskit/tokens@^7.0.0":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@atlaskit/tokens/-/tokens-7.1.1.tgz#63e3f59c4d43da34d35df8b74e6aabddf63ad134"
-  integrity sha512-Vs/ivYhODqY+6oiAVIvH8HUAwqnkFFytVb7n2hvPxIczmFdjHp4h1eVAbBiAmaL12F3r3E3j5MYj5h0r4Z7stg==
-  dependencies:
-    "@atlaskit/ds-lib" "^5.2.0"
-    "@atlaskit/platform-feature-flags" "^1.1.0"
-    "@babel/runtime" "^7.0.0"
-    "@babel/traverse" "^7.23.2"
-    "@babel/types" "^7.20.0"
-    bind-event-listener "^3.0.0"
-
 "@atlaskit/tokens@^8.0.0", "@atlaskit/tokens@^8.1.0":
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/@atlaskit/tokens/-/tokens-8.2.0.tgz#f968670511e9480a90aa57f13cfc557ac74b06f5"
   integrity sha512-0wAdmaIfJn4vDyp61HKpUPfubC7AQbcxt8+SGUE2N3nuwhcHScmG/ZPMuWm5Su+vX4RUgBfoCMEojDZ8G5Qlkw==
+  dependencies:
+    "@atlaskit/ds-lib" "^5.3.0"
+    "@atlaskit/platform-feature-flags" "^1.1.0"
+    "@babel/runtime" "^7.0.0"
+    "@babel/traverse" "^7.23.2"
+    "@babel/types" "^7.20.0"
+    bind-event-listener "^3.0.0"
+
+"@atlaskit/tokens@^8.6.0":
+  version "8.6.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/tokens/-/tokens-8.6.1.tgz#2bf08e6175ff5c1a3e8da401d1fb0be1c87376e5"
+  integrity sha512-Ka+XXo3rKm3PXdXqSmx7A4MRmOHvd5TeKJb8aO5jUgsehnvPk85QhEeFeYT/D62dorJjA+CvE/wBpvZkT4OqnA==
   dependencies:
     "@atlaskit/ds-lib" "^5.3.0"
     "@atlaskit/platform-feature-flags" "^1.1.0"
@@ -2433,7 +2417,7 @@
 
 "@types/react-dom@^18.3.7":
   version "18.3.7"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.7.tgz#b89ddf2cd83b4feafcc4e2ea41afdfb95a0d194f"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@types/react-dom/-/react-dom-18.3.7.tgz#b89ddf2cd83b4feafcc4e2ea41afdfb95a0d194f"
   integrity sha512-MEe3UeoENYVFXzoXEWsvcpg6ZvlrFNlOQ7EOsvhI3CfAXwzPfO8Qwuxd40nepsYKqyyVQnTdEfv68q91yLcKrQ==
 
 "@types/react-reconciler@^0.28.8":
@@ -2443,7 +2427,7 @@
 
 "@types/react@^18.2.64", "@types/react@^18.3.28":
   version "18.3.28"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.28.tgz#0a85b1a7243b4258d9f626f43797ba18eb5f8781"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@types/react/-/react-18.3.28.tgz#0a85b1a7243b4258d9f626f43797ba18eb5f8781"
   integrity sha512-z9VXpC7MWrhfWipitjNdgCauoMLRdIILQsAEV+ZesIzBq/oUlxk0m3ApZuMFCXdnS4U7KrI+l3WRUEGQ8K1QKw==
   dependencies:
     "@types/prop-types" "*"
@@ -4952,9 +4936,9 @@ react-clientside-effect@^1.2.7:
   dependencies:
     "@babel/runtime" "^7.12.13"
 
-react-dom@^18.3.1:
+react-dom@18.3.1, react-dom@^18.3.1:
   version "18.3.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.3.1.tgz#c2265d79511b57d479b3dd3fdfa51536494c5cb4"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/react-dom/-/react-dom-18.3.1.tgz#c2265d79511b57d479b3dd3fdfa51536494c5cb4"
   integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
   dependencies:
     loose-envify "^1.1.0"
@@ -5063,7 +5047,7 @@ react-zoom-pan-pinch@^3.7.0:
 
 react@18.3.1, react@^18.2.0, react@^18.3.1:
   version "18.3.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
   dependencies:
     loose-envify "^1.1.0"

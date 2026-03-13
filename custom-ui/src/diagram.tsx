@@ -4,10 +4,9 @@ import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import mermaid from 'mermaid';
 import elkLayouts from '@mermaid-js/layout-elk';
 import { Modal, view } from '@forge/bridge';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 mermaid.registerLayoutLoaders(elkLayouts);
-import { Box, xcss } from '@atlaskit/primitives';
-import '@fortawesome/fontawesome-free/css/all.css';
 
 const modal = new Modal({
   size: 'max',
@@ -20,16 +19,13 @@ function openDialog() {
   void modal.open();
 }
 
-const boxStyles = xcss({
+const boxStyle: React.CSSProperties = {
   borderStyle: 'solid',
-  borderRadius: 'border.radius',
-  borderWidth: 'border.width',
-  borderColor: 'color.border.disabled',
-
-  ':hover': {
-    borderColor: 'color.border',
-  },
-});
+  borderRadius: 'var(--ds-radius-small, 3px)',
+  borderWidth: 'var(--ds-border-width, 1px)',
+  borderColor: 'var(--ds-border-disabled, #091E4224)',
+  backgroundColor: 'var(--ds-background-neutral-subtle, transparent)',
+};
 
 export const Diagram: React.FunctionComponent<{
   code: string;
@@ -106,14 +102,9 @@ export const Diagram: React.FunctionComponent<{
   }
 
   return (
-    <Box
-      padding="space.400"
-      backgroundColor="color.background.neutral.subtle"
-      xcss={boxStyles}
-      style={styles}
-    >
+    <div style={{ ...boxStyle, ...styles }}>
       <SVG src={svg} onClick={openDialog} />
-    </Box>
+    </div>
   );
 };
 

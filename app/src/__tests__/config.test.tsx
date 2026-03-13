@@ -353,7 +353,9 @@ describe('DiagramConfig Component', () => {
     });
 
     // Should call getPageContent with contentId
-    expect(mockGetPageContent).toHaveBeenCalledWith('test-content-id', true);
+    await waitFor(() => {
+      expect(mockGetPageContent).toHaveBeenCalledWith('test-content-id', true);
+    });
 
     // Should handle undefined config and use empty object fallback
     await waitFor(() => {
