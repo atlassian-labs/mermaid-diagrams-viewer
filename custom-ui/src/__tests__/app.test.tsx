@@ -19,7 +19,6 @@ vi.mock('../diagram', () => ({
 }));
 
 vi.mock('@atlaskit/tokens', () => ({
-  useThemeObserver: vi.fn(),
   token: vi.fn().mockReturnValue('#ffffff'),
 }));
 
@@ -60,14 +59,12 @@ vi.mock('../app-error', () => ({
 // Import the actual components and functions to test
 import App from '../app';
 import { Diagram } from '../diagram';
-import { useThemeObserver } from '@atlaskit/tokens';
 import { view } from '@forge/bridge';
 import { getCodeFromCorrespondingBlock } from '../confluence/code-blocks';
 import { AppError } from '../app-error';
 
 // Get mocked functions using vi.mocked
 const mockDiagram = vi.mocked(Diagram);
-const mockUseThemeObserver = vi.mocked(useThemeObserver);
 const mockView = vi.mocked(view);
 const mockGetCodeFromCorrespondingBlock = vi.mocked(
   getCodeFromCorrespondingBlock,
@@ -99,7 +96,6 @@ describe('App Component', () => {
     (mockView.getContext as ReturnType<typeof vi.fn>).mockResolvedValue(
       mockContext,
     );
-    mockUseThemeObserver.mockReturnValue({ colorMode: 'light' });
     mockGetCodeFromCorrespondingBlock.mockResolvedValue('graph TD\n  A --> B');
     mockDiagram.mockReturnValue(
       <div data-testid="diagram">Mocked Diagram</div>,
@@ -108,7 +104,7 @@ describe('App Component', () => {
 
   it('renders app component', async () => {
     act(() => {
-      render(<App />);
+      render(<App colorMode="light" />);
     });
 
     await waitFor(() => {
@@ -118,7 +114,7 @@ describe('App Component', () => {
 
   it('shows loading spinner initially', async () => {
     act(() => {
-      render(<App />);
+      render(<App colorMode="light" />);
     });
 
     // Should show loading initially before data loads
@@ -136,7 +132,7 @@ describe('App Component', () => {
     mockGetCodeFromCorrespondingBlock.mockRejectedValue(appError);
 
     act(() => {
-      render(<App />);
+      render(<App colorMode="light" />);
     });
 
     await waitFor(() => {
@@ -154,7 +150,7 @@ describe('App Component', () => {
     mockGetCodeFromCorrespondingBlock.mockRejectedValue(unknownError);
 
     act(() => {
-      render(<App />);
+      render(<App colorMode="light" />);
     });
 
     await waitFor(() => {
@@ -182,7 +178,7 @@ describe('App Component', () => {
     );
 
     act(() => {
-      render(<App />);
+      render(<App colorMode="light" />);
     });
 
     await waitFor(() => {
@@ -193,7 +189,7 @@ describe('App Component', () => {
 
   it('renders diagram when code and colorMode are available', async () => {
     act(() => {
-      render(<App />);
+      render(<App colorMode="light" />);
     });
 
     await waitFor(() => {
@@ -205,19 +201,6 @@ describe('App Component', () => {
         },
         {},
       );
-    });
-  });
-
-  it('does not render diagram when no colorMode', async () => {
-    mockUseThemeObserver.mockReturnValue({ colorMode: undefined });
-
-    act(() => {
-      render(<App />);
-    });
-
-    await waitFor(() => {
-      // Should not call Diagram component without colorMode
-      expect(mockDiagram).not.toHaveBeenCalled();
     });
   });
 });

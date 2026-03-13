@@ -2,11 +2,8 @@ import { useEffect, useState } from 'react';
 import SVG from 'react-inlinesvg';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import mermaid from 'mermaid';
-import elkLayouts from '@mermaid-js/layout-elk';
 import { Modal, view } from '@forge/bridge';
 import '@fortawesome/fontawesome-free/css/all.css';
-
-mermaid.registerLayoutLoaders(elkLayouts);
 
 const modal = new Modal({
   size: 'max',
@@ -112,25 +109,6 @@ export const Diagram: React.FunctionComponent<{
 function useMermaidRenderSVG(code: string, colorMode: 'light' | 'dark') {
   const [svg, setSvg] = useState<string>('');
   const [error, setError] = useState<Error>();
-
-  useEffect(() => {
-    const [theme, darkMode] = (
-      {
-        light: ['default', false],
-        dark: ['dark', true],
-      } as const
-    )[colorMode];
-
-    mermaid.initialize({
-      startOnLoad: false,
-      theme,
-      darkMode,
-      themeVariables: {
-        darkMode,
-      },
-      securityLevel: 'antiscript', // allows usage of HTML tags, except <script>
-    });
-  }, [colorMode]);
 
   useEffect(() => {
     const run = async () => {

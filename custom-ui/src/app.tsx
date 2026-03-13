@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Banner from '@atlaskit/banner';
 import Spinner from '@atlaskit/spinner';
 import { Diagram } from './diagram';
-import { token, useThemeObserver } from '@atlaskit/tokens';
+import { token } from '@atlaskit/tokens';
 import { view } from '@forge/bridge';
 import { Context } from './context';
 import { AppError } from './app-error';
 import { getCodeFromCorrespondingBlock } from './confluence/code-blocks';
 import { getPageContent } from './confluence/api-client/browser';
-
-void view.theme.enable();
 
 const ErrorMessage: React.FunctionComponent<{ error?: Error }> = (props) => {
   if (!props.error) {
@@ -55,10 +53,9 @@ const Loading: React.FunctionComponent<{ loading?: boolean }> = () => {
   );
 };
 
-function App() {
+function App({ colorMode }: { colorMode: 'light' | 'dark' }) {
   const [code, setCode] = useState<string>();
   const [error, setError] = useState<AppError | Error | undefined>();
-  const { colorMode } = useThemeObserver();
 
   useEffect(() => {
     void view
@@ -101,7 +98,7 @@ function App() {
       }}
     >
       {code === undefined && error === undefined ? <Loading /> : null}
-      {code !== undefined && colorMode ? (
+      {code !== undefined ? (
         <Diagram code={code} colorMode={colorMode} onError={onError} />
       ) : null}
       <ErrorMessage error={error} />

@@ -6,11 +6,6 @@ import { Context } from '../../context';
 import { getIndexFromConfig } from '../../config-data';
 import { AppError } from '../../app-error';
 
-// TODO: See if we can avoid init twice
-mermaid.initialize({
-  startOnLoad: false,
-});
-
 export function looksLikeMermaid(code: string): boolean {
   try {
     mermaid.detectType(code);
