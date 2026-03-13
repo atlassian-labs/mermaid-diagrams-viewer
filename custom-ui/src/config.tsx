@@ -73,11 +73,9 @@ export const DiagramConfig = () => {
   const options: SelectOption[] = [
     { label: 'Auto detect', value: undefined },
     ...codeBlocks.map((codeBlock, index) => {
-      const trimmedCode =
-        codeBlock.length > 35 ? `${codeBlock.substring(0, 35)}...` : codeBlock;
       const indicator = looksLikeMermaid(codeBlock) ? '✓ ' : '⛌';
       return {
-        label: `${String(index + 1)}. ${indicator} ${trimmedCode}`,
+        label: `${String(index + 1)}. ${indicator} ${codeBlock}`,
         value: index,
       };
     }),
@@ -127,6 +125,19 @@ export const DiagramConfig = () => {
           isClearable={false}
           isMulti={false}
           isRequired={true}
+          formatOptionLabel={(option) => (
+            <span
+              style={{
+                display: 'block',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
+              title={option.label}
+            >
+              {option.label}
+            </span>
+          )}
           onChange={(option: ValueType<SelectOption>) => {
             if (option && !Array.isArray(option)) {
               setConfig({
