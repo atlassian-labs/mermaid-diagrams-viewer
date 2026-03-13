@@ -3,7 +3,7 @@ import { traverse } from '@atlaskit/adf-utils/traverse';
 import mermaid from 'mermaid';
 import { GetPageContent } from '../api-client/types';
 import { Context } from '../../context';
-import { getIndexFromConfig } from '../../config';
+import { getIndexFromConfig } from '../../config-data';
 import { AppError } from '../../app-error';
 
 // TODO: See if we can avoid init twice

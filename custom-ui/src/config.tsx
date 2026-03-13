@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { view } from '@forge/bridge';
-import { Config, CONFIG_FIELD } from 'shared/src/config';
-import { getPageContent } from 'shared/src/confluence/api-client/browser';
-import {
-  findCodeBlocks,
-  looksLikeMermaid,
-} from 'shared/src/confluence/code-blocks';
+import { Config, CONFIG_FIELD } from './config-data';
+import { getPageContent } from './confluence/api-client/browser';
+import { findCodeBlocks, looksLikeMermaid } from './confluence/code-blocks';
 import Button from '@atlaskit/button/new';
 import Select, { type ValueType } from '@atlaskit/select';
 import { token } from '@atlaskit/tokens';

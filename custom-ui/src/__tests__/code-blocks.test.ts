@@ -3,9 +3,9 @@ import {
   findCodeBlocks,
   getCodeFromCorrespondingBlock,
   looksLikeMermaid,
-} from '../index';
-import { Context } from '../../../context';
-import { AppError } from '../../../app-error';
+} from '../confluence/code-blocks/index';
+import { Context } from '../context';
+import { AppError } from '../app-error';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 
 // Mock dependencies

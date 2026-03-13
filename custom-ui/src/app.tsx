@@ -5,10 +5,10 @@ import Spinner from '@atlaskit/spinner';
 import { Diagram } from './diagram';
 import { token, useThemeObserver } from '@atlaskit/tokens';
 import { view } from '@forge/bridge';
-import { Context } from 'shared/src/context';
-import { AppError } from 'shared/src/app-error';
-import { getCodeFromCorrespondingBlock } from 'shared/src/confluence/code-blocks';
-import { getPageContent } from 'shared/src/confluence/api-client/browser';
+import { Context } from './context';
+import { AppError } from './app-error';
+import { getCodeFromCorrespondingBlock } from './confluence/code-blocks';
+import { getPageContent } from './confluence/api-client/browser';
 
 void view.theme.enable();
 

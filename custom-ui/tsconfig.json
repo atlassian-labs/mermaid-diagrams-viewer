@@ -14,9 +14,6 @@
 
     /* Path mapping */
     "baseUrl": ".",
-    "paths": {
-      "shared/*": ["../shared/*"]
-    }
   },
   "include": ["src", "vitest.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

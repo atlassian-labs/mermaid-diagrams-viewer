@@ -1,6 +1,6 @@
 import { render, screen, waitFor, act } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
-import { Context } from 'shared/src/context';
+import { Context } from '../context';
 
 // Extended context type that includes additional properties
 interface ExtendedContext extends Context {
@@ -33,19 +33,19 @@ vi.mock('@forge/bridge', () => ({
   },
 }));
 
-vi.mock('shared/src/confluence/code-blocks', () => ({
+vi.mock('../confluence/code-blocks', () => ({
   getCodeFromCorrespondingBlock: vi.fn(),
 }));
 
-vi.mock('shared/src/confluence/api-client/browser', () => ({
+vi.mock('../confluence/api-client/browser', () => ({
   getPageContent: vi.fn(),
 }));
 
-vi.mock('shared/src/context', () => ({
+vi.mock('../context', () => ({
   Context: {},
 }));
 
-vi.mock('shared/src/app-error', () => ({
+vi.mock('../app-error', () => ({
   AppError: class MockAppError extends Error {
     constructor(
       message: string,
@@ -62,8 +62,8 @@ import App from '../app';
 import { Diagram } from '../diagram';
 import { useThemeObserver } from '@atlaskit/tokens';
 import { view } from '@forge/bridge';
-import { getCodeFromCorrespondingBlock } from 'shared/src/confluence/code-blocks';
-import { AppError } from 'shared/src/app-error';
+import { getCodeFromCorrespondingBlock } from '../confluence/code-blocks';
+import { AppError } from '../app-error';
 
 // Get mocked functions using vi.mocked
 const mockDiagram = vi.mocked(Diagram);

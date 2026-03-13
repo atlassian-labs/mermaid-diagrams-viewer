@@ -29,16 +29,16 @@ vi.mock('@forge/bridge', () => ({
   view: mockView,
 }));
 
-vi.mock('shared/src/confluence/api-client/browser', () => ({
+vi.mock('../confluence/api-client/browser', () => ({
   getPageContent: mockGetPageContent,
 }));
 
-vi.mock('shared/src/confluence/code-blocks', () => ({
+vi.mock('../confluence/code-blocks', () => ({
   findCodeBlocks: mockFindCodeBlocks,
   looksLikeMermaid: mockLooksLikeMermaid,
 }));
 
-vi.mock('shared/src/config', () => ({
+vi.mock('../config-data', () => ({
   CONFIG_FIELD: 'index',
 }));
 

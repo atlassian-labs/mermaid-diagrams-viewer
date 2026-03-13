@@ -1,4 +1,4 @@
-import { getPageContent } from '../browser';
+import { getPageContent } from '../confluence/api-client/browser';
 import { requestConfluence } from '@forge/bridge';
 import {
   vi,

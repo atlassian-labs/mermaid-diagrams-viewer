@@ -1,8 +1,7 @@
 {
   "private": true,
   "workspaces": [
-    "custom-ui",
-    "shared"
+    "custom-ui"
   ],
   "type": "module",
   "license": "Apache-2.0",
