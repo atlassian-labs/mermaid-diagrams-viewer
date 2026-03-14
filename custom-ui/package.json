@@ -25,7 +25,7 @@
     "@atlaskit/button": "^23.10.0",
     "@atlaskit/css-reset": "^7.3.13",
     "@atlaskit/primitives": "^18.0.1",
-    "@atlaskit/select": "^21.7.8",
+    "@atlaskit/select": "^21.8.0",
     "@atlaskit/spinner": "^19.0.11",
     "@atlaskit/tokens": "^11.1.0",
     "@compiled/react": "^0.20.0",
