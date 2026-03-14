@@ -19,7 +19,6 @@ modules:
         resource: custom-ui
         viewportSize: small
         title: Mermaid diagram configuration
-      export: true
 
 resources:
   - key: custom-ui
