@@ -68,27 +68,27 @@
     linkify-it "^2.0.3"
     memoize-one "^6.0.0"
 
-"@atlaskit/adf-schema@^52.3.0":
-  version "52.4.0"
-  resolved "https://registry.yarnpkg.com/@atlaskit/adf-schema/-/adf-schema-52.4.0.tgz#664f42f831abbd6a976283fe287c83e8292b4a66"
-  integrity sha512-ec6vxBF9cH0vdAe3fJJjAaPSWwh+Y3bifAiXACUC8dsjpwdM3xNk++klozoOwmBbtYPbjAfYqTB6NUPs3bOYRA==
+"@atlaskit/adf-schema@^52.4.0":
+  version "52.4.2"
+  resolved "https://registry.yarnpkg.com/@atlaskit/adf-schema/-/adf-schema-52.4.2.tgz#6ce119e2b26fb3485f12a5a4fa3a9c9e13d10569"
+  integrity sha512-AFA+R7dCOfVbXr0cgGqE6Ub86ZREkA5H5PYT40pHsNjzACzJlnCIadUliejMLs/pCGTJaxkskLHnjPypW3LTZA==
   dependencies:
     "@atlaskit/adf-schema-generator" "^2.2.0"
     "@atlaskit/editor-prosemirror" "^7.3.0"
-    "@atlaskit/tmp-editor-statsig" "^40.3.0"
+    "@atlaskit/tmp-editor-statsig" "^42.0.0"
     "@babel/runtime" "^7.0.0"
     css-color-names "0.0.4"
     linkify-it "^3.0.3"
     memoize-one "^6.0.0"
 
-"@atlaskit/adf-utils@^19.27.12":
-  version "19.27.12"
-  resolved "https://registry.yarnpkg.com/@atlaskit/adf-utils/-/adf-utils-19.27.12.tgz#277a0ebe4cb7862f3fc66a03a08ce626fd0ede5d"
-  integrity sha512-6aurdp3bHhhFlhUGna56qD9nDL0eyV81haLMqbgKpVRaTFh3vzatDESepp7QtGgLEGey+XOL68oOohs+Fw5o4g==
+"@atlaskit/adf-utils@^19.27.14":
+  version "19.27.14"
+  resolved "https://registry.yarnpkg.com/@atlaskit/adf-utils/-/adf-utils-19.27.14.tgz#538cd2558b1d71d3ffab1059bcff67616f9efe9d"
+  integrity sha512-lEurmNyY+vEEGbFocuXqZ5J1e7BFl+BItGHjXbYxtwxRwYo6kfOugHMoLu2XdzKDONjs38Y8aGsfYDEKkNZjOQ==
   dependencies:
-    "@atlaskit/adf-schema" "^52.3.0"
+    "@atlaskit/adf-schema" "^52.4.0"
     "@atlaskit/platform-feature-flags" "^1.1.0"
-    "@atlaskit/tmp-editor-statsig" "^40.0.0"
+    "@atlaskit/tmp-editor-statsig" "^42.0.0"
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/analytics-next-stable-react-context@1.0.1":
@@ -468,10 +468,10 @@
     scheduler "0.23.2"
     uuid "^3.1.0"
 
-"@atlaskit/select@^21.8.2":
-  version "21.8.2"
-  resolved "https://registry.yarnpkg.com/@atlaskit/select/-/select-21.8.2.tgz#1ac13c8fec4d621d44d9bc5e124a8f9c3c063e0a"
-  integrity sha512-+yYsWr/07ZvVXSLt5RqDuMt+BggW5VmNUg+Pl8ur9lWl3VGGFhpGAadWMrrOr/+y4RdI5UEFqmTE3J7OkngJZw==
+"@atlaskit/select@^21.8.3":
+  version "21.8.3"
+  resolved "https://registry.yarnpkg.com/@atlaskit/select/-/select-21.8.3.tgz#ad1a01fc60fc117816bfdc22ae70dbbc77545722"
+  integrity sha512-6lalwTzqlsGq8fcxGCYr5ZtR4LDTU8Nzt271LvYIlFQXiO9e3fnwiylefV72mlNEmlmqv5amQA06gL6zTHsbsg==
   dependencies:
     "@atlaskit/analytics-next" "^11.1.0"
     "@atlaskit/ds-lib" "^6.0.0"
@@ -564,10 +564,10 @@
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.18.6"
 
-"@atlaskit/tmp-editor-statsig@^40.0.0", "@atlaskit/tmp-editor-statsig@^40.3.0":
-  version "40.6.0"
-  resolved "https://registry.yarnpkg.com/@atlaskit/tmp-editor-statsig/-/tmp-editor-statsig-40.6.0.tgz#49ff3ece4c77cd8d07dbb050f390b2a7f75722d9"
-  integrity sha512-i2Cm9bjdFR3KgFgkqnxRJj4D8hlgnB8+hN2sXgDN2FOPij4kL5EdPX5jO+8zD54Inyou7nVH2QoydkPV89djdg==
+"@atlaskit/tmp-editor-statsig@^42.0.0":
+  version "42.0.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/tmp-editor-statsig/-/tmp-editor-statsig-42.0.0.tgz#2ea80ee3e0b0a2f9ce31cf9e8623ea93cd461899"
+  integrity sha512-OEnlMeg//kMEWS6iygpqxOC5WJNNuP5P3MI6/gBkDo6JMvIrEVYhiZoT9MlZf/WjM/AD/b8OoZfdLrA6RolOCA==
   dependencies:
     "@atlaskit/feature-gate-js-client" "^5.5.0"
     "@atlaskit/react-ufo" "^5.4.0"
