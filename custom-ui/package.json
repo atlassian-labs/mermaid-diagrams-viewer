@@ -20,12 +20,12 @@
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
-    "@atlaskit/adf-utils": "^19.27.12",
+    "@atlaskit/adf-utils": "^19.27.14",
     "@atlaskit/banner": "^14.0.25",
     "@atlaskit/button": "^23.10.4",
     "@atlaskit/css-reset": "^7.3.13",
     "@atlaskit/primitives": "^18.0.2",
-    "@atlaskit/select": "^21.8.2",
+    "@atlaskit/select": "^21.8.3",
     "@atlaskit/spinner": "^19.0.11",
     "@atlaskit/tokens": "^11.1.1",
     "@compiled/react": "^0.20.0",
