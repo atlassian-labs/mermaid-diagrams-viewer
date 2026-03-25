@@ -76,14 +76,14 @@
     linkify-it "^3.0.3"
     memoize-one "^6.0.0"
 
-"@atlaskit/adf-utils@^19.27.14":
-  version "19.27.14"
-  resolved "https://registry.yarnpkg.com/@atlaskit/adf-utils/-/adf-utils-19.27.14.tgz#538cd2558b1d71d3ffab1059bcff67616f9efe9d"
-  integrity sha512-lEurmNyY+vEEGbFocuXqZ5J1e7BFl+BItGHjXbYxtwxRwYo6kfOugHMoLu2XdzKDONjs38Y8aGsfYDEKkNZjOQ==
+"@atlaskit/adf-utils@^19.27.18":
+  version "19.27.18"
+  resolved "https://registry.yarnpkg.com/@atlaskit/adf-utils/-/adf-utils-19.27.18.tgz#2caf5f7b06d5a28bdfb5b437c1c6b2134f78831b"
+  integrity sha512-1x7nqSv8Z1c9hSCk2MoOIJ8fyhd8rbyYqzunOI511E4w1n5srB5eyu/n8cd8s0oylxo6kjz+nGbypObKM7pUmw==
   dependencies:
     "@atlaskit/adf-schema" "^52.4.0"
     "@atlaskit/platform-feature-flags" "^1.1.0"
-    "@atlaskit/tmp-editor-statsig" "^42.0.0"
+    "@atlaskit/tmp-editor-statsig" "^45.0.0"
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/analytics-next-stable-react-context@1.0.1":
@@ -198,13 +198,13 @@
     "@compiled/react" "^0.20.0"
     "@emotion/react" "^11.7.1"
 
-"@atlaskit/css-reset@^7.3.13":
-  version "7.3.13"
-  resolved "https://registry.yarnpkg.com/@atlaskit/css-reset/-/css-reset-7.3.13.tgz#c32759dc79b43f0e9ad9cbd0edca50ac2dc745a3"
-  integrity sha512-nqliNswB+8tD+RhbaD9HRoGf8zFX88oRInV9HE6A6DdjBx7OFw9db18y3i0MCiy9Igf5OwFkNvxDQQNXv3fpvA==
+"@atlaskit/css-reset@^7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/css-reset/-/css-reset-7.4.0.tgz#66ec32a1986c5b8050792b118ba37382c5f340e5"
+  integrity sha512-uH+E0Zptfqo4eSpn1YvUmlaOmDP6pRNtPPWlNC2gnHu0oDe4SF6Fpd5+xQ1K3w4P0GVj+m9OpDK1A5tDhUE6Ag==
   dependencies:
     "@atlaskit/theme" "^22.0.0"
-    "@atlaskit/tokens" "^11.0.0"
+    "@atlaskit/tokens" "^11.1.0"
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/css@^0.19.0":
@@ -447,10 +447,10 @@
     memoize-one "^6.0.0"
     use-isomorphic-layout-effect "^1.1.2"
 
-"@atlaskit/react-ufo@^5.4.0":
-  version "5.4.7"
-  resolved "https://registry.yarnpkg.com/@atlaskit/react-ufo/-/react-ufo-5.4.7.tgz#cda01a29c8ad3e8cfa7bcf37b695f38ef167637b"
-  integrity sha512-IUobXBQbnOuvUJz6vnSnVYDLPezL7zP0ouuVPpquM/e8KqmSu2zbL/fezWT5XVfphYXN1Tk4uc213TYZlkCMjw==
+"@atlaskit/react-ufo@^5.4.0", "@atlaskit/react-ufo@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/react-ufo/-/react-ufo-5.5.0.tgz#33755a856f21949378e7027985aedf14fc6c7e19"
+  integrity sha512-zlGEyhTk/Ob4HGl8GtsNEzsJDYMU4pgsOY9eYl6ZvuiMwDSMmjmiaM0pelgQ5uJdLqKBqFng5OeplhDtQnxvcQ==
   dependencies:
     "@atlaskit/browser-apis" "^0.0.1"
     "@atlaskit/feature-gate-js-client" "^5.5.0"
@@ -568,6 +568,15 @@
     "@atlaskit/react-ufo" "^5.4.0"
     "@babel/runtime" "^7.0.0"
 
+"@atlaskit/tmp-editor-statsig@^45.0.0":
+  version "45.0.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/tmp-editor-statsig/-/tmp-editor-statsig-45.0.0.tgz#34a238936552b35aa216fb1ac8ecc3e79b8ca104"
+  integrity sha512-ROWwDjyV1WAENSwytPlfPXX/NYQ+UL2nBYa14vRDTXTgN22Uq2oxgrOuRCJHaO7cM+p5gPrNnse57Z27Xetilg==
+  dependencies:
+    "@atlaskit/feature-gate-js-client" "^5.5.0"
+    "@atlaskit/react-ufo" "^5.5.0"
+    "@babel/runtime" "^7.0.0"
+
 "@atlaskit/tokens@^1.58.0":
   version "1.61.0"
   resolved "https://registry.yarnpkg.com/@atlaskit/tokens/-/tokens-1.61.0.tgz#101856f96be03daaaeb3a756d68a665af297de06"
@@ -580,10 +589,10 @@
     "@babel/types" "^7.20.0"
     bind-event-listener "^3.0.0"
 
-"@atlaskit/tokens@^11.0.0", "@atlaskit/tokens@^11.1.0", "@atlaskit/tokens@^11.1.1":
-  version "11.1.1"
-  resolved "https://registry.yarnpkg.com/@atlaskit/tokens/-/tokens-11.1.1.tgz#3f9150f435ef33a576a8004d8a928883109f2d29"
-  integrity sha512-JhwthtC047LaLXGL3iUgTGXfIrwecue/RmCbO/sk3yscxy04bbt+LgKwxlv+7l21BkhhvPeE+d34Lz/+uUCJCQ==
+"@atlaskit/tokens@^11.0.0", "@atlaskit/tokens@^11.1.0", "@atlaskit/tokens@^11.2.0":
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/tokens/-/tokens-11.2.0.tgz#183758d210909cf8dd1bc253e8400b3bc671924d"
+  integrity sha512-R7pLQl3xifSRjXOEQLl6WxmZSLb7DT9pFQMK9cjk1wTNycPTOLQRw1w+oJAm/ElIhev1c38JI399rjUzpvQW9w==
   dependencies:
     "@atlaskit/ds-lib" "^6.0.0"
     "@atlaskit/platform-feature-flags" "^1.1.0"
