@@ -50,7 +50,7 @@
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.57.2",
     "@typescript-eslint/parser": "^8.57.2",
-    "@vitest/coverage-v8": "^4.1.1",
+    "@vitest/coverage-v8": "^4.1.2",
     "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
@@ -68,7 +68,7 @@
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.57.1",
     "vite": "^8.0.1",
-    "vitest": "^4.1.1"
+    "vitest": "^4.1.2"
   },
   "packageManager": "yarn@1.22.22"
 }
