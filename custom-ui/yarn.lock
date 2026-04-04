@@ -1194,10 +1194,10 @@
     d3 "^7.9.0"
     elkjs "^0.9.3"
 
-"@mermaid-js/parser@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@mermaid-js/parser/-/parser-1.0.1.tgz#51c5f43c918a37c35904adef40c98e5862effbdf"
-  integrity sha512-opmV19kN1JsK0T6HhhokHpcVkqKpF+x2pPDKKM2ThHtZAB5F4PROopk0amuVYK5qMrIA4erzpNm8gmPNJgMDxQ==
+"@mermaid-js/parser@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@mermaid-js/parser/-/parser-1.1.0.tgz#8f96c35ddab34a1b12af58f2c59f5abb7d4743fc"
+  integrity sha512-gxK9ZX2+Fex5zu8LhRQoMeMPEHbc73UKZ0FQ54YrQtUxE1VVhMwzeNtKRPAu5aXks4FasbMe4xB4bWrmq6Jlxw==
   dependencies:
     langium "^4.0.0"
 
@@ -3645,14 +3645,14 @@ memoize-one@^6.0.0:
   resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-6.0.0.tgz#b2591b871ed82948aee4727dc6abceeeac8c1045"
   integrity sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==
 
-mermaid@^11.13.0:
-  version "11.13.0"
-  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-11.13.0.tgz#da1a05337073a3141aa8c7d2608048f5db9ed587"
-  integrity sha512-fEnci+Immw6lKMFI8sqzjlATTyjLkRa6axrEgLV2yHTfv8r+h1wjFbV6xeRtd4rUV1cS4EpR9rwp3Rci7TRWDw==
+mermaid@^11.14.0:
+  version "11.14.0"
+  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-11.14.0.tgz#ce81b22bc10f3117ef7737406ef2d10ee1741769"
+  integrity sha512-GSGloRsBs+JINmmhl0JDwjpuezCsHB4WGI4NASHxL3fHo3o/BRXTxhDLKnln8/Q0lRFRyDdEjmk1/d5Sn1Xz8g==
   dependencies:
     "@braintree/sanitize-url" "^7.1.1"
     "@iconify/utils" "^3.0.2"
-    "@mermaid-js/parser" "^1.0.1"
+    "@mermaid-js/parser" "^1.1.0"
     "@types/d3" "^7.4.3"
     "@upsetjs/venn.js" "^2.0.0"
     cytoscape "^3.33.1"
