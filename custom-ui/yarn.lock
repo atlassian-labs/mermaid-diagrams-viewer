@@ -1062,26 +1062,26 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.11.tgz#a269e055e40e2f45873bae9d1a2fdccbd314ea3f"
   integrity sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==
 
-"@forge/bridge@^5.14.1":
-  version "5.14.1"
-  resolved "https://registry.yarnpkg.com/@forge/bridge/-/bridge-5.14.1.tgz#78f9f01a6d5822ab9d3c1d7a5adae8af747b761d"
-  integrity sha512-HfncAC+6+d/DYKF6h4G8QpTkgG7ByZucuIkTOGLdOCoTFXeacHooSVRJB/KrFOznX3avhY3V2jNmzNo7i5c1Iw==
+"@forge/bridge@^5.15.0":
+  version "5.15.0"
+  resolved "https://registry.yarnpkg.com/@forge/bridge/-/bridge-5.15.0.tgz#990cef3cbd77fb8a7d5f1972c49dcd6f1a69104c"
+  integrity sha512-yvtVNAb24En/KA+h5kvKrrLYzvEJmGP63vav0ZSaMoYL/oEO5B5PsLWGsH6wLegi9vWHElgUGAA1BybdHDas4g==
   dependencies:
     "@atlaskit/adf-schema" "^48.0.0"
     "@atlaskit/tokens" "^1.58.0"
-    "@forge/egress" "^2.3.1"
+    "@forge/egress" "^2.3.2"
     "@forge/i18n" "0.0.7"
-    "@forge/manifest" "12.3.0"
+    "@forge/manifest" "12.4.0"
     "@forge/resolver" "1.7.1"
     "@types/history" "^4.7.11"
     "@types/iframe-resizer" "^3.5.8"
     iframe-resizer "^4.4.5"
     uuid "^9.0.1"
 
-"@forge/egress@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@forge/egress/-/egress-2.3.1.tgz#e2c0b99ac6ade48468cf928af0808b875adf0652"
-  integrity sha512-NoqQsoPj98F8yBJyUUy72PEdcqvJo7upGWTllZ6RN3ZAxvmq2jnCrJ+ipVBYqTIHJLhKNc2PKxRpBls7NQA20A==
+"@forge/egress@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@forge/egress/-/egress-2.3.2.tgz#12ddd8001fd43660ec2e8cf6f67d2b5c8d469995"
+  integrity sha512-p8ioX4qnAlRFln+hyH9kO0MmVCSOUg0bsIG9RAYK8KM2YaJb6EnKqbCvPMBTwegiua3vixBsnZmWDgPegSZh9Q==
 
 "@forge/i18n@0.0.7":
   version "0.0.7"
@@ -1090,10 +1090,10 @@
   dependencies:
     lodash "^4.17.21"
 
-"@forge/manifest@12.3.0":
-  version "12.3.0"
-  resolved "https://registry.yarnpkg.com/@forge/manifest/-/manifest-12.3.0.tgz#f7618039bbb682bb7943feff9d1872b3ea534f8b"
-  integrity sha512-4yBKiSr9sL7mfDKJ0RPEnyGROrEHbsrAIX9YxJY4zGMCJDKAE2gwRR+BgJBHnffDwMoW8t0ggCg+TFpRehNhfw==
+"@forge/manifest@12.4.0":
+  version "12.4.0"
+  resolved "https://registry.yarnpkg.com/@forge/manifest/-/manifest-12.4.0.tgz#a8b752b1fb86bd779adc4b1c54561ef56c3f2bc2"
+  integrity sha512-IXaWJn/PaEtDpVD/Ky5rCkckALl62VPmbBcykN3UQrbaspwhry+A4/0rnX+CqaFTi6uc8i8fN3bbHbPIrlNtVw==
   dependencies:
     "@forge/i18n" "0.0.7"
     "@sentry/node" "7.106.0"
