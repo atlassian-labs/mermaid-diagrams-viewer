@@ -29,7 +29,7 @@
     "@atlaskit/spinner": "^19.0.11",
     "@atlaskit/tokens": "^11.2.0",
     "@compiled/react": "^0.20.0",
-    "@forge/bridge": "^5.14.1",
+    "@forge/bridge": "^5.15.0",
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@mermaid-js/layout-elk": "^0.2.1",
     "mermaid": "^11.13.0",
