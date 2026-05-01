@@ -834,6 +834,13 @@
   dependencies:
     csstype "^3.2.3"
 
+"@compiled/react@^0.21.1":
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/@compiled/react/-/react-0.21.1.tgz#8fb1cc23e08f4ec4a1000fc4fe25a2799ce05ca8"
+  integrity sha512-6/bnBU3kOKVXWUM80f5mNm73wdkpsVd1k9+enG+g4mudt/IyuHdNpMoD7mRMs43VoXuYwjt7P18loJrYH8BJjg==
+  dependencies:
+    csstype "^3.2.3"
+
 "@csstools/color-helpers@^6.0.2":
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/@csstools/color-helpers/-/color-helpers-6.0.2.tgz#82c59fd30649cf0b4d3c82160489748666e6550b"
