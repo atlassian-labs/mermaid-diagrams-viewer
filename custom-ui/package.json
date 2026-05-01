@@ -61,7 +61,7 @@
     "eslint-plugin-project-structure": "^3.14.2",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-simple-import-sort": "^13.0.0",
     "jiti": "^2.6.1",
     "jsdom": "^29.0.1",
     "prettier": "^3.8.1",
