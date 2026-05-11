@@ -4062,10 +4062,10 @@ react-uid@^2.2.0:
   dependencies:
     tslib "^2.0.0"
 
-react-zoom-pan-pinch@^3.7.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/react-zoom-pan-pinch/-/react-zoom-pan-pinch-3.7.0.tgz#7db4d2ec49c316eb20f71c56e9012eeb3ef4b504"
-  integrity sha512-UmReVZ0TxlKzxSbYiAj+LeGRW8s8LraAFTXRAxzMYnNRgGPsxCudwZKVkjvGmjtx7SW/hZamt69NUmGf4xrkXA==
+react-zoom-pan-pinch@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/react-zoom-pan-pinch/-/react-zoom-pan-pinch-4.0.3.tgz#00fe983a22cfb3117b4fcfb5314b61ac3613eb9c"
+  integrity sha512-N2Hi6L78fFmhRra+ORpFSW7WST5x6kxpOPplIvtB0b7b+U2anpo1z1wLgaWRPS2kUSqcraRG+JgBCIlDJnqqAg==
 
 react@^19.2.4:
   version "19.2.4"
