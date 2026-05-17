@@ -32,7 +32,7 @@
     "@forge/bridge": "^5.14.1",
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@mermaid-js/layout-elk": "^0.2.1",
-    "mermaid": "^11.13.0",
+    "mermaid": "^11.15.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-inlinesvg": "^4.2.0",
