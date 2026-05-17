@@ -33,8 +33,8 @@
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@mermaid-js/layout-elk": "^0.2.1",
     "mermaid": "^11.13.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "react-inlinesvg": "^4.2.0",
     "react-zoom-pan-pinch": "^3.7.0"
   },
