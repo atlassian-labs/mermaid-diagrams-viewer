@@ -131,14 +131,18 @@ describe('App Component', () => {
     const appError = new AppError('Test error', 'TEST_ERROR');
     mockGetCodeFromCorrespondingBlock.mockRejectedValue(appError);
 
+    let renderResult!: ReturnType<typeof render>;
     act(() => {
-      render(<App colorMode="light" />);
+      renderResult = render(<App colorMode="light" />);
     });
 
     await waitFor(() => {
       expect(screen.getByText(/Error while loading diagram/)).toBeDefined();
       expect(screen.getByText(/Test error/)).toBeDefined();
     });
+
+    const container = renderResult.container.firstChild as HTMLElement;
+    expect(container.style.minHeight).toBe('');
   });
 
   it('handles unknown error from getCodeFromCorrespondingBlock', async () => {
@@ -202,5 +206,42 @@ describe('App Component', () => {
         undefined,
       );
     });
+  });
+
+  it('reserves a 150px min-height while loading', async () => {
+    let resolveCode: (value: string) => void = () => {};
+    mockGetCodeFromCorrespondingBlock.mockReturnValue(
+      new Promise<string>((resolve) => {
+        resolveCode = resolve;
+      }),
+    );
+
+    let renderResult!: ReturnType<typeof render>;
+    act(() => {
+      renderResult = render(<App colorMode="light" />);
+    });
+
+    const container = renderResult.container.firstChild as HTMLElement;
+    expect(container.style.minHeight).toBe('150px');
+
+    // Settle the pending load so the effect resolves without act() warnings.
+    await act(async () => {
+      resolveCode('graph TD\n  A --> B');
+      await Promise.resolve();
+    });
+  });
+
+  it('drops the min-height once loading completes', async () => {
+    let renderResult!: ReturnType<typeof render>;
+    act(() => {
+      renderResult = render(<App colorMode="light" />);
+    });
+
+    await waitFor(() => {
+      expect(screen.getByTestId('diagram')).toBeDefined();
+    });
+
+    const container = renderResult.container.firstChild as HTMLElement;
+    expect(container.style.minHeight).toBe('');
   });
 });

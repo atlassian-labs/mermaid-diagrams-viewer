@@ -89,15 +89,20 @@ function App({ colorMode }: { colorMode: 'light' | 'dark' }) {
     setError(error);
   };
 
+  const isLoading = code === undefined && error === undefined;
+
   return (
     <div
       style={{
-        minHeight: '150px',
+        // Reserve vertical space only while the loading spinner is shown. Once
+        // loading finishes, let the container hug its content so a short
+        // diagram does not leave empty vertical space below it.
+        minHeight: isLoading ? '150px' : undefined,
         backgroundColor: token('elevation.surface'),
         borderRadius: '3px',
       }}
     >
-      {code === undefined && error === undefined ? <Loading /> : null}
+      {isLoading ? <Loading /> : null}
       {code !== undefined ? (
         <Diagram code={code} colorMode={colorMode} onError={onError} />
       ) : null}
