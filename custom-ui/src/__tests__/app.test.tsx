@@ -203,4 +203,41 @@ describe('App Component', () => {
       );
     });
   });
+
+  it('reserves a 150px min-height while loading', async () => {
+    let resolveCode: (value: string) => void = () => {};
+    mockGetCodeFromCorrespondingBlock.mockReturnValue(
+      new Promise<string>((resolve) => {
+        resolveCode = resolve;
+      }),
+    );
+
+    let renderResult!: ReturnType<typeof render>;
+    act(() => {
+      renderResult = render(<App colorMode="light" />);
+    });
+
+    const container = renderResult.container.firstChild as HTMLElement;
+    expect(container.style.minHeight).toBe('150px');
+
+    // Settle the pending load so the effect resolves without act() warnings.
+    await act(async () => {
+      resolveCode('graph TD\n  A --> B');
+      await Promise.resolve();
+    });
+  });
+
+  it('drops the min-height once the diagram has rendered', async () => {
+    let renderResult!: ReturnType<typeof render>;
+    act(() => {
+      renderResult = render(<App colorMode="light" />);
+    });
+
+    await waitFor(() => {
+      expect(screen.getByTestId('diagram')).toBeDefined();
+    });
+
+    const container = renderResult.container.firstChild as HTMLElement;
+    expect(container.style.minHeight).toBe('');
+  });
 });
