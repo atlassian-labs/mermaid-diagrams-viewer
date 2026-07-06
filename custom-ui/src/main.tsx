@@ -2,7 +2,14 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './app.tsx';
 import { DiagramConfig } from './config.tsx';
-import { view } from '@forge/bridge';
+import { view, invoke } from '@forge/bridge';
+
+function unwrapInvoke<T>(res: T | { body: T }): T {
+  if (res !== null && typeof res === 'object' && 'body' in res) {
+    return (res as { body: T }).body;
+  }
+  return res as T;
+}
 import { useThemeObserver } from '@atlaskit/tokens';
 import mermaid from 'mermaid';
 import elkLayouts from '@mermaid-js/layout-elk';
@@ -13,6 +20,23 @@ import '@atlaskit/css-reset';
 // code-blocks/index.ts works before any React component mounts.
 void view.theme.enable();
 mermaid.registerLayoutLoaders(elkLayouts);
+
+// Dynamically register icon packs from the Forge Object Store.
+// Returns an empty array if no packs have been seeded yet (diagrams still
+// render, just without custom icons).
+invoke<string[]>('listIconPacks').then((res) => {
+  const packNames = unwrapInvoke(res);
+  if (packNames.length === 0) return;
+  mermaid.registerIconPacks(
+    packNames.map((name: string) => ({
+      name,
+      loader: () =>
+        invoke<string>('getIconPackUrl', { pack: name }).then((urlRes) =>
+          fetch(unwrapInvoke(urlRes)).then((r) => r.json()),
+        ),
+    })),
+  );
+});
 mermaid.initialize({
   startOnLoad: false,
   securityLevel: 'antiscript',

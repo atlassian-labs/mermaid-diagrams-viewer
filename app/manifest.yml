@@ -19,6 +19,15 @@ modules:
         resource: custom-ui
         viewportSize: small
         title: Mermaid diagram configuration
+      resolver:
+        function: resolver
+
+  function:
+    - key: resolver
+      handler: src/index.handler
+
+  objectStore:
+    - key: icon-packs
 
 resources:
   - key: custom-ui
@@ -31,6 +40,7 @@ resources:
 permissions:
   scopes:
     - 'read:page:confluence'
+    - 'storage:app'
   content:
     styles:
       - 'unsafe-inline'
