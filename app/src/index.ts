@@ -27,7 +27,8 @@ resolver.define('getIconPackUrl', async (req) => {
     throw new Error('Icon pack name must be a non-empty string.');
   }
 
-  const result = await fos.createCDNUrl(`iconpack-${pack}`);
+  // Using createPublicDownloadUrl as the UI is fetching the icon pack
+  const result = await fos.createPublicDownloadUrl(`iconpack-${pack}`);
   if (!result) {
     throw new Error(
       `Icon pack "${pack}" not found in Object Store. ` +

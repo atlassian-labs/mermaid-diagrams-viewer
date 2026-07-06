@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import App from './app.tsx';
 import { DiagramConfig } from './config.tsx';
 import { view, invoke } from '@forge/bridge';
+import { useThemeObserver } from '@atlaskit/tokens';
+import mermaid from 'mermaid';
+import elkLayouts from '@mermaid-js/layout-elk';
+import '@atlaskit/css-reset';
 
 function unwrapInvoke<T>(res: T | { body: T }): T {
   if (res !== null && typeof res === 'object' && 'body' in res) {
@@ -10,10 +14,6 @@ function unwrapInvoke<T>(res: T | { body: T }): T {
   }
   return res;
 }
-import { useThemeObserver } from '@atlaskit/tokens';
-import mermaid from 'mermaid';
-import elkLayouts from '@mermaid-js/layout-elk';
-import '@atlaskit/css-reset';
 
 // Enable Atlaskit theme and register mermaid layout loaders once at startup.
 // mermaid.initialize() with base config runs here so detectType() in
@@ -37,7 +37,7 @@ void invoke<string[]>('listIconPacks')
           const resp = await fetch(unwrapInvoke(urlRes));
           if (!resp.ok) {
             throw new Error(
-              `Failed to fetch icon pack "${name}": ${resp.status} ${resp.statusText}`,
+              `Failed to fetch icon pack "${name}": ${String(resp.status)} ${resp.statusText}`,
             );
           }
           return resp.json();
