@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [react()],
   resolve: {
     alias:
-      mode === 'development'
+      mode === 'no-confluence'
         ? {
             // Swap @forge/bridge for a local mock so the app runs without a
             // real Confluence instance.  Edit src/dev/forge-bridge-mock.ts to

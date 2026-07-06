@@ -30,6 +30,21 @@ This app supports all [Mermaid diagram types](https://mermaid.js.org/syntax/synt
 
 This is a Forge app. Install it from the [Atlassian Marketplace](https://marketplace.atlassian.com/apps/1232887/mermaid-diagrams-viewer).
 
+## Registering Icon Packs
+
+Mermaid can [reference icon packs](https://mermaid.js.org/config/icons.html) in diagrams.
+
+Because of sandbox restrictions, these must be served out of the same Confluence
+instance. This is done by serving them out of the Forge Object Store. They are lazily loaded when required.
+
+To register an icon pack:
+1. Upload the icon pack data to the Object Store using the key `iconpack-{prefix}` where `{prefix}` is the prefix you want to reference the pack with.
+2. Add a key-values store entry named `icon-packs/index` with the value being an array of prefix values to register.
+
+For example, to replicate the Mermaid documentation:
+1. Upload https://unpkg.com/@iconify-json/logos@1/icons.json to the Object Store as `iconpack-logos`
+2. Set a Key-Value store entry with `icon-packs/index` => `['logos']`
+
 ### Development Setup
 
 Clone the repository and install dependencies:
@@ -45,6 +60,14 @@ The project has two directories:
 
 ### Running Locally
 
+#### Without a Confluence dev server
+```bash
+# Start the custom UI dev server
+cd custom-ui
+yarn dev --mode=no-confluence # starts vite dev server on port 5173, mocking out the forge-bridge
+```
+
+#### With a Confluence dev server
 ```bash
 # Terminal 1: Start the custom UI dev server
 cd custom-ui

@@ -6,9 +6,9 @@ import { view, invoke } from '@forge/bridge';
 
 function unwrapInvoke<T>(res: T | { body: T }): T {
   if (res !== null && typeof res === 'object' && 'body' in res) {
-    return (res as { body: T }).body;
+    return res.body;
   }
-  return res as T;
+  return res;
 }
 import { useThemeObserver } from '@atlaskit/tokens';
 import mermaid from 'mermaid';
@@ -24,7 +24,7 @@ mermaid.registerLayoutLoaders(elkLayouts);
 // Dynamically register icon packs from the Forge Object Store.
 // Returns an empty array if no packs have been seeded yet (diagrams still
 // render, just without custom icons).
-invoke<string[]>('listIconPacks').then((res) => {
+void invoke<string[]>('listIconPacks').then((res) => {
   const packNames = unwrapInvoke(res);
   if (packNames.length === 0) return;
   mermaid.registerIconPacks(

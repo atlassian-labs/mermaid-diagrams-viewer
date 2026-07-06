@@ -19,19 +19,17 @@ export const adfFixture = {
   group storage(logos:aws-s3)[Storage Layer]
 
   service client(logos:chrome)[Browser Client]
-  service cdn(aws:cloudfront)[CloudFront]
+  service cdn(logos:cloudflare)[CloudFlare]
   service gateway(logos:aws-api-gateway)[API Gateway] in api
   service fn(logos:aws-lambda)[Lambda Function] in api
   service db(logos:aws-dynamodb)[DynamoDB] in data
-  service bucket(aws:simple-storage-service-bucket)[S3 Bucket] in storage
-  service catalog(aws:datazone-business-data-catalog)[Data Catalog] in data
-
+  service bucket(logos:aws-s3)[S3 Bucket] in storage
+          
   client:R --> L:cdn
   cdn:R --> L:gateway
   gateway:R --> L:fn
   fn:R --> L:db
-  fn:T --> B:bucket
-  db:R --> L:catalog`,
+  fn:T --> B:bucket`,
         },
       ],
     },
