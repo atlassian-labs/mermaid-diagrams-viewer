@@ -1,5 +1,5 @@
 app:
-  id: ari:cloud:ecosystem::app/23392b90-4271-4239-98ca-a3e96c663cbb
+  id: ari:cloud:ecosystem::app/6ab5bc71-c8ef-4e78-9e33-5c250f01b073
   runtime:
     name: nodejs24.x
 
@@ -24,10 +24,11 @@ modules:
 
   function:
     - key: resolver
-      handler: src/index.handler
+      handler: index.handler
 
   objectStore:
     - key: icon-packs
+      storageClass: standard
 
 resources:
   - key: custom-ui
@@ -39,8 +40,8 @@ resources:
 
 permissions:
   scopes:
-    - 'read:page:confluence'
-    - 'storage:app'
+    - read:page:confluence
+    - storage:app
   content:
     styles:
-      - 'unsafe-inline'
+      - unsafe-inline
