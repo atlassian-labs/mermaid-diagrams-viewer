@@ -11,8 +11,10 @@ const resolver = new Resolver();
  * Store.  Returns an empty array if no packs have been seeded yet.
  */
 resolver.define('listIconPacks', async () => {
-  const packs = await kvs.get<string[]>(ICON_PACKS_INDEX_KEY);
-  return packs ?? [];
+  const packs = await kvs.get<unknown>(ICON_PACKS_INDEX_KEY);
+  return Array.isArray(packs)
+    ? packs.filter((p): p is string => typeof p === 'string')
+    : [];
 });
 
 /**
@@ -20,7 +22,11 @@ resolver.define('listIconPacks', async () => {
  * Throws if the pack has not been seeded into the Object Store.
  */
 resolver.define('getIconPackUrl', async (req) => {
-  const pack = req.payload.pack as string;
+  const pack = req.payload?.pack;
+  if (typeof pack !== 'string' || pack.trim() === '') {
+    throw new Error('Icon pack name must be a non-empty string.');
+  }
+
   const result = await fos.createCDNUrl(`iconpack-${pack}`);
   if (!result) {
     throw new Error(

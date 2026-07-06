@@ -24,19 +24,30 @@ mermaid.registerLayoutLoaders(elkLayouts);
 // Dynamically register icon packs from the Forge Object Store.
 // Returns an empty array if no packs have been seeded yet (diagrams still
 // render, just without custom icons).
-void invoke<string[]>('listIconPacks').then((res) => {
-  const packNames = unwrapInvoke(res);
-  if (packNames.length === 0) return;
-  mermaid.registerIconPacks(
-    packNames.map((name: string) => ({
-      name,
-      loader: () =>
-        invoke<string>('getIconPackUrl', { pack: name }).then((urlRes) =>
-          fetch(unwrapInvoke(urlRes)).then((r) => r.json()),
-        ),
-    })),
-  );
-});
+void invoke<string[]>('listIconPacks')
+  .then((res) => {
+    const packNames = unwrapInvoke(res);
+    if (!Array.isArray(packNames) || packNames.length === 0) return;
+
+    mermaid.registerIconPacks(
+      packNames.map((name: string) => ({
+        name,
+        loader: async () => {
+          const urlRes = await invoke<string>('getIconPackUrl', { pack: name });
+          const resp = await fetch(unwrapInvoke(urlRes));
+          if (!resp.ok) {
+            throw new Error(
+              `Failed to fetch icon pack "${name}": ${resp.status} ${resp.statusText}`,
+            );
+          }
+          return resp.json();
+        },
+      })),
+    );
+  })
+  .catch(() => {
+    // Ignore icon pack errors; diagrams can still render without custom icons.
+  });
 mermaid.initialize({
   startOnLoad: false,
   securityLevel: 'antiscript',
