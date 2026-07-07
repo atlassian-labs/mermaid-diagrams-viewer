@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './app.tsx';
+import { AdminPanel } from './admin.tsx';
 import { DiagramConfig } from './config.tsx';
 import { view, invoke } from '@forge/bridge';
 import { useThemeObserver } from '@atlaskit/tokens';
 import mermaid from 'mermaid';
+import { IconifyJSON } from '@iconify/types';
 import elkLayouts from '@mermaid-js/layout-elk';
 import '@atlaskit/css-reset';
 
@@ -24,7 +26,7 @@ mermaid.registerLayoutLoaders(elkLayouts);
 // Dynamically register icon packs from the Forge Object Store.
 // Returns an empty array if no packs have been seeded yet (diagrams still
 // render, just without custom icons).
-void invoke<string[]>('listIconPacks')
+await invoke<string[]>('listIconPacks')
   .then((res) => {
     const packNames = unwrapInvoke(res);
     if (!Array.isArray(packNames) || packNames.length === 0) return;
@@ -40,7 +42,7 @@ void invoke<string[]>('listIconPacks')
               `Failed to fetch icon pack "${name}": ${String(resp.status)} ${resp.statusText}`,
             );
           }
-          return resp.json();
+          return resp.json() as Promise<IconifyJSON>;
         },
       })),
     );
@@ -53,7 +55,7 @@ mermaid.initialize({
   securityLevel: 'antiscript',
 });
 
-type AppMode = 'viewer' | 'config' | 'loading';
+type AppMode = 'viewer' | 'config' | 'admin' | 'loading';
 type ColorMode = 'light' | 'dark';
 
 function initMermaidTheme(colorMode: ColorMode) {
@@ -74,6 +76,10 @@ function Root() {
     view
       .getContext()
       .then((context) => {
+        if (context.extension.type === 'confluence:globalSettings') {
+          setMode('admin');
+          return;
+        }
         // Forge sets extension.macro.isConfiguring = true when the macro
         // config dialog is open (both on insert and on edit of existing macro).
         const ext = context.extension as {
@@ -102,6 +108,10 @@ function Root() {
 
   if (!colorMode) {
     return null;
+  }
+
+  if (mode === 'admin') {
+    return <AdminPanel />;
   }
 
   if (mode === 'config') {

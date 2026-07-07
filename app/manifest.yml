@@ -22,6 +22,14 @@ modules:
       resolver:
         function: resolver
 
+  confluence:globalSettings:
+    - key: mermaid-admin
+      resource: custom-ui
+      resolver:
+        function: resolver
+      title: Mermaid Diagrams Viewer
+      useAsConfig: true
+
   function:
     - key: resolver
       handler: index.handler
