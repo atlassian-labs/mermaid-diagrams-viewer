@@ -60,14 +60,6 @@ The project has two directories:
 
 ### Running Locally
 
-#### Without a Confluence dev server
-```bash
-# Start the custom UI dev server
-cd custom-ui
-yarn dev --mode=no-confluence # starts vite dev server on port 5173, mocking out the forge-bridge
-```
-
-#### With a Confluence dev server
 ```bash
 # Terminal 1: Start the custom UI dev server
 cd custom-ui

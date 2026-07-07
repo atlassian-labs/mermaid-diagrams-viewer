@@ -34,6 +34,11 @@ await invoke<string[]>('listIconPacks')
     const packNames = unwrapInvoke(res);
     if (!Array.isArray(packNames) || packNames.length === 0) return;
 
+    // Get the navigation timing entry to see if this is a frame reload.
+    // Users can trigger a reload of the diagram frame to refresh the icon pack cache.
+    const navigationEntry = performance.getEntriesByType('navigation')[0];
+    const isReload = navigationEntry.type === 'reload';
+
     mermaid.registerIconPacks(
       packNames.map((name: string) => ({
         name,
@@ -42,7 +47,7 @@ await invoke<string[]>('listIconPacks')
           const cached = await window.caches
             .open(MERMAID_ICON_PACK_CACHE_NAME)
             .then((cache) => cache.match(name));
-          if (cached && cached.headers.get('Cached-At')) {
+          if (cached && cached.headers.get('Cached-At') && !isReload) {
             // If the cached version is less than 1 hour old, return it
             if (
               new Date().valueOf() - Number(cached.headers.get('Cached-At')) <
