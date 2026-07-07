@@ -35,15 +35,12 @@ This is a Forge app. Install it from the [Atlassian Marketplace](https://marketp
 Mermaid can [reference icon packs](https://mermaid.js.org/config/icons.html) in diagrams.
 
 Because of sandbox restrictions, these must be served out of the same Confluence
-instance. This is done by serving them out of the Forge Object Store. They are lazily loaded when required.
+instance. This is done by serving them out of the Forge Object Store. They are lazily loaded when required, and cached in the browser for 1 hour. A reload of the browser
+cache may be forced by forcing a reload of the diagram frame
+(right-click on diagram... Reload Frame)
 
-To register an icon pack:
-1. Upload the icon pack data to the Object Store using the key `iconpack-{prefix}` where `{prefix}` is the prefix you want to reference the pack with.
-2. Add a Key-Value store entry named `icon-packs/index` with the value being a JSON array of prefix values to register.
-
-For example, to replicate the Mermaid documentation:
-1. Upload https://unpkg.com/@iconify-json/logos@1/icons.json to the Object Store as `iconpack-logos`
-2. Set a Key-Value store entry with `icon-packs/index` => `["logos"]`
+To register a icon packs use the Configure option of this 
+app in the connected apps management section of Confluence.
 
 ### Development Setup
 
