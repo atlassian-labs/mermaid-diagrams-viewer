@@ -54,6 +54,9 @@ resolver.define('getAdminData', async () => {
  * The caller is responsible for PUT-ing the file to the returned URL.
  */
 resolver.define('createIconPackUploadUrl', async (req) => {
+  if (req.context?.extension?.type !== 'confluence:globalSettings') {
+    throw new Error('Admin access required.');
+  }
   const payload = (req.payload ?? {}) as Record<string, unknown>;
   const name = typeof payload.name === 'string' ? payload.name.trim() : '';
   const length = payload.length;
@@ -96,6 +99,9 @@ resolver.define('createIconPackUploadUrl', async (req) => {
  * Saves the full list of icon pack names to the KVS index.
  */
 resolver.define('saveIconPacksIndex', async (req) => {
+  if (req.context?.extension?.type !== 'confluence:globalSettings') {
+    throw new Error('Admin access required.');
+  }
   const payload = (req.payload ?? {}) as Record<string, unknown>;
   const packsRaw = payload.packs;
 
@@ -124,6 +130,9 @@ resolver.define('saveIconPacksIndex', async (req) => {
  * Deletes an icon pack from the Object Store and removes it from the KVS index.
  */
 resolver.define('deleteIconPack', async (req) => {
+  if (req.context?.extension?.type !== 'confluence:globalSettings') {
+    throw new Error('Admin access required.');
+  }
   const payload = (req.payload ?? {}) as Record<string, unknown>;
   const name = typeof payload.name === 'string' ? payload.name.trim() : '';
   if (name === '') {

@@ -36,8 +36,10 @@ await invoke<string[]>('listIconPacks')
 
     // Get the navigation timing entry to see if this is a frame reload.
     // Users can trigger a reload of the diagram frame to refresh the icon pack cache.
-    const navigationEntry = performance.getEntriesByType('navigation')[0];
-    const isReload = navigationEntry.type === 'reload';
+    const navigationEntry = performance.getEntriesByType('navigation')[0] as
+      | PerformanceNavigationTiming
+      | undefined;
+    const isReload = navigationEntry?.type === 'reload';
 
     mermaid.registerIconPacks(
       packNames.map((name: string) => ({

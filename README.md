@@ -39,8 +39,7 @@ instance. This is done by serving them out of the Forge Object Store. They are l
 cache may be forced by forcing a reload of the diagram frame
 (right-click on diagram... Reload Frame)
 
-To register a icon packs use the Configure option of this 
-app in the connected apps management section of Confluence.
+To register an icon pack, use the Configure option of this app in the connected apps management section of Confluence.
 
 ### Development Setup
 
