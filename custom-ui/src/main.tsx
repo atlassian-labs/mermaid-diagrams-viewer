@@ -10,6 +10,9 @@ import { IconifyJSON } from '@iconify/types';
 import elkLayouts from '@mermaid-js/layout-elk';
 import '@atlaskit/css-reset';
 
+const MERMAID_ICON_PACK_CACHE_NAME = 'mermaid-diagrams-viewer-icon-packs';
+const MERMAID_ICON_PACK_CACHE_MAX_AGE_MS = 60 * 60 * 1000; // 1 hour
+
 function unwrapInvoke<T>(res: T | { body: T }): T {
   if (res !== null && typeof res === 'object' && 'body' in res) {
     return res.body;
@@ -23,7 +26,7 @@ function unwrapInvoke<T>(res: T | { body: T }): T {
 void view.theme.enable();
 mermaid.registerLayoutLoaders(elkLayouts);
 
-// Dynamically register icon packs from the Forge Object Store.
+// Dynamically register icon packs from the Forge Object Store, or from the browser's Cache Storage.
 // Returns an empty array if no packs have been seeded yet (diagrams still
 // render, just without custom icons).
 await invoke<string[]>('listIconPacks')
@@ -35,6 +38,20 @@ await invoke<string[]>('listIconPacks')
       packNames.map((name: string) => ({
         name,
         loader: async () => {
+          // Check if the icon pack is cached in the browser's Cache Storage
+          const cached = await window.caches
+            .open(MERMAID_ICON_PACK_CACHE_NAME)
+            .then((cache) => cache.match(name));
+          if (cached && cached.headers.get('Cached-At')) {
+            // If the cached version is less than 1 hour old, return it
+            if (
+              new Date().valueOf() - Number(cached.headers.get('Cached-At')) <
+              MERMAID_ICON_PACK_CACHE_MAX_AGE_MS
+            ) {
+              return cached.json() as Promise<IconifyJSON>;
+            }
+          }
+          // Otherwise, fetch the icon pack from the Forge Object Store and cache it
           const urlRes = await invoke<string>('getIconPackUrl', { pack: name });
           const resp = await fetch(unwrapInvoke(urlRes));
           if (!resp.ok) {
@@ -42,7 +59,18 @@ await invoke<string[]>('listIconPacks')
               `Failed to fetch icon pack "${name}": ${String(resp.status)} ${resp.statusText}`,
             );
           }
-          return resp.json() as Promise<IconifyJSON>;
+          const iconResponse = resp.clone();
+          const modifiedHeaders = new Headers(resp.headers);
+          modifiedHeaders.append('Cached-At', new Date().valueOf().toString());
+          const newResponse = new Response(resp.body, {
+            status: resp.status,
+            statusText: resp.statusText,
+            headers: modifiedHeaders,
+          });
+          void window.caches
+            .open(MERMAID_ICON_PACK_CACHE_NAME)
+            .then((cache) => cache.put(name, newResponse));
+          return iconResponse.json() as Promise<IconifyJSON>;
         },
       })),
     );
