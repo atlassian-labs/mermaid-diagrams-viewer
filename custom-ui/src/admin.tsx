@@ -77,7 +77,7 @@ export const AdminPanel = () => {
         throw new Error(`Upload failed: ${String(uploadResp.status)}`);
       }
 
-      const updatedPacks = [...iconPacks, packName.trim()];
+      const updatedPacks = Array.from(new Set([...iconPacks, packName.trim()]));
       await invoke('saveIconPacksIndex', { packs: updatedPacks });
 
       setIconPacks(updatedPacks);

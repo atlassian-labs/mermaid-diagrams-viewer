@@ -54,23 +54,33 @@ resolver.define('getAdminData', async () => {
  * The caller is responsible for PUT-ing the file to the returned URL.
  */
 resolver.define('createIconPackUploadUrl', async (req) => {
-  const { name, length, checksum, checksumType } = req.payload as {
-    name: string;
-    length: number;
-    checksum: string;
-    checksumType: 'SHA1' | 'SHA256' | 'CRC32' | 'CRC32C';
-  };
+  const payload = (req.payload ?? {}) as Record<string, unknown>;
+  const name = typeof payload.name === 'string' ? payload.name.trim() : '';
+  const length = payload.length;
+  const checksum =
+    typeof payload.checksum === 'string' ? payload.checksum.trim() : '';
+  const checksumType = payload.checksumType;
 
-  if (typeof name !== 'string' || name.trim() === '') {
+  if (name === '') {
     throw new Error('Pack name must be a non-empty string.');
   }
-  if (typeof length !== 'number' || length <= 0) {
+  if (!/^[a-zA-Z0-9_-]+$/.test(name)) {
+    throw new Error('Pack name may only contain letters, numbers, "_" and "-".');
+  }
+  if (typeof length !== 'number' || !Number.isFinite(length) || length <= 0) {
     throw new Error('length must be a positive number.');
   }
-  if (typeof checksum !== 'string' || checksum.trim() === '') {
+  if (checksum === '') {
     throw new Error('checksum must be a non-empty string.');
   }
-
+  if (
+    checksumType !== 'SHA1' &&
+    checksumType !== 'SHA256' &&
+    checksumType !== 'CRC32' &&
+    checksumType !== 'CRC32C'
+  ) {
+    throw new Error('checksumType must be one of SHA1, SHA256, CRC32, CRC32C.');
+  }
   const result = await fos.createPublicUploadUrl({
     key: `iconpack-${name}`,
     length,
@@ -86,10 +96,26 @@ resolver.define('createIconPackUploadUrl', async (req) => {
  * Saves the full list of icon pack names to the KVS index.
  */
 resolver.define('saveIconPacksIndex', async (req) => {
-  const { packs } = req.payload as { packs: string[] };
-  if (!Array.isArray(packs) || !packs.every((p) => typeof p === 'string')) {
+  const payload = (req.payload ?? {}) as Record<string, unknown>;
+  const packsRaw = payload.packs;
+
+  if (!Array.isArray(packsRaw)) {
     throw new Error('packs must be an array of strings.');
   }
+
+  const packs = Array.from(
+    new Set(
+      packsRaw
+        .filter((p): p is string => typeof p === 'string')
+        .map((p) => p.trim())
+        .filter((p) => p !== ''),
+    ),
+  );
+
+  if (!packs.every((p) => /^[a-zA-Z0-9_-]+$/.test(p))) {
+    throw new Error('packs must only contain letters, numbers, "_" and "-".');
+  }
+
   await kvs.set(ICON_PACKS_INDEX_KEY, packs);
   return { ok: true };
 });
@@ -98,9 +124,13 @@ resolver.define('saveIconPacksIndex', async (req) => {
  * Deletes an icon pack from the Object Store and removes it from the KVS index.
  */
 resolver.define('deleteIconPack', async (req) => {
-  const { name } = req.payload as { name: string };
-  if (typeof name !== 'string' || name.trim() === '') {
+  const payload = (req.payload ?? {}) as Record<string, unknown>;
+  const name = typeof payload.name === 'string' ? payload.name.trim() : '';
+  if (name === '') {
     throw new Error('Pack name must be a non-empty string.');
+  }
+  if (!/^[a-zA-Z0-9_-]+$/.test(name)) {
+    throw new Error('Pack name may only contain letters, numbers, "_" and "-".');
   }
   await fos.delete(`iconpack-${name}`);
   const current = await getIconPackNames();
