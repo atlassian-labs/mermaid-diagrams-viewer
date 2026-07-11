@@ -6,7 +6,7 @@ import {
   waitFor,
 } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
-import { Diagram } from '../diagram';
+import { Diagram, preserveSvgPresentationStyles } from '../diagram';
 
 // Mock mermaid
 vi.mock('mermaid', () => ({
@@ -107,6 +107,59 @@ describe('Diagram Component', () => {
 
     // Since modalIsOpen is false by default, we should see the Box layout, not transform components
     expect(svgComponent).toBeInTheDocument();
+  });
+
+  it('should preserve inline SVG presentation styles as attributes', async () => {
+    mockMermaid.render.mockResolvedValue({
+      svg: `<svg xmlns="http://www.w3.org/2000/svg">
+        <g class="node custom">
+          <path style="fill: #be123c !important; stroke: #fb7185 !important; stroke-width: 2px; cursor: pointer" />
+        </g>
+      </svg>`,
+      diagramType: 'flowchart',
+      bindFunctions: vi.fn(),
+    });
+
+    render(<Diagram {...defaultProps} />);
+
+    const svgComponent = await screen.findByTestId('svg-component');
+    await waitFor(() => {
+      expect(svgComponent.getAttribute('data-src')).toContain('<path');
+    });
+    const renderedSvg = svgComponent.getAttribute('data-src');
+    const document = new DOMParser().parseFromString(
+      renderedSvg ?? '',
+      'image/svg+xml',
+    );
+    const path = document.querySelector('path');
+
+    expect(path?.getAttribute('fill')).toBe('rgb(190, 18, 60)');
+    expect(path?.getAttribute('stroke')).toBe('rgb(251, 113, 133)');
+    expect(path?.getAttribute('stroke-width')).toBe('2px');
+    expect(path?.hasAttribute('cursor')).toBe(false);
+  });
+
+  it('should leave HTML styles inside foreignObject unchanged', () => {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg">
+      <foreignObject>
+        <div xmlns="http://www.w3.org/1999/xhtml" style="color: red" />
+      </foreignObject>
+    </svg>`;
+
+    const document = new DOMParser().parseFromString(
+      preserveSvgPresentationStyles(svg),
+      'image/svg+xml',
+    );
+    const div = document.querySelector('div');
+
+    expect(div?.hasAttribute('color')).toBe(false);
+    expect(div?.getAttribute('style')).toBe('color: red');
+  });
+
+  it('should return invalid SVG unchanged', () => {
+    const svg = '<svg><path></svg>';
+
+    expect(preserveSvgPresentationStyles(svg)).toBe(svg);
   });
 
   it('should render transform components when modal is open', async () => {
