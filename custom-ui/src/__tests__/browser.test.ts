@@ -88,6 +88,29 @@ describe('api-client/browser', () => {
       );
     });
 
+    it('should add a cache-busting value when refreshing page content', async () => {
+      const mockResponse: MockResponse = {
+        status: 200,
+        json: vi.fn().mockResolvedValue(mockPageResponse),
+      };
+      mockRequestConfluence.mockResolvedValue(
+        mockResponse as unknown as Awaited<
+          ReturnType<typeof requestConfluence>
+        >,
+      );
+
+      await getPageContent(pageId, false, 'refresh-123');
+
+      expect(mockRequestConfluence).toHaveBeenCalledWith(
+        `/wiki/api/v2/pages/${pageId}?body-format=atlas_doc_format&get-draft=false&cache-bust=refresh-123`,
+        {
+          headers: {
+            Accept: 'application/json',
+          },
+        },
+      );
+    });
+
     it('should fallback to blogpost API when page returns 404', async () => {
       const mockNotFoundResponse: MockResponse = {
         status: 404,

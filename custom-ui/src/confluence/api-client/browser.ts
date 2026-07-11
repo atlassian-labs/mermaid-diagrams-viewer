@@ -1,9 +1,16 @@
 import { requestConfluence } from '@forge/bridge';
 import { ADFEntity, GetPageContent, PageResponseBody } from './types';
 
-export const getPageContent: GetPageContent = async (pageId, isEditing) => {
+export const getPageContent: GetPageContent = async (
+  pageId,
+  isEditing,
+  cacheBust,
+) => {
+  const cacheBustQuery = cacheBust
+    ? `&cache-bust=${encodeURIComponent(cacheBust)}`
+    : '';
   let pageResponse = await requestConfluence(
-    `/wiki/api/v2/pages/${pageId}?body-format=atlas_doc_format&get-draft=${isEditing.toString()}`,
+    `/wiki/api/v2/pages/${pageId}?body-format=atlas_doc_format&get-draft=${isEditing.toString()}${cacheBustQuery}`,
     {
       headers: {
         Accept: 'application/json',
@@ -13,7 +20,7 @@ export const getPageContent: GetPageContent = async (pageId, isEditing) => {
 
   if (pageResponse.status === 404) {
     pageResponse = await requestConfluence(
-      `/wiki/api/v2/blogposts/${pageId}?body-format=atlas_doc_format&get-draft=${isEditing.toString()}`,
+      `/wiki/api/v2/blogposts/${pageId}?body-format=atlas_doc_format&get-draft=${isEditing.toString()}${cacheBustQuery}`,
       {
         headers: {
           Accept: 'application/json',

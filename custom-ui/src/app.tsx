@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Banner from '@atlaskit/banner';
+import Button from '@atlaskit/button/new';
 import Spinner from '@atlaskit/spinner';
 import { Diagram } from './diagram';
 import { token } from '@atlaskit/tokens';
@@ -53,37 +54,77 @@ const Loading: React.FunctionComponent<{ loading?: boolean }> = () => {
   );
 };
 
+const RefreshIcon = () => (
+  <span
+    aria-hidden="true"
+    className="fa-solid fa-rotate-right"
+    style={{
+      display: 'inline-block',
+      fontSize: '12px',
+      height: '12px',
+      width: '12px',
+    }}
+  />
+);
+
+function toDisplayError(error: unknown): AppError | Error {
+  if (error instanceof AppError) {
+    return error;
+  }
+
+  // eslint-disable-next-line no-console
+  console.error(error);
+
+  return new AppError(
+    'Oops! Something went wrong! Please refresh the page.',
+    'UNKNOWN_ERROR',
+  );
+}
+
 function App({ colorMode }: { colorMode: 'light' | 'dark' }) {
   const [code, setCode] = useState<string>();
   const [error, setError] = useState<AppError | Error | undefined>();
+  const [loading, setLoading] = useState(true);
+  const [renderVersion, setRenderVersion] = useState(0);
 
-  useEffect(() => {
-    void view
+  const fetchDiagramCode = useCallback((cacheBust?: string) => {
+    return view
       .getContext()
       .then((context) =>
         getCodeFromCorrespondingBlock(
           context as unknown as Context,
-          getPageContent,
+          (pageId, isEditing) => getPageContent(pageId, isEditing, cacheBust),
         ),
-      ) // TODO
+      );
+  }, []);
+
+  useEffect(() => {
+    void fetchDiagramCode()
       .then(setCode)
       .catch((error: unknown) => {
-        if (error instanceof AppError) {
-          setError(error);
-          return;
-        }
-
-        // eslint-disable-next-line no-console
-        console.error(error);
-
-        setError(
-          new AppError(
-            'Oops! Something went wrong! Please refresh the page.',
-            'UNKNOWN_ERROR',
-          ),
-        );
+        setError(toDisplayError(error));
+      })
+      .finally(() => {
+        setLoading(false);
       });
-  }, []);
+  }, [fetchDiagramCode]);
+
+  const refreshDiagram = () => {
+    setLoading(true);
+    setError(undefined);
+
+    void fetchDiagramCode(String(Date.now()))
+      .then((nextCode) => {
+        setCode(nextCode);
+        setRenderVersion((version) => version + 1);
+      })
+      .catch((error: unknown) => {
+        setError(toDisplayError(error));
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   const onError = (error: Error) => {
     setError(error);
@@ -99,7 +140,32 @@ function App({ colorMode }: { colorMode: 'light' | 'dark' }) {
     >
       {code === undefined && error === undefined ? <Loading /> : null}
       {code !== undefined ? (
-        <Diagram code={code} colorMode={colorMode} onError={onError} />
+        <>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              paddingBottom: token('space.100', '8px'),
+            }}
+          >
+            <Button
+              aria-label="Refresh diagram"
+              appearance="subtle"
+              iconBefore={RefreshIcon}
+              isLoading={loading}
+              onClick={refreshDiagram}
+              spacing="compact"
+            >
+              Refresh
+            </Button>
+          </div>
+          <Diagram
+            key={renderVersion}
+            code={code}
+            colorMode={colorMode}
+            onError={onError}
+          />
+        </>
       ) : null}
       <ErrorMessage error={error} />
     </div>

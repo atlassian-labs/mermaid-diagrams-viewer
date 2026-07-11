@@ -1,4 +1,10 @@
-import { render, screen, waitFor, act } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+  act,
+  fireEvent,
+} from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { Context } from '../context';
 
@@ -61,6 +67,7 @@ import App from '../app';
 import { Diagram } from '../diagram';
 import { view } from '@forge/bridge';
 import { getCodeFromCorrespondingBlock } from '../confluence/code-blocks';
+import { getPageContent } from '../confluence/api-client/browser';
 import { AppError } from '../app-error';
 
 // Get mocked functions using vi.mocked
@@ -69,6 +76,7 @@ const mockView = vi.mocked(view);
 const mockGetCodeFromCorrespondingBlock = vi.mocked(
   getCodeFromCorrespondingBlock,
 );
+const mockGetPageContent = vi.mocked(getPageContent);
 
 describe('App Component', () => {
   beforeEach(() => {
@@ -196,6 +204,47 @@ describe('App Component', () => {
       expect(mockDiagram).toHaveBeenCalledWith(
         {
           code: 'graph TD\n  A --> B',
+          colorMode: 'light',
+          onError: expect.any(Function) as (error: Error) => void,
+        },
+        undefined,
+      );
+    });
+  });
+
+  it('refreshes the diagram from an uncached page request', async () => {
+    mockGetCodeFromCorrespondingBlock.mockImplementation(
+      async (_context, loadPageContent) => {
+        if (mockGetCodeFromCorrespondingBlock.mock.calls.length === 1) {
+          return 'graph TD\n  A --> B';
+        }
+        await loadPageContent('test-content-id', false);
+        return 'graph LR\n  C --> D';
+      },
+    );
+
+    render(<App colorMode="light" />);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('diagram')).toBeDefined();
+    });
+    const callsBeforeRefresh =
+      mockGetCodeFromCorrespondingBlock.mock.calls.length;
+
+    fireEvent.click(screen.getByRole('button', { name: 'Refresh diagram' }));
+
+    await waitFor(() => {
+      expect(mockGetCodeFromCorrespondingBlock).toHaveBeenCalledTimes(
+        callsBeforeRefresh + 1,
+      );
+      expect(mockGetPageContent).toHaveBeenCalledWith(
+        'test-content-id',
+        false,
+        expect.any(String),
+      );
+      expect(mockDiagram).toHaveBeenLastCalledWith(
+        {
+          code: 'graph LR\n  C --> D',
           colorMode: 'light',
           onError: expect.any(Function) as (error: Error) => void,
         },
