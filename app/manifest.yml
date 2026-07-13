@@ -47,6 +47,7 @@ resources:
     path: icons
 
 permissions:
+  enforcement: app-managed
   scopes:
     - read:page:confluence
     - storage:app

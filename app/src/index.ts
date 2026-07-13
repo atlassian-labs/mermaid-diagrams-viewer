@@ -1,4 +1,5 @@
 import Resolver from '@forge/resolver';
+import { permissions } from '@forge/api';
 import { kvs } from '@forge/kvs';
 import fos from '@forge/object-store';
 
@@ -15,9 +16,13 @@ const resolver = new Resolver();
 
 /**
  * Returns the list of icon pack names that have been uploaded to the Object
- * Store.  Returns an empty array if no packs have been seeded yet.
+ * Store.  Returns an empty array if no packs have been seeded yet, or
+ * if the storage:app permission has not been granted for this installation.
  */
 resolver.define('listIconPacks', async () => {
+  if (!permissions.hasScope('storage:app')) {
+    return [];
+  }
   return getIconPackNames();
 });
 
@@ -26,6 +31,9 @@ resolver.define('listIconPacks', async () => {
  * Throws if the pack has not been seeded into the Object Store.
  */
 resolver.define('getIconPackUrl', async (req) => {
+  if (!permissions.hasScope('storage:app')) {
+    throw new Error('The storage:app permission has not been granted for this installation.');
+  }
   const pack = req.payload?.pack;
   if (typeof pack !== 'string' || pack.trim() === '') {
     throw new Error('Icon pack name must be a non-empty string.');
@@ -46,6 +54,9 @@ resolver.define('getIconPackUrl', async (req) => {
  * Returns the list of registered icon pack names for the admin panel.
  */
 resolver.define('getAdminData', async () => {
+  if (!permissions.hasScope('storage:app')) {
+    return { iconPacks: [] };
+  }
   return { iconPacks: await getIconPackNames() };
 });
 
@@ -54,6 +65,9 @@ resolver.define('getAdminData', async () => {
  * The caller is responsible for PUT-ing the file to the returned URL.
  */
 resolver.define('createIconPackUploadUrl', async (req) => {
+  if (!permissions.hasScope('storage:app')) {
+    throw new Error('The storage:app permission has not been granted for this installation.');
+  }
   if (req.context?.extension?.type !== 'confluence:globalSettings') {
     throw new Error('Admin access required.');
   }
@@ -99,6 +113,9 @@ resolver.define('createIconPackUploadUrl', async (req) => {
  * Saves the full list of icon pack names to the KVS index.
  */
 resolver.define('saveIconPacksIndex', async (req) => {
+  if (!permissions.hasScope('storage:app')) {
+    throw new Error('The storage:app permission has not been granted for this installation.');
+  }
   if (req.context?.extension?.type !== 'confluence:globalSettings') {
     throw new Error('Admin access required.');
   }
@@ -130,6 +147,9 @@ resolver.define('saveIconPacksIndex', async (req) => {
  * Deletes an icon pack from the Object Store and removes it from the KVS index.
  */
 resolver.define('deleteIconPack', async (req) => {
+  if (!permissions.hasScope('storage:app')) {
+    throw new Error('The storage:app permission has not been granted for this installation.');
+  }
   if (req.context?.extension?.type !== 'confluence:globalSettings') {
     throw new Error('Admin access required.');
   }

@@ -8,6 +8,7 @@
     "node": "24"
   },
   "dependencies": {
+    "@forge/api": "^2.0.0",
     "@forge/object-store": "^1.0.0",
     "@forge/resolver": "^2.0.0",
     "@forge/kvs": "^2.0.0"

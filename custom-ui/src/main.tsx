@@ -27,8 +27,8 @@ void view.theme.enable();
 mermaid.registerLayoutLoaders(elkLayouts);
 
 // Dynamically register icon packs from the Forge Object Store, or from the browser's Cache Storage.
-// Returns an empty array if no packs have been seeded yet (diagrams still
-// render, just without custom icons).
+// Returns an empty array if no packs have been seeded yet or the storage:app permission has not been granted for this installation.
+// (diagrams still render, just without custom icons).
 await invoke<string[]>('listIconPacks')
   .then((res) => {
     const packNames = unwrapInvoke(res);
