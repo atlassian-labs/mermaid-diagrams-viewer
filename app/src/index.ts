@@ -20,7 +20,7 @@ const resolver = new Resolver();
  * if the storage:app permission has not been granted for this installation.
  */
 resolver.define('listIconPacks', async () => {
-  if (!permissions.hasScope('storage:app')) {
+  if (!(await permissions.hasScope('storage:app'))) {
     return [];
   }
   return getIconPackNames();
@@ -31,7 +31,7 @@ resolver.define('listIconPacks', async () => {
  * Throws if the pack has not been seeded into the Object Store.
  */
 resolver.define('getIconPackUrl', async (req) => {
-  if (!permissions.hasScope('storage:app')) {
+  if (!(await permissions.hasScope('storage:app'))) {
     throw new Error('The storage:app permission has not been granted for this installation.');
   }
   const pack = req.payload?.pack;
@@ -54,7 +54,7 @@ resolver.define('getIconPackUrl', async (req) => {
  * Returns the list of registered icon pack names for the admin panel.
  */
 resolver.define('getAdminData', async () => {
-  if (!permissions.hasScope('storage:app')) {
+  if (!(await permissions.hasScope('storage:app'))) {
     return { iconPacks: [] };
   }
   return { iconPacks: await getIconPackNames() };
@@ -65,7 +65,7 @@ resolver.define('getAdminData', async () => {
  * The caller is responsible for PUT-ing the file to the returned URL.
  */
 resolver.define('createIconPackUploadUrl', async (req) => {
-  if (!permissions.hasScope('storage:app')) {
+  if (!(await permissions.hasScope('storage:app'))) {
     throw new Error('The storage:app permission has not been granted for this installation.');
   }
   if (req.context?.extension?.type !== 'confluence:globalSettings') {
@@ -117,7 +117,7 @@ resolver.define('createIconPackUploadUrl', async (req) => {
  * Saves the full list of icon pack names to the KVS index.
  */
 resolver.define('saveIconPacksIndex', async (req) => {
-  if (!permissions.hasScope('storage:app')) {
+  if (!(await permissions.hasScope('storage:app'))) {
     throw new Error('The storage:app permission has not been granted for this installation.');
   }
   if (req.context?.extension?.type !== 'confluence:globalSettings') {
@@ -151,7 +151,7 @@ resolver.define('saveIconPacksIndex', async (req) => {
  * Deletes an icon pack from the Object Store and removes it from the KVS index.
  */
 resolver.define('deleteIconPack', async (req) => {
-  if (!permissions.hasScope('storage:app')) {
+  if (!(await permissions.hasScope('storage:app'))) {
     throw new Error('The storage:app permission has not been granted for this installation.');
   }
   if (req.context?.extension?.type !== 'confluence:globalSettings') {
