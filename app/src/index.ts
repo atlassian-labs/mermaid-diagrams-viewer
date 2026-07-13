@@ -106,6 +106,10 @@ resolver.define('createIconPackUploadUrl', async (req) => {
     overwrite: true,
   });
 
+  if (!result) {
+    throw new Error('Failed to create upload URL.');
+  }
+
   return { url: result.url };
 });
 
