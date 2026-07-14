@@ -43,7 +43,7 @@ export async function writeToCache(
   if (!('caches' in window)) return;
   const cacheKey = iconPackCacheKey(name);
   const modifiedHeaders = new Headers(resp.headers);
-  modifiedHeaders.append('Cached-At', new Date().valueOf().toString());
+  modifiedHeaders.set('Cached-At', new Date().valueOf().toString());
   const newResponse = new Response(resp.body, {
     status: resp.status,
     statusText: resp.statusText,

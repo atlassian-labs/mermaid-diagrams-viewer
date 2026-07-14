@@ -34,9 +34,10 @@ This is a Forge app. Install it from the [Atlassian Marketplace](https://marketp
 
 Mermaid can [reference icon packs](https://mermaid.js.org/config/icons.html) in diagrams.
 
-Because of sandbox restrictions, these must be served out of the same Confluence
-instance. This is done by serving them out of the Forge Object Store. They are lazily loaded when required, and cached in the browser for 1 hour. To refresh the cache, reload the diagram frame.
-(right-click on diagram... Reload Frame)
+Because of sandbox restrictions, icon packs must be hosted somewhere the diagram iframe can fetch them from.
+This app serves them from the Forge Object Store via a time-limited public download URL.
+Packs are lazily loaded when required and cached in the browser for 1 hour; to reload the cache,
+reload the diagram frame (right-click → Reload Frame).
 
 To register an icon pack, use the Configure option of this app in the connected apps management section of Confluence.
 
