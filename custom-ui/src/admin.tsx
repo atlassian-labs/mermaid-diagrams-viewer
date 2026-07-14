@@ -1,17 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { invoke } from '@forge/bridge';
 import { token } from '@atlaskit/tokens';
+import { unwrapInvoke } from './invoke.ts';
 import Button from '@atlaskit/button/new';
 import Spinner from '@atlaskit/spinner';
 
 type UploadState = 'idle' | 'uploading' | 'success' | 'error';
-
-function unwrapInvoke<T>(res: T | { body: T }): T {
-  if (res !== null && typeof res === 'object' && 'body' in res) {
-    return (res as { body: T }).body;
-  }
-  return res;
-}
 
 interface AdminData {
   iconPacks: string[];

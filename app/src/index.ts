@@ -34,8 +34,9 @@ resolver.define('getIconPackUrl', async (req) => {
   if (!(await permissions.hasScope('storage:app'))) {
     throw new Error('The storage:app permission has not been granted for this installation.');
   }
-  const pack = req.payload?.pack;
-  if (typeof pack !== 'string' || pack.trim() === '') {
+  const packRaw = req.payload?.pack;
+  const pack = typeof packRaw === 'string' ? packRaw.trim() : '';
+  if (pack === '') {
     throw new Error('Icon pack name must be a non-empty string.');
   }
 

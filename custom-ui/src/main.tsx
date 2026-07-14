@@ -5,6 +5,7 @@ import { AdminPanel } from './admin.tsx';
 import { DiagramConfig } from './config.tsx';
 import { view, invoke } from '@forge/bridge';
 import { useThemeObserver } from '@atlaskit/tokens';
+import { unwrapInvoke } from './invoke.ts';
 import mermaid from 'mermaid';
 import { IconifyJSON } from '@iconify/types';
 import elkLayouts from '@mermaid-js/layout-elk';
@@ -12,13 +13,6 @@ import '@atlaskit/css-reset';
 
 const MERMAID_ICON_PACK_CACHE_NAME = 'mermaid-diagrams-viewer-icon-packs';
 const MERMAID_ICON_PACK_CACHE_MAX_AGE_MS = 60 * 60 * 1000; // 1 hour
-
-function unwrapInvoke<T>(res: T | { body: T }): T {
-  if (res !== null && typeof res === 'object' && 'body' in res) {
-    return res.body;
-  }
-  return res;
-}
 
 // Enable Atlaskit theme and register mermaid layout loaders once at startup.
 // mermaid.initialize() with base config runs here so detectType() in
@@ -46,9 +40,10 @@ await invoke<string[]>('listIconPacks')
         name,
         loader: async () => {
           // Check if the icon pack is cached in the browser's Cache Storage
+          const cacheName = `/__mdv_iconpacks/${encodeURIComponent(name)}`;
           const cached = await window.caches
             .open(MERMAID_ICON_PACK_CACHE_NAME)
-            .then((cache) => cache.match(name));
+            .then((cache) => cache.match(cacheName));
           if (cached && cached.headers.get('Cached-At') && !isReload) {
             // If the cached version is less than 1 hour old, return it
             if (
@@ -76,7 +71,7 @@ await invoke<string[]>('listIconPacks')
           });
           void window.caches
             .open(MERMAID_ICON_PACK_CACHE_NAME)
-            .then((cache) => cache.put(name, newResponse));
+            .then((cache) => cache.put(cacheName, newResponse));
           return iconResponse.json() as Promise<IconifyJSON>;
         },
       })),
