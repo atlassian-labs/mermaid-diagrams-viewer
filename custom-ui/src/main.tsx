@@ -41,9 +41,13 @@ await invoke<string[]>('listIconPacks')
         loader: async () => {
           // Check if the icon pack is cached in the browser's Cache Storage
           const cacheName = `/__mdv_iconpacks/${encodeURIComponent(name)}`;
-          const cached = await window.caches
-            .open(MERMAID_ICON_PACK_CACHE_NAME)
-            .then((cache) => cache.match(cacheName));
+          const cached =
+            'caches' in window
+              ? await window.caches
+                  .open(MERMAID_ICON_PACK_CACHE_NAME)
+                  .then((cache) => cache.match(cacheName))
+                  .catch(() => undefined)
+              : undefined;
           if (cached && cached.headers.get('Cached-At') && !isReload) {
             // If the cached version is less than 1 hour old, return it
             if (
@@ -69,10 +73,12 @@ await invoke<string[]>('listIconPacks')
             statusText: resp.statusText,
             headers: modifiedHeaders,
           });
-          void window.caches
-            .open(MERMAID_ICON_PACK_CACHE_NAME)
-            .then((cache) => cache.put(cacheName, newResponse));
-          return iconResponse.json() as Promise<IconifyJSON>;
+          if ('caches' in window) {
+            void window.caches
+              .open(MERMAID_ICON_PACK_CACHE_NAME)
+              .then((cache) => cache.put(cacheName, newResponse))
+              .catch(() => undefined);
+          }
         },
       })),
     );

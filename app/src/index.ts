@@ -40,6 +40,11 @@ resolver.define('getIconPackUrl', async (req) => {
     throw new Error('Icon pack name must be a non-empty string.');
   }
 
+  const registered = await getIconPackNames();
+  if (!registered.includes(pack)) {
+    throw new Error(`Icon pack "${pack}" is not registered.`);
+  }
+
   // Using createPublicDownloadUrl as the UI is fetching the icon pack
   const result = await fos.createPublicDownloadUrl(`iconpack-${pack}`);
   if (!result) {
