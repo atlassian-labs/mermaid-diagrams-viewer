@@ -6,6 +6,13 @@ import Spinner from '@atlaskit/spinner';
 
 type UploadState = 'idle' | 'uploading' | 'success' | 'error';
 
+function unwrapInvoke<T>(res: T | { body: T }): T {
+  if (res !== null && typeof res === 'object' && 'body' in res) {
+    return (res as { body: T }).body;
+  }
+  return res;
+}
+
 interface AdminData {
   iconPacks: string[];
 }
@@ -36,7 +43,7 @@ export const AdminPanel = () => {
     setLoading(true);
     setFetchError(false);
     try {
-      const res = (await invoke('getAdminData')) as AdminData;
+      const res = unwrapInvoke<AdminData>(await invoke('getAdminData'));
       const packs: string[] = Array.isArray(res.iconPacks) ? res.iconPacks : [];
       setIconPacks(packs);
     } catch {
@@ -60,12 +67,14 @@ export const AdminPanel = () => {
       const buffer = await file.arrayBuffer();
       const checksum = await sha256Base64(buffer);
 
-      const { url } = (await invoke('createIconPackUploadUrl', {
-        name: packName.trim(),
-        length: buffer.byteLength,
-        checksum,
-        checksumType: 'SHA256',
-      })) as UploadUrlResponse;
+      const { url } = unwrapInvoke<UploadUrlResponse>(
+        await invoke('createIconPackUploadUrl', {
+          name: packName.trim(),
+          length: buffer.byteLength,
+          checksum,
+          checksumType: 'SHA256',
+        }),
+      );
 
       const uploadResp = await fetch(url, {
         method: 'PUT',
