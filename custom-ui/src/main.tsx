@@ -7,7 +7,7 @@ import { view, invoke } from '@forge/bridge';
 import { useThemeObserver } from '@atlaskit/tokens';
 import { unwrapInvoke } from './invoke.ts';
 import mermaid from 'mermaid';
-import { IconifyJSON } from '@iconify/types';
+import type { IconifyJSON } from '@iconify/types';
 import elkLayouts from '@mermaid-js/layout-elk';
 import '@atlaskit/css-reset';
 
@@ -79,6 +79,7 @@ await invoke<string[]>('listIconPacks')
               .then((cache) => cache.put(cacheName, newResponse))
               .catch(() => undefined);
           }
+          return iconResponse.json() as Promise<IconifyJSON>;
         },
       })),
     );

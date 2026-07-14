@@ -104,6 +104,7 @@ describe('resolver handlers', () => {
 
     it('returns the CDN URL when the pack exists', async () => {
       mockHasScope.mockReturnValue(true);
+      mockKvsGet.mockResolvedValue(['pack-a']);
       mockFosDownload.mockResolvedValue({ url: 'https://cdn.example.com/pack-a.json' });
       const result = await call('getIconPackUrl', { payload: { pack: 'pack-a' } });
       expect(result).toBe('https://cdn.example.com/pack-a.json');
@@ -112,6 +113,7 @@ describe('resolver handlers', () => {
 
     it('throws when the pack is not found in the Object Store', async () => {
       mockHasScope.mockReturnValue(true);
+      mockKvsGet.mockResolvedValue(['missing']); // The pack is registered but not found in the Object Store
       mockFosDownload.mockResolvedValue(null);
       await expect(
         call('getIconPackUrl', { payload: { pack: 'missing' } }),
