@@ -30,7 +30,7 @@
     "@atlaskit/tokens": "^11.4.3",
     "@compiled/react": "^0.20.0",
     "@forge/bridge": "^6.0.0",
-    "@fortawesome/fontawesome-free": "^7.3.0",
+    "@fortawesome/fontawesome-free": "^7.3.1",
     "@mermaid-js/layout-elk": "^0.2.1",
     "mermaid": "^11.16.0",
     "react": "^19.2.4",
