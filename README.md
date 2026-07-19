@@ -90,8 +90,9 @@ cd app
 forge tunnel --environment development
 ```
 
-Before opening a pull request, stop the tunnel, rebuild and deploy, then test the
-bundle built from the final commit in a real Confluence Cloud site. Follow
+Before marking a pull request ready for review, stop the tunnel, rebuild and
+deploy, then test the bundle built from the final commit in a real Confluence
+Cloud site. Follow
 [Testing a fork in Confluence](docs/testing-in-confluence.md) for the complete
 setup, smoke-test matrix, evidence requirements, installation upgrades, and app
 ID cleanup.
@@ -134,7 +135,7 @@ yarn test --coverage
 
 Contributions are welcome. Changes that can affect the shipped app must be
 tested in a real Confluence Cloud site, with evidence captured from the final
-commit, before a pull request is opened. See
+commit, before a pull request is marked ready for review. See
 [CONTRIBUTING.md](CONTRIBUTING.md) for the definition of done.
 
 ## License

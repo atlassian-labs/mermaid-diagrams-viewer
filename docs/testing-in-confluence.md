@@ -1,9 +1,9 @@
 # Testing a fork in Confluence
 
 Changes that can affect the shipped app must be tested in a real Confluence
-Cloud site before a pull request is opened. This guide creates a
-contributor-owned copy of the Forge app, installs it on a development site, and
-tests both the tunnelled source and the final deployed build.
+Cloud site before a pull request is marked ready for review. This guide creates
+a contributor-owned copy of the Forge app, installs it on a development site,
+and tests both the tunnelled source and the final deployed build.
 
 ## Prerequisites
 
@@ -242,6 +242,8 @@ recorded earlier; do not run `forge register` again merely to reconnect it.
 - Forge runs against Atlassian Cloud. If you do not administer a suitable site,
   create the free development site linked in the prerequisites rather than
   trying to test the app in a local Confluence container.
-- If you cannot complete real-Confluence testing, open an issue or discussion
-  describing the blocker. Do not open a pull request without the required
-  evidence.
+- If you cannot complete real-Confluence testing, do not mark the pull request
+  ready for review. Open an issue or discussion describing the blocker. If a
+  specific technical or UX decision must be resolved before work can reasonably
+  continue, state the exact question in an issue and link it from an alignment
+  draft. Maintainer feedback on the draft is limited to that question.

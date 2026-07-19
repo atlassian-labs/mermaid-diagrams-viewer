@@ -7,7 +7,7 @@ This is a Forge app that runs inside Confluence Cloud. Unit tests and a local
 browser preview cannot reproduce all of the product APIs, iframe behavior,
 sanitization, themes, editor states, and permissions that the released app
 depends on. Changes that can affect the shipped app must therefore be tested in
-a real Confluence Cloud site before a pull request is opened.
+a real Confluence Cloud site before a pull request is marked ready for review.
 
 ## Before you start
 
@@ -22,7 +22,7 @@ a real Confluence Cloud site before a pull request is opened.
 
 ## Definition of done
 
-Before opening a pull request, you must:
+Before marking a pull request ready for review, you must:
 
 1. Understand the change and review the entire diff, including any
    AI-generated or AI-modified code.
@@ -35,9 +35,18 @@ Before opening a pull request, you must:
 5. Add the Confluence evidence, or explain why the documented exemption applies,
    in the pull request.
 
-Do not open a draft pull request to bypass these requirements. If a maintainer
-has explicitly requested an early draft for collaboration, explain that in the
-pull request.
+### Draft pull requests
+
+A draft pull request may be opened before implementation and Confluence testing
+are complete when it helps align on the high-level approach. Maintainers do not
+review draft pull requests except for the focused decision described below.
+
+If work cannot reasonably continue without a specific technical or UX decision,
+open an issue first. State the decision and the exact question in the issue,
+then link it from the draft pull request. Maintainer feedback on the draft will
+be limited to that question. General implementation review begins only after
+the pull request satisfies the definition of done and is marked ready for
+review.
 
 ### When real-Confluence testing is required
 
@@ -106,10 +115,11 @@ provide evidence that was not produced by the submitted change.
 
 ## Incomplete pull requests
 
-A pull request that is missing required Confluence evidence is not ready for
-maintainer review. Maintainers may label it as needing evidence and close it
-after seven days without a qualifying contributor update. A closed pull request
-can be reopened when the required testing and evidence are ready.
+A non-draft pull request that is missing required Confluence evidence is not
+ready for maintainer review. Maintainers may label it as needing evidence. If
+it receives no qualifying contributor update within seven days of that notice,
+maintainers may close it. A closed pull request can be reopened when the
+required testing and evidence are ready.
 
 A qualifying update is a contributor-authored commit or pull request body edit
 that addresses the missing requirements. Bot activity, check reruns, and
