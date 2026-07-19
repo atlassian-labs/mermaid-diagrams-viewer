@@ -9,4 +9,5 @@ export type { ADFEntity } from '@atlaskit/adf-utils/types';
 export type GetPageContent = (
   pageId: string,
   isEditing: boolean,
+  cacheBust?: string,
 ) => Promise<ADFEntity>;
