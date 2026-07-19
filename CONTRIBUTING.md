@@ -32,7 +32,8 @@ Before opening a pull request, you must:
    change can affect the shipped app.
 4. Record the scenarios and results, and capture appropriate screenshots or a
    recording from Confluence.
-5. Complete the pull request template without placeholders.
+5. Add the Confluence evidence, or explain why the documented exemption applies,
+   in the pull request.
 
 Do not open a draft pull request to bypass these requirements. If a maintainer
 has explicitly requested an early draft for collaboration, explain that in the
@@ -65,24 +66,10 @@ working-tree difference during Forge testing is the contributor-owned `app.id`
 substitution described in that guide; all other tested source must come from
 the recorded commit.
 
-## Automated checks
-
-From `custom-ui`, install the locked dependencies and run:
-
-```bash
-yarn install --frozen-lockfile
-yarn lint
-yarn test --coverage
-yarn build
-```
-
-For changes that affect the Forge app or manifest, also run from `app`:
-
-```bash
-forge lint
-```
-
-Passing these checks is necessary, but it does not replace testing the app in
+Run the relevant local checks in
+[Testing a fork in Confluence](docs/testing-in-confluence.md). GitHub reports CI
+results on the pull request, so contributors do not need to copy those results
+into its description. Passing CI does not replace testing the app in
 Confluence.
 
 ## Test evidence
@@ -90,8 +77,7 @@ Confluence.
 For changes that require real-Confluence testing, the pull request must include:
 
 - the full 40-character commit SHA whose source was tested;
-- the browser and Forge environment used;
-- a short scenario, expected result, and actual result table;
+- the browser used and a short description of what was tested and observed;
 - at least one screenshot from a real Confluence page showing the tested
   behavior, including before and after images for visual changes where
   relevant; and
