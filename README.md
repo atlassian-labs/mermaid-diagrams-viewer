@@ -133,10 +133,7 @@ yarn test --coverage
 
 ## Contributions
 
-Contributions are welcome. Changes that can affect the shipped app must be
-tested in a real Confluence Cloud site, with evidence captured from the final
-commit, before a pull request is marked ready for review. See
-[CONTRIBUTING.md](CONTRIBUTING.md) for the definition of done.
+Contributions to Mermaid Diagrams Viewer are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## License
 
