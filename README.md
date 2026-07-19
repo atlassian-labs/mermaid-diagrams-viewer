@@ -32,36 +32,71 @@ This is a Forge app. Install it from the [Atlassian Marketplace](https://marketp
 
 ### Development Setup
 
-Clone the repository and install dependencies:
+Fork and clone the repository, then install dependencies using the Node.js
+version in `.nvmrc`:
 
 ```bash
+nvm install
+nvm use
 cd custom-ui
-yarn # install dependencies
+yarn install --frozen-lockfile
 ```
 
 The project has two directories:
 - `custom-ui` - The React UI for rendering diagrams (all JS tooling lives here)
 - `app` - The Forge app manifest and build output
 
-### Running Locally
+### Test a fork in Confluence
+
+The manifest contains the upstream Forge app ID. Before deploying a fork, use
+`forge register` to create a contributor-owned copy:
 
 ```bash
-# Terminal 1: Start the custom UI dev server
+# From the repository root
+cd app
+forge login
+forge register YOUR_GITHUB_USER-mermaid-viewer
+```
+
+`forge register` rewrites `app.id` in `app/manifest.yml`. Never include that
+personal ID in a commit. The full testing guide explains how to temporarily use
+it for the final deployed test while keeping the upstream ID in Git history.
+
+Build, deploy, and perform the first installation before starting a tunnel:
+
+```bash
+# From the repository root
 cd custom-ui
-yarn dev # starts vite dev server on port 5173
+yarn build
 
-# Terminal 2: Start the Forge tunnel
-cd app
-forge tunnel # proxies requests to local dev server
+cd ../app
+forge lint
+forge deploy --environment development
+forge install \
+  --environment development \
+  --site YOUR_SITE.atlassian.net \
+  --product confluence
 ```
 
-Then install the app on your Confluence instance using:
+For the development loop, run Vite and the Forge tunnel in separate terminals:
+
 ```bash
+# Terminal 1
+cd custom-ui
+yarn dev
+
+# Terminal 2
 cd app
-forge install --upgrade
+forge tunnel --environment development
 ```
 
-### Deploying Locally
+Before opening a pull request, stop the tunnel, rebuild and deploy, then test the
+bundle built from the final commit in a real Confluence Cloud site. Follow
+[Testing a fork in Confluence](docs/testing-in-confluence.md) for the complete
+setup, smoke-test matrix, evidence requirements, installation upgrades, and app
+ID cleanup.
+
+### Deploying a local change
 
 ```bash
 # Build the custom UI
@@ -69,10 +104,13 @@ cd custom-ui
 yarn build
 
 # Deploy to your Forge app
-cd app
-forge deploy
-forge install --upgrade
+cd ../app
+forge lint
+forge deploy --environment development
 ```
+
+Run `forge install --upgrade` after the deploy only when Forge modules, scopes,
+permissions, or other installation metadata changed.
 
 ## Tests
 
@@ -94,7 +132,10 @@ yarn test --coverage
 
 ## Contributions
 
-Contributions to Mermaid Diagrams Viewer are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Contributions are welcome. Changes that can affect the shipped app must be
+tested in a real Confluence Cloud site, with evidence captured from the final
+commit, before a pull request is opened. See
+[CONTRIBUTING.md](CONTRIBUTING.md) for the definition of done.
 
 ## License
 
