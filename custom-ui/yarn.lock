@@ -1119,10 +1119,10 @@
   resolved "https://registry.yarnpkg.com/@forge/resolver/-/resolver-2.0.0.tgz#1d33e49a5f0bb5fa58f9e61ffb018972878c525a"
   integrity sha512-6TsntUodtRxefZjDTLVT5yvFo4OFEQwLRcN5cniWre0hD2tJ5B2OWw+8r4u1dTjflA0/+rciScWkuoKTRQK+WQ==
 
-"@fortawesome/fontawesome-free@^7.3.0":
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-7.3.0.tgz#c26db8baad037c5dff9d88980757cb5d90540d8a"
-  integrity sha512-Yw4Qa43P6e4Xwh0TwEUkHQNRJInWaqIBo73VJmns3j2AIlZPAvUcR4yGIxCPqPRCgyJ5KIVIalF/I1GxhZ/Kgw==
+"@fortawesome/fontawesome-free@^7.3.1":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-7.3.1.tgz#9d7d7df8f850637e001d24e6cd901422b4b09099"
+  integrity sha512-wmglKKPDIkgV3aWlZzWECCPoGIkYCulzBwxG9+w7rc5BGapZ6cPMpoPOT8k36J0Ni7PPX6c/rsoMWfS4d1MUMg==
 
 "@humanfs/core@^0.19.1":
   version "0.19.1"
