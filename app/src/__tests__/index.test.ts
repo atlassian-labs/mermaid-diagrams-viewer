@@ -114,7 +114,7 @@ describe('resolver handlers', () => {
     it('throws when the pack is not found in the Object Store', async () => {
       mockHasScope.mockReturnValue(true);
       mockKvsGet.mockResolvedValue(['missing']); // The pack is registered but not found in the Object Store
-      mockFosDownload.mockResolvedValue(null);
+      mockFosDownload.mockResolvedValue(undefined);
       await expect(
         call('getIconPackUrl', { payload: { pack: 'missing' } }),
       ).rejects.toThrow('"missing" not found');

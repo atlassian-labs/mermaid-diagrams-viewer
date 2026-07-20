@@ -10,6 +10,13 @@ export function iconPackCacheKey(name: string): string {
   return `/__mdv_iconpacks/${encodeURIComponent(name)}`;
 }
 
+/** Resolves the browser's CacheStorage, or undefined if unavailable. */
+function resolveCacheStorage(): CacheStorage | undefined {
+  return typeof window !== 'undefined' && 'caches' in window
+    ? window.caches
+    : undefined;
+}
+
 /**
  * Reads a cached icon pack from Cache Storage.
  * Returns `undefined` if the Cache API is unavailable, the entry is missing,
@@ -17,18 +24,20 @@ export function iconPackCacheKey(name: string): string {
  */
 export async function readFromCache(
   name: string,
+  cacheStorage: CacheStorage | undefined = resolveCacheStorage(),
   maxAgeMs = CACHE_MAX_AGE_MS,
 ): Promise<IconifyJSON | undefined> {
-  if (!('caches' in window)) return undefined;
+  if (!cacheStorage) return undefined;
   const cacheKey = iconPackCacheKey(name);
-  const cached = await window.caches
+  const cached = await cacheStorage
     .open(CACHE_NAME)
     .then((cache) => cache.match(cacheKey))
     .catch(() => undefined);
   if (!cached) return undefined;
-  const cachedAt = cached.headers.get('Cached-At');
-  if (!cachedAt) return undefined;
-  if (new Date().valueOf() - Number(cachedAt) >= maxAgeMs) return undefined;
+  const cachedAtRaw = cached.headers.get('Cached-At');
+  const cachedAt = Number(cachedAtRaw);
+  if (!cachedAtRaw || !Number.isFinite(cachedAt) || cachedAt <= 0) return undefined;
+  if (new Date().valueOf() - cachedAt >= maxAgeMs) return undefined;
   return cached.json() as Promise<IconifyJSON>;
 }
 
@@ -39,8 +48,9 @@ export async function readFromCache(
 export async function writeToCache(
   name: string,
   resp: Response,
+  cacheStorage: CacheStorage | undefined = resolveCacheStorage(),
 ): Promise<void> {
-  if (!('caches' in window)) return;
+  if (!cacheStorage) return;
   const cacheKey = iconPackCacheKey(name);
   const modifiedHeaders = new Headers(resp.headers);
   modifiedHeaders.set('Cached-At', new Date().valueOf().toString());
@@ -49,7 +59,7 @@ export async function writeToCache(
     statusText: resp.statusText,
     headers: modifiedHeaders,
   });
-  await window.caches
+  await cacheStorage
     .open(CACHE_NAME)
     .then((cache) => cache.put(cacheKey, newResponse))
     .catch(() => undefined);
@@ -61,6 +71,7 @@ export async function writeToCache(
  */
 export async function fetchAndCacheIconPack(
   name: string,
+  cacheStorage: CacheStorage | undefined = resolveCacheStorage(),
 ): Promise<IconifyJSON> {
   const urlRes = await invoke<string>('getIconPackUrl', { pack: name });
   const url = unwrapInvoke(urlRes);
@@ -71,7 +82,7 @@ export async function fetchAndCacheIconPack(
     );
   }
   const [forCache, forParse] = [resp.clone(), resp.clone()];
-  void writeToCache(name, forCache);
+  void writeToCache(name, forCache, cacheStorage);
   return forParse.json() as Promise<IconifyJSON>;
 }
 
@@ -85,13 +96,14 @@ export async function fetchAndCacheIconPack(
 export function makeIconPackLoader(
   name: string,
   isReload: boolean,
+  cacheStorage: CacheStorage | undefined = resolveCacheStorage(),
 ): () => Promise<IconifyJSON> {
   return async () => {
     if (!isReload) {
-      const cached = await readFromCache(name);
+      const cached = await readFromCache(name, cacheStorage);
       if (cached) return cached;
     }
-    return fetchAndCacheIconPack(name);
+    return fetchAndCacheIconPack(name, cacheStorage);
   };
 }
 
@@ -130,10 +142,11 @@ export async function registerIconPacks(
   if (!Array.isArray(packNames) || packNames.length === 0) return;
 
   const reload = isPageReload();
+  const cacheStorage = resolveCacheStorage();
   register(
     packNames.map((name) => ({
       name,
-      loader: makeIconPackLoader(name, reload),
+      loader: makeIconPackLoader(name, reload, cacheStorage),
     })),
   );
 }

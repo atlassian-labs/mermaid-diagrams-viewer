@@ -91,32 +91,40 @@ describe('readFromCache', () => {
   });
 
   it('returns undefined when Cache API is unavailable', async () => {
-    const original = (window as Record<string, unknown>).caches;
-    delete (window as Record<string, unknown>).caches;
-    const result = await readFromCache('logos');
-    (window as Record<string, unknown>).caches = original;
-    expect(result).toBeUndefined();
+    expect(await readFromCache('logos', undefined)).toBeUndefined();
   });
 
   it('returns undefined when no cached entry exists', async () => {
     const stub = makeCacheStorage(undefined);
-    vi.stubGlobal('caches', stub);
-    expect(await readFromCache('logos')).toBeUndefined();
+    expect(
+      await readFromCache('logos', stub as unknown as CacheStorage),
+    ).toBeUndefined();
+  });
+
+  it('returns undefined when the Cached-At header is not a valid number', async () => {
+    const headers = new Headers({ 'Cached-At': 'not-a-number' });
+    const badResponse = new Response('{}', { headers });
+    const stub = makeCacheStorage(badResponse);
+    expect(
+      await readFromCache('logos', stub as unknown as CacheStorage),
+    ).toBeUndefined();
   });
 
   it('returns undefined when the cached entry is stale', async () => {
     const staleMs = Date.now() - 2 * 60 * 60 * 1000; // 2 hours ago
     const stub = makeCacheStorage(makeCachedResponse({ foo: 1 }, staleMs));
-    vi.stubGlobal('caches', stub);
-    expect(await readFromCache('logos')).toBeUndefined();
+    expect(
+      await readFromCache('logos', stub as unknown as CacheStorage),
+    ).toBeUndefined();
   });
 
   it('returns parsed JSON when the cached entry is fresh', async () => {
     const freshMs = Date.now() - 5 * 60 * 1000; // 5 minutes ago
     const payload = { prefix: 'logos', icons: {} };
     const stub = makeCacheStorage(makeCachedResponse(payload, freshMs));
-    vi.stubGlobal('caches', stub);
-    expect(await readFromCache('logos')).toEqual(payload);
+    expect(
+      await readFromCache('logos', stub as unknown as CacheStorage),
+    ).toEqual(payload);
   });
 });
 
@@ -128,19 +136,19 @@ describe('writeToCache', () => {
   });
 
   it('does nothing when Cache API is unavailable', async () => {
-    const original = (window as Record<string, unknown>).caches;
-    delete (window as Record<string, unknown>).caches;
     await expect(
-      writeToCache('logos', new Response('{}', { status: 200 })),
+      writeToCache('logos', new Response('{}', { status: 200 }), undefined),
     ).resolves.toBeUndefined();
-    (window as Record<string, unknown>).caches = original;
   });
 
   it('writes the response to cache with a Cached-At header', async () => {
     const stub = makeCacheStorage(undefined);
-    vi.stubGlobal('caches', stub);
     const before = Date.now();
-    await writeToCache('logos', new Response('{}', { status: 200 }));
+    await writeToCache(
+      'logos',
+      new Response('{}', { status: 200 }),
+      stub as unknown as CacheStorage,
+    );
     expect(stub.store.put).toHaveBeenCalledOnce();
     const [key, stored] = stub.store.put.mock.calls[0] as [string, Response];
     expect(key).toBe(iconPackCacheKey('logos'));
@@ -161,7 +169,6 @@ describe('fetchAndCacheIconPack', () => {
     const payload = { prefix: 'logos', icons: {} };
     mockInvoke.mockResolvedValue('https://cdn.example.com/logos.json');
     const stub = makeCacheStorage(undefined);
-    vi.stubGlobal('caches', stub);
     vi.stubGlobal(
       'fetch',
       vi
@@ -170,7 +177,9 @@ describe('fetchAndCacheIconPack', () => {
           new Response(JSON.stringify(payload), { status: 200 }),
         ),
     );
-    expect(await fetchAndCacheIconPack('logos')).toEqual(payload);
+    expect(
+      await fetchAndCacheIconPack('logos', stub as unknown as CacheStorage),
+    ).toEqual(payload);
     expect(mockInvoke).toHaveBeenCalledWith('getIconPackUrl', {
       pack: 'logos',
     });
@@ -186,7 +195,7 @@ describe('fetchAndCacheIconPack', () => {
           new Response('Not Found', { status: 404, statusText: 'Not Found' }),
         ),
     );
-    await expect(fetchAndCacheIconPack('logos')).rejects.toThrow(
+    await expect(fetchAndCacheIconPack('logos', undefined)).rejects.toThrow(
       'Failed to fetch icon pack "logos": 404',
     );
   });
@@ -203,9 +212,12 @@ describe('makeIconPackLoader', () => {
     const payload = { prefix: 'logos', icons: {} };
     const freshMs = Date.now() - 5 * 60 * 1000;
     const stub = makeCacheStorage(makeCachedResponse(payload, freshMs));
-    vi.stubGlobal('caches', stub);
 
-    const loader = makeIconPackLoader('logos', false);
+    const loader = makeIconPackLoader(
+      'logos',
+      false,
+      stub as unknown as CacheStorage,
+    );
     expect(await loader()).toEqual(payload);
     expect(mockInvoke).not.toHaveBeenCalled();
   });
@@ -214,7 +226,6 @@ describe('makeIconPackLoader', () => {
     const payload = { prefix: 'logos', icons: {} };
     const freshMs = Date.now() - 5 * 60 * 1000;
     const stub = makeCacheStorage(makeCachedResponse(payload, freshMs));
-    vi.stubGlobal('caches', stub);
     mockInvoke.mockResolvedValue('https://cdn.example.com/logos.json');
     vi.stubGlobal(
       'fetch',
@@ -225,7 +236,11 @@ describe('makeIconPackLoader', () => {
         ),
     );
 
-    const loader = makeIconPackLoader('logos', true);
+    const loader = makeIconPackLoader(
+      'logos',
+      true,
+      stub as unknown as CacheStorage,
+    );
     await loader();
     expect(mockInvoke).toHaveBeenCalledWith('getIconPackUrl', {
       pack: 'logos',
