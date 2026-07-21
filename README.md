@@ -30,6 +30,17 @@ This app supports all [Mermaid diagram types](https://mermaid.js.org/syntax/synt
 
 This is a Forge app. Install it from the [Atlassian Marketplace](https://marketplace.atlassian.com/apps/1232887/mermaid-diagrams-viewer).
 
+## Registering Icon Packs
+
+Mermaid can [reference icon packs](https://mermaid.js.org/config/icons.html) in diagrams.
+
+Because of sandbox restrictions, icon packs must be hosted somewhere the diagram iframe can fetch them from.
+This app serves them from the Forge Object Store via a time-limited public download URL.
+Packs are lazily loaded when required and cached in the browser for 1 hour; to reload the cache,
+reload the diagram frame (right-click → Reload Frame).
+
+To register an icon pack, use the Configure option of this app in the connected apps management section of Confluence.
+
 ### Development Setup
 
 Fork and clone the repository, then install dependencies using the Node.js

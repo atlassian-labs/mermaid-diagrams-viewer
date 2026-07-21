@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './app.tsx';
+import { AdminPanel } from './admin.tsx';
 import { DiagramConfig } from './config.tsx';
 import { view } from '@forge/bridge';
 import { useThemeObserver } from '@atlaskit/tokens';
+import { registerIconPacks } from './icon-packs.ts';
 import mermaid from 'mermaid';
 import elkLayouts from '@mermaid-js/layout-elk';
 import '@atlaskit/css-reset';
@@ -13,12 +15,22 @@ import '@atlaskit/css-reset';
 // code-blocks/index.ts works before any React component mounts.
 void view.theme.enable();
 mermaid.registerLayoutLoaders(elkLayouts);
+
+// Dynamically register icon packs registered in the KV store
+// and stored in the Forge Object Store and cached in the browser.
+// This is best-effort; if the icon pack fetch fails, or permissions are not granted,
+// the diagram will still render without custom icons.
+await registerIconPacks((packs) => {
+  mermaid.registerIconPacks(packs);
+}).catch(() => {
+  // Ignore icon pack errors; diagrams can still render without custom icons.
+});
 mermaid.initialize({
   startOnLoad: false,
   securityLevel: 'antiscript',
 });
 
-type AppMode = 'viewer' | 'config' | 'loading';
+type AppMode = 'viewer' | 'config' | 'admin' | 'loading';
 type ColorMode = 'light' | 'dark';
 
 function initMermaidTheme(colorMode: ColorMode) {
@@ -39,6 +51,10 @@ function Root() {
     view
       .getContext()
       .then((context) => {
+        if (context.extension.type === 'confluence:globalSettings') {
+          setMode('admin');
+          return;
+        }
         // Forge sets extension.macro.isConfiguring = true when the macro
         // config dialog is open (both on insert and on edit of existing macro).
         const ext = context.extension as {
@@ -67,6 +83,10 @@ function Root() {
 
   if (!colorMode) {
     return null;
+  }
+
+  if (mode === 'admin') {
+    return <AdminPanel />;
   }
 
   if (mode === 'config') {

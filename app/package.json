@@ -1,0 +1,23 @@
+{
+  "name": "mermaid-diagrams-viewer-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "24"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.0"
+  },
+  "dependencies": {
+    "@forge/api": "^8.0.1",
+    "@forge/kvs": "^2.0.0",
+    "@forge/object-store": "^1.0.0",
+    "@forge/resolver": "^2.0.0"
+  }
+}

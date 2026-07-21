@@ -23,6 +23,10 @@ const srcStructure = [
   },
   { name: '*{kebab-case}.(ts|tsx)' },
   {
+    name: 'dev',
+    children: [{ name: '*{kebab-case}.(ts|tsx)' }],
+  },
+  {
     name: '*', // Allows nested folders like 'confluence'
     children: [
       {

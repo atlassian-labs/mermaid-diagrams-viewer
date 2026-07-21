@@ -19,6 +19,24 @@ modules:
         resource: custom-ui
         viewportSize: small
         title: Mermaid diagram configuration
+      resolver:
+        function: resolver
+
+  confluence:globalSettings:
+    - key: mermaid-admin
+      resource: custom-ui
+      resolver:
+        function: resolver
+      title: Mermaid Diagrams Viewer
+      useAsConfig: true
+
+  function:
+    - key: resolver
+      handler: index.handler
+
+  objectStore:
+    - key: icon-packs
+      storageClass: standard
 
 resources:
   - key: custom-ui
@@ -29,8 +47,10 @@ resources:
     path: icons
 
 permissions:
+  enforcement: app-managed
   scopes:
-    - 'read:page:confluence'
+    - read:page:confluence
+    - storage:app
   content:
     styles:
-      - 'unsafe-inline'
+      - unsafe-inline
