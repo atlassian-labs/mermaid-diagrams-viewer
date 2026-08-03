@@ -25,6 +25,7 @@ const boxStyle: React.CSSProperties = {
 };
 
 const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
+const PRESERVED_STYLE_CLASS_PREFIX = 'mermaid-preserved-style-';
 const SVG_PRESENTATION_ATTRIBUTES = new Set([
   'color',
   'display',
@@ -63,19 +64,34 @@ export function preserveSvgPresentationStyles(svg: string): string {
     return svg;
   }
 
+  const preservedStyleRules: string[] = [];
+
   for (const element of document.querySelectorAll<SVGElement>('[style]')) {
     if (element.namespaceURI !== SVG_NAMESPACE) {
       continue;
     }
 
+    const declarations: string[] = [];
     for (const property of element.style) {
       if (SVG_PRESENTATION_ATTRIBUTES.has(property)) {
-        element.setAttribute(
-          property,
-          element.style.getPropertyValue(property),
-        );
+        const value = element.style.getPropertyValue(property);
+        element.setAttribute(property, value);
+        declarations.push(`${property}: ${value} !important;`);
       }
     }
+
+    if (declarations.length > 0) {
+      const className =
+        PRESERVED_STYLE_CLASS_PREFIX + String(preservedStyleRules.length);
+      element.classList.add(className);
+      preservedStyleRules.push(`.${className} { ${declarations.join(' ')} }`);
+    }
+  }
+
+  if (preservedStyleRules.length > 0) {
+    const style = document.createElementNS(SVG_NAMESPACE, 'style');
+    style.textContent = preservedStyleRules.join('\n');
+    document.documentElement.append(style);
   }
 
   return new XMLSerializer().serializeToString(document.documentElement);

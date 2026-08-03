@@ -137,6 +137,10 @@ describe('Diagram Component', () => {
     expect(path?.getAttribute('stroke')).toBe('rgb(251, 113, 133)');
     expect(path?.getAttribute('stroke-width')).toBe('2px');
     expect(path?.hasAttribute('cursor')).toBe(false);
+    expect(path?.classList).toContain('mermaid-preserved-style-0');
+    expect(document.querySelector('style')?.textContent).toBe(
+      '.mermaid-preserved-style-0 { fill: rgb(190, 18, 60) !important; stroke: rgb(251, 113, 133) !important; stroke-width: 2px !important; }',
+    );
   });
 
   it('should leave HTML styles inside foreignObject unchanged', () => {
