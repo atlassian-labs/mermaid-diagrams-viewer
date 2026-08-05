@@ -1072,16 +1072,16 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.11.tgz#a269e055e40e2f45873bae9d1a2fdccbd314ea3f"
   integrity sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==
 
-"@forge/bridge@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@forge/bridge/-/bridge-6.0.0.tgz#e246fe808ea868da6688e5a3248f938eb9fe86a9"
-  integrity sha512-rzU3w/7rrOe+o8HnOxexrUtajoorqiGjxJLws9XX9BJB/uZVfpo/aH2dWE3wd5Mmx21WEYwTPqEDxyrRzlqm0w==
+"@forge/bridge@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@forge/bridge/-/bridge-6.2.0.tgz#f73a57281d061082e653f3bd8dc9beff35e8e0f0"
+  integrity sha512-5Fd71fuIY5QbXAjJcAw4NSI+rtqij+jlbts6Tb5lBh24PXwGz+EtP690o4uXY6bEv7+C/DbdP0lbh4cTFsCi5A==
   dependencies:
     "@atlaskit/adf-schema" "^48.0.0"
     "@atlaskit/tokens" "^1.58.0"
     "@forge/egress" "^3.0.0"
     "@forge/i18n" "1.0.0"
-    "@forge/manifest" "13.0.0"
+    "@forge/manifest" "13.3.0"
     "@forge/resolver" "2.0.0"
     "@types/history" "^4.7.11"
     "@types/iframe-resizer" "^3.5.8"
@@ -1099,10 +1099,10 @@
   dependencies:
     lodash "^4.17.21"
 
-"@forge/manifest@13.0.0":
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/@forge/manifest/-/manifest-13.0.0.tgz#8545a08390603bf4cd953f6c5cb91180c5c67245"
-  integrity sha512-aPiRBk+/M3qvTBNFIfuR6VvoUceif9XNivwOHjc0wvZY1+fL3WtN940/PizvPSUPQ6UeFKHodrLNHzUCCqwsJA==
+"@forge/manifest@13.3.0":
+  version "13.3.0"
+  resolved "https://registry.yarnpkg.com/@forge/manifest/-/manifest-13.3.0.tgz#a29a4d30a5f7afb87b814196fbe777fb62736efc"
+  integrity sha512-EdXhHz1PMjITk30zxapgHWuoZVrvNxYTjcK37V4HaLV3bo58z/VoVzE9ttkzGf9H7j1bXzPWPXnEioXobr61mA==
   dependencies:
     "@forge/i18n" "1.0.0"
     "@sentry/node" "7.106.0"
