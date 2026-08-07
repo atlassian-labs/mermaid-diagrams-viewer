@@ -24,6 +24,79 @@ const boxStyle: React.CSSProperties = {
   backgroundColor: 'var(--ds-background-neutral-subtle, transparent)',
 };
 
+const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
+const PRESERVED_STYLE_CLASS_PREFIX = 'mermaid-preserved-style-';
+const SVG_PRESENTATION_ATTRIBUTES = new Set([
+  'color',
+  'display',
+  'dominant-baseline',
+  'fill',
+  'fill-opacity',
+  'fill-rule',
+  'font-family',
+  'font-size',
+  'font-style',
+  'font-weight',
+  'marker-end',
+  'marker-mid',
+  'marker-start',
+  'opacity',
+  'paint-order',
+  'shape-rendering',
+  'stroke',
+  'stroke-dasharray',
+  'stroke-dashoffset',
+  'stroke-linecap',
+  'stroke-linejoin',
+  'stroke-miterlimit',
+  'stroke-opacity',
+  'stroke-width',
+  'text-anchor',
+  'transform',
+  'vector-effect',
+  'visibility',
+]);
+
+export function preserveSvgPresentationStyles(svg: string): string {
+  const document = new DOMParser().parseFromString(svg, 'image/svg+xml');
+
+  if (document.querySelector('parsererror')) {
+    return svg;
+  }
+
+  const preservedStyleRules: string[] = [];
+
+  for (const element of document.querySelectorAll<SVGElement>('[style]')) {
+    if (element.namespaceURI !== SVG_NAMESPACE) {
+      continue;
+    }
+
+    const declarations: string[] = [];
+    for (const property of element.style) {
+      if (SVG_PRESENTATION_ATTRIBUTES.has(property)) {
+        const value = element.style.getPropertyValue(property);
+        element.setAttribute(property, value);
+        declarations.push(`${property}: ${value} !important;`);
+      }
+    }
+
+    if (declarations.length > 0) {
+      const className =
+        PRESERVED_STYLE_CLASS_PREFIX + String(preservedStyleRules.length);
+      element.classList.add(className);
+      preservedStyleRules.push(`.${className} { ${declarations.join(' ')} }`);
+    }
+  }
+
+  if (preservedStyleRules.length > 0) {
+    const style = document.createElementNS(SVG_NAMESPACE, 'style');
+    style.textContent = preservedStyleRules.join('\n');
+    document.documentElement.append(style);
+  }
+
+  return new XMLSerializer().serializeToString(document.documentElement);
+}
+
 export const Diagram: React.FunctionComponent<{
   code: string;
   colorMode: 'light' | 'dark';
@@ -121,7 +194,7 @@ function useMermaidRenderSVG(code: string, colorMode: 'light' | 'dark') {
           'diagram' + String(Date.now()),
           code,
         );
-        setSvg(svg);
+        setSvg(preserveSvgPresentationStyles(svg));
       } catch (error) {
         setError(error as Error);
       }
