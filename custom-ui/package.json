@@ -10,7 +10,7 @@
     "url": "https://github.com/DanielHreben"
   },
   "engines": {
-    "node": "24.19.0"
+    "node": "24.20.0"
   },
   "scripts": {
     "dev": "vite",
