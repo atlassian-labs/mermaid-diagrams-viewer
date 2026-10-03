@@ -844,10 +844,10 @@
   dependencies:
     csstype "^3.2.3"
 
-"@compiled/react@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@compiled/react/-/react-1.0.0.tgz#400fdd469bfc80fe3d588f2229b41f7cf618bf89"
-  integrity sha512-yKjhV/0BeuffhKYpe7ZOu5HwZsWOVQRrxaj0L9SEqFJUKH03qOml+rMUNwxht41KrOHhOmDQeAuwVud7fsnYaw==
+"@compiled/react@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@compiled/react/-/react-1.0.2.tgz#4828913b72c5188789b7e94a754329670b7d0d44"
+  integrity sha512-xGOChqGDvoJON+1QOgV4cYmy1W3oonJw43TQ7KR8TuPTlIAHuFBgfckmyMPG4WppF0FYem518LZknySU0uQhlg==
   dependencies:
     csstype "^3.2.3"
 
