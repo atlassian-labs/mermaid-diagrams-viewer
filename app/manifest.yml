@@ -9,7 +9,7 @@ modules:
       resource: custom-ui
       title: Mermaid diagram
       icon: resource:icons;app-icon.png
-      description: Render a Mermaid diagram from a code block on a page
+      description: Render Mermaid diagrams from code blocks
       categories:
         - formatting
         - confluence-content
